@@ -304,5 +304,244 @@ export const TOOLS: Tool[] = [
     useCases: ['Privacy protection', 'Design aesthetics'],
     faqs: [],
     longContent: 'Blurring can be used for both privacy and artistic effect. Whether you need to hide a face or create a soft background for text, our blur tool is here to help.',
+  },
+  {
+    id: 'qr-code-generator',
+    name: 'QR Code Generator',
+    title: 'Professional QR Code Generator',
+    description: 'Create custom QR codes for URLs, text, WiFi, and more with logos and styling.',
+    icon: 'QrCode',
+    slug: 'qr-code-generator',
+    category: 'misc',
+    isNew: true,
+    seo: {
+      title: 'Free Online QR Code Generator - Create Custom QR Codes with Logo',
+      description: 'Generate professional QR codes online for free. Support for URLs, Text, Email, WiFi, and more. Customize colors, styles, and add your logo.',
+      keywords: ['qr code generator', 'create qr code', 'custom qr code', 'qr code with logo', 'free qr generator'],
+    },
+    features: [
+      'Multiple input types (URL, Text, WiFi, etc.)',
+      'Custom colors and styles',
+      'Add custom logo inside QR',
+      'Download as PNG, SVG, or JPG',
+      'Bulk generation support'
+    ],
+    benefits: [
+      'Easy sharing of information',
+      'Professional branding',
+      'Trackable marketing assets',
+    ],
+    useCases: [
+      'Business cards',
+      'Marketing materials',
+      'WiFi access sharing',
+      'Contact information sharing'
+    ],
+    faqs: [
+      {
+        question: 'Can I add my logo to the QR code?',
+        answer: 'Yes, you can upload any image to be placed in the center of your QR code.'
+      },
+      {
+        question: 'Do these QR codes expire?',
+        answer: 'No, the QR codes generated are static and will work as long as the underlying data (like a URL) is valid.'
+      }
+    ],
+    longContent: 'QR codes have become an essential tool for bridging the physical and digital worlds. Whether you need a simple URL link or a complex WiFi configuration, our <a href="/tools/qr-code-generator" class="underline hover:text-blue-200">QR code generator</a> provides all the professional features you need. Customize the dots, corners, and colors to match your brand, and even add your logo for a truly professional look. Everything is processed locally in your browser for maximum privacy.'
+  },
+  {
+    id: 'favicon-generator',
+    name: 'Favicon Generator',
+    title: 'Favicon Generator from Image',
+    description: 'Convert any image into all standard favicon sizes for your website.',
+    icon: 'Layout',
+    slug: 'favicon-generator',
+    category: 'optimize',
+    isNew: true,
+    seo: {
+      title: 'Free Online Favicon Generator - Create Favicons for All Devices',
+      description: 'Generate all standard favicon sizes from a single image. Support for 16x16, 32x32, Apple Touch icons, and more. Download as a ZIP file.',
+      keywords: ['favicon generator', 'create favicon', 'ico converter', 'apple touch icon generator', 'website icon maker'],
+    },
+    features: [
+      'Auto-generate all standard sizes',
+      'Support for PNG, JPG, and SVG',
+      'ZIP download of all icons',
+      'Instant preview grid',
+      'High-quality resampling'
+    ],
+    benefits: [
+      'Professional website appearance',
+      'Better user recognition in tabs',
+      'Support for all devices and browsers'
+    ],
+    useCases: [
+      'Web developers setting up new sites',
+      'Branding updates',
+      'App icon creation'
+    ],
+    faqs: [
+      {
+        question: 'What sizes are generated?',
+        answer: 'We generate 16x16, 32x32, 48x48, 64x64, and 180x180 (Apple Touch Icon) sizes.'
+      }
+    ],
+    longContent: 'A favicon is a small but vital part of your website\'s identity. It helps users identify your site among many open tabs and provides a professional touch to your branding. Our <a href="/tools/favicon-generator" class="underline hover:text-blue-200">favicon generator</a> takes the hassle out of creating multiple icon sizes. Just upload your logo, and we\'ll handle the rest, providing you with a ready-to-use ZIP file containing all the necessary formats.'
+  },
+  {
+    id: 'age-calculator',
+    name: 'Age Calculator',
+    title: 'Precise Age Calculator',
+    description: 'Calculate your exact age in years, months, days, and even seconds.',
+    icon: 'Calendar',
+    slug: 'age-calculator',
+    category: 'misc',
+    isNew: true,
+    seo: {
+      title: 'Free Online Age Calculator - Find Your Exact Age',
+      description: 'Calculate your exact age from your date of birth. Get results in years, months, days, hours, and seconds. See your next birthday countdown.',
+      keywords: ['age calculator', 'calculate age', 'how old am i', 'birthday calculator', 'age in days'],
+    },
+    features: [
+      'Years, months, and days breakdown',
+      'Total days, weeks, and hours',
+      'Next birthday countdown',
+      'Time of birth support',
+      'Live updates'
+    ],
+    benefits: [
+      'Know your exact age',
+      'Plan for upcoming birthdays',
+      'Fun facts about your life duration'
+    ],
+    useCases: [
+      'Filling out forms',
+      'Checking age requirements',
+      'Curiosity and fun'
+    ],
+    faqs: [
+      {
+        question: 'Is the calculation accurate?',
+        answer: 'Yes, our calculator accounts for leap years and varying month lengths to give you the most precise result possible.'
+      }
+    ],
+    longContent: 'Ever wondered exactly how many seconds you\'ve been alive? Our <a href="/tools/age-calculator" class="underline hover:text-blue-200">age calculator</a> provides a detailed breakdown of your life duration. Beyond just years and months, you can see your age in weeks, days, hours, and even minutes. It also features a live countdown to your next birthday, so you can start the celebration early!'
+  },
+  {
+    id: 'image-to-pdf',
+    name: 'Image to PDF',
+    title: 'Convert Images to PDF',
+    description: 'Convert multiple images into a single PDF document instantly.',
+    icon: 'FileText',
+    slug: 'image-to-pdf',
+    category: 'convert',
+    isNew: true,
+    seo: {
+      title: 'Free Online Image to PDF Converter - Convert JPG, PNG to PDF',
+      description: 'Convert your images to PDF online for free. Support for JPG, PNG, and WebP. Reorder images, set page size, and orientation. 100% secure and client-side.',
+      keywords: ['image to pdf', 'convert jpg to pdf', 'png to pdf', 'online pdf maker', 'images to pdf'],
+    },
+    features: [
+      'Drag & drop reordering',
+      'Custom page sizes (A4, Letter)',
+      'Portrait & Landscape orientation',
+      'Image quality control',
+      'Instant PDF preview'
+    ],
+    benefits: [
+      'Combine multiple images into one file',
+      'Professional document creation',
+      'Secure client-side processing'
+    ],
+    useCases: [
+      'Creating digital portfolios',
+      'Scanning documents with phone',
+      'Combining screenshots into a report'
+    ],
+    faqs: [
+      {
+        question: 'Are my images uploaded to a server?',
+        answer: 'No, all processing happens locally in your browser. Your images never leave your device.'
+      }
+    ],
+    longContent: 'Convert your photos and graphics into professional PDF documents with our <a href="/tools/image-to-pdf" class="underline hover:text-blue-200">Image to PDF converter</a>. Whether you need to combine several JPGs into a single report or create a digital portfolio from your PNG designs, our tool offers the flexibility you need. You can reorder images, choose page orientations, and adjust quality settings to get the perfect result every time.'
+  },
+  {
+    id: 'merge-pdf',
+    name: 'Merge PDF',
+    title: 'Merge Multiple PDF Files',
+    description: 'Combine two or more PDF files into a single document.',
+    icon: 'Combine',
+    slug: 'merge-pdf',
+    category: 'edit',
+    isNew: true,
+    seo: {
+      title: 'Free Online PDF Merger - Combine PDF Files Instantly',
+      description: 'Merge multiple PDF files into one online for free. Easy drag-and-drop reordering. Fast, secure, and works entirely in your browser.',
+      keywords: ['merge pdf', 'combine pdf', 'join pdf files', 'pdf merger online', 'free pdf tools'],
+    },
+    features: [
+      'Combine unlimited PDF files',
+      'Drag & drop to reorder',
+      'File metadata preview',
+      'Fast merging logic',
+      'Secure local processing'
+    ],
+    benefits: [
+      'Organize your documents better',
+      'Reduce file clutter',
+      'Easy to share single files'
+    ],
+    useCases: [
+      'Combining monthly reports',
+      'Joining separate chapters of a book',
+      'Merging signed documents'
+    ],
+    faqs: [
+      {
+        question: 'Is there a file size limit?',
+        answer: 'The limit depends on your browser\'s memory, but typically you can merge files up to several hundred MBs.'
+      }
+    ],
+    longContent: 'Simplify your document management by using our <a href="/tools/merge-pdf" class="underline hover:text-blue-200">Merge PDF tool</a>. Instead of sending multiple separate attachments, you can combine them into one cohesive document. Our tool allows you to easily reorder files before merging, ensuring your final PDF is perfectly organized. Everything happens on your computer, so your sensitive documents remain private.'
+  },
+  {
+    id: 'split-pdf',
+    name: 'Split PDF',
+    title: 'Split PDF Pages',
+    description: 'Extract specific pages from a PDF or split it into separate files.',
+    icon: 'Scissors',
+    slug: 'split-pdf',
+    category: 'edit',
+    isNew: true,
+    seo: {
+      title: 'Free Online PDF Splitter - Extract Pages from PDF',
+      description: 'Split your PDF files online for free. Extract specific page ranges or individual pages easily. Fast and secure client-side processing.',
+      keywords: ['split pdf', 'extract pages from pdf', 'pdf splitter online', 'separate pdf pages', 'free pdf tools'],
+    },
+    features: [
+      'Extract page ranges',
+      'Individual page selection',
+      'Thumbnail preview of pages',
+      'Fast extraction logic',
+      'Privacy-focused processing'
+    ],
+    benefits: [
+      'Extract only what you need',
+      'Reduce file size by removing pages',
+      'Easy to manage large documents'
+    ],
+    useCases: [
+      'Extracting a single chapter from a book',
+      'Removing unnecessary pages from a report',
+      'Splitting a large document for easier sharing'
+    ],
+    faqs: [
+      {
+        question: 'Can I split a password-protected PDF?',
+        answer: 'Currently, you need to remove the password before splitting. We prioritize security and do not store or process passwords.'
+      }
+    ],
+    longContent: 'Need only a few pages from a massive PDF? Our <a href="/tools/split-pdf" class="underline hover:text-blue-200">Split PDF tool</a> is here to help. You can specify exact page ranges or select individual pages to extract into a new document. This is perfect for reducing file sizes or isolating specific information for sharing. Like all Sohelix tools, your data stays on your device throughout the entire process.'
   }
 ];

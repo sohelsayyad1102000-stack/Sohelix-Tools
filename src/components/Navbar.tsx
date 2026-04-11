@@ -13,21 +13,25 @@ const NAV_LINKS = [
 export const Navbar: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const theme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return (theme || systemTheme) === 'dark';
     }
     return false;
   });
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const root = window.document.documentElement;
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode]);

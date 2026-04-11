@@ -27,6 +27,12 @@ import {
 } from '../lib/image-processing';
 import { CompressorTool } from '../components/tools/CompressorTool';
 import { CropperTool } from '../components/tools/CropperTool';
+import { QRCodeGenerator } from '../components/tools/QRCodeGenerator';
+import { FaviconGenerator } from '../components/tools/FaviconGenerator';
+import { AgeCalculator } from '../components/tools/AgeCalculator';
+import { ImageToPDFTool } from '../components/tools/ImageToPDFTool';
+import { MergePDFTool } from '../components/tools/MergePDFTool';
+import { SplitPDFTool } from '../components/tools/SplitPDFTool';
 
 export const ToolPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -249,6 +255,18 @@ export const ToolPage: React.FC = () => {
           <CompressorTool tool={tool} />
         ) : tool.id === 'crop-image' ? (
           <CropperTool tool={tool} />
+        ) : tool.id === 'qr-code-generator' ? (
+          <QRCodeGenerator tool={tool} />
+        ) : tool.id === 'favicon-generator' ? (
+          <FaviconGenerator tool={tool} />
+        ) : tool.id === 'age-calculator' ? (
+          <AgeCalculator tool={tool} />
+        ) : tool.id === 'image-to-pdf' ? (
+          <ImageToPDFTool tool={tool} />
+        ) : tool.id === 'merge-pdf' ? (
+          <MergePDFTool tool={tool} />
+        ) : tool.id === 'split-pdf' ? (
+          <SplitPDFTool tool={tool} />
         ) : (
           <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
             <div className="grid grid-cols-1 lg:grid-cols-3">
