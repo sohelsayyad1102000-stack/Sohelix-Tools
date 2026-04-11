@@ -33,6 +33,9 @@ import { AgeCalculator } from '../components/tools/AgeCalculator';
 import { ImageToPDFTool } from '../components/tools/ImageToPDFTool';
 import { MergePDFTool } from '../components/tools/MergePDFTool';
 import { SplitPDFTool } from '../components/tools/SplitPDFTool';
+import { BMICalculator } from '../components/tools/BMICalculator';
+import { InterestCalculator } from '../components/tools/InterestCalculator';
+import { EMICalculator } from '../components/tools/EMICalculator';
 
 export const ToolPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -267,6 +270,12 @@ export const ToolPage: React.FC = () => {
           <MergePDFTool tool={tool} />
         ) : tool.id === 'split-pdf' ? (
           <SplitPDFTool tool={tool} />
+        ) : tool.id === 'bmi-calculator' ? (
+          <BMICalculator tool={tool} />
+        ) : tool.id === 'interest-calculator' ? (
+          <InterestCalculator tool={tool} />
+        ) : tool.id === 'emi-calculator' ? (
+          <EMICalculator tool={tool} />
         ) : (
           <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
             <div className="grid grid-cols-1 lg:grid-cols-3">

@@ -543,5 +543,122 @@ export const TOOLS: Tool[] = [
       }
     ],
     longContent: 'Need only a few pages from a massive PDF? Our <a href="/tools/split-pdf" class="underline hover:text-blue-200">Split PDF tool</a> is here to help. You can specify exact page ranges or select individual pages to extract into a new document. This is perfect for reducing file sizes or isolating specific information for sharing. Like all Sohelix tools, your data stays on your device throughout the entire process.'
+  },
+  {
+    id: 'bmi-calculator',
+    name: 'BMI Calculator',
+    title: 'Body Mass Index (BMI) Calculator',
+    description: 'Calculate your BMI and find out if you are in a healthy weight range.',
+    icon: 'Calculator',
+    slug: 'bmi-calculator',
+    category: 'misc',
+    isNew: true,
+    seo: {
+      title: 'Free Online BMI Calculator - Calculate Body Mass Index',
+      description: 'Calculate your BMI online for free. Supports metric and imperial units. Get instant results and weight category classification.',
+      keywords: ['bmi calculator', 'body mass index', 'weight category', 'health calculator', 'fitness tool'],
+    },
+    features: [
+      'Metric & Imperial support',
+      'Instant BMI calculation',
+      'Weight category classification',
+      'Healthy range visualization',
+      'Privacy-focused'
+    ],
+    benefits: [
+      'Track your health status',
+      'Identify weight-related risks',
+      'Easy to use interface'
+    ],
+    useCases: [
+      'Personal health monitoring',
+      'Fitness progress tracking',
+      'Medical screening'
+    ],
+    faqs: [
+      {
+        question: 'What is a healthy BMI?',
+        answer: 'A healthy BMI for most adults is between 18.5 and 24.9.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/bmi-calculator" class="underline hover:text-blue-200">BMI calculator</a> helps you quickly determine your Body Mass Index using either metric or imperial units. It provides instant feedback on your weight category and visualizes where you stand on the healthy weight scale.'
+  },
+  {
+    id: 'interest-calculator',
+    name: 'Interest Calculator',
+    title: 'Simple & Compound Interest Calculator',
+    description: 'Calculate simple and compound interest on your savings or loans.',
+    icon: 'Landmark',
+    slug: 'interest-calculator',
+    category: 'misc',
+    isNew: true,
+    seo: {
+      title: 'Free Online Interest Calculator - Simple & Compound',
+      description: 'Calculate simple and compound interest online. Compare different compounding frequencies and see your total savings grow.',
+      keywords: ['interest calculator', 'simple interest', 'compound interest', 'savings calculator', 'finance tool'],
+    },
+    features: [
+      'Simple Interest calculation',
+      'Compound Interest calculation',
+      'Multiple compounding frequencies',
+      'Total amount breakdown',
+      'Detailed results'
+    ],
+    benefits: [
+      'Plan your savings effectively',
+      'Compare investment options',
+      'Understand interest growth'
+    ],
+    useCases: [
+      'Savings planning',
+      'Investment comparison',
+      'Loan interest calculation'
+    ],
+    faqs: [
+      {
+        question: 'What is compound interest?',
+        answer: 'Compound interest is interest calculated on the initial principal and also on the accumulated interest of previous periods.'
+      }
+    ],
+    longContent: 'Plan your finances with our <a href="/tools/interest-calculator" class="underline hover:text-blue-200">Interest calculator</a>. Compare simple and compound interest to see how your money grows over time with different compounding frequencies.'
+  },
+  {
+    id: 'emi-calculator',
+    name: 'EMI Calculator',
+    title: 'Loan EMI Calculator',
+    description: 'Calculate your monthly loan repayments and total interest payable.',
+    icon: 'CreditCard',
+    slug: 'emi-calculator',
+    category: 'misc',
+    isNew: true,
+    seo: {
+      title: 'Free Online EMI Calculator - Loan Repayment Calculator',
+      description: 'Calculate your monthly loan EMI, total interest, and total payment. Plan your home, car, or personal loans effectively.',
+      keywords: ['emi calculator', 'loan calculator', 'mortgage calculator', 'monthly payment', 'finance tool'],
+    },
+    features: [
+      'Monthly EMI calculation',
+      'Total interest payable',
+      'Total payment breakdown',
+      'Principal vs Interest visualization',
+      'Flexible tenure options'
+    ],
+    benefits: [
+      'Plan your loan repayments',
+      'Understand total cost of loan',
+      'Compare different loan offers'
+    ],
+    useCases: [
+      'Home loan planning',
+      'Car loan calculation',
+      'Personal loan management'
+    ],
+    faqs: [
+      {
+        question: 'How is EMI calculated?',
+        answer: 'EMI is calculated using the principal amount, interest rate, and loan tenure. The formula is E = P × r × (1+r)^n / ((1+r)^n - 1).'
+      }
+    ],
+    longContent: 'Our <a href="/tools/emi-calculator" class="underline hover:text-blue-200">EMI calculator</a> is an essential tool for anyone planning to take a loan. Quickly see your monthly commitment and understand the total cost of borrowing.'
   }
 ];

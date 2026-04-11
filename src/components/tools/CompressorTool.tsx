@@ -9,9 +9,17 @@ interface CompressorToolProps {
   tool: any;
 }
 
-const CompareModal = ({ originalUrl, compressedUrl, onClose }: { originalUrl: string, compressedUrl: string, onClose: () => void }) => {
+const CompareModal = ({ originalUrl, compressedBlob, onClose }: { originalUrl: string, compressedBlob: Blob, onClose: () => void }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
+  const [compressedUrl, setCompressedUrl] = useState<string>('');
+  const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const url = URL.createObjectURL(compressedBlob);
+    setCompressedUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [compressedBlob]);
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;
@@ -24,55 +32,92 @@ const CompareModal = ({ originalUrl, compressedUrl, onClose }: { originalUrl: st
   const handleTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
-      <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-white dark:bg-gray-900 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-800 p-4">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white">Before vs After Comparison</h3>
-          <button onClick={onClose} className="rounded-full p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800">
-            <X className="h-5 w-5" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="relative w-full max-w-5xl overflow-hidden rounded-3xl bg-white dark:bg-gray-900 shadow-2xl"
+      >
+        <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-800 p-6">
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Compare Quality</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 text-left">Drag the slider to compare original and compressed versions</p>
+          </div>
+          <button onClick={onClose} className="rounded-full p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors">
+            <X className="h-6 w-6" />
           </button>
         </div>
-        <div className="p-4">
+        
+        <div className="p-6">
           <div 
             ref={containerRef}
-            className="relative h-[60vh] w-full cursor-ew-resize select-none overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800"
+            className="relative h-[70vh] w-full cursor-ew-resize select-none overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
             onMouseMove={handleMouseMove}
             onTouchMove={handleTouchMove}
           >
+            {!isLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center z-20 bg-gray-100 dark:bg-gray-800">
+                <RefreshCcw className="h-8 w-8 animate-spin text-blue-600" />
+              </div>
+            )}
+
             {/* Original Image (Bottom) */}
-            <img src={originalUrl} alt="Original" className="absolute inset-0 h-full w-full object-contain" />
+            <img 
+              src={originalUrl} 
+              alt="Original" 
+              className="absolute inset-0 h-full w-full object-contain"
+              onLoad={() => setIsLoaded(true)}
+            />
             
             {/* Compressed Image (Top, clipped) */}
-            <div 
-              className="absolute inset-0 overflow-hidden"
-              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-            >
-              <img src={compressedUrl} alt="Compressed" className="absolute inset-0 h-full w-full object-contain" />
-            </div>
+            {compressedUrl && (
+              <div 
+                className="absolute inset-0 overflow-hidden z-10"
+                style={{ width: `${sliderPosition}%`, borderRight: '2px solid white' }}
+              >
+                <img 
+                  src={compressedUrl} 
+                  alt="Compressed" 
+                  className="absolute inset-0 h-[70vh] w-[calc(100vw-2rem)] max-w-5xl object-contain"
+                  style={{ width: containerRef.current?.clientWidth }}
+                />
+              </div>
+            )}
 
-            {/* Slider Line */}
+            {/* Slider Handle */}
             <div 
-              className="absolute bottom-0 top-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+              className="absolute bottom-0 top-0 z-20 w-1 bg-white shadow-[0_0_15px_rgba(0,0,0,0.3)]"
               style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
             >
-              <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg">
+              <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-xl border-2 border-blue-600">
                 <div className="flex gap-1">
-                  <div className="h-3 w-0.5 bg-gray-400"></div>
-                  <div className="h-3 w-0.5 bg-gray-400"></div>
+                  <div className="h-4 w-0.5 bg-blue-600 rounded-full"></div>
+                  <div className="h-4 w-0.5 bg-blue-600 rounded-full"></div>
                 </div>
               </div>
             </div>
 
             {/* Labels */}
-            <div className="absolute bottom-4 left-4 rounded-lg bg-black/60 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
-              Compressed
+            <div className="absolute top-4 left-4 z-30 rounded-full bg-blue-600 px-4 py-1.5 text-xs font-bold text-white shadow-lg">
+              COMPRESSED
             </div>
-            <div className="absolute bottom-4 right-4 rounded-lg bg-black/60 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
-              Original
+            <div className="absolute top-4 right-4 z-30 rounded-full bg-gray-900/80 px-4 py-1.5 text-xs font-bold text-white shadow-lg backdrop-blur-sm">
+              ORIGINAL
             </div>
           </div>
         </div>
-      </div>
+
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-6 flex justify-center gap-8 border-t border-gray-200 dark:border-gray-800">
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 rounded-full bg-blue-600"></div>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 text-left">Left: Compressed</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 rounded-full bg-gray-400"></div>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 text-left">Right: Original</span>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
@@ -333,7 +378,7 @@ export const CompressorTool: React.FC<CompressorToolProps> = ({ tool }) => {
       {comparingIndex !== null && results[comparingIndex] && (
         <CompareModal 
           originalUrl={previews[comparingIndex]} 
-          compressedUrl={URL.createObjectURL(results[comparingIndex].blob)} 
+          compressedBlob={results[comparingIndex].blob} 
           onClose={() => setComparingIndex(null)} 
         />
       )}
