@@ -4,8 +4,19 @@ import { Search, Moon, Sun, Menu, X, Zap } from 'lucide-react';
 import { TOOLS } from '../constants/tools';
 import { cn } from '../lib/utils';
 
+const NAV_LINKS = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
+];
+
 export const Navbar: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    return false;
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
@@ -14,8 +25,10 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode]);
 
@@ -36,9 +49,18 @@ export const Navbar: React.FC = () => {
           </span>
         </Link>
 
+        {/* Desktop Nav Links */}
+        <nav aria-label="Desktop Navigation" className="hidden lg:flex items-center gap-6 ml-8 flex-1">
+          {NAV_LINKS.map(link => (
+            <Link key={link.name} to={link.path} className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
         {/* Desktop Search */}
-        <div className="relative hidden flex-1 justify-center px-8 md:flex">
-          <div className="relative w-full max-w-md">
+        <div className="relative hidden justify-end px-4 md:flex lg:flex-none">
+          <div className="relative w-full max-w-xs xl:max-w-md">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <Search className="h-4 w-4 text-gray-400" />
             </div>
@@ -99,8 +121,21 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="border-t border-gray-200 bg-white p-4 md:hidden dark:border-gray-800 dark:bg-gray-900">
+          <nav aria-label="Mobile Navigation" className="space-y-1 mb-4 border-b border-gray-100 pb-4 dark:border-gray-800">
+            {NAV_LINKS.map(link => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
           <div className="space-y-1">
-            {TOOLS.slice(0, 8).map(tool => (
+            <p className="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Popular Tools</p>
+            {TOOLS.slice(0, 4).map(tool => (
               <Link
                 key={tool.id}
                 to={`/tools/${tool.slug}`}

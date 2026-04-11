@@ -45,7 +45,7 @@ export const TOOLS: Tool[] = [
         answer: 'Absolutely. All processing happens in your browser. Your images are never uploaded to our servers.',
       },
     ],
-    longContent: 'Optimizing images is crucial for modern web performance. Large image files can slow down your website, leading to poor user experience and lower search engine rankings. Sohelix provides a professional-grade compression tool that works entirely in your browser. This means your data stays private and the processing is lightning fast. Whether you are a developer looking to shave off kilobytes from your production assets or a casual user trying to save space on your phone, our tool is designed to deliver the best results with zero friction.',
+    longContent: 'Optimizing images is crucial for modern web performance. Large image files can slow down your website, leading to poor user experience and lower search engine rankings. Sohelix provides a professional-grade compression tool that works entirely in your browser. This means your data stays private and the processing is lightning fast. Whether you are a developer looking to shave off kilobytes from your production assets or a casual user trying to save space on your phone, our <a href="/tools/compress-image" class="underline hover:text-blue-200">compress images online</a> tool is designed to deliver the best results with zero friction. If you also need to change dimensions, check out our <a href="/tools/resize-image" class="underline hover:text-blue-200">image resizer</a>.',
   },
   {
     id: 'resize-image',
@@ -86,7 +86,7 @@ export const TOOLS: Tool[] = [
         answer: 'Upscaling an image beyond its original size may cause blurriness, but downscaling maintains high clarity.',
       },
     ],
-    longContent: 'Resizing images is a common task for anyone working with digital media. Whether you need a specific width for a blog post or a square aspect ratio for Instagram, Sohelix makes it simple. Our resizer allows you to input exact pixel values or use a percentage slider for quick adjustments. With the "Maintain Aspect Ratio" feature, you never have to worry about stretching or distorting your photos. Everything happens locally on your device, ensuring maximum speed and security.',
+    longContent: 'Resizing images is a common task for anyone working with digital media. Whether you need a specific width for a blog post or a square aspect ratio for Instagram, Sohelix makes it simple. Our resizer allows you to input exact pixel values or use a percentage slider for quick adjustments. With the "Maintain Aspect Ratio" feature, you never have to worry about stretching or distorting your photos. Everything happens locally on your device, ensuring maximum speed and security. After resizing, you might want to <a href="/tools/compress-image" class="underline hover:text-blue-200">compress your image</a> to save even more space.',
   },
   {
     id: 'crop-image',
@@ -123,7 +123,7 @@ export const TOOLS: Tool[] = [
         answer: 'Yes, you can drag the corners to select the exact area you want to keep.',
       },
     ],
-    longContent: 'Sometimes a photo is perfect except for a few distracting elements at the edges. Our cropping tool gives you the control to frame your images exactly how you want them. With support for common aspect ratios, you can quickly prepare images for any platform. Like all Sohelix tools, the cropper runs entirely in your browser, keeping your private photos private.',
+    longContent: 'Sometimes a photo is perfect except for a few distracting elements at the edges. Our cropping tool gives you the control to frame your images exactly how you want them. With support for common aspect ratios, you can quickly prepare images for any platform. Like all Sohelix tools, the cropper runs entirely in your browser, keeping your private photos private. If you need to fix the orientation before cropping, try our <a href="/tools/image-rotate" class="underline hover:text-blue-200">image rotation tool</a>.',
   },
   {
     id: 'jpg-to-png',
@@ -159,7 +159,7 @@ export const TOOLS: Tool[] = [
         answer: 'PNG is a lossless format, so the file size might be larger than the original JPG.',
       },
     ],
-    longContent: 'Converting between image formats is a fundamental need for designers and developers. JPG is great for photos, but PNG is often required for logos or images that need transparency. Sohelix provides a fast, reliable way to convert your files without ever sending them to a server.',
+    longContent: 'Converting between image formats is a fundamental need for designers and developers. JPG is great for photos, but PNG is often required for logos or images that need transparency. Sohelix provides a fast, reliable way to <a href="/tools/jpg-to-png" class="underline hover:text-blue-200">convert image formats</a> without ever sending them to a server. If you need the reverse, use our <a href="/tools/png-to-jpg" class="underline hover:text-blue-200">PNG to JPG converter</a>.',
   },
   {
     id: 'webp-converter',

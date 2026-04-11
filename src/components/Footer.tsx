@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, Github, Twitter, Mail } from 'lucide-react';
+import { TOOLS } from '../constants/tools';
 
 export const Footer: React.FC = () => {
   return (
@@ -25,28 +26,34 @@ export const Footer: React.FC = () => {
           </div>
           
           <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Quick Links</h3>
+            <ul className="mt-4 space-y-2">
+              <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Home</Link></li>
+              <li><Link to="/about" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">About</Link></li>
+              <li><Link to="/contact" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Contact</Link></li>
+              <li><Link to="/faq" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">FAQ</Link></li>
+            </ul>
+          </div>
+
+          <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Popular Tools</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/tools/compress-image" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Compress Image</Link></li>
-              <li><Link to="/tools/resize-image" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Resize Image</Link></li>
-              <li><Link to="/tools/crop-image" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Crop Image</Link></li>
+              {TOOLS.slice(0, 4).map(tool => (
+                <li key={tool.id}>
+                  <Link to={`/tools/${tool.slug}`} className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">
+                    {tool.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Company</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Legal</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">About Us</Link></li>
-              <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Privacy Policy</Link></li>
-              <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Terms of Service</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Support</h3>
-            <ul className="mt-4 space-y-2">
-              <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Help Center</Link></li>
-              <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Contact Us</Link></li>
+              <li><Link to="/privacy-policy" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Terms of Service</Link></li>
+              <li><Link to="/disclaimer" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Disclaimer</Link></li>
             </ul>
           </div>
         </div>

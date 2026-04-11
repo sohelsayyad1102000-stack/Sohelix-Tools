@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { TOOLS } from '../constants/tools';
 import { ToolCard } from '../components/ToolCard';
 import { SEO } from '../components/SEO';
 import { motion } from 'motion/react';
-import { Shield, Zap, Lock, MousePointer2 } from 'lucide-react';
+import { Shield, Zap, Lock, MousePointer2, Search } from 'lucide-react';
 
 export const Home: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filteredTools = useMemo(() => {
+    return TOOLS.filter(tool => {
+      const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = activeCategory === 'All' || tool.category === activeCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, activeCategory]);
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <SEO
@@ -90,28 +102,67 @@ export const Home: React.FC = () => {
 
       {/* Tools Grid */}
       <section id="tools" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mb-12 flex items-end justify-between">
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Image Editing Tools</h2>
             <p className="mt-2 text-gray-500 dark:text-gray-400">Everything you need to edit images in one place.</p>
           </div>
-          <div className="hidden space-x-2 md:flex">
-            {['All', 'Optimize', 'Edit', 'Convert'].map((cat) => (
-              <button
-                key={cat}
-                className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800"
-              >
-                {cat}
-              </button>
-            ))}
+          
+          <div className="flex flex-col gap-4 md:flex-row md:items-center">
+            <div className="relative w-full md:w-72">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <Search className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                className="block w-full rounded-full border-0 bg-white py-2.5 pl-10 pr-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 dark:bg-gray-900 dark:text-white dark:ring-gray-700 dark:focus:ring-blue-500"
+                placeholder="Search tools..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            
+            <div className="flex space-x-2 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+              {['All', 'Optimize', 'Edit', 'Convert'].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                    activeCategory === cat 
+                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' 
+                      : 'text-gray-600 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {TOOLS.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
-          ))}
-        </div>
+        {filteredTools.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredTools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <div className="rounded-full bg-gray-100 p-4 dark:bg-gray-800">
+              <Search className="h-8 w-8 text-gray-400" />
+            </div>
+            <h3 className="mt-4 text-lg font-bold text-gray-900 dark:text-white">No tools found</h3>
+            <p className="mt-2 text-gray-500 dark:text-gray-400">
+              We couldn't find any tools matching "{searchQuery}". Try a different search term.
+            </p>
+            <button 
+              onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
+              className="mt-6 rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+            >
+              Clear Search
+            </button>
+          </div>
+        )}
       </section>
 
       {/* SEO Content Section */}
