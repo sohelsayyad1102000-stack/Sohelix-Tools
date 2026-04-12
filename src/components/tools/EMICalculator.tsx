@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { CreditCard, Percent, Calendar, Calculator, PieChart, DollarSign } from 'lucide-react';
+import { CreditCard, Percent, Calendar, Calculator, PieChart as PieChartIcon, DollarSign, Download, Copy, Check } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 
 interface EMICalculatorProps {
   tool: any;
@@ -15,6 +16,7 @@ export const EMICalculator: React.FC<EMICalculatorProps> = ({ tool }) => {
   const [emi, setEmi] = useState<number>(0);
   const [totalInterest, setTotalInterest] = useState<number>(0);
   const [totalPayment, setTotalPayment] = useState<number>(0);
+  const [copied, setCopied] = useState(false);
 
   const calculateEMI = () => {
     if (!loanAmount || !interestRate || !tenure) return;
@@ -40,17 +42,71 @@ export const EMICalculator: React.FC<EMICalculatorProps> = ({ tool }) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
+      maximumFractionDigits: 0
     }).format(value);
   };
+
+  const getResultText = () => {
+    return `EMI Calculation Results:
+Loan Amount: ${formatCurrency(Number(loanAmount))}
+Interest Rate: ${interestRate}%
+Tenure: ${tenure} ${tenureUnit}
+
+Monthly EMI: ${formatCurrency(emi)}
+Total Interest: ${formatCurrency(totalInterest)}
+Total Payment: ${formatCurrency(totalPayment)}`;
+  };
+
+  const copyResults = () => {
+    navigator.clipboard.writeText(getResultText());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const downloadResults = () => {
+    const blob = new Blob([getResultText()], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'emi_calculation.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const pieData = [
+    { name: 'Principal', value: Number(loanAmount) || 0 },
+    { name: 'Interest', value: totalInterest || 0 }
+  ];
+  const COLORS = ['#2563eb', '#93c5fd'];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
       {/* Main Area */}
       <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-2">
-          <Calculator className="h-6 w-6 text-blue-600" />
-          EMI Calculator (Equated Monthly Installment)
-        </h3>
+        <div className="flex items-center justify-between mb-8">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <Calculator className="h-6 w-6 text-blue-600" />
+            EMI Calculator
+          </h3>
+          <div className="flex gap-2">
+            <button
+              onClick={copyResults}
+              className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+            >
+              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              {copied ? 'Copied!' : 'Copy'}
+            </button>
+            <button
+              onClick={downloadResults}
+              className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+            >
+              <Download className="h-4 w-4" />
+              Download
+            </button>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-6">
@@ -123,25 +179,43 @@ export const EMICalculator: React.FC<EMICalculatorProps> = ({ tool }) => {
 
             <div className="p-6 rounded-3xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
               <div className="flex items-center gap-3 mb-4">
-                <PieChart className="h-5 w-5 text-blue-600" />
+                <PieChartIcon className="h-5 w-5 text-blue-600" />
                 <h4 className="font-bold text-gray-900 dark:text-white">Breakup of Total Payment</h4>
               </div>
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-blue-600"></div>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 flex-1">Principal Loan Amount</span>
-                  <span className="text-sm font-bold text-gray-900 dark:text-white">{Math.round((Number(loanAmount) / totalPayment) * 100)}%</span>
+              
+              <div className="flex gap-6 items-center">
+                <div className="h-32 w-32 shrink-0">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={pieData}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={30}
+                        outerRadius={60}
+                        paddingAngle={5}
+                        dataKey="value"
+                      >
+                        {pieData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-blue-300 dark:bg-blue-900"></div>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 flex-1">Total Interest</span>
-                  <span className="text-sm font-bold text-gray-900 dark:text-white">{Math.round((totalInterest / totalPayment) * 100)}%</span>
-                </div>
-                <div className="mt-4 h-3 w-full rounded-full bg-blue-300 dark:bg-blue-900 overflow-hidden flex">
-                  <div 
-                    className="h-full bg-blue-600" 
-                    style={{ width: `${(Number(loanAmount) / totalPayment) * 100}%` }}
-                  ></div>
+                
+                <div className="space-y-3 flex-1">
+                  <div className="flex items-center gap-2">
+                    <div className="h-3 w-3 rounded-full bg-blue-600"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400 flex-1">Principal</span>
+                    <span className="text-sm font-bold text-gray-900 dark:text-white">{Math.round((Number(loanAmount) / totalPayment) * 100) || 0}%</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-3 w-3 rounded-full bg-blue-300 dark:bg-blue-900"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-400 flex-1">Interest</span>
+                    <span className="text-sm font-bold text-gray-900 dark:text-white">{Math.round((totalInterest / totalPayment) * 100) || 0}%</span>
+                  </div>
                 </div>
               </div>
             </div>

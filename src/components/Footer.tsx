@@ -7,8 +7,8 @@ export const Footer: React.FC = () => {
   return (
     <footer className="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-5">
+          <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
                 <Zap className="h-5 w-5 fill-current" />
@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
               <span className="text-lg font-bold text-gray-900 dark:text-white">Sohelix</span>
             </Link>
             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-              Free online image tools for everyone. Fast, secure, and 100% client-side.
+              Free online tools for everyone. Fast, secure, and 100% client-side.
             </p>
             <div className="mt-6 flex gap-4">
               <Twitter className="h-5 w-5 cursor-pointer text-gray-400 hover:text-blue-400" />
@@ -32,6 +32,17 @@ export const Footer: React.FC = () => {
               <li><Link to="/about" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">About</Link></li>
               <li><Link to="/contact" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Contact</Link></li>
               <li><Link to="/faq" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">FAQ</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Categories</h3>
+            <ul className="mt-4 space-y-2">
+              <li><Link to="/categories/image-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Image Tools</Link></li>
+              <li><Link to="/categories/pdf-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">PDF Tools</Link></li>
+              <li><Link to="/categories/calculator-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Calculator Tools</Link></li>
+              <li><Link to="/categories/seo-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">SEO Tools</Link></li>
+              <li><Link to="/categories/misc" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Misc Tools</Link></li>
             </ul>
           </div>
 

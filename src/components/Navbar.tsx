@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Moon, Sun, Menu, X, Zap } from 'lucide-react';
+import { Search, Moon, Sun, Menu, X, Zap, ChevronDown } from 'lucide-react';
 import { TOOLS } from '../constants/tools';
 import { cn } from '../lib/utils';
 
@@ -8,6 +8,13 @@ const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
+];
+
+const CATEGORIES = [
+  { name: 'Image Tools', path: '/categories/image-tools' },
+  { name: 'PDF Tools', path: '/categories/pdf-tools' },
+  { name: 'Calculator Tools', path: '/categories/calculator-tools' },
+  { name: 'SEO Tools', path: '/categories/seo-tools' },
 ];
 
 export const Navbar: React.FC = () => {
@@ -60,6 +67,24 @@ export const Navbar: React.FC = () => {
               {link.name}
             </Link>
           ))}
+          <div className="relative group">
+            <button className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
+              Categories <ChevronDown className="h-4 w-4" />
+            </button>
+            <div className="absolute left-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-800 overflow-hidden py-2">
+                {CATEGORIES.map(category => (
+                  <Link 
+                    key={category.name} 
+                    to={category.path} 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-blue-400"
+                  >
+                    {category.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </nav>
 
         {/* Desktop Search */}
@@ -137,6 +162,19 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
           </nav>
+          <div className="space-y-1 mb-4 border-b border-gray-100 pb-4 dark:border-gray-800">
+            <p className="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Categories</p>
+            {CATEGORIES.map(category => (
+              <Link
+                key={category.name}
+                to={category.path}
+                className="block rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {category.name}
+              </Link>
+            ))}
+          </div>
           <div className="space-y-1">
             <p className="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Popular Tools</p>
             {TOOLS.slice(0, 4).map(tool => (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Scale, Ruler, Info, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Scale, Ruler, Info, AlertCircle, CheckCircle2, Download, Copy, Check } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 interface BMICalculatorProps {
@@ -16,6 +16,7 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
   const [bmi, setBmi] = useState<number | null>(null);
   const [category, setCategory] = useState<string>('');
   const [color, setColor] = useState<string>('');
+  const [copied, setCopied] = useState(false);
 
   const calculateBMI = () => {
     let weightKg = 0;
@@ -55,31 +56,82 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
     calculateBMI();
   }, [weight, height, heightFt, heightIn, unit]);
 
+  const getResultText = () => {
+    let text = `BMI Calculation Results:\n`;
+    if (unit === 'metric') {
+      text += `Weight: ${weight} kg\nHeight: ${height} cm\n`;
+    } else {
+      text += `Weight: ${weight} lbs\nHeight: ${heightFt} ft ${heightIn} in\n`;
+    }
+    text += `\nBMI: ${bmi}\nCategory: ${category}`;
+    return text;
+  };
+
+  const copyResults = () => {
+    if (!bmi) return;
+    navigator.clipboard.writeText(getResultText());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const downloadResults = () => {
+    if (!bmi) return;
+    const blob = new Blob([getResultText()], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'bmi_calculation.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
       {/* Main Area */}
       <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800">
         <div className="flex items-center justify-between mb-8">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white">Body Mass Index Calculator</h3>
-          <div className="flex rounded-lg bg-gray-100 p-1 dark:bg-gray-800">
-            <button
-              onClick={() => setUnit('metric')}
-              className={cn(
-                "px-4 py-1.5 text-sm font-medium rounded-md transition-all",
-                unit === 'metric' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
-              )}
-            >
-              Metric
-            </button>
-            <button
-              onClick={() => setUnit('imperial')}
-              className={cn(
-                "px-4 py-1.5 text-sm font-medium rounded-md transition-all",
-                unit === 'imperial' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
-              )}
-            >
-              Imperial
-            </button>
+          <div className="flex gap-4">
+            {bmi && (
+              <div className="flex gap-2">
+                <button
+                  onClick={copyResults}
+                  className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                >
+                  {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+                <button
+                  onClick={downloadResults}
+                  className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+                >
+                  <Download className="h-4 w-4" />
+                  Download
+                </button>
+              </div>
+            )}
+            <div className="flex rounded-lg bg-gray-100 p-1 dark:bg-gray-800">
+              <button
+                onClick={() => setUnit('metric')}
+                className={cn(
+                  "px-4 py-1.5 text-sm font-medium rounded-md transition-all",
+                  unit === 'metric' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
+                )}
+              >
+                Metric
+              </button>
+              <button
+                onClick={() => setUnit('imperial')}
+                className={cn(
+                  "px-4 py-1.5 text-sm font-medium rounded-md transition-all",
+                  unit === 'imperial' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
+                )}
+              >
+                Imperial
+              </button>
+            </div>
           </div>
         </div>
 

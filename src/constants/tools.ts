@@ -8,7 +8,7 @@ export const TOOLS: Tool[] = [
     description: 'Reduce image file size without losing quality. Perfect for web optimization.',
     icon: 'Minimize2',
     slug: 'compress-image',
-    category: 'optimize',
+    category: 'image-tools',
     isNew: true,
     seo: {
       title: 'Free Online Image Compressor - Reduce Image Size Without Quality Loss',
@@ -54,7 +54,7 @@ export const TOOLS: Tool[] = [
     description: 'Change image dimensions by pixels or percentage easily.',
     icon: 'Maximize2',
     slug: 'resize-image',
-    category: 'edit',
+    category: 'image-tools',
     seo: {
       title: 'Free Online Image Resizer - Change Image Dimensions Fast',
       description: 'Resize JPG, PNG, and WebP images online for free. Change width and height in pixels or percentage. Maintain aspect ratio and high quality.',
@@ -95,7 +95,7 @@ export const TOOLS: Tool[] = [
     description: 'Remove unwanted parts of an image with precision.',
     icon: 'Crop',
     slug: 'crop-image',
-    category: 'edit',
+    category: 'image-tools',
     seo: {
       title: 'Free Online Image Cropper - Crop JPG, PNG, WebP Easily',
       description: 'Crop your images online for free. Use preset aspect ratios or free-form selection. High precision cropping with instant download.',
@@ -132,7 +132,7 @@ export const TOOLS: Tool[] = [
     description: 'Convert JPG images to PNG format with transparency support.',
     icon: 'FileImage',
     slug: 'jpg-to-png',
-    category: 'convert',
+    category: 'image-tools',
     seo: {
       title: 'Convert JPG to PNG Online - Free & High Quality',
       description: 'Convert your JPG files to PNG format online for free. High quality conversion, no file size limits, and 100% secure processing.',
@@ -168,7 +168,7 @@ export const TOOLS: Tool[] = [
     description: 'Convert any image to WebP for superior web performance.',
     icon: 'Zap',
     slug: 'webp-converter',
-    category: 'convert',
+    category: 'image-tools',
     seo: {
       title: 'Free WebP Converter - Convert JPG/PNG to WebP Online',
       description: 'Convert your images to WebP format for faster website loading. Free online converter for JPG, PNG, and more.',
@@ -198,7 +198,7 @@ export const TOOLS: Tool[] = [
     description: 'Convert PNG images to JPG format quickly.',
     icon: 'FileImage',
     slug: 'png-to-jpg',
-    category: 'convert',
+    category: 'image-tools',
     seo: {
       title: 'Convert PNG to JPG Online - Free & Fast',
       description: 'Convert your PNG files to JPG format online for free. High quality conversion with adjustable quality settings.',
@@ -217,7 +217,7 @@ export const TOOLS: Tool[] = [
     description: 'Encode your images into Base64 strings for CSS or HTML.',
     icon: 'Code',
     slug: 'image-to-base64',
-    category: 'misc',
+    category: 'image-tools',
     seo: {
       title: 'Image to Base64 Converter - Encode Images Online',
       description: 'Convert images to Base64 strings online. Perfect for embedding images directly into HTML or CSS files.',
@@ -236,7 +236,7 @@ export const TOOLS: Tool[] = [
     description: 'Protect your images with text or image watermarks.',
     icon: 'Stamp',
     slug: 'image-watermark',
-    category: 'edit',
+    category: 'image-tools',
     seo: {
       title: 'Add Watermark to Image Online - Free & Secure',
       description: 'Protect your photos by adding text or image watermarks online. Customize position, opacity, and size.',
@@ -255,7 +255,7 @@ export const TOOLS: Tool[] = [
     description: 'Create funny memes with custom text and images.',
     icon: 'Smile',
     slug: 'meme-generator',
-    category: 'edit',
+    category: 'image-tools',
     seo: {
       title: 'Free Online Meme Generator - Create Memes Instantly',
       description: 'Create your own memes online for free. Upload your images and add custom text. Fast, fun, and easy to use.',
@@ -274,7 +274,7 @@ export const TOOLS: Tool[] = [
     description: 'Rotate your images clockwise or counter-clockwise.',
     icon: 'RotateCw',
     slug: 'image-rotate',
-    category: 'edit',
+    category: 'image-tools',
     seo: {
       title: 'Rotate Image Online - Free & Instant',
       description: 'Rotate your images 90, 180, or 270 degrees online. Free tool for JPG, PNG, and WebP.',
@@ -293,7 +293,7 @@ export const TOOLS: Tool[] = [
     description: 'Apply blur effects to your images or specific areas.',
     icon: 'Droplets',
     slug: 'blur-image',
-    category: 'edit',
+    category: 'image-tools',
     seo: {
       title: 'Blur Image Online - Free Blur Effect Tool',
       description: 'Apply professional blur effects to your images online. Adjust blur intensity and focus.',
@@ -356,7 +356,7 @@ export const TOOLS: Tool[] = [
     description: 'Convert any image into all standard favicon sizes for your website.',
     icon: 'Layout',
     slug: 'favicon-generator',
-    category: 'optimize',
+    category: 'image-tools',
     isNew: true,
     seo: {
       title: 'Free Online Favicon Generator - Create Favicons for All Devices',
@@ -395,7 +395,7 @@ export const TOOLS: Tool[] = [
     description: 'Calculate your exact age in years, months, days, and even seconds.',
     icon: 'Calendar',
     slug: 'age-calculator',
-    category: 'misc',
+    category: 'calculator-tools',
     isNew: true,
     seo: {
       title: 'Free Online Age Calculator - Find Your Exact Age',
@@ -434,7 +434,7 @@ export const TOOLS: Tool[] = [
     description: 'Convert multiple images into a single PDF document instantly.',
     icon: 'FileText',
     slug: 'image-to-pdf',
-    category: 'convert',
+    category: 'pdf-tools',
     isNew: true,
     seo: {
       title: 'Free Online Image to PDF Converter - Convert JPG, PNG to PDF',
@@ -473,7 +473,7 @@ export const TOOLS: Tool[] = [
     description: 'Combine two or more PDF files into a single document.',
     icon: 'Combine',
     slug: 'merge-pdf',
-    category: 'edit',
+    category: 'pdf-tools',
     isNew: true,
     seo: {
       title: 'Free Online PDF Merger - Combine PDF Files Instantly',
@@ -512,7 +512,7 @@ export const TOOLS: Tool[] = [
     description: 'Extract specific pages from a PDF or split it into separate files.',
     icon: 'Scissors',
     slug: 'split-pdf',
-    category: 'edit',
+    category: 'pdf-tools',
     isNew: true,
     seo: {
       title: 'Free Online PDF Splitter - Extract Pages from PDF',
@@ -551,7 +551,7 @@ export const TOOLS: Tool[] = [
     description: 'Calculate your BMI and find out if you are in a healthy weight range.',
     icon: 'Calculator',
     slug: 'bmi-calculator',
-    category: 'misc',
+    category: 'calculator-tools',
     isNew: true,
     seo: {
       title: 'Free Online BMI Calculator - Calculate Body Mass Index',
@@ -590,7 +590,7 @@ export const TOOLS: Tool[] = [
     description: 'Calculate simple and compound interest on your savings or loans.',
     icon: 'Landmark',
     slug: 'interest-calculator',
-    category: 'misc',
+    category: 'calculator-tools',
     isNew: true,
     seo: {
       title: 'Free Online Interest Calculator - Simple & Compound',
@@ -629,7 +629,7 @@ export const TOOLS: Tool[] = [
     description: 'Calculate your monthly loan repayments and total interest payable.',
     icon: 'CreditCard',
     slug: 'emi-calculator',
-    category: 'misc',
+    category: 'calculator-tools',
     isNew: true,
     seo: {
       title: 'Free Online EMI Calculator - Loan Repayment Calculator',
@@ -660,5 +660,196 @@ export const TOOLS: Tool[] = [
       }
     ],
     longContent: 'Our <a href="/tools/emi-calculator" class="underline hover:text-blue-200">EMI calculator</a> is an essential tool for anyone planning to take a loan. Quickly see your monthly commitment and understand the total cost of borrowing.'
+  },
+  {
+    id: 'meta-tag-generator',
+    name: 'Meta Tag Generator',
+    title: 'Free Meta Tag Generator',
+    description: 'Generate SEO-optimized meta tags, Open Graph, and Twitter cards for your website.',
+    icon: 'Code',
+    slug: 'meta-tag-generator',
+    category: 'seo-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Meta Tag Generator - Create SEO Meta Tags Online',
+      description: 'Generate HTML meta tags, Open Graph, and Twitter cards for better SEO and social sharing. Free online meta tag generator.',
+      keywords: ['meta tag generator', 'seo tags', 'open graph generator', 'twitter card generator'],
+    },
+    features: [
+      'Standard SEO meta tags',
+      'Open Graph (Facebook/LinkedIn) tags',
+      'Twitter Card tags',
+      'Live Google SERP preview',
+      'One-click copy'
+    ],
+    benefits: [
+      'Improve search engine rankings',
+      'Better social media sharing previews',
+      'Ensure correct tag formatting'
+    ],
+    useCases: [
+      'Web developers setting up new pages',
+      'SEO professionals optimizing content',
+      'Content creators sharing links'
+    ],
+    faqs: [
+      {
+        question: 'Why are meta tags important?',
+        answer: 'Meta tags provide search engines and social media platforms with information about your page, affecting how it appears in search results and when shared.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/meta-tag-generator" class="underline hover:text-blue-200">Meta Tag Generator</a> helps you create perfectly formatted HTML meta tags for your website. It includes standard SEO tags, Open Graph tags for Facebook and LinkedIn, and Twitter Card tags to ensure your links look great when shared on social media.'
+  },
+  {
+    id: 'robots-txt-generator',
+    name: 'Robots.txt Generator',
+    title: 'Free Robots.txt Generator',
+    description: 'Create a robots.txt file to control how search engines crawl your website.',
+    icon: 'Bot',
+    slug: 'robots-txt-generator',
+    category: 'seo-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Robots.txt Generator - Create SEO Robots File Online',
+      description: 'Generate a robots.txt file for your website to control search engine crawlers. Easy to use, free online tool.',
+      keywords: ['robots.txt generator', 'create robots.txt', 'seo crawler control'],
+    },
+    features: [
+      'Custom User-Agent rules',
+      'Allow and Disallow directives',
+      'Sitemap URL inclusion',
+      'Download as .txt file'
+    ],
+    benefits: [
+      'Control search engine crawling',
+      'Prevent indexing of private pages',
+      'Optimize crawl budget'
+    ],
+    useCases: [
+      'Website administrators',
+      'SEO specialists',
+      'Web developers'
+    ],
+    faqs: [
+      {
+        question: 'What is a robots.txt file?',
+        answer: 'A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.'
+      }
+    ],
+    longContent: 'Use our <a href="/tools/robots-txt-generator" class="underline hover:text-blue-200">Robots.txt Generator</a> to easily create a valid robots.txt file for your website. Control which parts of your site search engines like Google and Bing are allowed to crawl and index.'
+  },
+  {
+    id: 'sitemap-generator',
+    name: 'Sitemap Generator',
+    title: 'XML Sitemap Generator',
+    description: 'Generate an XML sitemap for your website to help search engines discover your pages.',
+    icon: 'Map',
+    slug: 'sitemap-generator',
+    category: 'seo-tools',
+    isNew: true,
+    seo: {
+      title: 'Free XML Sitemap Generator - Create Sitemaps Online',
+      description: 'Generate an XML sitemap for your website instantly. Add URLs, set priority and frequency, and download the XML file.',
+      keywords: ['sitemap generator', 'xml sitemap maker', 'create sitemap online'],
+    },
+    features: [
+      'Manual URL entry',
+      'Custom priority and change frequency',
+      'Valid XML output',
+      'One-click download'
+    ],
+    benefits: [
+      'Help search engines find your pages',
+      'Improve website indexing',
+      'Communicate page importance'
+    ],
+    useCases: [
+      'New website launches',
+      'Content updates',
+      'SEO audits'
+    ],
+    faqs: [
+      {
+        question: 'Why do I need an XML sitemap?',
+        answer: 'An XML sitemap acts as a roadmap of your website that leads Google to all your important pages.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/sitemap-generator" class="underline hover:text-blue-200">XML Sitemap Generator</a> allows you to quickly build a sitemap by entering your URLs. You can specify the priority and change frequency for each URL to guide search engines on how to crawl your site.'
+  },
+  {
+    id: 'slug-generator',
+    name: 'Slug Generator',
+    title: 'URL Slug Generator',
+    description: 'Convert any text or title into an SEO-friendly URL slug.',
+    icon: 'Link',
+    slug: 'slug-generator',
+    category: 'seo-tools',
+    isNew: true,
+    seo: {
+      title: 'Free URL Slug Generator - Create SEO Friendly Links',
+      description: 'Convert text and titles into SEO-friendly URL slugs. Removes special characters, spaces, and stop words.',
+      keywords: ['slug generator', 'url slug maker', 'seo friendly url', 'text to slug'],
+    },
+    features: [
+      'Instant text to slug conversion',
+      'Stop word removal option',
+      'Lowercase enforcement',
+      'Special character removal'
+    ],
+    benefits: [
+      'Create clean, readable URLs',
+      'Improve SEO with keyword-rich slugs',
+      'Standardize URL structures'
+    ],
+    useCases: [
+      'Bloggers writing new posts',
+      'Developers building CMS systems',
+      'SEO optimizing existing URLs'
+    ],
+    faqs: [
+      {
+        question: 'What makes a good URL slug?',
+        answer: 'A good URL slug is short, descriptive, uses hyphens to separate words, and contains the primary keyword for the page.'
+      }
+    ],
+    longContent: 'The <a href="/tools/slug-generator" class="underline hover:text-blue-200">URL Slug Generator</a> takes any text string and converts it into a clean, SEO-friendly URL slug. It automatically handles spaces, special characters, and can even remove common stop words to keep your URLs concise.'
+  },
+  {
+    id: 'serp-preview',
+    name: 'SERP Preview Tool',
+    title: 'Google SERP Preview Tool',
+    description: 'Preview how your web page will look in Google search results.',
+    icon: 'Search',
+    slug: 'serp-preview',
+    category: 'seo-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Google SERP Preview Tool - Check Meta Tags',
+      description: 'Preview your website title and meta description in Google search results. Check character limits and optimize for higher CTR.',
+      keywords: ['serp preview', 'google search preview', 'meta description checker', 'title tag preview'],
+    },
+    features: [
+      'Desktop and Mobile previews',
+      'Title and description length checking',
+      'Pixel width estimation',
+      'Real-time updates'
+    ],
+    benefits: [
+      'Optimize for higher Click-Through Rate (CTR)',
+      'Avoid truncated titles in search results',
+      'Visualize your SEO efforts'
+    ],
+    useCases: [
+      'SEO professionals optimizing pages',
+      'Content writers crafting meta tags',
+      'Webmasters auditing search appearance'
+    ],
+    faqs: [
+      {
+        question: 'What is the ideal length for a meta description?',
+        answer: 'Google typically truncates meta descriptions around 155-160 characters on desktop, and ~120 characters on mobile.'
+      }
+    ],
+    longContent: 'Use the <a href="/tools/serp-preview" class="underline hover:text-blue-200">SERP Preview Tool</a> to see exactly how your page will appear in Google search results. By optimizing your title and description to fit within Google\'s pixel limits, you can improve your click-through rate and drive more organic traffic.'
   }
 ];

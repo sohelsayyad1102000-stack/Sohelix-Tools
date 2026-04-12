@@ -36,6 +36,13 @@ import { SplitPDFTool } from '../components/tools/SplitPDFTool';
 import { BMICalculator } from '../components/tools/BMICalculator';
 import { InterestCalculator } from '../components/tools/InterestCalculator';
 import { EMICalculator } from '../components/tools/EMICalculator';
+import { MetaTagGenerator } from '../components/tools/MetaTagGenerator';
+import { RobotsTxtGenerator } from '../components/tools/RobotsTxtGenerator';
+import { SitemapGenerator } from '../components/tools/SitemapGenerator';
+import { SlugGenerator } from '../components/tools/SlugGenerator';
+import { SerpPreview } from '../components/tools/SerpPreview';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 export const ToolPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -162,8 +169,9 @@ export const ToolPage: React.FC = () => {
     }
   };
 
-  const downloadAll = (res = results) => {
-    res.forEach(result => {
+  const downloadAll = async (res = results) => {
+    if (res.length === 1) {
+      const result = res[0];
       let url: string;
       if (typeof result.blob === 'string') {
         const blob = new Blob([result.blob], { type: 'text/plain' });
@@ -176,7 +184,18 @@ export const ToolPage: React.FC = () => {
       a.download = result.name;
       a.click();
       URL.revokeObjectURL(url);
-    });
+    } else if (res.length > 1) {
+      const zip = new JSZip();
+      res.forEach(result => {
+        if (typeof result.blob === 'string') {
+          zip.file(result.name, result.blob);
+        } else {
+          zip.file(result.name, result.blob);
+        }
+      });
+      const content = await zip.generateAsync({ type: 'blob' });
+      saveAs(content, 'sohelix_images.zip');
+    }
   };
 
   const removeFile = (index: number) => {
@@ -227,6 +246,8 @@ export const ToolPage: React.FC = () => {
         <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <ChevronRight className="h-4 w-4" />
+          <Link to={`/categories/${tool.category}`} className="hover:text-blue-600 capitalize">{tool.category.replace('-', ' ')}</Link>
+          <ChevronRight className="h-4 w-4" />
           <span className="font-medium text-gray-900 dark:text-white">{tool.name}</span>
         </nav>
       </div>
@@ -276,6 +297,16 @@ export const ToolPage: React.FC = () => {
           <InterestCalculator tool={tool} />
         ) : tool.id === 'emi-calculator' ? (
           <EMICalculator tool={tool} />
+        ) : tool.id === 'meta-tag-generator' ? (
+          <MetaTagGenerator />
+        ) : tool.id === 'robots-txt-generator' ? (
+          <RobotsTxtGenerator />
+        ) : tool.id === 'sitemap-generator' ? (
+          <SitemapGenerator />
+        ) : tool.id === 'slug-generator' ? (
+          <SlugGenerator />
+        ) : tool.id === 'serp-preview' ? (
+          <SerpPreview />
         ) : (
           <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
             <div className="grid grid-cols-1 lg:grid-cols-3">
@@ -508,60 +539,92 @@ export const ToolPage: React.FC = () => {
         )}
 
         {/* SEO Content Sections */}
-        <div className="mt-24 grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <section className="mt-24 space-y-16">
+          {/* What is */}
+          <div className="prose prose-blue dark:prose-invert max-w-none">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What is {tool.name}?</h2>
+            <div 
+              className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400"
+              dangerouslySetInnerHTML={{ __html: tool.longContent }}
+            />
+          </div>
+
+          {/* How to Use */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">How to use {tool.name}</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How to Use {tool.name}</h2>
             <ol className="mt-6 space-y-4 text-gray-600 dark:text-gray-400">
               <li className="flex gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">1</span>
-                <span>Select the images you want to process from your device or drag and drop them into the tool area.</span>
+                <span>Select the files you want to process from your device or drag and drop them into the tool area.</span>
               </li>
               <li className="flex gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">2</span>
-                <span>Adjust the settings in the sidebar to your preference (e.g., quality level or dimensions).</span>
+                <span>Adjust the settings to your preference.</span>
               </li>
               <li className="flex gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">3</span>
-                <span>Click the "Process" button to start the client-side processing.</span>
+                <span>Click the "Process" or "Calculate" button to start the client-side processing.</span>
               </li>
               <li className="flex gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">4</span>
-                <span>Once finished, click the "Download" button to save your optimized images.</span>
+                <span>Once finished, view your results or click the "Download" button to save your files.</span>
               </li>
             </ol>
           </div>
 
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Key Features</h2>
-            <ul className="mt-6 space-y-4">
-              {tool.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                  <CheckCircle2 className="h-5 w-5 text-green-500" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            {/* Features */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Features</h2>
+              <ul className="mt-6 space-y-4">
+                {tool.features.map((feature, i) => (
+                  <li key={i} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                    <CheckCircle2 className="h-5 w-5 text-green-500" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-        {/* FAQ Section */}
-        {tool.faqs.length > 0 && (
-          <div className="mt-24">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
-            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-              {tool.faqs.map((faq, i) => (
-                <div key={i} className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
-                  <h3 className="font-bold text-gray-900 dark:text-white">{faq.question}</h3>
-                  <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">{faq.answer}</p>
-                </div>
-              ))}
+            {/* Benefits */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Benefits & Use Cases</h2>
+              <ul className="mt-6 space-y-4">
+                {tool.benefits.map((benefit, i) => (
+                  <li key={`benefit-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                    <CheckCircle2 className="h-5 w-5 text-blue-500" />
+                    {benefit}
+                  </li>
+                ))}
+                {tool.useCases.map((useCase, i) => (
+                  <li key={`usecase-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                    <CheckCircle2 className="h-5 w-5 text-blue-500" />
+                    {useCase}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        )}
+
+          {/* FAQ Section */}
+          {tool.faqs.length > 0 && (
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+              <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                {tool.faqs.map((faq, i) => (
+                  <div key={i} className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+                    <h3 className="font-bold text-gray-900 dark:text-white">{faq.question}</h3>
+                    <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
 
         {/* Related Tools Section */}
         {relatedTools.length > 0 && (
-          <div className="mt-24">
+          <div className="mt-24 border-t border-gray-200 pt-16 dark:border-gray-800">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Related Tools</h2>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {relatedTools.map(rt => (
@@ -580,22 +643,6 @@ export const ToolPage: React.FC = () => {
             </div>
           </div>
         )}
-
-        {/* Long Content Section */}
-        <div className="mt-24 rounded-3xl bg-blue-600 p-12 text-white">
-          <h2 className="text-3xl font-bold">More about {tool.name}</h2>
-          <div 
-            className="mt-6 text-lg leading-relaxed text-blue-50 opacity-90"
-            dangerouslySetInnerHTML={{ __html: tool.longContent }}
-          />
-          <div className="mt-10 flex flex-wrap gap-4">
-            {tool.useCases.map((useCase, i) => (
-              <span key={i} className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                {useCase}
-              </span>
-            ))}
-          </div>
-        </div>
       </section>
     </div>
   );

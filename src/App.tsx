@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { ToolPage } from './pages/ToolPage';
+import { CategoryPage } from './pages/CategoryPage';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { FAQ } from './pages/FAQ';
@@ -40,6 +41,7 @@ export default function App() {
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+              <Route path="/categories/:slug" element={<PageWrapper><CategoryPage /></PageWrapper>} />
               <Route path="/tools/:slug" element={<PageWrapper><ToolPage /></PageWrapper>} />
               <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
               <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />

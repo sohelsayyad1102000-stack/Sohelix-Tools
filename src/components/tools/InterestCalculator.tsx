@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Landmark, Percent, Calendar, RefreshCcw, TrendingUp, DollarSign } from 'lucide-react';
+import { Landmark, Percent, Calendar, RefreshCcw, TrendingUp, DollarSign, Download, Copy, Check } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 interface InterestCalculatorProps {
   tool: any;
@@ -16,6 +17,8 @@ export const InterestCalculator: React.FC<InterestCalculatorProps> = ({ tool }) 
   const [compoundInterest, setCompoundInterest] = useState<number>(0);
   const [totalSimple, setTotalSimple] = useState<number>(0);
   const [totalCompound, setTotalCompound] = useState<number>(0);
+  const [chartData, setChartData] = useState<any[]>([]);
+  const [copied, setCopied] = useState(false);
 
   const calculate = () => {
     if (!principal || !rate || !time) return;
@@ -36,6 +39,20 @@ export const InterestCalculator: React.FC<InterestCalculatorProps> = ({ tool }) 
     const ci = amount - P;
     setCompoundInterest(ci);
     setTotalCompound(amount);
+
+    // Generate chart data
+    const data = [];
+    for (let year = 0; year <= T; year++) {
+      const yearSimple = P + (P * R * year) / 100;
+      const yearCompound = P * Math.pow((1 + r / n), (n * year));
+      data.push({
+        year: `Year ${year}`,
+        simple: Math.round(yearSimple),
+        compound: Math.round(yearCompound),
+        principal: P
+      });
+    }
+    setChartData(data);
   };
 
   useEffect(() => {
@@ -46,19 +63,85 @@ export const InterestCalculator: React.FC<InterestCalculatorProps> = ({ tool }) 
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
+      maximumFractionDigits: 0
     }).format(value);
+  };
+
+  const copyResults = () => {
+    const text = `Interest Calculation Results:
+Principal: ${formatCurrency(Number(principal))}
+Rate: ${rate}%
+Time: ${time} Years
+
+Compound Interest:
+Total Amount: ${formatCurrency(totalCompound)}
+Interest Earned: ${formatCurrency(compoundInterest)}
+
+Simple Interest:
+Total Amount: ${formatCurrency(totalSimple)}
+Interest Earned: ${formatCurrency(simpleInterest)}`;
+    
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const downloadResults = () => {
+    const text = `Interest Calculation Results:
+Principal: ${formatCurrency(Number(principal))}
+Rate: ${rate}%
+Time: ${time} Years
+
+Compound Interest:
+Total Amount: ${formatCurrency(totalCompound)}
+Interest Earned: ${formatCurrency(compoundInterest)}
+
+Simple Interest:
+Total Amount: ${formatCurrency(totalSimple)}
+Interest Earned: ${formatCurrency(simpleInterest)}
+
+Yearly Breakdown:
+${chartData.map(d => `${d.year}: Simple = ${formatCurrency(d.simple)}, Compound = ${formatCurrency(d.compound)}`).join('\n')}`;
+
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'interest_calculation.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
       {/* Main Area */}
       <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-2">
-          <Landmark className="h-6 w-6 text-blue-600" />
-          Interest Calculator
-        </h3>
+        <div className="flex items-center justify-between mb-8">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <Landmark className="h-6 w-6 text-blue-600" />
+            Interest Calculator
+          </h3>
+          <div className="flex gap-2">
+            <button
+              onClick={copyResults}
+              className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+            >
+              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              {copied ? 'Copied!' : 'Copy'}
+            </button>
+            <button
+              onClick={downloadResults}
+              className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+            >
+              <Download className="h-4 w-4" />
+              Download
+            </button>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="space-y-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
@@ -151,6 +234,39 @@ export const InterestCalculator: React.FC<InterestCalculatorProps> = ({ tool }) 
             </div>
           </div>
         </div>
+
+        {chartData.length > 0 && (
+          <div className="mt-8 h-64 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorCompound" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorSimple" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#16a34a" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#16a34a" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+                <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#6b7280' }} />
+                <YAxis 
+                  axisLine={false} 
+                  tickLine={false} 
+                  tick={{ fontSize: 12, fill: '#6b7280' }}
+                  tickFormatter={(value) => `$${value >= 1000 ? (value / 1000).toFixed(0) + 'k' : value}`}
+                />
+                <Tooltip 
+                  formatter={(value: number) => formatCurrency(value)}
+                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+                />
+                <Area type="monotone" dataKey="compound" name="Compound" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorCompound)" />
+                <Area type="monotone" dataKey="simple" name="Simple" stroke="#16a34a" strokeWidth={3} fillOpacity={1} fill="url(#colorSimple)" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        )}
       </div>
 
       {/* Sidebar Info */}

@@ -5,7 +5,7 @@ export interface Tool {
   description: string;
   icon: string;
   slug: string;
-  category: 'edit' | 'convert' | 'optimize' | 'misc';
+  category: 'image-tools' | 'pdf-tools' | 'calculator-tools' | 'seo-tools' | 'misc';
   isNew?: boolean;
   seo: {
     title: string;

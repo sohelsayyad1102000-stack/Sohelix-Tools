@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { TOOLS } from '../constants/tools';
 import { ToolCard } from '../components/ToolCard';
 import { SEO } from '../components/SEO';
@@ -104,8 +105,8 @@ export const Home: React.FC = () => {
       <section id="tools" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Image Editing Tools</h2>
-            <p className="mt-2 text-gray-500 dark:text-gray-400">Everything you need to edit images in one place.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Our Free Tools</h2>
+            <p className="mt-2 text-gray-500 dark:text-gray-400">Everything you need in one place.</p>
           </div>
           
           <div className="flex flex-col gap-4 md:flex-row md:items-center">
@@ -121,30 +122,39 @@ export const Home: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            
-            <div className="flex space-x-2 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-              {['All', 'Optimize', 'Edit', 'Convert'].map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                    activeCategory === cat 
-                      ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' 
-                      : 'text-gray-600 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
         
         {filteredTools.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredTools.map((tool) => (
-              <ToolCard key={tool.id} tool={tool} />
-            ))}
+          <div className="space-y-16">
+            {['image-tools', 'pdf-tools', 'calculator-tools', 'seo-tools', 'misc'].map((categorySlug) => {
+              const categoryTools = filteredTools.filter(t => t.category === categorySlug);
+              if (categoryTools.length === 0) return null;
+              
+              const categoryTitles: Record<string, string> = {
+                'image-tools': 'Image Tools',
+                'pdf-tools': 'PDF Tools',
+                'calculator-tools': 'Calculator Tools',
+                'seo-tools': 'SEO Tools',
+                'misc': 'Miscellaneous Tools'
+              };
+
+              return (
+                <div key={categorySlug}>
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{categoryTitles[categorySlug]}</h3>
+                    <Link to={`/categories/${categorySlug}`} className="text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                      View All &rarr;
+                    </Link>
+                  </div>
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {categoryTools.map((tool) => (
+                      <ToolCard key={tool.id} tool={tool} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-20 text-center">
@@ -156,7 +166,7 @@ export const Home: React.FC = () => {
               We couldn't find any tools matching "{searchQuery}". Try a different search term.
             </p>
             <button 
-              onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
+              onClick={() => setSearchQuery('')}
               className="mt-6 rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
             >
               Clear Search
