@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
 import { TOOLS } from '../constants/tools';
 import { ToolCard } from '../components/ToolCard';
-import { LayoutGrid, Image as ImageIcon, FileText, Calculator, Settings, Search } from 'lucide-react';
+import { LayoutGrid, Image as ImageIcon, FileText, Calculator, Settings, Search, ChevronRight } from 'lucide-react';
 
 const CATEGORY_INFO: Record<string, { title: string, description: string, icon: any, content: string }> = {
   'image-tools': {
@@ -77,13 +77,20 @@ export const CategoryPage: React.FC = () => {
   const Icon = categoryInfo.icon;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-12">
-      <Helmet>
-        <title>{categoryInfo.title} | Sohelix</title>
-        <meta name="description" content={categoryInfo.description} />
-      </Helmet>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+      <SEO
+        title={categoryInfo.title}
+        description={categoryInfo.description}
+      />
 
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 max-w-7xl py-8">
+        {/* Breadcrumbs */}
+        <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
+          <Link to="/" className="hover:text-blue-600">Home</Link>
+          <ChevronRight className="h-4 w-4" />
+          <span className="font-medium text-gray-900 dark:text-white capitalize">{slug?.replace('-', ' ')}</span>
+        </nav>
+
         {/* Category Header & SEO Content */}
         <div className="mb-12 text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center justify-center p-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl mb-6 text-blue-600 dark:text-blue-400">

@@ -16,6 +16,7 @@ const CATEGORIES = [
   { name: 'Calculator Tools', path: '/categories/calculator-tools' },
   { name: 'SEO Tools', path: '/categories/seo-tools' },
   { name: 'Text Tools', path: '/categories/text-tools' },
+  { name: 'Utility Tools', path: '/categories/utilities' },
 ];
 
 export const Navbar: React.FC = () => {

@@ -43,6 +43,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/categories/calculator-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Calculator Tools</Link></li>
               <li><Link to="/categories/seo-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">SEO Tools</Link></li>
               <li><Link to="/categories/text-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Text Tools</Link></li>
+              <li><Link to="/categories/utilities" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Utility Tools</Link></li>
               <li><Link to="/categories/misc" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Misc Tools</Link></li>
             </ul>
           </div>

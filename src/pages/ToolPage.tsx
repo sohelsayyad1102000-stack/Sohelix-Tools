@@ -11,7 +11,11 @@ import {
   ChevronRight,
   Settings2,
   Trash2,
-  FileImage
+  FileImage,
+  Shield,
+  Zap,
+  Lock,
+  MousePointer2
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { 
@@ -303,6 +307,26 @@ export const ToolPage: React.FC = () => {
                 {badge}
               </span>
             ))}
+          </div>
+
+          {/* Trust Badges Section */}
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 border-t border-gray-100 pt-8 dark:border-gray-800">
+            <div className="flex flex-col items-center gap-2">
+              <Shield className="h-6 w-6 text-green-500" />
+              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">100% Private</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Zap className="h-6 w-6 text-yellow-500" />
+              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Instant Results</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Lock className="h-6 w-6 text-blue-500" />
+              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">No Server Upload</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <MousePointer2 className="h-6 w-6 text-purple-500" />
+              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">No Signup Required</span>
+            </div>
           </div>
         </div>
       </section>

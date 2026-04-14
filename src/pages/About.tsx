@@ -24,10 +24,16 @@ export const About: React.FC = () => {
         <p>
           Sohelix is a comprehensive suite of online image processing tools designed to make your digital life easier. Whether you are a web developer optimizing assets for a new site, a photographer resizing images for social media, or just someone who needs to quickly convert a file format, Sohelix provides the tools you need directly in your browser.
         </p>
+        <p>
+          Our platform is built on the philosophy that professional-grade tools should be accessible to everyone, regardless of their technical expertise or budget. We have carefully curated a collection of utilities that handle everything from basic cropping to advanced SVG optimization, all while maintaining a clean, intuitive interface.
+        </p>
 
         <h2>Our Mission & Vision</h2>
         <p>
           Our mission is to democratize access to high-quality digital tools. We believe that basic image manipulation shouldn't require expensive software subscriptions or compromising your privacy by uploading personal photos to unknown servers. Our vision is to build the most reliable, fastest, and most secure client-side toolset on the web.
+        </p>
+        <p>
+          We strive to stay at the forefront of web technology, utilizing modern browser APIs like Canvas, WebAssembly, and the File System Access API to deliver a desktop-like experience in a web environment.
         </p>
 
         <h2>Why Trust Us?</h2>
@@ -35,24 +41,24 @@ export const About: React.FC = () => {
           Unlike many other online tools, <strong>Sohelix operates 100% client-side</strong>. This means that when you use our image compressor, resizer, or converter, your files never leave your device. All processing is done using the power of your own web browser. 
         </p>
         <ul>
-          <li><strong>Zero Uploads:</strong> We don't have access to your files.</li>
-          <li><strong>Lightning Fast:</strong> No waiting for files to upload or download from a server.</li>
-          <li><strong>Always Free:</strong> No hidden fees, no watermarks (unless you add them!), and no usage limits.</li>
+          <li><strong>Zero Uploads:</strong> We don't have access to your files. Your privacy is guaranteed by the very architecture of our platform.</li>
+          <li><strong>Lightning Fast:</strong> No waiting for files to upload or download from a server. Results are instant.</li>
+          <li><strong>Always Free:</strong> No hidden fees, no watermarks (unless you add them!), and no usage limits. We believe in keeping the web open and free.</li>
+          <li><strong>No Registration:</strong> Start using our tools immediately. We don't ask for your email or personal information.</li>
         </ul>
 
         <h2>The Tools We Provide</h2>
         <p>
-          We are constantly expanding our toolset. Currently, we offer a wide range of image utilities including:
+          We are constantly expanding our toolset based on user feedback and emerging web standards. Currently, we offer a wide range of utilities categorized for your convenience:
         </p>
         <ul>
-          <li>Image Compression & Resizing</li>
-          <li>Format Conversion (JPG, PNG, WebP)</li>
-          <li>Image Cropping & Rotation</li>
-          <li>Watermarking & Meme Generation</li>
-          <li>Base64 Encoding</li>
+          <li><strong>Image Tools:</strong> Compression, resizing, cropping, rotation, and format conversion (JPG, PNG, WebP, SVG).</li>
+          <li><strong>PDF Tools:</strong> Merging, splitting, and converting documents with ease.</li>
+          <li><strong>Developer Utilities:</strong> UUID generation, Regex testing, and code minification.</li>
+          <li><strong>Text Tools:</strong> Word counting, case conversion, and formatting.</li>
         </ul>
         <p>
-          Thank you for choosing Sohelix. We are dedicated to continuously improving our platform to serve you better.
+          Thank you for choosing Sohelix. We are dedicated to continuously improving our platform to serve you better. If you have any suggestions or need a specific tool, feel free to reach out to us through our contact page.
         </p>
       </div>
     </div>

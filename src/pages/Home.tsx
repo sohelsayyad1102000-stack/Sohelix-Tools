@@ -22,9 +22,9 @@ export const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <SEO
-        title="Free Online Image Tools - Compress, Resize, Crop & More"
-        description="Sohelix offers a suite of 50+ professional image tools. 100% free, secure, and client-side. No upload required. Optimize your images for the web instantly."
-        keywords={['image tools', 'online image editor', 'free image compressor', 'resize image online', 'sohelix']}
+        title="Free Online Image & Utility Tools - Fast, Secure, No Upload"
+        description="Sohelix offers a suite of 50+ professional image and utility tools. 100% free, secure, and client-side. No upload required. Optimize your images and workflow instantly."
+        keywords={['image tools', 'online image editor', 'free image compressor', 'resize image online', 'utility tools', 'sohelix']}
       />
 
       {/* Hero Section */}

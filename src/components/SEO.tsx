@@ -8,7 +8,8 @@ interface SEOProps {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
-  schema?: any;
+  schema?: any | any[];
+  noindex?: boolean;
 }
 
 export const SEO: React.FC<SEOProps> = ({
@@ -16,39 +17,64 @@ export const SEO: React.FC<SEOProps> = ({
   description,
   keywords,
   canonical,
-  ogImage,
+  ogImage = 'https://sohelix.com/og-image.png',
   ogType = 'website',
   schema,
+  noindex = false,
 }) => {
   const siteName = 'Sohelix';
-  const fullTitle = `${title} | ${siteName}`;
+  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  const url = typeof window !== 'undefined' ? window.location.href : 'https://sohelix.com';
+
+  const defaultSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sohelix",
+      "url": "https://sohelix.com",
+      "logo": "https://sohelix.com/logo.png",
+      "sameAs": [
+        "https://twitter.com/sohelix",
+        "https://github.com/sohelix"
+      ]
+    }
+  ];
+
+  const combinedSchema = Array.isArray(schema) 
+    ? [...defaultSchemas, ...schema] 
+    : schema 
+      ? [...defaultSchemas, schema] 
+      : defaultSchemas;
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords.join(', ')} />}
-      {canonical && <link rel="canonical" href={canonical} />}
+      <link rel="canonical" href={canonical || url} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      {!noindex && <meta name="robots" content="index, follow" />}
 
       {/* Open Graph */}
       <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
-      {ogImage && <meta property="og:image" content={ogImage} />}
+      <meta property="og:url" content={url} />
+      <meta property="og:image" content={ogImage} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      {ogImage && <meta name="twitter:image" content={ogImage} />}
+      <meta name="twitter:image" content={ogImage} />
 
       {/* Schema Markup */}
-      {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
+      {combinedSchema.map((s, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(s)}
         </script>
-      )}
+      ))}
     </Helmet>
   );
 };

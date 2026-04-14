@@ -45,7 +45,30 @@ export const TOOLS: Tool[] = [
         answer: 'Absolutely. All processing happens in your browser. Your images are never uploaded to our servers.',
       },
     ],
-    longContent: 'Optimizing images is crucial for modern web performance. Large image files can slow down your website, leading to poor user experience and lower search engine rankings. Sohelix provides a professional-grade compression tool that works entirely in your browser. This means your data stays private and the processing is lightning fast. Whether you are a developer looking to shave off kilobytes from your production assets or a casual user trying to save space on your phone, our <a href="/tools/compress-image" class="underline hover:text-blue-200">compress images online</a> tool is designed to deliver the best results with zero friction. If you also need to change dimensions, check out our <a href="/tools/resize-image" class="underline hover:text-blue-200">image resizer</a>.',
+    longContent: `
+      <p>Optimizing images is one of the most effective ways to improve your website's performance and user experience. Large image files are often the primary cause of slow page load times, which can lead to higher bounce rates and lower search engine rankings. Our <strong>Free Online Image Compressor</strong> is a professional-grade tool designed to help you reduce image file sizes by up to 90% without compromising visual quality.</p>
+      
+      <h3>Why Image Compression Matters for SEO</h3>
+      <p>Google and other search engines prioritize fast-loading websites. By using our tool to <a href="/tools/compress-image" class="underline hover:text-blue-600">compress images online</a>, you are directly contributing to your site's Core Web Vitals. Faster sites provide a better experience for mobile users, who often browse on slower connections. Additionally, smaller images save storage space on your server and reduce bandwidth costs.</p>
+
+      <h3>How Our Client-Side Compression Works</h3>
+      <p>Unlike traditional online compressors that require you to upload your sensitive photos to their servers, Sohelix uses advanced browser-based technologies. We leverage the power of your own device's CPU to process images locally. This "Privacy-First" approach ensures that your data never leaves your computer or smartphone. It also means the processing is nearly instantaneous, as there is no time wasted on uploading or downloading large files.</p>
+
+      <h3>Supported Formats: JPG, PNG, WebP, and SVG</h3>
+      <p>Our versatile tool supports all major web formats. Whether you need to optimize a high-resolution photograph (JPG), a transparent logo (PNG), a modern high-efficiency image (WebP), or a scalable vector graphic (SVG), we have you covered. You can even adjust the quality levels to find the perfect balance between file size and clarity.</p>
+
+      <h3>Professional Features for Developers and Designers</h3>
+      <p>We understand that professionals need more than just a simple slider. That's why we offer bulk processing capabilities, allowing you to optimize dozens of images at once. Our tool also preserves important metadata when requested and provides a real-time preview of the compression results, so you can see exactly what your users will see.</p>
+
+      <h3>Best Practices for Image Optimization</h3>
+      <ul>
+        <li><strong>Choose the right format:</strong> Use JPG for photos, PNG for graphics with transparency, and WebP for the best overall compression.</li>
+        <li><strong>Resize before compressing:</strong> Don't use a 4000px wide image if it's only going to be displayed at 800px. Use our <a href="/tools/resize-image" class="underline hover:text-blue-600">image resizer</a> first.</li>
+        <li><strong>Find the "Sweet Spot":</strong> For most web images, a quality setting between 70% and 85% provides significant size reduction with no visible loss in quality.</li>
+      </ul>
+
+      <p>Start optimizing your digital assets today with Sohelix. It's fast, free, secure, and requires no registration or login. Join thousands of developers and content creators who trust us for their daily image optimization needs.</p>
+    `,
   },
   {
     id: 'resize-image',
@@ -312,7 +335,7 @@ export const TOOLS: Tool[] = [
     description: 'Create custom QR codes for URLs, text, WiFi, and more with logos and styling.',
     icon: 'QrCode',
     slug: 'qr-code-generator',
-    category: 'misc',
+    category: 'utilities',
     isNew: true,
     seo: {
       title: 'Free Online QR Code Generator - Create Custom QR Codes with Logo',
