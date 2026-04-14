@@ -30,6 +30,12 @@ const CATEGORY_INFO: Record<string, { title: string, description: string, icon: 
     icon: Search,
     content: 'Improve your website\'s search engine visibility with our suite of free online SEO tools. Whether you need to generate perfectly formatted meta tags, create an XML sitemap for Google, or preview how your pages will look in search results, we have the tools you need. All our SEO utilities are designed to help you optimize your content and drive more organic traffic, running entirely in your browser for instant results.'
   },
+  'text-tools': {
+    title: 'Free Text Tools Online',
+    description: 'Advanced text formatting and manipulation tools. Count words, convert case, sort lines, and more. Free online text utilities.',
+    icon: FileText,
+    content: 'Welcome to our complete suite of advanced text tools. Whether you need an accurate word counter with keyword density analysis, a case converter for formatting titles, or a line sorter to organize lists, we have the perfect utility for you. Our text tools are designed for writers, developers, and SEO professionals who need fast, reliable text manipulation. Everything runs instantly in your browser, ensuring your data remains completely private and secure.'
+  },
   'misc': {
     title: 'Miscellaneous Tools',
     description: 'A collection of handy online tools including QR code generators, age calculators, and more.',

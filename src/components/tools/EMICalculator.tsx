@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { CreditCard, Percent, Calendar, Calculator, PieChart as PieChartIcon, DollarSign, Download, Copy, Check } from 'lucide-react';
+import { CreditCard, Percent, Calendar, Calculator, PieChart as PieChartIcon, DollarSign, Download, Copy, Check, RotateCcw } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface EMICalculatorProps {
   tool: any;
 }
 
 export const EMICalculator: React.FC<EMICalculatorProps> = ({ tool }) => {
-  const [loanAmount, setLoanAmount] = useState<number | ''>(100000);
-  const [interestRate, setInterestRate] = useState<number | ''>(8.5);
-  const [tenure, setTenure] = useState<number | ''>(5);
-  const [tenureUnit, setTenureUnit] = useState<'years' | 'months'>('years');
+  const [loanAmount, setLoanAmount] = useLocalStorage<number | ''>('emi-loan-amount', 100000);
+  const [interestRate, setInterestRate] = useLocalStorage<number | ''>('emi-interest-rate', 8.5);
+  const [tenure, setTenure] = useLocalStorage<number | ''>('emi-tenure', 5);
+  const [tenureUnit, setTenureUnit] = useLocalStorage<'years' | 'months'>('emi-tenure-unit', 'years');
   
   const [emi, setEmi] = useState<number>(0);
   const [totalInterest, setTotalInterest] = useState<number>(0);
@@ -19,11 +20,24 @@ export const EMICalculator: React.FC<EMICalculatorProps> = ({ tool }) => {
   const [copied, setCopied] = useState(false);
 
   const calculateEMI = () => {
-    if (!loanAmount || !interestRate || !tenure) return;
+    if (!loanAmount || !interestRate || !tenure) {
+      setEmi(0);
+      setTotalInterest(0);
+      setTotalPayment(0);
+      return;
+    }
 
     const P = Number(loanAmount);
     const r = Number(interestRate) / (12 * 100); // monthly interest rate
     const n = tenureUnit === 'years' ? Number(tenure) * 12 : Number(tenure); // total number of months
+
+    if (r === 0) {
+      const emiValue = P / n;
+      setEmi(emiValue);
+      setTotalPayment(P);
+      setTotalInterest(0);
+      return;
+    }
 
     // EMI = [P x r x (1+r)^n] / [(1+r)^n - 1]
     const emiValue = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
@@ -75,6 +89,13 @@ Total Payment: ${formatCurrency(totalPayment)}`;
     URL.revokeObjectURL(url);
   };
 
+  const reset = () => {
+    setLoanAmount('');
+    setInterestRate('');
+    setTenure('');
+    setTenureUnit('years');
+  };
+
   const pieData = [
     { name: 'Principal', value: Number(loanAmount) || 0 },
     { name: 'Interest', value: totalInterest || 0 }
@@ -92,19 +113,31 @@ Total Payment: ${formatCurrency(totalPayment)}`;
           </h3>
           <div className="flex gap-2">
             <button
-              onClick={copyResults}
+              onClick={reset}
               className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              title="Reset Calculator"
             >
-              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              {copied ? 'Copied!' : 'Copy'}
+              <RotateCcw className="h-4 w-4" />
+              Reset
             </button>
-            <button
-              onClick={downloadResults}
-              className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
-            >
-              <Download className="h-4 w-4" />
-              Download
-            </button>
+            {emi > 0 && (
+              <>
+                <button
+                  onClick={copyResults}
+                  className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                >
+                  {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+                <button
+                  onClick={downloadResults}
+                  className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+                >
+                  <Download className="h-4 w-4" />
+                  Download
+                </button>
+              </>
+            )}
           </div>
         </div>
 

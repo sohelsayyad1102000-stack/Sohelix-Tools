@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Landmark, Percent, Calendar, RefreshCcw, TrendingUp, DollarSign, Download, Copy, Check } from 'lucide-react';
+import { Landmark, Percent, Calendar, RefreshCcw, TrendingUp, DollarSign, Download, Copy, Check, RotateCcw } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface InterestCalculatorProps {
   tool: any;
 }
 
 export const InterestCalculator: React.FC<InterestCalculatorProps> = ({ tool }) => {
-  const [principal, setPrincipal] = useState<number | ''>(10000);
-  const [rate, setRate] = useState<number | ''>(5);
-  const [time, setTime] = useState<number | ''>(5);
-  const [frequency, setFrequency] = useState<number>(1); // 1 = Annually, 4 = Quarterly, 12 = Monthly, 365 = Daily
+  const [principal, setPrincipal] = useLocalStorage<number | ''>('interest-principal', 10000);
+  const [rate, setRate] = useLocalStorage<number | ''>('interest-rate', 5);
+  const [time, setTime] = useLocalStorage<number | ''>('interest-time', 5);
+  const [frequency, setFrequency] = useLocalStorage<number>('interest-frequency', 1); // 1 = Annually, 4 = Quarterly, 12 = Monthly, 365 = Daily
   
   const [simpleInterest, setSimpleInterest] = useState<number>(0);
   const [compoundInterest, setCompoundInterest] = useState<number>(0);
@@ -21,7 +22,14 @@ export const InterestCalculator: React.FC<InterestCalculatorProps> = ({ tool }) 
   const [copied, setCopied] = useState(false);
 
   const calculate = () => {
-    if (!principal || !rate || !time) return;
+    if (!principal || !rate || !time) {
+      setSimpleInterest(0);
+      setCompoundInterest(0);
+      setTotalSimple(0);
+      setTotalCompound(0);
+      setChartData([]);
+      return;
+    }
 
     const P = Number(principal);
     const R = Number(rate);
@@ -114,6 +122,13 @@ ${chartData.map(d => `${d.year}: Simple = ${formatCurrency(d.simple)}, Compound 
     URL.revokeObjectURL(url);
   };
 
+  const reset = () => {
+    setPrincipal('');
+    setRate('');
+    setTime('');
+    setFrequency(1);
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
       {/* Main Area */}
@@ -125,19 +140,31 @@ ${chartData.map(d => `${d.year}: Simple = ${formatCurrency(d.simple)}, Compound 
           </h3>
           <div className="flex gap-2">
             <button
-              onClick={copyResults}
+              onClick={reset}
               className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              title="Reset Calculator"
             >
-              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              {copied ? 'Copied!' : 'Copy'}
+              <RotateCcw className="h-4 w-4" />
+              Reset
             </button>
-            <button
-              onClick={downloadResults}
-              className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
-            >
-              <Download className="h-4 w-4" />
-              Download
-            </button>
+            {totalCompound > 0 && (
+              <>
+                <button
+                  onClick={copyResults}
+                  className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                >
+                  {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+                <button
+                  onClick={downloadResults}
+                  className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
+                >
+                  <Download className="h-4 w-4" />
+                  Download
+                </button>
+              </>
+            )}
           </div>
         </div>
 

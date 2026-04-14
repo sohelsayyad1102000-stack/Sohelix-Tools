@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Scale, Ruler, Info, AlertCircle, CheckCircle2, Download, Copy, Check } from 'lucide-react';
+import { Scale, Ruler, Info, AlertCircle, CheckCircle2, Download, Copy, Check, RotateCcw } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface BMICalculatorProps {
   tool: any;
 }
 
 export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
-  const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
-  const [weight, setWeight] = useState<number | ''>('');
-  const [height, setHeight] = useState<number | ''>('');
-  const [heightFt, setHeightFt] = useState<number | ''>('');
-  const [heightIn, setHeightIn] = useState<number | ''>('');
+  const [unit, setUnit] = useLocalStorage<'metric' | 'imperial'>('bmi-unit', 'metric');
+  const [weight, setWeight] = useLocalStorage<number | ''>('bmi-weight', '');
+  const [height, setHeight] = useLocalStorage<number | ''>('bmi-height', '');
+  const [heightFt, setHeightFt] = useLocalStorage<number | ''>('bmi-height-ft', '');
+  const [heightIn, setHeightIn] = useLocalStorage<number | ''>('bmi-height-in', '');
   
   const [bmi, setBmi] = useState<number | null>(null);
   const [category, setCategory] = useState<string>('');
@@ -23,13 +24,19 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
     let heightM = 0;
 
     if (unit === 'metric') {
-      if (!weight || !height) return;
+      if (!weight || !height) {
+        setBmi(null);
+        return;
+      }
       weightKg = Number(weight);
       heightM = Number(height) / 100;
     } else {
-      if (!weight || !heightFt || !heightIn) return;
+      if (!weight || (!heightFt && !heightIn)) {
+        setBmi(null);
+        return;
+      }
       weightKg = Number(weight) * 0.453592;
-      heightM = (Number(heightFt) * 12 + Number(heightIn)) * 0.0254;
+      heightM = (Number(heightFt || 0) * 12 + Number(heightIn || 0)) * 0.0254;
     }
 
     if (heightM > 0) {
@@ -49,6 +56,8 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
         setCategory('Obese');
         setColor('text-red-500');
       }
+    } else {
+      setBmi(null);
     }
   };
 
@@ -87,6 +96,14 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
     URL.revokeObjectURL(url);
   };
 
+  const reset = () => {
+    setWeight('');
+    setHeight('');
+    setHeightFt('');
+    setHeightIn('');
+    setBmi(null);
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
       {/* Main Area */}
@@ -94,6 +111,14 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
         <div className="flex items-center justify-between mb-8">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white">Body Mass Index Calculator</h3>
           <div className="flex gap-4">
+            <button
+              onClick={reset}
+              className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              title="Reset Calculator"
+            >
+              <RotateCcw className="h-4 w-4" />
+              Reset
+            </button>
             {bmi && (
               <div className="flex gap-2">
                 <button

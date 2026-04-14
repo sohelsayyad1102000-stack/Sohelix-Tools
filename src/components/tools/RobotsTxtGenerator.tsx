@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, Check, Download, RefreshCcw } from 'lucide-react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 export const RobotsTxtGenerator: React.FC = () => {
-  const [userAgent, setUserAgent] = useState('*');
-  const [allow, setAllow] = useState('/');
-  const [disallow, setDisallow] = useState('');
-  const [sitemap, setSitemap] = useState('');
+  const [userAgent, setUserAgent] = useLocalStorage('robots-user-agent', '*');
+  const [allow, setAllow] = useLocalStorage('robots-allow', '/');
+  const [disallow, setDisallow] = useLocalStorage('robots-disallow', '');
+  const [sitemap, setSitemap] = useLocalStorage('robots-sitemap', '');
   const [generatedCode, setGeneratedCode] = useState('');
   const [copied, setCopied] = useState(false);
 

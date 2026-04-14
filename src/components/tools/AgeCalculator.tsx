@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, RefreshCcw, Timer, History, ArrowRight, Star, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface AgeCalculatorProps {
   tool: any;
@@ -29,10 +30,10 @@ interface AgeResult {
 }
 
 export const AgeCalculator: React.FC<AgeCalculatorProps> = ({ tool }) => {
-  const [dob, setDob] = useState<string>('');
-  const [tob, setTob] = useState<string>('00:00');
+  const [dob, setDob] = useLocalStorage<string>('age-dob', '');
+  const [tob, setTob] = useLocalStorage<string>('age-tob', '00:00');
   const [result, setResult] = useState<AgeResult | null>(null);
-  const [isLive, setIsLive] = useState(true);
+  const [isLive, setIsLive] = useLocalStorage('age-live', true);
 
   useEffect(() => {
     if (!dob) return;

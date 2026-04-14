@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface QRCodeGeneratorProps {
   tool: any;
@@ -36,9 +37,9 @@ interface QRCodeGeneratorProps {
 type QRType = 'url' | 'text' | 'email' | 'phone' | 'wifi' | 'sms' | 'whatsapp' | 'location';
 
 export const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ tool }) => {
-  const [type, setType] = useState<QRType>('url');
-  const [data, setData] = useState('');
-  const [qrOptions, setQrOptions] = useState<Options>({
+  const [type, setType] = useLocalStorage<QRType>('qr-type', 'url');
+  const [data, setData] = useLocalStorage('qr-data', '');
+  const [qrOptions, setQrOptions] = useLocalStorage<Options>('qr-options', {
     width: 300,
     height: 300,
     type: 'svg' as DrawType,
@@ -73,7 +74,7 @@ export const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ tool }) => {
     }
   });
 
-  const [logo, setLogo] = useState<string | null>(null);
+  const [logo, setLogo] = useLocalStorage<string | null>('qr-logo', null);
   const [isBulk, setIsBulk] = useState(false);
   const [bulkData, setBulkData] = useState('');
   const [recentQRs, setRecentQRs] = useState<any[]>([]);

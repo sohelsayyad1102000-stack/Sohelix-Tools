@@ -14,6 +14,7 @@ import { motion } from 'motion/react';
 import { PDFDocument } from 'pdf-lib';
 import { cn, formatBytes } from '../../lib/utils';
 import { PDFPreview } from '../PDFPreview';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface SplitPDFToolProps {
   tool: any;
@@ -27,8 +28,8 @@ export const SplitPDFTool: React.FC<SplitPDFToolProps> = ({ tool }) => {
   const [error, setError] = useState<string | null>(null);
   
   // Settings
-  const [fromPage, setFromPage] = useState<number>(1);
-  const [toPage, setToPage] = useState<number>(1);
+  const [fromPage, setFromPage] = useLocalStorage<number>('splitpdf-frompage', 1);
+  const [toPage, setToPage] = useLocalStorage<number>('splitpdf-topage', 1);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 

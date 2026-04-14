@@ -31,6 +31,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { jsPDF } from 'jspdf';
 import { cn, formatBytes } from '../../lib/utils';
 import { PDFPreview } from '../PDFPreview';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface ImageToPDFToolProps {
   tool: any;
@@ -89,9 +90,9 @@ export const ImageToPDFTool: React.FC<ImageToPDFToolProps> = ({ tool }) => {
   const [activeTab, setActiveTab] = useState<'before' | 'after'>('before');
   
   // Settings
-  const [pageSize, setPageSize] = useState<'a4' | 'letter' | 'original'>('a4');
-  const [orientation, setOrientation] = useState<'p' | 'l'>('p');
-  const [margin, setMargin] = useState(10);
+  const [pageSize, setPageSize] = useLocalStorage<'a4' | 'letter' | 'original'>('img2pdf-pagesize', 'a4');
+  const [orientation, setOrientation] = useLocalStorage<'p' | 'l'>('img2pdf-orientation', 'p');
+  const [margin, setMargin] = useLocalStorage('img2pdf-margin', 10);
   const [quality, setQuality] = useState(0.8);
 
   const fileInputRef = useRef<HTMLInputElement>(null);

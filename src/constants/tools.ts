@@ -851,5 +851,271 @@ export const TOOLS: Tool[] = [
       }
     ],
     longContent: 'Use the <a href="/tools/serp-preview" class="underline hover:text-blue-200">SERP Preview Tool</a> to see exactly how your page will appear in Google search results. By optimizing your title and description to fit within Google\'s pixel limits, you can improve your click-through rate and drive more organic traffic.'
+  },
+  {
+    id: 'word-counter',
+    name: 'Word Counter',
+    title: 'Advanced Word Counter',
+    description: 'Count words, characters, sentences, and paragraphs with keyword density analysis.',
+    icon: 'Type',
+    slug: 'word-counter',
+    category: 'text-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online Word Counter - Count Words, Characters & Sentences',
+      description: 'Advanced word counter tool. Count words, characters, sentences, paragraphs, and analyze keyword density. Free, fast, and secure.',
+      keywords: ['word counter', 'character count', 'keyword density', 'reading time', 'text analysis'],
+    },
+    features: [
+      'Count words, characters, and sentences',
+      'Calculate reading and speaking time',
+      'Keyword density analysis',
+      'Live updates as you type'
+    ],
+    benefits: [
+      'Meet word count requirements',
+      'Optimize content for SEO',
+      'Improve writing readability'
+    ],
+    useCases: [
+      'Students writing essays',
+      'SEO professionals analyzing content',
+      'Writers and bloggers'
+    ],
+    faqs: [
+      {
+        question: 'Does this tool save my text?',
+        answer: 'No, all text processing is done locally in your browser. Your text is never sent to our servers.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/word-counter" class="underline hover:text-blue-200">Advanced Word Counter</a> is more than just a simple counter. It provides deep insights into your text, including reading time, speaking time, and keyword density. Perfect for SEO optimization, essay writing, and content creation.'
+  },
+  {
+    id: 'case-converter',
+    name: 'Case Converter',
+    title: 'Text Case Converter',
+    description: 'Convert text to uppercase, lowercase, title case, sentence case, and more.',
+    icon: 'CaseUpper',
+    slug: 'case-converter',
+    category: 'text-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Case Converter - Change Text to Uppercase, Lowercase & More',
+      description: 'Convert text between uppercase, lowercase, title case, sentence case, and alternating case. Free online text formatting tool.',
+      keywords: ['case converter', 'uppercase to lowercase', 'title case generator', 'sentence case', 'text formatting'],
+    },
+    features: [
+      'Convert to Uppercase and Lowercase',
+      'Title Case and Sentence Case',
+      'Alternating and Toggle Case',
+      'One-click copy to clipboard'
+    ],
+    benefits: [
+      'Fix accidental caps lock',
+      'Format titles correctly for SEO',
+      'Save time formatting text manually'
+    ],
+    useCases: [
+      'Formatting blog post titles',
+      'Cleaning up messy text data',
+      'Creating stylized text for social media'
+    ],
+    faqs: [
+      {
+        question: 'What is Title Case?',
+        answer: 'Title Case capitalizes the first letter of most words, except for minor words like "and", "or", "the", etc., depending on the style guide.'
+      }
+    ],
+    longContent: 'Easily format your text with our <a href="/tools/case-converter" class="underline hover:text-blue-200">Case Converter</a>. Whether you accidentally left caps lock on or need to format a title perfectly for your blog, this tool handles it instantly in your browser.'
+  },
+  {
+    id: 'line-sorter',
+    name: 'Line Sorter',
+    title: 'Alphabetical Line Sorter',
+    description: 'Sort lines of text alphabetically, by length, or randomize them.',
+    icon: 'ArrowDownAZ',
+    slug: 'line-sorter',
+    category: 'text-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Line Sorter - Sort Text Alphabetically or by Length',
+      description: 'Sort lines of text A-Z, Z-A, or by length. Remove duplicates and empty lines instantly. Free online text sorting tool.',
+      keywords: ['line sorter', 'alphabetize list', 'sort text', 'remove duplicates', 'randomize lines'],
+    },
+    features: [
+      'Sort A-Z and Z-A',
+      'Sort by line length',
+      'Remove duplicate lines',
+      'Randomize (shuffle) lines'
+    ],
+    benefits: [
+      'Organize lists quickly',
+      'Clean up data by removing duplicates',
+      'Randomize items for giveaways or testing'
+    ],
+    useCases: [
+      'Sorting name lists',
+      'Organizing keywords',
+      'Cleaning up CSV data'
+    ],
+    faqs: [
+      {
+        question: 'Can I remove duplicate lines?',
+        answer: 'Yes, there is a built-in option to automatically remove duplicate lines while sorting.'
+      }
+    ],
+    longContent: 'The <a href="/tools/line-sorter" class="underline hover:text-blue-200">Line Sorter</a> is a powerful utility for organizing lists. Sort alphabetically, reverse alphabetically, or by length. You can also clean up your lists by removing duplicates and empty lines with a single click.'
+  },
+  {
+    id: 'whitespace-remover',
+    name: 'Whitespace Remover',
+    title: 'Remove Extra Whitespace',
+    description: 'Clean up text by removing extra spaces, tabs, and line breaks.',
+    icon: 'Space',
+    slug: 'whitespace-remover',
+    category: 'text-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Whitespace Remover - Clean Up Text Formatting',
+      description: 'Remove extra spaces, tabs, and empty lines from your text. Clean up messy formatting instantly with this free online tool.',
+      keywords: ['whitespace remover', 'remove extra spaces', 'trim text', 'remove line breaks', 'clean text'],
+    },
+    features: [
+      'Remove multiple spaces',
+      'Remove tabs and line breaks',
+      'Trim leading and trailing spaces',
+      'Remove all spaces option'
+    ],
+    benefits: [
+      'Clean up copied text formatting',
+      'Prepare data for databases',
+      'Reduce file size of text documents'
+    ],
+    useCases: [
+      'Cleaning up code snippets',
+      'Formatting text copied from PDFs',
+      'Data entry preparation'
+    ],
+    faqs: [
+      {
+        question: 'Will this remove paragraph breaks?',
+        answer: 'You can choose to remove all line breaks or just empty lines depending on your needs.'
+      }
+    ],
+    longContent: 'Copying text from PDFs or older websites often results in messy formatting with extra spaces and weird line breaks. Our <a href="/tools/whitespace-remover" class="underline hover:text-blue-200">Whitespace Remover</a> instantly cleans up your text, making it ready for use in your documents or code.'
+  },
+  {
+    id: 'lorem-ipsum-generator',
+    name: 'Lorem Ipsum Generator',
+    title: 'Lorem Ipsum Text Generator',
+    description: 'Generate placeholder text for your designs and mockups.',
+    icon: 'FileText',
+    slug: 'lorem-ipsum-generator',
+    category: 'text-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Lorem Ipsum Generator - Placeholder Text Maker',
+      description: 'Generate Lorem Ipsum placeholder text in words, sentences, or paragraphs. Copy as plain text or HTML. Free online tool for designers.',
+      keywords: ['lorem ipsum generator', 'placeholder text', 'dummy text', 'html lorem ipsum'],
+    },
+    features: [
+      'Generate by words, sentences, or paragraphs',
+      'Optional "Lorem ipsum" starting phrase',
+      'Output as plain text or HTML tags',
+      'Instant copy to clipboard'
+    ],
+    benefits: [
+      'Quickly fill designs with realistic text',
+      'Test typography layouts',
+      'Save time during prototyping'
+    ],
+    useCases: [
+      'Web design mockups',
+      'Print design templates',
+      'Testing database text fields'
+    ],
+    faqs: [
+      {
+        question: 'What is Lorem Ipsum?',
+        answer: 'Lorem Ipsum is dummy text used by the design and typesetting industry to demonstrate the visual form of a document without relying on meaningful content.'
+      }
+    ],
+    longContent: 'Need placeholder text for your next design project? The <a href="/tools/lorem-ipsum-generator" class="underline hover:text-blue-200">Lorem Ipsum Generator</a> creates custom lengths of dummy text. You can even generate it wrapped in HTML paragraph tags for easy pasting into your code.'
+  },
+  {
+    id: 'text-to-hex',
+    name: 'Text to Hex Converter',
+    title: 'Convert Text to Hexadecimal',
+    description: 'Convert plain text into hexadecimal format instantly.',
+    icon: 'Binary',
+    slug: 'text-to-hex',
+    category: 'text-tools',
+    isNew: true,
+    seo: {
+      title: 'Text to Hex Converter - Free Online Encoding Tool',
+      description: 'Convert plain text to hexadecimal (Hex) format online. Supports UTF-8 encoding. Fast, free, and secure client-side conversion.',
+      keywords: ['text to hex', 'string to hex', 'hex encoder', 'utf8 to hex'],
+    },
+    features: [
+      'Instant Text to Hex conversion',
+      'UTF-8 character support',
+      'Space separation options',
+      'Download result as file'
+    ],
+    benefits: [
+      'Encode data for programming',
+      'Analyze text at the byte level',
+      'Secure local processing'
+    ],
+    useCases: [
+      'Software development and debugging',
+      'Data encoding',
+      'Computer science education'
+    ],
+    faqs: [
+      {
+        question: 'Does this support emojis?',
+        answer: 'Yes, our converter fully supports UTF-8, meaning emojis and special characters will be correctly converted to their hex values.'
+      }
+    ],
+    longContent: 'Convert any text string into its hexadecimal representation with our <a href="/tools/text-to-hex" class="underline hover:text-blue-200">Text to Hex Converter</a>. This tool is essential for developers and engineers working with low-level data encoding, debugging, or cryptography. It fully supports UTF-8 characters.'
+  },
+  {
+    id: 'hex-to-text',
+    name: 'Hex to Text Converter',
+    title: 'Convert Hexadecimal to Text',
+    description: 'Decode hexadecimal strings back into readable plain text.',
+    icon: 'FileCode2',
+    slug: 'hex-to-text',
+    category: 'text-tools',
+    isNew: true,
+    seo: {
+      title: 'Hex to Text Converter - Free Online Decoding Tool',
+      description: 'Convert hexadecimal (Hex) strings back to plain text online. Auto-cleans broken hex and supports UTF-8. Free and secure.',
+      keywords: ['hex to text', 'hex decoder', 'hex to string', 'decode hex'],
+    },
+    features: [
+      'Instant Hex to Text decoding',
+      'Auto-cleans invalid characters',
+      'UTF-8 decoding support',
+      'Error detection for invalid hex'
+    ],
+    benefits: [
+      'Decode hex-encoded data easily',
+      'Recover readable text from hex dumps',
+      'Fast and private processing'
+    ],
+    useCases: [
+      'Reverse engineering',
+      'Reading hex-encoded logs',
+      'Data recovery'
+    ],
+    faqs: [
+      {
+        question: 'What if my hex string has spaces or "0x"?',
+        answer: 'Our tool automatically cleans the input, removing spaces, commas, and "0x" prefixes before decoding.'
+      }
+    ],
+    longContent: 'Easily decode hexadecimal data back into readable text with the <a href="/tools/hex-to-text" class="underline hover:text-blue-200">Hex to Text Converter</a>. The tool is smart enough to ignore common formatting characters like spaces or "0x" prefixes, giving you the clean text output you need instantly.'
   }
 ];

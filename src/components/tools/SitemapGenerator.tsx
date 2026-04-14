@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, Check, Download, RefreshCcw, AlertCircle } from 'lucide-react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 export const SitemapGenerator: React.FC = () => {
-  const [urls, setUrls] = useState('');
-  const [changeFreq, setChangeFreq] = useState('daily');
-  const [priority, setPriority] = useState('0.8');
+  const [urls, setUrls] = useLocalStorage('sitemap-urls', '');
+  const [changeFreq, setChangeFreq] = useLocalStorage('sitemap-change-freq', 'daily');
+  const [priority, setPriority] = useLocalStorage('sitemap-priority', '0.8');
   const [generatedCode, setGeneratedCode] = useState('');
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState('');
@@ -20,7 +21,7 @@ export const SitemapGenerator: React.FC = () => {
       return;
     }
 
-    const urlList = urls.split('\\n').map(u => u.trim()).filter(u => u !== '');
+    const urlList = urls.split('\n').map(u => u.trim()).filter(u => u !== '');
     
     // Basic validation
     const invalidUrls = urlList.filter(u => !u.startsWith('http://') && !u.startsWith('https://'));

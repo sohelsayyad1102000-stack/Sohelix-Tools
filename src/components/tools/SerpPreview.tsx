@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { RefreshCcw, Smartphone, Monitor } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 export const SerpPreview: React.FC = () => {
-  const [title, setTitle] = useState('');
-  const [url, setUrl] = useState('');
-  const [description, setDescription] = useState('');
-  const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
+  const [title, setTitle] = useLocalStorage('serp-title', '');
+  const [url, setUrl] = useLocalStorage('serp-url', '');
+  const [description, setDescription] = useLocalStorage('serp-description', '');
+  const [viewMode, setViewMode] = useLocalStorage<'desktop' | 'mobile'>('serp-view-mode', 'desktop');
 
   const reset = () => {
     setTitle('');

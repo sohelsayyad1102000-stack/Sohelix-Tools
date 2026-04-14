@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { cn, formatBytes } from '../../lib/utils';
 import Cropper, { ReactCropperElement } from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface CropperToolProps {
   tool: any;
@@ -36,11 +37,11 @@ export const CropperTool: React.FC<CropperToolProps> = ({ tool }) => {
 
   // Cropper settings
   const cropperRef = useRef<ReactCropperElement>(null);
-  const [aspectRatio, setAspectRatio] = useState<number>(NaN);
+  const [aspectRatio, setAspectRatio] = useLocalStorage<number>('cropper-aspect-ratio', NaN);
   const [cropData, setCropData] = useState<{ width: number; height: number; x: number; y: number } | null>(null);
   
-  const [customWidth, setCustomWidth] = useState<number | ''>('');
-  const [customHeight, setCustomHeight] = useState<number | ''>('');
+  const [customWidth, setCustomWidth] = useLocalStorage<number | ''>('cropper-custom-width', '');
+  const [customHeight, setCustomHeight] = useLocalStorage<number | ''>('cropper-custom-height', '');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -277,6 +278,13 @@ export const CropperTool: React.FC<CropperToolProps> = ({ tool }) => {
                   {preset.label}
                 </button>
               ))}
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button onClick={() => applyPresetSize(1080, 1080)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Post</button>
+              <button onClick={() => applyPresetSize(1080, 1350)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Portrait</button>
+              <button onClick={() => applyPresetSize(1080, 1920)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Story</button>
+              <button onClick={() => applyPresetSize(1200, 630)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Facebook Post</button>
+              <button onClick={() => applyPresetSize(1200, 675)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Twitter Post</button>
             </div>
           </div>
 

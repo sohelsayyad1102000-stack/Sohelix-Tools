@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn, formatBytes } from '../../lib/utils';
 import imageCompression from 'browser-image-compression';
 import JSZip from 'jszip';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface CompressorToolProps {
   tool: any;
@@ -133,16 +134,16 @@ export const CompressorTool: React.FC<CompressorToolProps> = ({ tool }) => {
   const [comparingIndex, setComparingIndex] = useState<number | null>(null);
 
   // Settings
-  const [mode, setMode] = useState<'quality' | 'targetSize'>('quality');
-  const [quality, setQuality] = useState(85);
-  const [targetSizeKB, setTargetSizeKB] = useState<number | ''>('');
+  const [mode, setMode] = useLocalStorage<'quality' | 'targetSize'>('compressor-mode', 'quality');
+  const [quality, setQuality] = useLocalStorage('compressor-quality', 85);
+  const [targetSizeKB, setTargetSizeKB] = useLocalStorage<number | ''>('compressor-target-size', '');
   
-  const [resize, setResize] = useState(false);
-  const [width, setWidth] = useState<number | ''>('');
-  const [height, setHeight] = useState<number | ''>('');
-  const [maintainRatio, setMaintainRatio] = useState(true);
+  const [resize, setResize] = useLocalStorage('compressor-resize', false);
+  const [width, setWidth] = useLocalStorage<number | ''>('compressor-width', '');
+  const [height, setHeight] = useLocalStorage<number | ''>('compressor-height', '');
+  const [maintainRatio, setMaintainRatio] = useLocalStorage('compressor-maintain-ratio', true);
   
-  const [autoDownload, setAutoDownload] = useState(false);
+  const [autoDownload, setAutoDownload] = useLocalStorage('compressor-auto-download', false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -172,6 +173,12 @@ export const CompressorTool: React.FC<CompressorToolProps> = ({ tool }) => {
     setPreviews(prev => [...prev, ...newPreviews]);
     setResults([]);
     setSuccess(null);
+
+    // Smart suggestion based on first file
+    if (validFiles.length > 0 && mode === 'targetSize' && !targetSizeKB) {
+      const suggestedSize = Math.max(Math.round(validFiles[0].size / 1024 * 0.5), 100); // Suggest 50% reduction, min 100KB
+      setTargetSizeKB(suggestedSize);
+    }
   };
 
   const removeFile = (index: number) => {
@@ -428,6 +435,11 @@ export const CompressorTool: React.FC<CompressorToolProps> = ({ tool }) => {
                 onChange={(e) => setQuality(Number(e.target.value))}
                 className="mt-2 w-full accent-blue-600"
               />
+              <div className="mt-2 flex gap-2">
+                <button onClick={() => setQuality(90)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">High (90%)</button>
+                <button onClick={() => setQuality(75)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Medium (75%)</button>
+                <button onClick={() => setQuality(50)} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Low (50%)</button>
+              </div>
             </div>
           ) : (
             <div>
@@ -439,6 +451,13 @@ export const CompressorTool: React.FC<CompressorToolProps> = ({ tool }) => {
                 placeholder="e.g., 500"
                 className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
               />
+              {files.length > 0 && (
+                <div className="mt-2 flex gap-2">
+                  <button onClick={() => setTargetSizeKB(Math.max(Math.round(files[0].size / 1024 * 0.8), 10))} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">-20% Size</button>
+                  <button onClick={() => setTargetSizeKB(Math.max(Math.round(files[0].size / 1024 * 0.5), 10))} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">-50% Size</button>
+                  <button onClick={() => setTargetSizeKB(Math.max(Math.round(files[0].size / 1024 * 0.2), 10))} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">-80% Size</button>
+                </div>
+              )}
             </div>
           )}
 

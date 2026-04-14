@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, Check, RefreshCcw } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 export const MetaTagGenerator: React.FC = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [keywords, setKeywords] = useState('');
-  const [author, setAuthor] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [url, setUrl] = useState('');
+  const [title, setTitle] = useLocalStorage('meta-title', '');
+  const [description, setDescription] = useLocalStorage('meta-description', '');
+  const [keywords, setKeywords] = useLocalStorage('meta-keywords', '');
+  const [author, setAuthor] = useLocalStorage('meta-author', '');
+  const [imageUrl, setImageUrl] = useLocalStorage('meta-image-url', '');
+  const [url, setUrl] = useLocalStorage('meta-url', '');
   const [generatedCode, setGeneratedCode] = useState('');
   const [copied, setCopied] = useState(false);
 

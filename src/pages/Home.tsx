@@ -110,7 +110,22 @@ export const Home: React.FC = () => {
           </div>
           
           <div className="flex flex-col gap-4 md:flex-row md:items-center">
-            <div className="relative w-full md:w-72">
+            <div className="flex overflow-x-auto pb-2 md:pb-0 hide-scrollbar gap-2">
+              {['All', 'image-tools', 'pdf-tools', 'calculator-tools', 'seo-tools', 'text-tools', 'misc'].map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    activeCategory === cat
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  {cat === 'All' ? 'All Tools' : cat.replace('-tools', '').replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) + ' Tools'}
+                </button>
+              ))}
+            </div>
+            <div className="relative w-full md:w-72 shrink-0">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <Search className="h-5 w-5 text-gray-400" />
               </div>
@@ -127,7 +142,7 @@ export const Home: React.FC = () => {
         
         {filteredTools.length > 0 ? (
           <div className="space-y-16">
-            {['image-tools', 'pdf-tools', 'calculator-tools', 'seo-tools', 'misc'].map((categorySlug) => {
+            {['image-tools', 'pdf-tools', 'calculator-tools', 'seo-tools', 'text-tools', 'misc'].map((categorySlug) => {
               const categoryTools = filteredTools.filter(t => t.category === categorySlug);
               if (categoryTools.length === 0) return null;
               
@@ -136,6 +151,7 @@ export const Home: React.FC = () => {
                 'pdf-tools': 'PDF Tools',
                 'calculator-tools': 'Calculator Tools',
                 'seo-tools': 'SEO Tools',
+                'text-tools': 'Text Tools',
                 'misc': 'Miscellaneous Tools'
               };
 

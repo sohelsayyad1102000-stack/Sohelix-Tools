@@ -41,8 +41,16 @@ import { RobotsTxtGenerator } from '../components/tools/RobotsTxtGenerator';
 import { SitemapGenerator } from '../components/tools/SitemapGenerator';
 import { SlugGenerator } from '../components/tools/SlugGenerator';
 import { SerpPreview } from '../components/tools/SerpPreview';
+import { WordCounter } from '../components/tools/WordCounter';
+import { CaseConverter } from '../components/tools/CaseConverter';
+import { LineSorter } from '../components/tools/LineSorter';
+import { WhitespaceRemover } from '../components/tools/WhitespaceRemover';
+import { LoremIpsumGenerator } from '../components/tools/LoremIpsumGenerator';
+import { TextToHex } from '../components/tools/TextToHex';
+import { HexToText } from '../components/tools/HexToText';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export const ToolPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -56,21 +64,21 @@ export const ToolPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   
   // Tool specific settings
-  const [quality, setQuality] = useState(0.8);
-  const [width, setWidth] = useState<number | ''>('');
-  const [height, setHeight] = useState<number | ''>('');
-  const [watermarkText, setWatermarkText] = useState('Sohelix');
-  const [topText, setTopText] = useState('TOP TEXT');
-  const [bottomText, setBottomText] = useState('BOTTOM TEXT');
-  const [rotationAngle, setRotationAngle] = useState(90);
-  const [blurAmount, setBlurAmount] = useState(5);
-  const [autoDownload, setAutoDownload] = useState(false);
+  const [quality, setQuality] = useLocalStorage('tool-quality', 0.8);
+  const [width, setWidth] = useLocalStorage<number | ''>('tool-width', '');
+  const [height, setHeight] = useLocalStorage<number | ''>('tool-height', '');
+  const [watermarkText, setWatermarkText] = useLocalStorage('tool-watermark', 'Sohelix');
+  const [topText, setTopText] = useLocalStorage('tool-toptext', 'TOP TEXT');
+  const [bottomText, setBottomText] = useLocalStorage('tool-bottomtext', 'BOTTOM TEXT');
+  const [rotationAngle, setRotationAngle] = useLocalStorage('tool-rotation', 90);
+  const [blurAmount, setBlurAmount] = useLocalStorage('tool-blur', 5);
+  const [autoDownload, setAutoDownload] = useLocalStorage('tool-autodownload', false);
   
   // Crop settings
-  const [cropX, setCropX] = useState(10);
-  const [cropY, setCropY] = useState(10);
-  const [cropWidth, setCropWidth] = useState(80);
-  const [cropHeight, setCropHeight] = useState(80);
+  const [cropX, setCropX] = useLocalStorage('tool-cropx', 10);
+  const [cropY, setCropY] = useLocalStorage('tool-cropy', 10);
+  const [cropWidth, setCropWidth] = useLocalStorage('tool-cropwidth', 80);
+  const [cropHeight, setCropHeight] = useLocalStorage('tool-cropheight', 80);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -307,6 +315,20 @@ export const ToolPage: React.FC = () => {
           <SlugGenerator />
         ) : tool.id === 'serp-preview' ? (
           <SerpPreview />
+        ) : tool.id === 'word-counter' ? (
+          <WordCounter />
+        ) : tool.id === 'case-converter' ? (
+          <CaseConverter />
+        ) : tool.id === 'line-sorter' ? (
+          <LineSorter />
+        ) : tool.id === 'whitespace-remover' ? (
+          <WhitespaceRemover />
+        ) : tool.id === 'lorem-ipsum-generator' ? (
+          <LoremIpsumGenerator />
+        ) : tool.id === 'text-to-hex' ? (
+          <TextToHex />
+        ) : tool.id === 'hex-to-text' ? (
+          <HexToText />
         ) : (
           <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
             <div className="grid grid-cols-1 lg:grid-cols-3">
@@ -409,6 +431,15 @@ export const ToolPage: React.FC = () => {
                           placeholder="Auto"
                           className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                         />
+                      </div>
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        <button onClick={() => { setWidth(1920); setHeight(1080); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">1080p (1920x1080)</button>
+                        <button onClick={() => { setWidth(1280); setHeight(720); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">720p (1280x720)</button>
+                        <button onClick={() => { setWidth(1080); setHeight(1080); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Post (1080x1080)</button>
+                        <button onClick={() => { setWidth(1080); setHeight(1350); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Portrait (1080x1350)</button>
+                        <button onClick={() => { setWidth(1080); setHeight(1920); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Story (1080x1920)</button>
+                        <button onClick={() => { setWidth(1200); setHeight(630); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Facebook Post (1200x630)</button>
+                        <button onClick={() => { setWidth(1200); setHeight(675); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Twitter Post (1200x675)</button>
                       </div>
                     </div>
                   )}

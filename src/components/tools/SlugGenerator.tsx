@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, Check, RefreshCcw } from 'lucide-react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const STOP_WORDS = new Set([
   'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by', 'for', 'if', 'in', 'into', 'is', 'it', 'no', 'not', 'of', 'on', 'or', 'such', 'that', 'the', 'their', 'then', 'there', 'these', 'they', 'this', 'to', 'was', 'will', 'with'
 ]);
 
 export const SlugGenerator: React.FC = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useLocalStorage('slug-text', '');
   const [slug, setSlug] = useState('');
-  const [removeStopWords, setRemoveStopWords] = useState(true);
-  const [lowercase, setLowercase] = useState(true);
+  const [removeStopWords, setRemoveStopWords] = useLocalStorage('slug-remove-stop-words', true);
+  const [lowercase, setLowercase] = useLocalStorage('slug-lowercase', true);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
