@@ -32,8 +32,11 @@ import * as pdfjsLib from 'pdfjs-dist';
 import { cn, formatBytes } from '../../lib/utils';
 import { PDFPreview } from '../PDFPreview';
 
-// Set worker source
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+// Use the local worker from pdfjs-dist
+// @ts-ignore
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 interface MergePDFToolProps {
   tool: any;
@@ -132,7 +135,7 @@ export const MergePDFTool: React.FC<MergePDFToolProps> = ({ tool }) => {
         const context = canvas.getContext('2d');
         canvas.height = viewport.height;
         canvas.width = viewport.width;
-        await (page as any).render({ canvasContext: context!, viewport }).promise;
+        await (page as any).render({ canvasContext: context!, viewport, canvas }).promise;
         preview = canvas.toDataURL();
       } catch (err) {
         console.error('Thumbnail generation error:', err);

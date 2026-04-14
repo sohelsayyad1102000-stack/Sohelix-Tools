@@ -1117,5 +1117,1011 @@ export const TOOLS: Tool[] = [
       }
     ],
     longContent: 'Easily decode hexadecimal data back into readable text with the <a href="/tools/hex-to-text" class="underline hover:text-blue-200">Hex to Text Converter</a>. The tool is smart enough to ignore common formatting characters like spaces or "0x" prefixes, giving you the clean text output you need instantly.'
+  },
+  {
+    id: 'color-palette-generator',
+    name: 'Color Palette Generator',
+    title: 'Image Color Palette Generator',
+    description: 'Extract a beautiful color palette from any image instantly.',
+    icon: 'Palette',
+    slug: 'color-palette-generator',
+    category: 'image-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Image Color Palette Generator - Extract Colors from Photos',
+      description: 'Extract professional color palettes from your images. Get HEX and RGB codes instantly. Free online tool for designers.',
+      keywords: ['color palette generator', 'extract colors from image', 'image color extractor', 'hex code finder', 'design tool'],
+    },
+    features: [
+      'Extract dominant colors',
+      'HEX and RGB support',
+      'One-click copy',
+      'Privacy-focused processing'
+    ],
+    benefits: [
+      'Create consistent designs',
+      'Find inspiration in photos',
+      'Save time picking colors'
+    ],
+    useCases: [
+      'Web design projects',
+      'Brand identity creation',
+      'Digital art inspiration'
+    ],
+    faqs: [
+      {
+        question: 'How many colors does it extract?',
+        answer: 'The tool extracts the top 6-8 dominant colors from your image to create a balanced palette.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/color-palette-generator" class="underline hover:text-blue-200">Color Palette Generator</a> uses advanced algorithms to analyze your images and extract the most prominent colors. Perfect for designers and artists looking to build cohesive color schemes from real-world inspiration.'
+  },
+  {
+    id: 'image-color-picker',
+    name: 'Image Color Picker',
+    title: 'Online Image Color Picker',
+    description: 'Pick any color from an image and get its HEX code.',
+    icon: 'Pipette',
+    slug: 'image-color-picker',
+    category: 'image-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online Image Color Picker - Get HEX from Image',
+      description: 'Pick any color from your images with precision. Get HEX codes instantly. Free, fast, and secure client-side tool.',
+      keywords: ['image color picker', 'hex color finder', 'get color from image', 'eyedropper tool', 'online color picker'],
+    },
+    features: [
+      'Precision color picking',
+      'Zoom for accuracy',
+      'HEX code output',
+      'Instant copy'
+    ],
+    benefits: [
+      'Match colors exactly',
+      'Extract specific shades',
+      'No software needed'
+    ],
+    useCases: [
+      'Matching UI elements to images',
+      'Finding specific brand colors',
+      'Graphic design work'
+    ],
+    faqs: [
+      {
+        question: 'Is my image uploaded?',
+        answer: 'No, your image is processed entirely in your browser. We never see or store your files.'
+      }
+    ],
+    longContent: 'Need the exact HEX code of a color in a photo? Our <a href="/tools/image-color-picker" class="underline hover:text-blue-200">Image Color Picker</a> lets you click anywhere on an uploaded image to retrieve its precise color value instantly.'
+  },
+  {
+    id: 'webp-to-jpg',
+    name: 'WebP to JPG Converter',
+    title: 'Convert WebP to JPG Online',
+    description: 'Convert WebP images to high-quality JPG format instantly.',
+    icon: 'FileImage',
+    slug: 'webp-to-jpg',
+    category: 'image-tools',
+    isNew: true,
+    seo: {
+      title: 'Free WebP to JPG Converter - High Quality Conversion',
+      description: 'Convert WebP images to JPG format online for free. Maintain high quality and convert multiple files at once.',
+      keywords: ['webp to jpg', 'convert webp to jpeg', 'webp converter', 'image conversion'],
+    },
+    features: [
+      'High-quality conversion',
+      'Batch processing',
+      'Instant download',
+      'Privacy-focused'
+    ],
+    benefits: [
+      'Improve compatibility',
+      'Reduce file size',
+      'Fast and easy to use'
+    ],
+    useCases: [
+      'Converting images for older browsers',
+      'Preparing images for print',
+      'Standardizing image formats'
+    ],
+    faqs: [
+      {
+        question: 'Will I lose quality?',
+        answer: 'We use high-quality conversion settings to ensure your JPGs look as close to the original WebP as possible.'
+      }
+    ],
+    longContent: 'The <a href="/tools/webp-to-jpg" class="underline hover:text-blue-200">WebP to JPG Converter</a> is a fast and secure way to change your image formats. While WebP is great for the web, JPG is more widely compatible with older software and devices.'
+  },
+  {
+    id: 'timestamp-converter',
+    name: 'Timestamp Converter',
+    title: 'Unix Timestamp Converter',
+    description: 'Convert Unix timestamps to human-readable dates and vice versa.',
+    icon: 'Clock',
+    slug: 'timestamp-converter',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Unix Timestamp Converter - Epoch Time Converter',
+      description: 'Convert Unix timestamps to human-readable dates and vice versa. Supports seconds, milliseconds, and multiple timezones.',
+      keywords: ['timestamp converter', 'unix timestamp', 'epoch converter', 'date to timestamp', 'time utility'],
+    },
+    features: [
+      'Unix to Human conversion',
+      'Human to Unix conversion',
+      'Supports ms, seconds, µs',
+      'Timezone selection'
+    ],
+    benefits: [
+      'Debug time-related issues',
+      'Convert logs easily',
+      'Fast and accurate'
+    ],
+    useCases: [
+      'Software development',
+      'Log analysis',
+      'Database management'
+    ],
+    faqs: [
+      {
+        question: 'What is a Unix timestamp?',
+        answer: 'A Unix timestamp is the number of seconds that have elapsed since January 1, 1970 (UTC), not counting leap seconds.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/timestamp-converter" class="underline hover:text-blue-200">Unix Timestamp Converter</a> makes it easy to work with epoch time. Whether you are a developer debugging a database or an analyst reading logs, this tool provides instant, accurate conversions between raw timestamps and readable dates.'
+  },
+  {
+    id: 'json-formatter',
+    name: 'JSON Formatter',
+    title: 'Online JSON Formatter & Validator',
+    description: 'Beautify, minify, and validate your JSON data instantly.',
+    icon: 'Code',
+    slug: 'json-formatter',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online JSON Formatter - Beautify & Validate JSON',
+      description: 'Beautify, minify, and validate JSON data online. Fix messy JSON and detect syntax errors instantly. Free and secure.',
+      keywords: ['json formatter', 'beautify json', 'minify json', 'json validator', 'json editor'],
+    },
+    features: [
+      'Beautify messy JSON',
+      'Minify JSON for production',
+      'Real-time syntax validation',
+      'One-click copy'
+    ],
+    benefits: [
+      'Make JSON readable',
+      'Detect errors quickly',
+      'Prepare data for APIs'
+    ],
+    useCases: [
+      'API development',
+      'Debugging configuration files',
+      'Data cleaning'
+    ],
+    faqs: [
+      {
+        question: 'Can it fix broken JSON?',
+        answer: 'It will highlight syntax errors to help you fix them, but it won\'t automatically guess missing brackets or quotes.'
+      }
+    ],
+    longContent: 'The <a href="/tools/json-formatter" class="underline hover:text-blue-200">JSON Formatter</a> is an essential tool for developers. It takes raw, unreadable JSON strings and formats them into a clean, indented structure. It also validates your data in real-time, helping you spot missing commas or incorrect quotes instantly.'
+  },
+  {
+    id: 'base64-converter',
+    name: 'Base64 Encoder / Decoder',
+    title: 'Online Base64 Encoder & Decoder',
+    description: 'Encode and decode text or images to Base64 format securely.',
+    icon: 'Hash',
+    slug: 'base64-converter',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Base64 Encoder & Decoder - Online Encoding Tool',
+      description: 'Encode or decode text and images to Base64 format online. Fast, secure, and runs entirely in your browser.',
+      keywords: ['base64 encoder', 'base64 decoder', 'base64 converter', 'string to base64', 'base64 to string'],
+    },
+    features: [
+      'Encode text to Base64',
+      'Decode Base64 to text',
+      'Support for images',
+      'Live processing'
+    ],
+    benefits: [
+      'Secure data encoding',
+      'Embed images in HTML/CSS',
+      'Fast and private'
+    ],
+    useCases: [
+      'Web development',
+      'Data transmission',
+      'Email attachments'
+    ],
+    faqs: [
+      {
+        question: 'Is Base64 encryption?',
+        answer: 'No, Base64 is an encoding scheme, not encryption. It is used to represent binary data in an ASCII string format.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/base64-converter" class="underline hover:text-blue-200">Base64 Encoder / Decoder</a> provides a simple way to convert data between plain text and Base64. This is particularly useful for developers who need to embed small images in CSS or transmit binary data over text-based protocols.'
+  },
+  {
+    id: 'currency-converter',
+    name: 'Currency Converter',
+    title: 'Real-Time Currency Converter',
+    description: 'Convert between global currencies instantly with real-time exchange rates.',
+    icon: 'Coins',
+    slug: 'currency-converter',
+    category: 'finance-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online Currency Converter - Real-Time Exchange Rates',
+      description: 'Convert USD, INR, EUR, GBP, and more instantly. Get real-time exchange rates and historical trends. Free online finance tool.',
+      keywords: ['currency converter', 'exchange rates', 'usd to inr', 'forex converter', 'money converter'],
+    },
+    features: [
+      'Real-time exchange rates',
+      'Support for 150+ currencies',
+      'Historical rate charts',
+      'Instant conversion'
+    ],
+    benefits: [
+      'Plan international travel',
+      'Manage global business',
+      'Track currency trends'
+    ],
+    useCases: [
+      'Travelers and tourists',
+      'E-commerce businesses',
+      'Forex traders'
+    ],
+    faqs: [
+      {
+        question: 'How often are rates updated?',
+        answer: 'Rates are updated every hour to ensure you have the most accurate conversion data available.'
+      }
+    ],
+    longContent: 'The <a href="/tools/currency-converter" class="underline hover:text-blue-200">Real-Time Currency Converter</a> is your go-to tool for global money conversion. Whether you are shopping online from a foreign store or planning your next international trip, our tool provides instant and accurate exchange rates for over 150 currencies.'
+  },
+  {
+    id: 'currency-denomination',
+    name: 'Denomination Calculator',
+    title: 'Currency Denomination Calculator',
+    description: 'Calculate total cash value by entering the number of notes for each denomination.',
+    icon: 'Banknote',
+    slug: 'currency-denomination',
+    category: 'finance-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Currency Denomination Calculator - Cash Counter',
+      description: 'Calculate total cash value easily. Supports multiple currencies and custom denominations. Perfect for businesses and cash handling.',
+      keywords: ['denomination calculator', 'cash counter', 'money counter', 'currency calculator', 'cash management'],
+    },
+    features: [
+      'Multi-currency support',
+      'Auto-total calculation',
+      'Breakdown suggestions',
+      'Printable reports'
+    ],
+    benefits: [
+      'Speed up cash counting',
+      'Reduce human error',
+      'Organize daily cash flow'
+    ],
+    useCases: [
+      'Retail store owners',
+      'Bank tellers',
+      'Personal budget management'
+    ],
+    faqs: [
+      {
+        question: 'Can I add custom denominations?',
+        answer: 'Yes, you can add or remove denominations to match your specific currency or needs.'
+      }
+    ],
+    longContent: 'Tired of counting cash manually? Our <a href="/tools/currency-denomination" class="underline hover:text-blue-200">Currency Denomination Calculator</a> simplifies the process. Just enter the count for each note or coin, and the tool instantly calculates the total value, providing a clear breakdown for your records.'
+  },
+  {
+    id: 'sip-calculator',
+    name: 'SIP Calculator',
+    title: 'SIP Investment Calculator',
+    description: 'Calculate your future wealth with Systematic Investment Plan (SIP) projections.',
+    icon: 'TrendingUp',
+    slug: 'sip-calculator',
+    category: 'finance-tools',
+    isNew: true,
+    seo: {
+      title: 'Free SIP Calculator - Mutual Fund Investment Projections',
+      description: 'Calculate the future value of your SIP investments. Compare step-up SIPs and inflation-adjusted returns. Free online investment tool.',
+      keywords: ['sip calculator', 'mutual fund calculator', 'investment planner', 'wealth generator', 'step-up sip'],
+    },
+    features: [
+      'Monthly/Yearly projections',
+      'Step-up SIP option',
+      'Inflation adjustment',
+      'Interactive growth charts'
+    ],
+    benefits: [
+      'Plan your retirement',
+      'Visualize wealth growth',
+      'Compare different funds'
+    ],
+    useCases: [
+      'Long-term investors',
+      'Financial planners',
+      'First-time mutual fund buyers'
+    ],
+    faqs: [
+      {
+        question: 'What is a Step-up SIP?',
+        answer: 'A Step-up SIP allows you to increase your monthly investment amount by a fixed percentage or amount every year as your income grows.'
+      }
+    ],
+    longContent: 'The <a href="/tools/sip-calculator" class="underline hover:text-blue-200">SIP Investment Calculator</a> helps you visualize the power of compounding. By investing a fixed amount regularly in mutual funds, you can build significant wealth over time. Our tool provides detailed projections, including the impact of inflation and annual step-ups.'
+  },
+  {
+    id: 'advanced-loan-calculator',
+    name: 'Advanced Loan Calculator',
+    title: 'Advanced Loan & Mortgage Calculator',
+    description: 'Detailed loan analysis with amortization schedules and interest breakdowns.',
+    icon: 'Home',
+    slug: 'advanced-loan-calculator',
+    category: 'finance-tools',
+    isNew: true,
+    seo: {
+      title: 'Advanced Loan Calculator - Detailed Amortization Schedule',
+      description: 'Calculate loan EMIs, total interest, and view a full amortization schedule. Compare home, car, and personal loans with ease.',
+      keywords: ['loan calculator', 'mortgage calculator', 'amortization schedule', 'loan comparison', 'debt planner'],
+    },
+    features: [
+      'Full amortization schedule',
+      'Home & Car loan presets',
+      'Extra payment analysis',
+      'Total cost breakdown'
+    ],
+    benefits: [
+      'Understand your debt',
+      'Plan early repayments',
+      'Save on total interest'
+    ],
+    useCases: [
+      'Home buyers',
+      'Car shoppers',
+      'Debt consolidation planning'
+    ],
+    faqs: [
+      {
+        question: 'What is an amortization schedule?',
+        answer: 'An amortization schedule is a table detailing each periodic payment on a loan, showing the amount of principal and interest that make up each payment.'
+      }
+    ],
+    longContent: 'Take full control of your debt with the <a href="/tools/advanced-loan-calculator" class="underline hover:text-blue-200">Advanced Loan Calculator</a>. Beyond just calculating EMIs, this tool provides a complete month-by-month breakdown of your loan, helping you see exactly how much interest you are paying and how extra payments can shorten your tenure.'
+  },
+  {
+    id: 'percentage-calculator',
+    name: 'Percentage Calculator',
+    title: 'All-in-One Percentage Calculator',
+    description: 'Calculate percentage increase, decrease, difference, and more instantly.',
+    icon: 'Percent',
+    slug: 'percentage-calculator',
+    category: 'finance-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online Percentage Calculator - Increase & Decrease',
+      description: 'Calculate percentages easily. Find percentage of a value, percentage change, and percentage difference. Free online math tool.',
+      keywords: ['percentage calculator', 'percent change', 'percentage increase', 'math tool', 'discount calculator'],
+    },
+    features: [
+      'Percentage of a value',
+      'Percentage increase/decrease',
+      'Percentage difference',
+      'Reverse percentage'
+    ],
+    benefits: [
+      'Calculate discounts quickly',
+      'Analyze growth rates',
+      'Solve math problems easily'
+    ],
+    useCases: [
+      'Shopping and discounts',
+      'Business growth analysis',
+      'Academic studies'
+    ],
+    faqs: [
+      {
+        question: 'How do I calculate percentage increase?',
+        answer: 'Subtract the original value from the new value, divide by the original value, and multiply by 100.'
+      }
+    ],
+    longContent: 'The <a href="/tools/percentage-calculator" class="underline hover:text-blue-200">Percentage Calculator</a> is a versatile tool for everyday math. Whether you are calculating a tip at a restaurant, a discount during a sale, or a year-over-year growth rate for your business, this tool provides instant and accurate results.'
+  },
+  {
+    id: 'inflation-calculator',
+    name: 'Inflation Calculator',
+    title: 'Purchasing Power & Inflation Calculator',
+    description: 'Calculate how inflation affects the value of your money over time.',
+    icon: 'Activity',
+    slug: 'inflation-calculator',
+    category: 'finance-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Inflation Calculator - Purchasing Power Over Time',
+      description: 'See how the value of money has changed over the years. Calculate inflation-adjusted prices and purchasing power loss.',
+      keywords: ['inflation calculator', 'purchasing power', 'money value over time', 'inflation adjustment', 'economic tool'],
+    },
+    features: [
+      'Historical inflation data',
+      'Purchasing power projection',
+      'Custom inflation rates',
+      'Multi-currency support'
+    ],
+    benefits: [
+      'Understand real value of money',
+      'Plan for future costs',
+      'Analyze historical prices'
+    ],
+    useCases: [
+      'Retirement planning',
+      'Economic research',
+      'Business budgeting'
+    ],
+    faqs: [
+      {
+        question: 'What is inflation?',
+        answer: 'Inflation is the rate at which the general level of prices for goods and services is rising, and, subsequently, purchasing power is falling.'
+      }
+    ],
+    longContent: 'Understand the real impact of rising prices with our <a href="/tools/inflation-calculator" class="underline hover:text-blue-200">Inflation Calculator</a>. By adjusting for inflation, you can see what a certain amount of money from the past would be worth today, or project how much you will need in the future to maintain your current lifestyle.'
+  },
+  {
+    id: 'pdf-to-png',
+    name: 'PDF to PNG',
+    title: 'Convert PDF to PNG Images',
+    description: 'Convert PDF pages into high-quality PNG images online for free.',
+    icon: 'FileImage',
+    slug: 'pdf-to-png',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online PDF to PNG Converter - High Quality Images',
+      description: 'Convert PDF to PNG online for free. Extract pages as high-quality PNG images. No file upload, 100% secure client-side processing.',
+      keywords: ['pdf to png', 'convert pdf to png', 'extract images from pdf', 'pdf to image converter'],
+    },
+    features: [
+      'High-resolution output',
+      'Page range selection',
+      'Instant preview',
+      'ZIP download support',
+      '100% client-side'
+    ],
+    benefits: [
+      'Extract high-quality images',
+      'Protect your privacy',
+      'Fast processing'
+    ],
+    useCases: [
+      'Social media sharing',
+      'Document archiving',
+      'Web design'
+    ],
+    faqs: [
+      {
+        question: 'Is it safe to convert PDF to PNG here?',
+        answer: 'Yes, all processing happens in your browser. Your files are never uploaded to any server.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/pdf-to-png" class="underline hover:text-blue-200">PDF to PNG converter</a> allows you to transform your PDF documents into high-quality image files. Whether you need to share a single page on social media or extract all pages for a presentation, our tool provides a fast and secure way to do it without compromising your privacy.'
+  },
+  {
+    id: 'pdf-to-jpg',
+    name: 'PDF to JPG',
+    title: 'Convert PDF to JPG Images',
+    description: 'Convert PDF pages into optimized JPG images with quality control.',
+    icon: 'FileImage',
+    slug: 'pdf-to-jpg',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online PDF to JPG Converter - Optimized Images',
+      description: 'Convert PDF to JPG online for free. Adjust quality settings and extract pages as JPG images. Fast, secure, and client-side.',
+      keywords: ['pdf to jpg', 'convert pdf to jpg', 'pdf to jpeg', 'online pdf converter'],
+    },
+    features: [
+      'Adjustable JPG quality',
+      'Page range selection',
+      'Batch conversion',
+      'ZIP download',
+      'Privacy-focused'
+    ],
+    benefits: [
+      'Smaller file sizes',
+      'Universal compatibility',
+      'No server uploads'
+    ],
+    useCases: [
+      'Email attachments',
+      'Website assets',
+      'Personal archiving'
+    ],
+    faqs: [
+      {
+        question: 'Can I choose the quality of the JPG?',
+        answer: 'Yes, you can select between low, medium, and high quality to balance file size and clarity.'
+      }
+    ],
+    longContent: 'Transform your PDF files into universally compatible JPG images with our <a href="/tools/pdf-to-jpg" class="underline hover:text-blue-200">PDF to JPG tool</a>. This tool is perfect for when you need smaller file sizes for web use or email while maintaining control over the final image quality.'
+  },
+  {
+    id: 'pdf-reader',
+    name: 'PDF Reader',
+    title: 'Professional Online PDF Reader',
+    description: 'View and read PDF documents online with advanced navigation and search.',
+    icon: 'BookOpen',
+    slug: 'pdf-reader',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online PDF Reader - View & Search PDF Documents',
+      description: 'Read PDF files online for free. Features include page navigation, zoom, search, and dark mode. 100% secure and private.',
+      keywords: ['pdf reader', 'view pdf online', 'pdf viewer', 'search pdf text', 'online document reader'],
+    },
+    features: [
+      'Smooth page navigation',
+      'Text search within PDF',
+      'Zoom in/out controls',
+      'Dark mode support',
+      'Thumbnail sidebar'
+    ],
+    benefits: [
+      'No software installation needed',
+      'Read documents anywhere',
+      'Fast and responsive UI'
+    ],
+    useCases: [
+      'Reading ebooks',
+      'Reviewing reports',
+      'Quick document viewing'
+    ],
+    faqs: [
+      {
+        question: 'Does this reader support search?',
+        answer: 'Yes, you can search for specific text strings within your PDF document.'
+      }
+    ],
+    longContent: 'Experience a seamless reading experience with our <a href="/tools/pdf-reader" class="underline hover:text-blue-200">Online PDF Reader</a>. Designed for speed and ease of use, it provides all the essential features of a desktop viewer right in your browser, including full-text search and a comfortable dark mode for late-night reading.'
+  },
+  {
+    id: 'pdf-page-counter',
+    name: 'PDF Page Counter',
+    title: 'Instant PDF Page Counter',
+    description: 'Quickly find out the total number of pages and metadata of any PDF file.',
+    icon: 'Hash',
+    slug: 'pdf-page-counter',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online PDF Page Counter - Check PDF Page Count',
+      description: 'Count PDF pages instantly online. Get total page count, file size, and basic metadata without uploading your file.',
+      keywords: ['pdf page counter', 'count pdf pages', 'check pdf length', 'pdf metadata viewer'],
+    },
+    features: [
+      'Instant page counting',
+      'File size information',
+      'Basic metadata extraction',
+      'No file upload required',
+      'Lightning fast'
+    ],
+    benefits: [
+      'Save time on large files',
+      'Verify document length',
+      'Complete privacy'
+    ],
+    useCases: [
+      'Printing preparation',
+      'Document auditing',
+      'Quick file checks'
+    ],
+    faqs: [
+      {
+        question: 'How fast is the page counter?',
+        answer: 'It is nearly instant, as it only reads the necessary header information from your PDF file.'
+      }
+    ],
+    longContent: 'Need to know how many pages are in a PDF without opening it? Our <a href="/tools/pdf-page-counter" class="underline hover:text-blue-200">PDF Page Counter</a> provides the answer in milliseconds. It also displays the file size and other basic information, making it an essential tool for quick document audits.'
+  },
+  {
+    id: 'pdf-page-rotator',
+    name: 'PDF Page Rotator',
+    title: 'Rotate PDF Pages Online',
+    description: 'Rotate individual pages or the entire PDF document easily.',
+    icon: 'RotateCw',
+    slug: 'pdf-page-rotator',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online PDF Page Rotator - Rotate PDF Pages Fast',
+      description: 'Rotate PDF pages 90, 180, or 270 degrees online for free. Apply to specific pages or the whole document. 100% secure.',
+      keywords: ['rotate pdf', 'turn pdf pages', 'pdf orientation fixer', 'online pdf editor'],
+    },
+    features: [
+      'Rotate 90°, 180°, 270°',
+      'Apply to specific pages',
+      'Apply to all pages',
+      'Instant preview',
+      'Download modified PDF'
+    ],
+    benefits: [
+      'Fix upside-down scans',
+      'Adjust document orientation',
+      'Secure local editing'
+    ],
+    useCases: [
+      'Fixing scanned documents',
+      'Preparing presentations',
+      'Correcting mobile uploads'
+    ],
+    faqs: [
+      {
+        question: 'Can I rotate just one page?',
+        answer: 'Yes, you can specify a single page or a range of pages to rotate.'
+      }
+    ],
+    longContent: 'Fix oriented issues in your documents with our <a href="/tools/pdf-page-rotator" class="underline hover:text-blue-200">PDF Page Rotator</a>. Whether you have a single page that was scanned sideways or an entire document that needs a 180-degree flip, our tool makes it simple and secure to get the right orientation.'
+  },
+  {
+    id: 'uuid-generator',
+    name: 'UUID Generator',
+    title: 'Online UUID/GUID Generator',
+    description: 'Generate unique UUIDs (v1, v4, v3, v5) instantly for your projects.',
+    icon: 'Zap',
+    slug: 'uuid-generator',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online UUID Generator - Generate v4 UUIDs Instantly',
+      description: 'Generate unique UUIDs (v1, v4, v3, v5) online for free. Support for bulk generation, multiple versions, and instant copy. 100% secure.',
+      keywords: ['uuid generator', 'guid generator', 'generate uuid v4', 'online unique id maker', 'bulk uuid generator'],
+    },
+    features: [
+      'Generate v1, v3, v4, v5 UUIDs',
+      'Bulk generation support',
+      'Instant copy to clipboard',
+      'Local history tracking',
+      'Export results as TXT'
+    ],
+    benefits: [
+      'Unique identifiers for databases',
+      'Fast developer workflow',
+      'No tracking or data collection'
+    ],
+    useCases: [
+      'Database primary keys',
+      'Session identifiers',
+      'Transaction IDs'
+    ],
+    faqs: [
+      {
+        question: 'What is a UUID?',
+        answer: 'A Universally Unique Identifier (UUID) is a 128-bit number used to uniquely identify information in computer systems.'
+      },
+      {
+        question: 'Is UUID v4 truly random?',
+        answer: 'Yes, UUID v4 is generated using random or pseudo-random numbers, providing a extremely high degree of uniqueness.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/uuid-generator" class="underline hover:text-blue-200">UUID Generator</a> is a professional tool for developers who need reliable unique identifiers. Whether you need a single v4 UUID for a test case or a hundred v1 IDs for a migration script, our tool provides them instantly. Everything is generated in your browser, ensuring your IDs are never exposed to any server.'
+  },
+  {
+    id: 'regex-tester',
+    name: 'Regex Tester',
+    title: 'Online Regular Expression Tester',
+    description: 'Test and debug your regular expressions with real-time highlighting.',
+    icon: 'Search',
+    slug: 'regex-tester',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online Regex Tester - Test Regular Expressions Live',
+      description: 'Test and debug regular expressions online with real-time highlighting and match details. Supports all JS regex flags. Free and secure.',
+      keywords: ['regex tester', 'regular expression debugger', 'online regex tool', 'regex highlighter', 'javascript regex test'],
+    },
+    features: [
+      'Real-time match highlighting',
+      'Support for all regex flags',
+      'Detailed match information',
+      'Capture group detection',
+      'Pattern history'
+    ],
+    benefits: [
+      'Debug complex patterns fast',
+      'Verify matches instantly',
+      'Learn regex with live feedback'
+    ],
+    useCases: [
+      'Form validation testing',
+      'Data extraction patterns',
+      'Code debugging'
+    ],
+    faqs: [
+      {
+        question: 'What regex engine is used?',
+        answer: 'This tool uses the native JavaScript RegExp engine, making it perfect for web developers.'
+      }
+    ],
+    longContent: 'The <a href="/tools/regex-tester" class="underline hover:text-blue-200">Regex Tester</a> provides a powerful environment for building and debugging regular expressions. With live highlighting and detailed match breakdowns, you can ensure your patterns work exactly as intended before implementing them in your code.'
+  },
+  {
+    id: 'url-encoder-decoder',
+    name: 'URL Encoder / Decoder',
+    title: 'Online URL Encoder & Decoder',
+    description: 'Encode or decode URLs and strings securely for web transmission.',
+    icon: 'Link',
+    slug: 'url-encoder-decoder',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online URL Encoder & Decoder - Percent Encoding Tool',
+      description: 'Encode or decode URLs and strings online for free. Convert special characters to percent-encoded format. Fast and secure.',
+      keywords: ['url encoder', 'url decoder', 'percent encoding', 'uri component converter', 'online url tool'],
+    },
+    features: [
+      'Fast URL encoding',
+      'Accurate URL decoding',
+      'Live processing',
+      'History tracking',
+      'One-click copy'
+    ],
+    benefits: [
+      'Safe data transmission',
+      'Fix broken URL parameters',
+      'Developer-friendly interface'
+    ],
+    useCases: [
+      'Preparing API parameters',
+      'Decoding tracking links',
+      'Web development'
+    ],
+    faqs: [
+      {
+        question: 'Why do I need to encode URLs?',
+        answer: 'URLs can only contain certain characters. Encoding ensures that special characters like spaces or symbols are safely transmitted.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/url-encoder-decoder" class="underline hover:text-blue-200">URL Encoder / Decoder</a> is an essential utility for web developers. It handles percent-encoding for URI components, ensuring your data is correctly formatted for the web. Like all Sohelix tools, it runs entirely in your browser.'
+  },
+  {
+    id: 'csv-to-json',
+    name: 'CSV to JSON Converter',
+    title: 'Convert CSV to JSON Online',
+    description: 'Convert CSV data to JSON format with table preview and export options.',
+    icon: 'FileJson',
+    slug: 'csv-to-json',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free CSV to JSON Converter - Online Data Conversion',
+      description: 'Convert CSV files to JSON format online for free. Includes table preview, automatic header detection, and JSON export. 100% secure.',
+      keywords: ['csv to json', 'convert csv to json', 'csv parser', 'online data converter', 'csv to json table'],
+    },
+    features: [
+      'Automatic header detection',
+      'Live table preview',
+      'Drag and drop support',
+      'Export as JSON file',
+      'Handles large datasets'
+    ],
+    benefits: [
+      'Prepare data for APIs',
+      'Visualize CSV data easily',
+      'Fast and private conversion'
+    ],
+    useCases: [
+      'Data migration',
+      'API development',
+      'Data analysis'
+    ],
+    faqs: [
+      {
+        question: 'Does it support large CSV files?',
+        answer: 'Yes, our tool uses high-performance parsing to handle large CSV files efficiently in your browser.'
+      }
+    ],
+    longContent: 'The <a href="/tools/csv-to-json" class="underline hover:text-blue-200">CSV to JSON Converter</a> makes data transformation simple. Paste your CSV or upload a file to see an instant table preview and get the formatted JSON output. It is perfect for developers who need to clean and convert data for their applications.'
+  },
+  {
+    id: 'json-to-csv',
+    name: 'JSON to CSV Converter',
+    title: 'Convert JSON to CSV Online',
+    description: 'Convert JSON arrays or objects to CSV format easily.',
+    icon: 'FileSpreadsheet',
+    slug: 'json-to-csv',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free JSON to CSV Converter - Online Data Export',
+      description: 'Convert JSON data to CSV format online for free. Support for nested objects, table preview, and CSV download. Secure and fast.',
+      keywords: ['json to csv', 'convert json to csv', 'json to spreadsheet', 'online json converter', 'json to excel'],
+    },
+    features: [
+      'Convert JSON arrays to CSV',
+      'Live table preview',
+      'Download as CSV file',
+      'Error detection',
+      'Supports nested objects'
+    ],
+    benefits: [
+      'Export API data to Excel',
+      'Make JSON data readable',
+      'Quick data transformation'
+    ],
+    useCases: [
+      'Data reporting',
+      'Spreadsheet integration',
+      'Database exports'
+    ],
+    faqs: [
+      {
+        question: 'Can I convert a single JSON object?',
+        answer: 'Yes, the tool automatically handles both single objects and arrays of objects.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/json-to-csv" class="underline hover:text-blue-200">JSON to CSV Converter</a> is the fastest way to turn your JSON data into a spreadsheet-ready format. Whether you are exporting data from a database or an API, this tool provides a clean CSV output instantly.'
+  },
+  {
+    id: 'html-minifier',
+    name: 'HTML Minifier',
+    title: 'Online HTML Minifier & Optimizer',
+    description: 'Compress and optimize your HTML code for faster website loading.',
+    icon: 'Code',
+    slug: 'html-minifier',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online HTML Minifier - Optimize HTML Code',
+      description: 'Minify and optimize your HTML code online for free. Remove comments, whitespace, and unnecessary attributes to boost performance.',
+      keywords: ['html minifier', 'compress html', 'optimize html', 'html compressor', 'online code optimizer'],
+    },
+    features: [
+      'Remove comments and whitespace',
+      'Collapse boolean attributes',
+      'Size reduction stats',
+      'Instant preview',
+      'Download minified HTML'
+    ],
+    benefits: [
+      'Improve page load speed',
+      'Reduce bandwidth usage',
+      'Better SEO performance'
+    ],
+    useCases: [
+      'Production code optimization',
+      'Email template minification',
+      'Web development'
+    ],
+    faqs: [
+      {
+        question: 'Does minification break my code?',
+        answer: 'No, minification only removes unnecessary characters. Your HTML will function exactly the same but load faster.'
+      }
+    ],
+    longContent: 'The <a href="/tools/html-minifier" class="underline hover:text-blue-200">HTML Minifier</a> is a powerful tool for web performance optimization. By removing comments, extra spaces, and redundant attributes, you can significantly reduce the size of your HTML files, leading to faster load times and better user experience.'
+  },
+  {
+    id: 'css-minifier',
+    name: 'CSS Minifier',
+    title: 'Online CSS Minifier & Optimizer',
+    description: 'Compress your CSS files to reduce size and improve performance.',
+    icon: 'Code',
+    slug: 'css-minifier',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online CSS Minifier - Compress CSS Code',
+      description: 'Minify and optimize your CSS code online for free. Remove comments and whitespace to reduce file size and speed up your site.',
+      keywords: ['css minifier', 'compress css', 'optimize css', 'css compressor', 'online style optimizer'],
+    },
+    features: [
+      'Remove comments and whitespace',
+      'Shorten color codes',
+      'Size reduction insights',
+      'Fast local processing',
+      'Download minified CSS'
+    ],
+    benefits: [
+      'Faster website rendering',
+      'Smaller asset sizes',
+      'Professional optimization'
+    ],
+    useCases: [
+      'Frontend development',
+      'WordPress optimization',
+      'Performance tuning'
+    ],
+    faqs: [
+      {
+        question: 'Is it safe to minify CSS?',
+        answer: 'Yes, minification is a standard practice in web development to improve performance without changing functionality.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/css-minifier" class="underline hover:text-blue-200">CSS Minifier</a> takes your stylesheets and strips away all non-essential characters. This results in a much smaller file that browsers can download and parse more quickly, giving your website a performance boost.'
+  },
+  {
+    id: 'js-minifier',
+    name: 'JavaScript Minifier',
+    title: 'Online JavaScript Minifier & Obfuscator',
+    description: 'Minify and optimize your JavaScript code using Terser technology.',
+    icon: 'Code',
+    slug: 'js-minifier',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online JavaScript Minifier - Compress JS Code',
+      description: 'Minify and optimize your JavaScript code online for free. Uses Terser for advanced compression and variable mangling.',
+      keywords: ['js minifier', 'javascript compressor', 'minify js', 'terser online', 'optimize javascript'],
+    },
+    features: [
+      'Advanced Terser compression',
+      'Variable mangling support',
+      'Size reduction statistics',
+      'Error detection',
+      'Download minified JS'
+    ],
+    benefits: [
+      'Fastest possible JS execution',
+      'Reduced payload size',
+      'Code obfuscation'
+    ],
+    useCases: [
+      'Production deployments',
+      'Library optimization',
+      'Performance audits'
+    ],
+    faqs: [
+      {
+        question: 'What is Terser?',
+        answer: 'Terser is the industry-standard JavaScript minifier used by tools like Webpack and Vite.'
+      }
+    ],
+    longContent: 'The <a href="/tools/js-minifier" class="underline hover:text-blue-200">JavaScript Minifier</a> uses advanced compression algorithms to shrink your JS files. By mangling variable names and removing dead code, it ensures your scripts are as small and fast as possible.'
+  },
+  {
+    id: 'color-converter',
+    name: 'Color Code Converter',
+    title: 'Online Color Code Converter',
+    description: 'Convert between HEX, RGB, and HSL color formats instantly.',
+    icon: 'Palette',
+    slug: 'color-converter',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Online Color Converter - HEX to RGB & HSL',
+      description: 'Convert color codes between HEX, RGB, and HSL formats online for free. Includes color preview and history. Perfect for designers.',
+      keywords: ['color converter', 'hex to rgb', 'rgb to hsl', 'color code finder', 'design utility'],
+    },
+    features: [
+      'Convert HEX to RGB and HSL',
+      'Live color preview',
+      'Color history tracking',
+      'Instant copy to clipboard',
+      'Clean design interface'
+    ],
+    benefits: [
+      'Match colors across formats',
+      'Fast design workflow',
+      'Visual feedback'
+    ],
+    useCases: [
+      'Web design',
+      'Graphic design',
+      'Brand style guides'
+    ],
+    faqs: [
+      {
+        question: 'What is HSL?',
+        answer: 'HSL stands for Hue, Saturation, and Lightness, and is often more intuitive for designers than RGB.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/color-converter" class="underline hover:text-blue-200">Color Code Converter</a> is a simple but powerful tool for anyone working with digital colors. It provides instant conversions between the most common web color formats, helping you maintain consistency across your projects.'
   }
 ];

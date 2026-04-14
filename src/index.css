@@ -24,4 +24,36 @@
   body {
     @apply antialiased text-gray-900 bg-gray-50 dark:text-gray-100 dark:bg-gray-950 transition-colors duration-200;
   }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    body {
+      background: white !important;
+      color: black !important;
+    }
+
+    article {
+      padding: 0 !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+
+    .print-only {
+      display: block !important;
+    }
+
+    /* Ensure charts are visible in print */
+    .recharts-responsive-container {
+      width: 100% !important;
+      height: 400px !important;
+    }
+  }
+}
+
+.print-only {
+  display: none;
 }

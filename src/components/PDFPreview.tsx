@@ -92,6 +92,7 @@ export const PDFPreview: React.FC<PDFPreviewProps> = ({ data, maxPages = 3, clas
       const renderContext = {
         canvasContext: context,
         viewport: viewport,
+        canvas: canvas
       };
 
       renderTaskRef.current = page.render(renderContext);

@@ -36,6 +36,18 @@ const CATEGORY_INFO: Record<string, { title: string, description: string, icon: 
     icon: FileText,
     content: 'Welcome to our complete suite of advanced text tools. Whether you need an accurate word counter with keyword density analysis, a case converter for formatting titles, or a line sorter to organize lists, we have the perfect utility for you. Our text tools are designed for writers, developers, and SEO professionals who need fast, reliable text manipulation. Everything runs instantly in your browser, ensuring your data remains completely private and secure.'
   },
+  'utilities': {
+    title: 'Free Online Utility Tools',
+    description: 'A collection of handy utility tools for developers and daily tasks. Format JSON, convert timestamps, and encode Base64.',
+    icon: Settings,
+    content: 'Streamline your workflow with our collection of free online utility tools. Designed for developers, data analysts, and everyday users, these tools help you handle common technical tasks with ease. Format and minify JSON data, convert between Unix timestamps and human-readable dates, or encode and decode Base64 strings instantly. All processing happens locally in your browser, ensuring your data stays private and secure while delivering lightning-fast results.'
+  },
+  'finance-tools': {
+    title: 'Free Online Finance Tools',
+    description: 'Professional financial calculators and tools. Calculate SIP, EMI, Interest, and manage currency conversions.',
+    icon: Calculator,
+    content: 'Make informed financial decisions with our suite of professional-grade finance tools. Whether you are planning your investments with our SIP calculator, managing loans with our advanced EMI and loan calculators, or performing currency conversions, we provide the accurate data you need. Our tools feature interactive charts, detailed breakdowns, and flexible options for currencies and time periods. Everything is processed entirely in your browser, keeping your sensitive financial data private.'
+  },
   'misc': {
     title: 'Miscellaneous Tools',
     description: 'A collection of handy online tools including QR code generators, age calculators, and more.',

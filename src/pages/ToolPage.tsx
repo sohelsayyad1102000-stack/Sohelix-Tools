@@ -33,6 +33,11 @@ import { AgeCalculator } from '../components/tools/AgeCalculator';
 import { ImageToPDFTool } from '../components/tools/ImageToPDFTool';
 import { MergePDFTool } from '../components/tools/MergePDFTool';
 import { SplitPDFTool } from '../components/tools/SplitPDFTool';
+import { PDFToPNGTool } from '../components/tools/PDFToPNGTool';
+import { PDFToJPGTool } from '../components/tools/PDFToJPGTool';
+import { PDFReaderTool } from '../components/tools/PDFReaderTool';
+import { PDFPageCounter } from '../components/tools/PDFPageCounter';
+import { PDFPageRotator } from '../components/tools/PDFPageRotator';
 import { BMICalculator } from '../components/tools/BMICalculator';
 import { InterestCalculator } from '../components/tools/InterestCalculator';
 import { EMICalculator } from '../components/tools/EMICalculator';
@@ -48,6 +53,27 @@ import { WhitespaceRemover } from '../components/tools/WhitespaceRemover';
 import { LoremIpsumGenerator } from '../components/tools/LoremIpsumGenerator';
 import { TextToHex } from '../components/tools/TextToHex';
 import { HexToText } from '../components/tools/HexToText';
+import { ColorPaletteGenerator } from '../components/tools/ColorPaletteGenerator';
+import { ImageColorPicker } from '../components/tools/ImageColorPicker';
+import { WebPToJPG } from '../components/tools/WebPToJPG';
+import { TimestampConverter } from '../components/tools/TimestampConverter';
+import { JSONFormatter } from '../components/tools/JSONFormatter';
+import { Base64Converter } from '../components/tools/Base64Converter';
+import { CurrencyConverter } from '../components/tools/CurrencyConverter';
+import { CurrencyDenomination } from '../components/tools/CurrencyDenomination';
+import { SIPCalculator } from '../components/tools/SIPCalculator';
+import { AdvancedLoanCalculator } from '../components/tools/AdvancedLoanCalculator';
+import { PercentageCalculator } from '../components/tools/PercentageCalculator';
+import { InflationCalculator } from '../components/tools/InflationCalculator';
+import { UUIDGenerator } from '../components/tools/UUIDGenerator';
+import { RegexTester } from '../components/tools/RegexTester';
+import { URLEncoderDecoder } from '../components/tools/URLEncoderDecoder';
+import { CSVToJSONConverter } from '../components/tools/CSVToJSONConverter';
+import { JSONToCSVConverter } from '../components/tools/JSONToCSVConverter';
+import { HTMLMinifier } from '../components/tools/HTMLMinifier';
+import { CSSMinifier } from '../components/tools/CSSMinifier';
+import { JSMinifier } from '../components/tools/JSMinifier';
+import { ColorConverter } from '../components/tools/ColorConverter';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -299,6 +325,16 @@ export const ToolPage: React.FC = () => {
           <MergePDFTool tool={tool} />
         ) : tool.id === 'split-pdf' ? (
           <SplitPDFTool tool={tool} />
+        ) : tool.id === 'pdf-to-png' ? (
+          <PDFToPNGTool tool={tool} />
+        ) : tool.id === 'pdf-to-jpg' ? (
+          <PDFToJPGTool tool={tool} />
+        ) : tool.id === 'pdf-reader' ? (
+          <PDFReaderTool tool={tool} />
+        ) : tool.id === 'pdf-page-counter' ? (
+          <PDFPageCounter tool={tool} />
+        ) : tool.id === 'pdf-page-rotator' ? (
+          <PDFPageRotator tool={tool} />
         ) : tool.id === 'bmi-calculator' ? (
           <BMICalculator tool={tool} />
         ) : tool.id === 'interest-calculator' ? (
@@ -329,6 +365,48 @@ export const ToolPage: React.FC = () => {
           <TextToHex />
         ) : tool.id === 'hex-to-text' ? (
           <HexToText />
+        ) : tool.id === 'color-palette-generator' ? (
+          <ColorPaletteGenerator />
+        ) : tool.id === 'image-color-picker' ? (
+          <ImageColorPicker />
+        ) : tool.id === 'webp-to-jpg' ? (
+          <WebPToJPG />
+        ) : tool.id === 'timestamp-converter' ? (
+          <TimestampConverter />
+        ) : tool.id === 'json-formatter' ? (
+          <JSONFormatter />
+        ) : tool.id === 'base64-converter' ? (
+          <Base64Converter />
+        ) : tool.id === 'currency-converter' ? (
+          <CurrencyConverter tool={tool} />
+        ) : tool.id === 'currency-denomination' ? (
+          <CurrencyDenomination tool={tool} />
+        ) : tool.id === 'sip-calculator' ? (
+          <SIPCalculator tool={tool} />
+        ) : tool.id === 'advanced-loan-calculator' ? (
+          <AdvancedLoanCalculator tool={tool} />
+        ) : tool.id === 'percentage-calculator' ? (
+          <PercentageCalculator tool={tool} />
+        ) : tool.id === 'inflation-calculator' ? (
+          <InflationCalculator tool={tool} />
+        ) : tool.id === 'uuid-generator' ? (
+          <UUIDGenerator />
+        ) : tool.id === 'regex-tester' ? (
+          <RegexTester />
+        ) : tool.id === 'url-encoder-decoder' ? (
+          <URLEncoderDecoder />
+        ) : tool.id === 'csv-to-json' ? (
+          <CSVToJSONConverter />
+        ) : tool.id === 'json-to-csv' ? (
+          <JSONToCSVConverter />
+        ) : tool.id === 'html-minifier' ? (
+          <HTMLMinifier />
+        ) : tool.id === 'css-minifier' ? (
+          <CSSMinifier />
+        ) : tool.id === 'js-minifier' ? (
+          <JSMinifier />
+        ) : tool.id === 'color-converter' ? (
+          <ColorConverter />
         ) : (
           <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
             <div className="grid grid-cols-1 lg:grid-cols-3">

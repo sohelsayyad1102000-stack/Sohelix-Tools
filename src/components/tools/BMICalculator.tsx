@@ -1,293 +1,268 @@
-import React, { useState, useEffect } from 'react';
-import { Scale, Ruler, Info, AlertCircle, CheckCircle2, Download, Copy, Check, RotateCcw } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { Scale, Ruler, Info, AlertCircle, CheckCircle2, Download, Copy, Check, RotateCcw, Calculator, Printer } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { CalculatorInput } from '../CalculatorInput';
 
 interface BMICalculatorProps {
   tool: any;
 }
 
 export const BMICalculator: React.FC<BMICalculatorProps> = ({ tool }) => {
-  const [unit, setUnit] = useLocalStorage<'metric' | 'imperial'>('bmi-unit', 'metric');
-  const [weight, setWeight] = useLocalStorage<number | ''>('bmi-weight', '');
-  const [height, setHeight] = useLocalStorage<number | ''>('bmi-height', '');
-  const [heightFt, setHeightFt] = useLocalStorage<number | ''>('bmi-height-ft', '');
-  const [heightIn, setHeightIn] = useLocalStorage<number | ''>('bmi-height-in', '');
-  
-  const [bmi, setBmi] = useState<number | null>(null);
-  const [category, setCategory] = useState<string>('');
-  const [color, setColor] = useState<string>('');
+  const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
+  const [weight, setWeight] = useState(70);
+  const [height, setHeight] = useState(175);
+  const [heightFt, setHeightFt] = useState(5);
+  const [heightIn, setHeightIn] = useState(9);
   const [copied, setCopied] = useState(false);
 
-  const calculateBMI = () => {
+  const results = useMemo(() => {
     let weightKg = 0;
     let heightM = 0;
 
     if (unit === 'metric') {
-      if (!weight || !height) {
-        setBmi(null);
-        return;
-      }
       weightKg = Number(weight);
       heightM = Number(height) / 100;
     } else {
-      if (!weight || (!heightFt && !heightIn)) {
-        setBmi(null);
-        return;
-      }
       weightKg = Number(weight) * 0.453592;
       heightM = (Number(heightFt || 0) * 12 + Number(heightIn || 0)) * 0.0254;
     }
 
-    if (heightM > 0) {
-      const bmiValue = weightKg / (heightM * heightM);
-      setBmi(Number(bmiValue.toFixed(1)));
-      
-      if (bmiValue < 18.5) {
-        setCategory('Underweight');
-        setColor('text-blue-500');
-      } else if (bmiValue < 25) {
-        setCategory('Normal weight');
-        setColor('text-green-500');
-      } else if (bmiValue < 30) {
-        setCategory('Overweight');
-        setColor('text-yellow-500');
-      } else {
-        setCategory('Obese');
-        setColor('text-red-500');
-      }
-    } else {
-      setBmi(null);
-    }
-  };
+    if (heightM <= 0) return null;
 
-  useEffect(() => {
-    calculateBMI();
+    const bmiValue = weightKg / (heightM * heightM);
+    const bmi = Number(bmiValue.toFixed(1));
+    
+    let category = '';
+    let color = '';
+    let description = '';
+
+    if (bmi < 18.5) {
+      category = 'Underweight';
+      color = 'text-blue-500';
+      description = 'You are in the underweight range. Consider consulting a healthcare provider.';
+    } else if (bmi < 25) {
+      category = 'Normal weight';
+      color = 'text-green-500';
+      description = 'You are in the healthy weight range. Maintain your current lifestyle!';
+    } else if (bmi < 30) {
+      category = 'Overweight';
+      color = 'text-yellow-500';
+      description = 'You are in the overweight range. A balanced diet and exercise may help.';
+    } else {
+      category = 'Obese';
+      color = 'text-red-500';
+      description = 'You are in the obese range. It is recommended to consult a healthcare provider.';
+    }
+
+    return { bmi, category, color, description };
   }, [weight, height, heightFt, heightIn, unit]);
 
-  const getResultText = () => {
-    let text = `BMI Calculation Results:\n`;
-    if (unit === 'metric') {
-      text += `Weight: ${weight} kg\nHeight: ${height} cm\n`;
-    } else {
-      text += `Weight: ${weight} lbs\nHeight: ${heightFt} ft ${heightIn} in\n`;
-    }
-    text += `\nBMI: ${bmi}\nCategory: ${category}`;
-    return text;
+  const handlePrint = () => {
+    window.print();
   };
 
-  const copyResults = () => {
-    if (!bmi) return;
-    navigator.clipboard.writeText(getResultText());
+  const handleCopy = () => {
+    if (!results) return;
+    const text = `BMI Calculation Results:
+Weight: ${weight} ${unit === 'metric' ? 'kg' : 'lbs'}
+Height: ${unit === 'metric' ? height + ' cm' : heightFt + ' ft ' + heightIn + ' in'}
+BMI: ${results.bmi}
+Category: ${results.category}`;
+    
+    navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const downloadResults = () => {
-    if (!bmi) return;
-    const blob = new Blob([getResultText()], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'bmi_calculation.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
-
-  const reset = () => {
-    setWeight('');
-    setHeight('');
-    setHeightFt('');
-    setHeightIn('');
-    setBmi(null);
-  };
-
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
-      {/* Main Area */}
-      <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800">
-        <div className="flex items-center justify-between mb-8">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">Body Mass Index Calculator</h3>
-          <div className="flex gap-4">
+    <article className="space-y-8">
+      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
+        <h1 className="text-3xl font-black text-gray-900 dark:text-white flex items-center gap-3">
+          <Calculator className="h-8 w-8 text-blue-600" />
+          {tool.title || 'BMI Calculator'}
+        </h1>
+        <div className="flex items-center gap-3">
+          <div className="flex rounded-xl bg-gray-100 p-1 dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
             <button
-              onClick={reset}
-              className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-              title="Reset Calculator"
+              onClick={() => setUnit('metric')}
+              className={cn(
+                "px-4 py-2 text-sm font-bold rounded-lg transition-all",
+                unit === 'metric' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
+              )}
             >
-              <RotateCcw className="h-4 w-4" />
-              Reset
+              Metric
             </button>
-            {bmi && (
-              <div className="flex gap-2">
-                <button
-                  onClick={copyResults}
-                  className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-                >
-                  {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                  {copied ? 'Copied!' : 'Copy'}
-                </button>
-                <button
-                  onClick={downloadResults}
-                  className="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
-                >
-                  <Download className="h-4 w-4" />
-                  Download
-                </button>
-              </div>
-            )}
-            <div className="flex rounded-lg bg-gray-100 p-1 dark:bg-gray-800">
-              <button
-                onClick={() => setUnit('metric')}
-                className={cn(
-                  "px-4 py-1.5 text-sm font-medium rounded-md transition-all",
-                  unit === 'metric' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
-                )}
-              >
-                Metric
-              </button>
-              <button
-                onClick={() => setUnit('imperial')}
-                className={cn(
-                  "px-4 py-1.5 text-sm font-medium rounded-md transition-all",
-                  unit === 'imperial' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
-                )}
-              >
-                Imperial
-              </button>
-            </div>
+            <button
+              onClick={() => setUnit('imperial')}
+              className={cn(
+                "px-4 py-2 text-sm font-bold rounded-lg transition-all",
+                unit === 'imperial' ? "bg-white shadow-sm text-blue-600 dark:bg-gray-700 dark:text-blue-400" : "text-gray-500"
+              )}
+            >
+              Imperial
+            </button>
           </div>
+          <button 
+            onClick={handlePrint}
+            className="flex items-center gap-2 rounded-xl bg-white border border-gray-200 px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors shadow-sm"
+          >
+            <Printer className="h-4 w-4" />
+            Print
+          </button>
+          <button 
+            onClick={handleCopy}
+            className="flex items-center gap-2 rounded-xl bg-gray-100 px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+          >
+            {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+            {copied ? 'Copied' : 'Copy'}
+          </button>
         </div>
+      </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Print Header */}
+      <div className="hidden print:block text-center mb-8">
+        <h1 className="text-2xl font-black text-gray-900">{tool.title || 'BMI Calculator'} Report</h1>
+        <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Inputs Section */}
+        <section className="lg:col-span-1 space-y-6 rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900 print:shadow-none print:border-none">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2 mb-6">
+            <Scale className="h-5 w-5 text-blue-600 no-print" />
+            Your Measurements
+          </h2>
+
           <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
-                <Scale className="h-4 w-4 text-blue-600" />
-                Weight ({unit === 'metric' ? 'kg' : 'lbs'})
-              </label>
-              <input
-                type="number"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value ? Number(e.target.value) : '')}
-                placeholder={unit === 'metric' ? 'e.g. 70' : 'e.g. 154'}
-                className="w-full rounded-xl border-gray-200 bg-gray-50 p-4 text-lg focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-              />
-            </div>
+            <CalculatorInput
+              label={`Weight (${unit === 'metric' ? 'kg' : 'lbs'})`}
+              value={weight}
+              onChange={setWeight}
+              min={1}
+              max={500}
+              step={0.1}
+            />
 
             {unit === 'metric' ? (
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
-                  <Ruler className="h-4 w-4 text-blue-600" />
-                  Height (cm)
-                </label>
-                <input
-                  type="number"
-                  value={height}
-                  onChange={(e) => setHeight(e.target.value ? Number(e.target.value) : '')}
-                  placeholder="e.g. 175"
-                  className="w-full rounded-xl border-gray-200 bg-gray-50 p-4 text-lg focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                />
-              </div>
+              <CalculatorInput
+                label="Height (cm)"
+                value={height}
+                onChange={setHeight}
+                min={50}
+                max={300}
+                step={1}
+              />
             ) : (
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Height (ft)</label>
-                  <input
-                    type="number"
-                    value={heightFt}
-                    onChange={(e) => setHeightFt(e.target.value ? Number(e.target.value) : '')}
-                    placeholder="5"
-                    className="w-full rounded-xl border-gray-200 bg-gray-50 p-4 text-lg focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Height (in)</label>
-                  <input
-                    type="number"
-                    value={heightIn}
-                    onChange={(e) => setHeightIn(e.target.value ? Number(e.target.value) : '')}
-                    placeholder="9"
-                    className="w-full rounded-xl border-gray-200 bg-gray-50 p-4 text-lg focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                  />
-                </div>
+                <CalculatorInput
+                  label="Height (ft)"
+                  value={heightFt}
+                  onChange={setHeightFt}
+                  min={1}
+                  max={10}
+                  step={1}
+                />
+                <CalculatorInput
+                  label="Height (in)"
+                  value={heightIn}
+                  onChange={setHeightIn}
+                  min={0}
+                  max={11}
+                  step={1}
+                />
               </div>
             )}
           </div>
+        </section>
 
-          <div className="flex flex-col items-center justify-center p-8 rounded-3xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50">
-            {bmi ? (
-              <div className="text-center">
-                <p className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Your BMI</p>
-                <h2 className="text-6xl font-black text-gray-900 dark:text-white mb-2">{bmi}</h2>
-                <p className={cn("text-xl font-bold", color)}>{category}</p>
-                
-                <div className="mt-8 w-full max-w-xs space-y-2">
-                  <div className="h-3 w-full rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden flex">
-                    <div className="h-full bg-blue-400" style={{ width: '18.5%' }}></div>
-                    <div className="h-full bg-green-400" style={{ width: '6.5%' }}></div>
-                    <div className="h-full bg-yellow-400" style={{ width: '5%' }}></div>
-                    <div className="h-full bg-red-400" style={{ width: '70%' }}></div>
+        {/* Results Section */}
+        <section className="lg:col-span-2 space-y-8">
+          <div className="p-8 rounded-3xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 flex flex-col items-center justify-center text-center min-h-[300px] print:bg-blue-50 print:border-blue-200">
+            {results ? (
+              <div className="space-y-6 w-full max-w-md">
+                <div>
+                  <p className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Your Body Mass Index</p>
+                  <h2 className="text-7xl font-black text-gray-900 dark:text-white">{results.bmi}</h2>
+                  <p className={cn("text-2xl font-black mt-2", results.color)}>{results.category}</p>
+                </div>
+
+                <div className="w-full space-y-3">
+                  <div className="h-4 w-full rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden flex shadow-inner">
+                    <div className="h-full bg-blue-400" style={{ width: '18.5%' }} title="Underweight"></div>
+                    <div className="h-full bg-green-400" style={{ width: '6.5%' }} title="Normal"></div>
+                    <div className="h-full bg-yellow-400" style={{ width: '5%' }} title="Overweight"></div>
+                    <div className="h-full bg-red-400" style={{ width: '70%' }} title="Obese"></div>
                   </div>
-                  <div className="flex justify-between text-[10px] font-bold text-gray-500 uppercase">
+                  <div className="flex justify-between text-[10px] font-black text-gray-400 uppercase tracking-widest">
                     <span>18.5</span>
                     <span>25</span>
                     <span>30</span>
                   </div>
                 </div>
+
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                  {results.description}
+                </p>
               </div>
             ) : (
-              <div className="text-center text-gray-500">
-                <Info className="h-12 w-12 mx-auto mb-4 opacity-20" />
-                <p>Enter your details to calculate BMI</p>
+              <div className="text-gray-400">
+                <Info className="h-16 w-16 mx-auto mb-4 opacity-20" />
+                <p className="font-bold">Enter your details to calculate BMI</p>
               </div>
             )}
           </div>
-        </div>
 
-        <div className="mt-12 p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
-          <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5 text-green-500" />
-            Healthy BMI Range
-          </h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-            A healthy BMI for most adults is between <strong>18.5 and 24.9</strong>. 
-            BMI is a useful measure of overweight and obesity, but it is not a direct measure of body fat. 
-            It is calculated from your height and weight.
-          </p>
-        </div>
-      </div>
-
-      {/* Sidebar Info */}
-      <div className="bg-gray-50/50 p-8 dark:bg-gray-800/30">
-        <h3 className="font-bold text-gray-900 dark:text-white mb-6">BMI Categories</h3>
-        <div className="space-y-4">
-          {[
-            { range: '< 18.5', label: 'Underweight', color: 'bg-blue-500' },
-            { range: '18.5 - 24.9', label: 'Normal', color: 'bg-green-500' },
-            { range: '25.0 - 29.9', label: 'Overweight', color: 'bg-yellow-500' },
-            { range: '30.0 +', label: 'Obese', color: 'bg-red-500' },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700">
-              <div className="flex items-center gap-3">
-                <div className={cn("h-3 w-3 rounded-full", item.color)}></div>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.label}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-gray-100 dark:bg-gray-900 dark:border-gray-800 shadow-sm print:border-gray-200">
+              <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-green-500 no-print" />
+                BMI Categories
+              </h3>
+              <div className="space-y-3">
+                {[
+                  { range: '< 18.5', label: 'Underweight', color: 'bg-blue-500' },
+                  { range: '18.5 - 24.9', label: 'Normal', color: 'bg-green-500' },
+                  { range: '25.0 - 29.9', label: 'Overweight', color: 'bg-yellow-500' },
+                  { range: '30.0 +', label: 'Obese', color: 'bg-red-500' },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center justify-between text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className={cn("h-2 w-2 rounded-full", item.color)}></div>
+                      <span className="text-gray-600 dark:text-gray-400">{item.label}</span>
+                    </div>
+                    <span className="font-bold text-gray-900 dark:text-white">{item.range}</span>
+                  </div>
+                ))}
               </div>
-              <span className="text-xs font-bold text-gray-500">{item.range}</span>
             </div>
-          ))}
-        </div>
 
-        <div className="mt-8 p-4 rounded-xl bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-800/50">
-          <div className="flex gap-3">
-            <AlertCircle className="h-5 w-5 text-yellow-600 shrink-0" />
-            <p className="text-xs text-yellow-800 dark:text-yellow-200 leading-relaxed">
-              <strong>Note:</strong> BMI does not account for muscle mass, bone density, overall body composition, and racial and sex differences.
-            </p>
+            <div className="p-6 rounded-2xl bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/30 print:bg-amber-50 print:border-amber-200">
+              <h3 className="font-bold text-amber-800 dark:text-amber-400 mb-2 flex items-center gap-2">
+                <AlertCircle className="h-5 w-5 no-print" />
+                Important Note
+              </h3>
+              <p className="text-xs text-amber-700 dark:text-amber-500 leading-relaxed">
+                BMI is a screening tool, not a diagnostic one. It doesn't account for muscle mass, bone density, or body composition. Athletes may have a high BMI due to muscle mass.
+              </p>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+
+      {/* FAQ Section */}
+      {tool.faqs && tool.faqs.length > 0 && (
+        <section className="space-y-6 no-print">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {tool.faqs.map((faq: any, index: number) => (
+              <article key={index} className="p-6 rounded-2xl bg-white border border-gray-100 dark:bg-gray-900 dark:border-gray-800 shadow-sm">
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">{faq.question}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{faq.answer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
   );
 };

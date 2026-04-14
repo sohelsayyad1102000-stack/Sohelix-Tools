@@ -111,7 +111,7 @@ export const Home: React.FC = () => {
           
           <div className="flex flex-col gap-4 md:flex-row md:items-center">
             <div className="flex overflow-x-auto pb-2 md:pb-0 hide-scrollbar gap-2">
-              {['All', 'image-tools', 'pdf-tools', 'calculator-tools', 'seo-tools', 'text-tools', 'misc'].map(cat => (
+              {['All', 'image-tools', 'pdf-tools', 'calculator-tools', 'finance-tools', 'seo-tools', 'text-tools', 'utilities', 'misc'].map(cat => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
@@ -142,7 +142,7 @@ export const Home: React.FC = () => {
         
         {filteredTools.length > 0 ? (
           <div className="space-y-16">
-            {['image-tools', 'pdf-tools', 'calculator-tools', 'seo-tools', 'text-tools', 'misc'].map((categorySlug) => {
+            {['image-tools', 'pdf-tools', 'calculator-tools', 'finance-tools', 'seo-tools', 'text-tools', 'utilities', 'misc'].map((categorySlug) => {
               const categoryTools = filteredTools.filter(t => t.category === categorySlug);
               if (categoryTools.length === 0) return null;
               
@@ -150,8 +150,10 @@ export const Home: React.FC = () => {
                 'image-tools': 'Image Tools',
                 'pdf-tools': 'PDF Tools',
                 'calculator-tools': 'Calculator Tools',
+                'finance-tools': 'Finance Tools',
                 'seo-tools': 'SEO Tools',
                 'text-tools': 'Text Tools',
+                'utilities': 'Utility Tools',
                 'misc': 'Miscellaneous Tools'
               };
 
