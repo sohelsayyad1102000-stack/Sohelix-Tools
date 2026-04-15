@@ -46,28 +46,67 @@ export const TOOLS: Tool[] = [
       },
     ],
     longContent: `
-      <p>Optimizing images is one of the most effective ways to improve your website's performance and user experience. Large image files are often the primary cause of slow page load times, which can lead to higher bounce rates and lower search engine rankings. Our <strong>Free Online Image Compressor</strong> is a professional-grade tool designed to help you reduce image file sizes by up to 90% without compromising visual quality.</p>
-      
-      <h3>Why Image Compression Matters for SEO</h3>
-      <p>Google and other search engines prioritize fast-loading websites. By using our tool to <a href="/tools/compress-image" class="underline hover:text-blue-600">compress images online</a>, you are directly contributing to your site's Core Web Vitals. Faster sites provide a better experience for mobile users, who often browse on slower connections. Additionally, smaller images save storage space on your server and reduce bandwidth costs.</p>
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Compress Image Online (Step-by-Step)</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Optimizing your images with Sohelix is fast and simple. Follow these easy steps to reduce your image file size in seconds:</p>
+          <ol class="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Upload Your Images:</strong> Drag and drop your JPG, PNG, or WebP files into the upload box, or click "Select Image" to browse your device.</li>
+            <li><strong>Choose Compression Mode:</strong> Select "Quality" to set a specific quality percentage, or "Target Size" to aim for a specific file size (e.g., 50KB).</li>
+            <li><strong>Optional Resizing:</strong> If needed, enable the "Resize Image" option to change the dimensions of your photo.</li>
+            <li><strong>Click Compress:</strong> Hit the "Compress Images" button to start the process. All processing happens locally in your browser!</li>
+            <li><strong>Download Results:</strong> Once finished, download your optimized images individually or as a convenient ZIP file.</li>
+          </ol>
+        </section>
 
-      <h3>How Our Client-Side Compression Works</h3>
-      <p>Unlike traditional online compressors that require you to upload your sensitive photos to their servers, Sohelix uses advanced browser-based technologies. We leverage the power of your own device's CPU to process images locally. This "Privacy-First" approach ensures that your data never leaves your computer or smartphone. It also means the processing is nearly instantaneous, as there is no time wasted on uploading or downloading large files.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Key Features of Sohelix Image Compressor</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Privacy-First Processing</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Your images never leave your device. We use client-side technology to process everything locally, ensuring 100% privacy.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Bulk Compression</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Save time by uploading and compressing dozens of images simultaneously. Download them all at once in a ZIP archive.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Target Size Mode</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Need a file under 20KB for a government form? Use our Target Size mode to specify exactly how small you want your file to be.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Visual Comparison</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Use our built-in slider to compare the original and compressed versions side-by-side before downloading.</p>
+            </div>
+          </div>
+        </section>
 
-      <h3>Supported Formats: JPG, PNG, WebP, and SVG</h3>
-      <p>Our versatile tool supports all major web formats. Whether you need to optimize a high-resolution photograph (JPG), a transparent logo (PNG), a modern high-efficiency image (WebP), or a scalable vector graphic (SVG), we have you covered. You can even adjust the quality levels to find the perfect balance between file size and clarity.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Benefits of Image Optimization</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Why should you bother compressing your images? Here are the top reasons:</p>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Faster Page Loads:</strong> Smaller images mean your website loads faster, reducing bounce rates and keeping visitors engaged.</li>
+            <li><strong>Improved SEO:</strong> Google loves fast websites. Optimized images are a key factor in improving your search engine rankings.</li>
+            <li><strong>Save Bandwidth:</strong> Reduce data usage for both you and your visitors, which is especially important for mobile users on limited plans.</li>
+            <li><strong>Storage Efficiency:</strong> Free up space on your server, cloud storage, or local hard drive by reducing bloated image sizes.</li>
+          </ul>
+        </section>
 
-      <h3>Professional Features for Developers and Designers</h3>
-      <p>We understand that professionals need more than just a simple slider. That's why we offer bulk processing capabilities, allowing you to optimize dozens of images at once. Our tool also preserves important metadata when requested and provides a real-time preview of the compression results, so you can see exactly what your users will see.</p>
-
-      <h3>Best Practices for Image Optimization</h3>
-      <ul>
-        <li><strong>Choose the right format:</strong> Use JPG for photos, PNG for graphics with transparency, and WebP for the best overall compression.</li>
-        <li><strong>Resize before compressing:</strong> Don't use a 4000px wide image if it's only going to be displayed at 800px. Use our <a href="/tools/resize-image" class="underline hover:text-blue-600">image resizer</a> first.</li>
-        <li><strong>Find the "Sweet Spot":</strong> For most web images, a quality setting between 70% and 85% provides significant size reduction with no visible loss in quality.</li>
-      </ul>
-
-      <p>Start optimizing your digital assets today with Sohelix. It's fast, free, secure, and requires no registration or login. Join thousands of developers and content creators who trust us for their daily image optimization needs.</p>
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Professional Image Compression for Everyone</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">Whether you are a web developer optimizing assets for a new project, a blogger preparing photos for a post, or just someone trying to fit an attachment into an email, Sohelix provides the tools you need. Our <strong>online image compressor</strong> is designed to be powerful enough for pros yet simple enough for anyone to use.</p>
+          
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <h4 class="font-bold text-gray-900 dark:text-white mb-4">Compress Image to Specific Sizes:</h4>
+            <div class="flex flex-wrap gap-4">
+              <a href="/tools/compress-image?target=10" class="text-blue-600 hover:underline font-medium">Compress Image to 10KB</a>
+              <a href="/tools/compress-image?target=20" class="text-blue-600 hover:underline font-medium">Compress Image to 20KB</a>
+              <a href="/tools/compress-image?target=50" class="text-blue-600 hover:underline font-medium">Compress Image to 50KB</a>
+              <a href="/tools/compress-image?target=100" class="text-blue-600 hover:underline font-medium">Compress Image to 100KB</a>
+            </div>
+          </div>
+        </section>
+      </div>
     `,
   },
   {

@@ -792,6 +792,25 @@ export const ToolPage: React.FC = () => {
             </div>
           </div>
         )}
+
+        {/* Internal Linking Section for Compress Image */}
+        {tool.id === 'compress-image' && (
+          <div className="mt-12 rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Compress Image to Specific Sizes</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[10, 20, 50, 100].map(size => (
+                <Link
+                  key={size}
+                  to={`/tools/compress-image?target=${size}`}
+                  className="flex flex-col items-center justify-center p-4 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-all group dark:border-gray-800 dark:bg-gray-800/50 dark:hover:bg-blue-900/20"
+                >
+                  <span className="text-lg font-black text-gray-900 dark:text-white group-hover:text-blue-600">To {size}KB</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">Optimize for web</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );
