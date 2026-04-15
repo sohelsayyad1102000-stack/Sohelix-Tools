@@ -6,8 +6,9 @@ import { cn } from '../lib/utils';
 
 const NAV_LINKS = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Tools', path: '/#tools' },
+  { name: 'Categories', path: '/#tools' },
+  { name: 'Blog', path: '#' },
 ];
 
 const CATEGORIES = [

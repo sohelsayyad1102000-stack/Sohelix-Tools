@@ -47,12 +47,6 @@ const CATEGORY_INFO: Record<string, { title: string, description: string, icon: 
     description: 'Professional financial calculators and tools. Calculate SIP, EMI, Interest, and manage currency conversions.',
     icon: Calculator,
     content: 'Make informed financial decisions with our suite of professional-grade finance tools. Whether you are planning your investments with our SIP calculator, managing loans with our advanced EMI and loan calculators, or performing currency conversions, we provide the accurate data you need. Our tools feature interactive charts, detailed breakdowns, and flexible options for currencies and time periods. Everything is processed entirely in your browser, keeping your sensitive financial data private.'
-  },
-  'misc': {
-    title: 'Miscellaneous Tools',
-    description: 'A collection of handy online tools including QR code generators, age calculators, and more.',
-    icon: Settings,
-    content: 'Explore our collection of miscellaneous online tools designed to make your daily tasks easier. From generating professional QR codes with custom logos to calculating your exact age down to the second, these utilities are built for speed and convenience. Like all our tools, they run entirely in your browser for maximum privacy and instant results.'
   }
 };
 

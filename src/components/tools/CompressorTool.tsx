@@ -277,6 +277,14 @@ export const CompressorTool: React.FC<CompressorToolProps> = ({ tool }) => {
     <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
       {/* Main Area */}
       <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800">
+        <input 
+          type="file" 
+          ref={fileInputRef} 
+          className="hidden" 
+          multiple 
+          accept="image/jpeg, image/png, image/webp" 
+          onChange={handleFileChange}
+        />
         {files.length === 0 ? (
           <div 
             onDragOver={(e) => e.preventDefault()}
@@ -289,14 +297,6 @@ export const CompressorTool: React.FC<CompressorToolProps> = ({ tool }) => {
             </div>
             <h3 className="mt-6 text-xl font-bold text-gray-900 dark:text-white">Select images or drag & drop here</h3>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Supports JPG, PNG, WebP</p>
-            <input 
-              type="file" 
-              ref={fileInputRef} 
-              className="hidden" 
-              multiple 
-              accept="image/jpeg, image/png, image/webp" 
-              onChange={handleFileChange}
-            />
           </div>
         ) : (
           <div className="space-y-6">

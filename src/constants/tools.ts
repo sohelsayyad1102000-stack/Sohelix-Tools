@@ -109,7 +109,31 @@ export const TOOLS: Tool[] = [
         answer: 'Upscaling an image beyond its original size may cause blurriness, but downscaling maintains high clarity.',
       },
     ],
-    longContent: 'Resizing images is a common task for anyone working with digital media. Whether you need a specific width for a blog post or a square aspect ratio for Instagram, Sohelix makes it simple. Our resizer allows you to input exact pixel values or use a percentage slider for quick adjustments. With the "Maintain Aspect Ratio" feature, you never have to worry about stretching or distorting your photos. Everything happens locally on your device, ensuring maximum speed and security. After resizing, you might want to <a href="/tools/compress-image" class="underline hover:text-blue-200">compress your image</a> to save even more space.',
+    longContent: `
+      <p>Need to change the dimensions of your photos for social media, email, or your website? Our <strong>Free Online Image Resizer</strong> is the perfect solution. It allows you to quickly and easily resize images to any width and height while maintaining the aspect ratio to prevent distortion.</p>
+      
+      <h3>Why Resize Images?</h3>
+      <p>Using images with the correct dimensions is critical for web performance. If you upload a 4000px wide image but only display it at 400px, you are forcing your users to download 10x more data than necessary. This slows down your page and hurts your SEO. By <a href="/tools/resize-image" class="underline hover:text-blue-600">resizing images online</a> with Sohelix, you ensure your site stays fast and efficient.</p>
+
+      <h3>Social Media Presets</h3>
+      <p>We've included built-in presets for all major social platforms. Whether you're creating an Instagram Post (1080x1080), a Facebook Cover (1200x630), or a Twitter Header (1500x500), you can apply the correct dimensions with a single click. No more searching for "social media image sizes" every time you post.</p>
+
+      <h3>Privacy-First Processing</h3>
+      <p>Like all Sohelix tools, our image resizer works 100% client-side. Your photos never leave your computer. We use your browser's native Canvas API to perform high-quality resampling, ensuring your resized images look sharp and professional without ever compromising your privacy.</p>
+
+      <h3>Bulk Resizing Support</h3>
+      <p>Have a folder full of photos that all need to be the same size? Our tool supports bulk processing. Simply drag and drop all your files, set your desired dimensions, and download them all at once in a convenient ZIP file. It's a massive time-saver for photographers and content creators.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Maintain Aspect Ratio:</strong> Keep your images from looking stretched or squashed.</li>
+        <li><strong>Pixel-Perfect Precision:</strong> Set exact width and height in pixels.</li>
+        <li><strong>High-Quality Resampling:</strong> Advanced algorithms ensure clarity even when scaling down.</li>
+        <li><strong>Instant Preview:</strong> See the results before you download.</li>
+      </ul>
+
+      <p>Stop struggling with complex photo editing software. Sohelix provides a fast, free, and secure way to resize your images directly in your browser. No signup, no watermarks, just results.</p>
+    `,
   },
   {
     id: 'crop-image',
@@ -146,7 +170,36 @@ export const TOOLS: Tool[] = [
         answer: 'Yes, you can drag the corners to select the exact area you want to keep.',
       },
     ],
-    longContent: 'Sometimes a photo is perfect except for a few distracting elements at the edges. Our cropping tool gives you the control to frame your images exactly how you want them. With support for common aspect ratios, you can quickly prepare images for any platform. Like all Sohelix tools, the cropper runs entirely in your browser, keeping your private photos private. If you need to fix the orientation before cropping, try our <a href="/tools/image-rotate" class="underline hover:text-blue-200">image rotation tool</a>.',
+    longContent: `
+      <p>Sometimes a photo is perfect except for a few distracting elements at the edges. Our <strong>Free Online Image Cropper</strong> gives you the control to frame your images exactly how you want them. Whether you're removing a photobomber, adjusting a composition, or preparing a profile picture, Sohelix makes it easy.</p>
+      
+      <h3>Precision Cropping Tools</h3>
+      <p>Our tool provides a high-precision interface that allows you to drag and resize the crop area with pixel-perfect accuracy. You can see the exact dimensions of your selection in real-time, ensuring you get the perfect cut every time. By <a href="/tools/crop-image" class="underline hover:text-blue-600">cropping images online</a>, you can focus on the most important parts of your visual content.</p>
+
+      <h3>Aspect Ratio Presets</h3>
+      <p>We support all common aspect ratios, including 1:1 (Square), 4:3, 16:9 (Widescreen), and more. These presets are essential for ensuring your images fit perfectly on platforms like Instagram, LinkedIn, and YouTube. You can also use the "Free" mode to create custom crops of any shape and size.</p>
+
+      <h3>Secure and Private</h3>
+      <p>Your personal photos are sensitive. That's why Sohelix never uploads your images to a server. All cropping is performed locally in your browser using advanced JavaScript. This ensures that your data remains on your device, providing peace of mind and lightning-fast performance.</p>
+
+      <h3>How to Crop an Image Online:</h3>
+      <ol>
+        <li><strong>Upload:</strong> Select your image or drag it into the workspace.</li>
+        <li><strong>Select Area:</strong> Use the handles to define the part of the image you want to keep.</li>
+        <li><strong>Choose Ratio:</strong> Optionally select a preset aspect ratio to lock the proportions.</li>
+        <li><strong>Download:</strong> Click "Crop Image" and then download your perfectly framed result.</li>
+      </ol>
+
+      <h3>Why Use Sohelix for Cropping?</h3>
+      <ul>
+        <li><strong>No Watermarks:</strong> We never add branding to your images.</li>
+        <li><strong>High Resolution:</strong> We maintain the original quality of the cropped area.</li>
+        <li><strong>Zero Cost:</strong> Our tools are 100% free to use, forever.</li>
+        <li><strong>No Account Needed:</strong> Start cropping immediately without giving us your email.</li>
+      </ul>
+
+      <p>Join the thousands of users who use Sohelix for their daily image editing needs. If you need to further optimize your cropped image, don't forget to use our <a href="/tools/compress-image" class="underline hover:text-blue-600">image compressor</a> to reduce the file size for the web.</p>
+    `,
   },
   {
     id: 'jpg-to-png',
@@ -370,7 +423,31 @@ export const TOOLS: Tool[] = [
         answer: 'No, the QR codes generated are static and will work as long as the underlying data (like a URL) is valid.'
       }
     ],
-    longContent: 'QR codes have become an essential tool for bridging the physical and digital worlds. Whether you need a simple URL link or a complex WiFi configuration, our <a href="/tools/qr-code-generator" class="underline hover:text-blue-200">QR code generator</a> provides all the professional features you need. Customize the dots, corners, and colors to match your brand, and even add your logo for a truly professional look. Everything is processed locally in your browser for maximum privacy.'
+    longContent: `
+      <p>QR codes have become an essential tool for bridging the physical and digital worlds. Whether you're a business owner looking to share your website, a restaurant providing a digital menu, or an individual sharing your contact details, our <strong>Free Online QR Code Generator</strong> provides all the professional features you need to create high-quality, custom QR codes.</p>
+      
+      <h3>Versatile QR Code Types</h3>
+      <p>We support a wide range of data types to suit any need. You can <a href="/tools/qr-code-generator" class="underline hover:text-blue-600">generate QR codes online</a> for URLs, plain text, email addresses, phone numbers, WiFi networks, SMS messages, WhatsApp links, and even geographic locations. This versatility makes Sohelix the only QR tool you'll ever need.</p>
+
+      <h3>Professional Customization Options</h3>
+      <p>Don't settle for boring black-and-white squares. Our generator allows you to fully customize the appearance of your QR codes to match your brand identity. You can change the color of the dots and background, choose from various dot styles (rounded, classy, etc.), and select unique corner square and dot shapes. This level of customization helps your QR codes stand out and increases scan rates.</p>
+
+      <h3>Add Your Own Logo</h3>
+      <p>To further enhance your brand recognition, you can upload your own logo to be placed in the center of the QR code. Our tool automatically adjusts the QR code's error correction level to ensure it remains scannable even with a logo overlay. This is a powerful feature for marketing materials and business cards.</p>
+
+      <h3>Privacy and Security</h3>
+      <p>Most online QR generators track your scans or store your data on their servers. Sohelix is different. Our tool works 100% client-side. The QR code is generated entirely in your browser, and your data is never sent to our servers. This ensures complete privacy for you and your users.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>High-Resolution Downloads:</strong> Save your QR codes as PNG, JPG, or SVG for high-quality printing.</li>
+        <li><strong>Bulk Generation:</strong> Need dozens of QR codes? Use our bulk mode to generate them from a list of URLs.</li>
+        <li><strong>Live Preview:</strong> See your changes in real-time as you customize the design.</li>
+        <li><strong>No Expiry:</strong> Our QR codes are static and will work forever. No hidden subscriptions or "pro" versions required.</li>
+      </ul>
+
+      <p>Start creating your custom QR codes today with Sohelix. It's fast, free, and secure. Whether for personal use or professional marketing campaigns, our tool delivers the quality and privacy you deserve.</p>
+    `,
   },
   {
     id: 'favicon-generator',
@@ -448,7 +525,32 @@ export const TOOLS: Tool[] = [
         answer: 'Yes, our calculator accounts for leap years and varying month lengths to give you the most precise result possible.'
       }
     ],
-    longContent: 'Ever wondered exactly how many seconds you\'ve been alive? Our <a href="/tools/age-calculator" class="underline hover:text-blue-200">age calculator</a> provides a detailed breakdown of your life duration. Beyond just years and months, you can see your age in weeks, days, hours, and even minutes. It also features a live countdown to your next birthday, so you can start the celebration early!'
+    longContent: `
+      <p>Ever wondered exactly how many seconds you've been alive? Our <strong>Free Online Age Calculator</strong> provides a detailed and precise breakdown of your life duration. It's more than just a simple "how old am i" tool; it's a comprehensive look at the time you've spent on this planet.</p>
+      
+      <h3>Calculate Your Exact Age</h3>
+      <p>By entering your date and time of birth, you can <a href="/tools/age-calculator" class="underline hover:text-blue-600">calculate your exact age online</a> with incredible precision. Our advanced algorithm accounts for leap years, different month lengths, and time zones to provide you with an accurate count of years, months, days, hours, minutes, and even seconds.</p>
+
+      <h3>More Than Just Years</h3>
+      <p>While most people know their age in years, our tool provides fascinating alternative perspectives. You can see your total age in weeks, total days lived, and even the total number of hours you've been around. This data can be quite surprising and is great for sharing on social media or for personal reflection.</p>
+
+      <h3>Next Birthday Countdown</h3>
+      <p>Planning your next big celebration? We've included a live countdown to your next birthday. It shows you exactly how many months, days, hours, and minutes are left until your special day. This feature is perfect for those who love to count down the days to their birthday.</p>
+
+      <h3>Privacy and Security</h3>
+      <p>Your birth date is a sensitive piece of personal information. At Sohelix, we prioritize your privacy. Our <strong>Age Calculator</strong> works entirely client-side. Your date of birth is never sent to our servers or stored in any database. All calculations are performed locally in your browser, ensuring that your personal data remains private.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Precise Breakdown:</strong> See your age in years, months, and days.</li>
+        <li><strong>Total Duration:</strong> View your life span in weeks, days, hours, and minutes.</li>
+        <li><strong>Birthday Countdown:</strong> Know exactly when your next birthday is.</li>
+        <li><strong>Time of Birth:</strong> Include your birth time for even more precision.</li>
+        <li><strong>Instant Results:</strong> No waiting, no refreshing, just instant data.</li>
+      </ul>
+
+      <p>Whether you're filling out an official form, checking age requirements for a service, or just curious about your life duration, Sohelix provides the most accurate and secure age calculation tool online. If you're interested in other health-related metrics, try our <a href="/tools/bmi-calculator" class="underline hover:text-blue-600">BMI Calculator</a>.</p>
+    `,
   },
   {
     id: 'image-to-pdf',
@@ -487,7 +589,37 @@ export const TOOLS: Tool[] = [
         answer: 'No, all processing happens locally in your browser. Your images never leave your device.'
       }
     ],
-    longContent: 'Convert your photos and graphics into professional PDF documents with our <a href="/tools/image-to-pdf" class="underline hover:text-blue-200">Image to PDF converter</a>. Whether you need to combine several JPGs into a single report or create a digital portfolio from your PNG designs, our tool offers the flexibility you need. You can reorder images, choose page orientations, and adjust quality settings to get the perfect result every time.'
+    longContent: `
+      <p>Need to turn your photos, scans, or designs into a professional document? Our <strong>Free Online Image to PDF Converter</strong> is the ultimate solution. It allows you to combine multiple images into a single, high-quality PDF file in seconds, right in your web browser.</p>
+      
+      <h3>Convert Any Image Format to PDF</h3>
+      <p>Whether you have high-resolution JPGs from a camera, transparent PNG logos, or modern WebP images, our tool handles them all. By <a href="/tools/image-to-pdf" class="underline hover:text-blue-600">converting images to PDF online</a> with Sohelix, you can ensure your visuals are presented in a universally compatible format that looks great on any device.</p>
+
+      <h3>Full Control Over Your Document</h3>
+      <p>We don't just stick your images together. Our tool gives you professional-grade control over the final output. You can easily reorder your images using a simple drag-and-drop interface, choose between Portrait and Landscape orientations, and select standard page sizes like A4 or US Letter. You can even adjust the image quality to balance file size and visual clarity.</p>
+
+      <h3>Privacy-First PDF Creation</h3>
+      <p>Most online PDF converters require you to upload your sensitive documents to their servers. Sohelix is different. Our <strong>Image to PDF</strong> tool works 100% client-side. Your images are processed locally on your computer using advanced JavaScript libraries. This means your private photos and documents never leave your device, providing the highest level of security and privacy.</p>
+
+      <h3>Perfect for Professionals and Students</h3>
+      <p>This tool is ideal for a wide range of use cases:</p>
+      <ul>
+        <li><strong>Digital Portfolios:</strong> Combine your best designs into a single, easy-to-share PDF.</li>
+        <li><strong>Document Scanning:</strong> Use your phone to take photos of receipts or contracts and turn them into a multi-page PDF.</li>
+        <li><strong>Reports and Presentations:</strong> Merge screenshots and charts into a cohesive document for work or school.</li>
+        <li><strong>E-books:</strong> Create simple e-books or guides from a series of images.</li>
+      </ul>
+
+      <h3>Why Choose Sohelix?</h3>
+      <ul>
+        <li><strong>No Watermarks:</strong> We never add our branding to your documents.</li>
+        <li><strong>Fast and Free:</strong> No waiting for uploads, no hidden fees.</li>
+        <li><strong>No Account Required:</strong> Start converting immediately without signing up.</li>
+        <li><strong>Batch Processing:</strong> Upload and convert dozens of images at once.</li>
+      </ul>
+
+      <p>Experience the fastest and most secure way to manage your documents. If you need to combine existing PDF files, be sure to check out our <a href="/tools/merge-pdf" class="underline hover:text-blue-600">PDF Merger</a> tool as well.</p>
+    `,
   },
   {
     id: 'merge-pdf',
@@ -526,7 +658,36 @@ export const TOOLS: Tool[] = [
         answer: 'The limit depends on your browser\'s memory, but typically you can merge files up to several hundred MBs.'
       }
     ],
-    longContent: 'Simplify your document management by using our <a href="/tools/merge-pdf" class="underline hover:text-blue-200">Merge PDF tool</a>. Instead of sending multiple separate attachments, you can combine them into one cohesive document. Our tool allows you to easily reorder files before merging, ensuring your final PDF is perfectly organized. Everything happens on your computer, so your sensitive documents remain private.'
+    longContent: `
+      <p>Managing multiple PDF documents can be a hassle, especially when you need to share them as a single file. Our <strong>Free Online PDF Merger</strong> is designed to solve this problem quickly and securely. It allows you to combine two or more PDF files into one cohesive document in just a few clicks.</p>
+      
+      <h3>Why Merge PDF Files?</h3>
+      <p>Merging PDFs is essential for better organization and easier sharing. Instead of sending five separate email attachments, you can <a href="/tools/merge-pdf" class="underline hover:text-blue-600">merge PDF files online</a> into a single report, portfolio, or contract. This makes it much easier for your recipients to read and manage your documents.</p>
+
+      <h3>Intuitive Drag-and-Drop Interface</h3>
+      <p>We've made the merging process as simple as possible. Just upload your files, and then use our intuitive interface to drag and drop them into the exact order you want. You can see the file names and sizes to ensure everything is correct before you click "Merge". It's fast, efficient, and requires no technical skills.</p>
+
+      <h3>100% Secure and Private</h3>
+      <p>Your documents often contain sensitive information. Unlike other online services that upload your PDFs to their cloud servers, Sohelix processes everything locally in your browser. We use powerful JavaScript libraries to perform the merge on your own device. This ensures that your private data never leaves your computer, providing the ultimate in document security.</p>
+
+      <h3>Key Features of Our PDF Merger:</h3>
+      <ul>
+        <li><strong>Unlimited Files:</strong> Combine as many PDF documents as you need.</li>
+        <li><strong>Fast Processing:</strong> Merging happens almost instantly, even for large files.</li>
+        <li><strong>No File Size Limits:</strong> The only limit is your device's memory.</li>
+        <li><strong>Maintain Quality:</strong> We ensure that the text and images in your merged PDF remain sharp and clear.</li>
+      </ul>
+
+      <h3>Common Use Cases:</h3>
+      <ul>
+        <li><strong>Monthly Reports:</strong> Combine individual department reports into a single company-wide document.</li>
+        <li><strong>Legal Documents:</strong> Join signed contracts, addendums, and exhibits into one file.</li>
+        <li><strong>Academic Work:</strong> Merge separate chapters or research papers into a complete thesis.</li>
+        <li><strong>Personal Archiving:</strong> Combine scanned receipts or tax documents for better organization.</li>
+      </ul>
+
+      <p>Stop wasting time with complex software or insecure online converters. Sohelix provides a professional-grade PDF merger that is free, fast, and completely private. If you need to do the opposite and extract pages, check out our <a href="/tools/split-pdf" class="underline hover:text-blue-600">PDF Splitter</a>.</p>
+    `,
   },
   {
     id: 'split-pdf',
@@ -565,7 +726,36 @@ export const TOOLS: Tool[] = [
         answer: 'Currently, you need to remove the password before splitting. We prioritize security and do not store or process passwords.'
       }
     ],
-    longContent: 'Need only a few pages from a massive PDF? Our <a href="/tools/split-pdf" class="underline hover:text-blue-200">Split PDF tool</a> is here to help. You can specify exact page ranges or select individual pages to extract into a new document. This is perfect for reducing file sizes or isolating specific information for sharing. Like all Sohelix tools, your data stays on your device throughout the entire process.'
+    longContent: `
+      <p>Have a massive PDF document but only need a few specific pages? Our <strong>Free Online PDF Splitter</strong> is the perfect tool for the job. It allows you to extract exactly what you need from any PDF file, quickly and without any cost.</p>
+      
+      <h3>Why Split a PDF?</h3>
+      <p>There are many reasons why you might need to <a href="/tools/split-pdf" class="underline hover:text-blue-600">split PDF pages online</a>. Perhaps you want to extract a single chapter from an e-book, remove sensitive information before sharing a report, or simply reduce the file size by getting rid of unnecessary pages. Our tool makes this process effortless.</p>
+
+      <h3>Flexible Extraction Options</h3>
+      <p>We provide multiple ways to split your documents. You can specify exact page ranges (e.g., pages 5-10), select individual pages by clicking on their thumbnails, or even split the entire document into separate one-page files. This flexibility ensures you get exactly the result you want every time.</p>
+
+      <h3>Privacy and Security Guaranteed</h3>
+      <p>At Sohelix, we understand that your documents are private. That's why our <strong>PDF Splitter</strong> works 100% client-side. Your PDF files are never uploaded to our servers. All the splitting and extraction happens right in your browser using advanced web technologies. This means your data remains on your device, providing the highest level of security.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Visual Page Selection:</strong> See thumbnails of each page before you split.</li>
+        <li><strong>Custom Ranges:</strong> Extract any combination of pages or ranges.</li>
+        <li><strong>Fast and Lightweight:</strong> No software to install, works instantly in your browser.</li>
+        <li><strong>High Quality:</strong> The extracted pages maintain the original resolution and formatting.</li>
+      </ul>
+
+      <h3>Common Use Cases:</h3>
+      <ul>
+        <li><strong>Extracting Chapters:</strong> Isolate a specific section of a large manual or book.</li>
+        <li><strong>Removing Pages:</strong> Delete blank pages or irrelevant sections from a scanned document.</li>
+        <li><strong>Splitting for Email:</strong> Break a large PDF into smaller parts to meet email attachment limits.</li>
+        <li><strong>Isolating Invoices:</strong> Extract a single invoice from a large batch of documents.</li>
+      </ul>
+
+      <p>Experience the fastest and most secure way to manage your PDF pages. Sohelix is dedicated to providing professional-grade tools for free. If you need to combine files instead, check out our <a href="/tools/merge-pdf" class="underline hover:text-blue-600">PDF Merger</a>.</p>
+    `,
   },
   {
     id: 'bmi-calculator',
@@ -604,7 +794,35 @@ export const TOOLS: Tool[] = [
         answer: 'A healthy BMI for most adults is between 18.5 and 24.9.'
       }
     ],
-    longContent: 'Our <a href="/tools/bmi-calculator" class="underline hover:text-blue-200">BMI calculator</a> helps you quickly determine your Body Mass Index using either metric or imperial units. It provides instant feedback on your weight category and visualizes where you stand on the healthy weight scale.'
+    longContent: `
+      <p>Want to know if you're in a healthy weight range? Our <strong>Free Online BMI Calculator</strong> is a quick and reliable way to determine your Body Mass Index (BMI). It's an essential tool for anyone interested in monitoring their health and fitness levels.</p>
+      
+      <h3>What is BMI?</h3>
+      <p>Body Mass Index (BMI) is a simple calculation using a person's height and weight. The formula is BMI = kg/m2 where kg is a person's weight in kilograms and m2 is their height in metres squared. By <a href="/tools/bmi-calculator" class="underline hover:text-blue-600">calculating your BMI online</a>, you can get a general indication of whether you are underweight, have a healthy weight, are overweight, or are obese.</p>
+
+      <h3>Metric and Imperial Support</h3>
+      <p>We understand that different regions use different measurement systems. That's why our calculator supports both Metric (kilograms and centimeters) and Imperial (pounds, feet, and inches) units. You can easily switch between them to get your results in the format you're most comfortable with.</p>
+
+      <h3>Instant Results and Classification</h3>
+      <p>Our tool provides instant feedback. As soon as you enter your height and weight, your BMI is calculated and displayed along with your weight category classification. We also provide a visual scale to help you see where you stand relative to the healthy weight range (18.5 to 24.9).</p>
+
+      <h3>Privacy-Focused Health Tracking</h3>
+      <p>Your health data is personal. Unlike other health apps that require registration and store your data on their servers, Sohelix is 100% private. Our <strong>BMI Calculator</strong> works entirely in your web browser. Your height and weight are never sent to our servers, ensuring your personal health information remains on your device.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Dual Unit Support:</strong> Use Metric or Imperial units.</li>
+        <li><strong>Instant Calculation:</strong> Get your BMI result in milliseconds.</li>
+        <li><strong>Clear Classification:</strong> Know exactly which weight category you fall into.</li>
+        <li><strong>Healthy Range Guide:</strong> See the target weight for your height.</li>
+        <li><strong>No Account Needed:</strong> Use the tool immediately without signing up.</li>
+      </ul>
+
+      <h3>Why Monitor Your BMI?</h3>
+      <p>While BMI is not a direct measure of body fat, it is a useful screening tool to identify potential weight-related health risks. Maintaining a healthy BMI can reduce the risk of various conditions, including heart disease, type 2 diabetes, and certain types of cancer. Use our results as a starting point for discussions with your healthcare provider.</p>
+
+      <p>Take control of your health journey with Sohelix. Our tools are designed to be fast, free, and secure. If you're also tracking your age for official documents, try our <a href="/tools/age-calculator" class="underline hover:text-blue-600">Age Calculator</a>.</p>
+    `,
   },
   {
     id: 'interest-calculator',
@@ -643,7 +861,40 @@ export const TOOLS: Tool[] = [
         answer: 'Compound interest is interest calculated on the initial principal and also on the accumulated interest of previous periods.'
       }
     ],
-    longContent: 'Plan your finances with our <a href="/tools/interest-calculator" class="underline hover:text-blue-200">Interest calculator</a>. Compare simple and compound interest to see how your money grows over time with different compounding frequencies.'
+    longContent: `
+      <p>Planning for your financial future? Our <strong>Free Online Interest Calculator</strong> is an essential tool for understanding how your money grows over time. Whether you're saving for a big purchase or comparing investment options, our calculator provides the clarity you need.</p>
+      
+      <h3>Simple vs. Compound Interest</h3>
+      <p>Understanding the difference between simple and compound interest is key to smart financial planning. Simple interest is calculated only on the principal amount, while compound interest is calculated on the principal plus the accumulated interest from previous periods. By <a href="/tools/interest-calculator" class="underline hover:text-blue-600">calculating interest online</a> with Sohelix, you can see exactly how compounding can significantly accelerate your savings growth.</p>
+
+      <h3>Flexible Compounding Frequencies</h3>
+      <p>Our calculator allows you to experiment with different compounding frequencies, including annually, semi-annually, quarterly, and monthly. This flexibility is crucial because the more frequently interest is compounded, the faster your balance will grow. You can adjust the principal, interest rate, and time period to see various scenarios and find the best strategy for your goals.</p>
+
+      <h3>Detailed Financial Breakdown</h3>
+      <p>We don't just give you a final number. Our tool provides a detailed breakdown of your total interest earned and the final balance. This transparency helps you visualize your financial progress and make informed decisions about your savings and investments.</p>
+
+      <h3>Privacy and Security</h3>
+      <p>Your financial goals are your business. At Sohelix, we respect your privacy. Our <strong>Interest Calculator</strong> works entirely client-side. Your financial data is never sent to our servers or stored in any database. All calculations are performed locally in your browser, ensuring your financial information remains private.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Dual Mode:</strong> Calculate both simple and compound interest.</li>
+        <li><strong>Custom Frequencies:</strong> Choose from various compounding periods.</li>
+        <li><strong>Instant Results:</strong> See your savings grow in real-time as you adjust inputs.</li>
+        <li><strong>Clear Breakdown:</strong> Understand exactly how much interest you'll earn.</li>
+        <li><strong>No Registration:</strong> Use the tool immediately without signing up.</li>
+      </ul>
+
+      <h3>Common Use Cases:</h3>
+      <ul>
+        <li><strong>Savings Planning:</strong> See how much you'll have for a down payment or retirement.</li>
+        <li><strong>Investment Comparison:</strong> Compare different savings accounts or fixed deposits.</li>
+        <li><strong>Loan Understanding:</strong> Calculate the interest you'll pay on a simple loan.</li>
+        <li><strong>Financial Education:</strong> Learn the power of compounding through experimentation.</li>
+      </ul>
+
+      <p>Take the guesswork out of your financial planning with Sohelix. Our tools are designed to be fast, free, and secure. If you're also managing your monthly budget, try our <a href="/tools/emi-calculator" class="underline hover:text-blue-600">EMI Calculator</a>.</p>
+    `,
   },
   {
     id: 'emi-calculator',
@@ -1367,7 +1618,36 @@ export const TOOLS: Tool[] = [
         answer: 'No, Base64 is an encoding scheme, not encryption. It is used to represent binary data in an ASCII string format.'
       }
     ],
-    longContent: 'Our <a href="/tools/base64-converter" class="underline hover:text-blue-200">Base64 Encoder / Decoder</a> provides a simple way to convert data between plain text and Base64. This is particularly useful for developers who need to embed small images in CSS or transmit binary data over text-based protocols.'
+    longContent: `
+      <p>Need to encode text or images into a format that can be easily transmitted over text-based protocols? Our <strong>Free Online Base64 Encoder and Decoder</strong> is the perfect tool for developers, designers, and data analysts. It provides a fast, secure, and reliable way to convert data to and from Base64 format.</p>
+      
+      <h3>What is Base64 Encoding?</h3>
+      <p>Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. By <a href="/tools/base64-converter" class="underline hover:text-blue-600">encoding data to Base64 online</a>, you can ensure that binary information (like images or complex characters) can be safely transmitted through systems that only support text.</p>
+
+      <h3>Encode and Decode with Ease</h3>
+      <p>Our tool features a dual-mode interface that allows you to both encode and decode data instantly. Simply paste your text or Base64 string into the input area, and the result will be displayed in real-time. We also support image-to-Base64 conversion, which is incredibly useful for embedding small icons or graphics directly into your HTML or CSS files to reduce HTTP requests.</p>
+
+      <h3>Privacy and Security First</h3>
+      <p>Many online converters send your data to their servers for processing, which can be a security risk if you're handling sensitive information. Sohelix is different. Our <strong>Base64 Converter</strong> runs entirely in your web browser. Your data never leaves your device, ensuring that your strings and images remain private and secure.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Text Encoding/Decoding:</strong> Convert any string to Base64 and back.</li>
+        <li><strong>Image to Base64:</strong> Drag and drop images to get their Data URI instantly.</li>
+        <li><strong>Live Processing:</strong> See results as you type or upload.</li>
+        <li><strong>Copy to Clipboard:</strong> Quickly copy the encoded or decoded result with a single click.</li>
+      </ul>
+
+      <h3>Common Use Cases:</h3>
+      <ul>
+        <li><strong>Web Development:</strong> Embedding small images in CSS or HTML to optimize page load times.</li>
+        <li><strong>Data Transmission:</strong> Sending binary data over protocols like SMTP (Email) or JSON.</li>
+        <li><strong>Debugging:</strong> Inspecting Base64 encoded strings in logs or API responses.</li>
+        <li><strong>Security:</strong> Obfuscating simple strings (note: Base64 is NOT encryption).</li>
+      </ul>
+
+      <p>Experience the convenience of a professional-grade encoding tool without the privacy concerns. Sohelix provides the fastest and most secure way to manage your Base64 data. If you're working with web code, you might also find our <a href="/tools/html-minifier" class="underline hover:text-blue-600">HTML Minifier</a> useful.</p>
+    `,
   },
   {
     id: 'currency-converter',

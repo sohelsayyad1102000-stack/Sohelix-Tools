@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { TOOLS } from '../constants/tools';
 import { SEO } from '../components/SEO';
 import { cn, formatBytes } from '../lib/utils';
+import * as Icons from 'lucide-react';
 import { 
   Upload, 
   Download, 
@@ -81,10 +82,22 @@ import { ColorConverter } from '../components/tools/ColorConverter';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useToolHistory } from '../hooks/useToolHistory';
 
 export const ToolPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const tool = TOOLS.find(t => t.slug === slug);
+  const { addToHistory } = useToolHistory();
+
+  React.useEffect(() => {
+    if (tool) {
+      addToHistory({
+        id: tool.id,
+        name: tool.name,
+        slug: tool.slug
+      });
+    }
+  }, [tool, addToHistory]);
   
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -437,6 +450,14 @@ export const ToolPage: React.FC = () => {
               
               {/* Main Area */}
               <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800">
+                <input 
+                  type="file" 
+                  ref={fileInputRef} 
+                  className="hidden" 
+                  multiple 
+                  accept="image/*" 
+                  onChange={handleFileChange}
+                />
                 {files.length === 0 ? (
                   <div 
                     onDragOver={(e) => e.preventDefault()}
@@ -449,14 +470,6 @@ export const ToolPage: React.FC = () => {
                     </div>
                     <h3 className="mt-6 text-xl font-bold text-gray-900 dark:text-white">Select images or drag & drop here</h3>
                     <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Supports JPG, PNG, WebP, SVG</p>
-                    <input 
-                      type="file" 
-                      ref={fileInputRef} 
-                      className="hidden" 
-                      multiple 
-                      accept="image/*" 
-                      onChange={handleFileChange}
-                    />
                   </div>
                 ) : (
                   <div className="space-y-6">
@@ -760,19 +773,22 @@ export const ToolPage: React.FC = () => {
           <div className="mt-24 border-t border-gray-200 pt-16 dark:border-gray-800">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Related Tools</h2>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {relatedTools.map(rt => (
-                <Link 
-                  key={rt.id} 
-                  to={`/tools/${rt.slug}`}
-                  className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
-                    <FileImage className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-bold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">{rt.name}</h3>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{rt.description}</p>
-                </Link>
-              ))}
+              {relatedTools.map(rt => {
+                const IconComponent = (Icons as any)[rt.icon] || Icons.FileImage;
+                return (
+                  <Link 
+                    key={rt.id} 
+                    to={`/tools/${rt.slug}`}
+                    className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
+                  >
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
+                      <IconComponent className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-bold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">{rt.name}</h3>
+                    <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{rt.description}</p>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}

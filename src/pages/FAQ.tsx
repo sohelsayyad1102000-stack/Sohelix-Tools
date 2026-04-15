@@ -1,5 +1,6 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
+import { HelpCircle, ChevronRight } from 'lucide-react';
 
 const faqs = [
   {
@@ -12,7 +13,7 @@ const faqs = [
   },
   {
     question: "How does image compression work without uploading?",
-    answer: "We utilize modern web technologies and JavaScript libraries (like browser-image-compression) that leverage your device's processing power to compress images locally before you save them."
+    answer: "We utilize modern web technologies and JavaScript libraries that leverage your device's processing power to compress images locally before you save them."
   },
   {
     question: "Is this tool safe to use for sensitive documents?",
@@ -20,7 +21,7 @@ const faqs = [
   },
   {
     question: "What image formats are supported?",
-    answer: "Our tools generally support standard web formats including JPG, PNG, and WebP. Specific tools may have different format requirements, which are detailed on their respective pages."
+    answer: "Our tools generally support standard web formats including JPG, PNG, WebP, and SVG. Specific tools may have different format requirements, which are detailed on their respective pages."
   },
   {
     question: "Can I use Sohelix on my mobile phone?",
@@ -33,37 +34,67 @@ const faqs = [
   {
     question: "Do you add watermarks to processed images?",
     answer: "No, we never add our own watermarks to your images. Your processed files remain clean. We do offer a Watermark tool if you wish to add your own custom watermark."
+  },
+  {
+    question: "How can I suggest a new tool?",
+    answer: "We love hearing from our users! If you have an idea for a new tool or feature, please reach out to us through our contact page."
   }
 ];
 
 export const FAQ: React.FC = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <Helmet>
-        <title>Frequently Asked Questions - Sohelix</title>
-        <meta name="description" content="Find answers to common questions about Sohelix, our free client-side image tools, privacy, and security." />
-      </Helmet>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-16">
+      <SEO 
+        title="Frequently Asked Questions - Sohelix"
+        description="Find answers to common questions about Sohelix, our free client-side image tools, privacy, and security."
+        schema={faqSchema}
+      />
 
-      <div className="text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-          Frequently Asked Questions
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-400">
-          Everything you need to know about using Sohelix.
-        </p>
-      </div>
-
-      <div className="mt-12 space-y-8">
-        {faqs.map((faq, index) => (
-          <div key={index} className="rounded-2xl bg-white p-8 shadow-sm dark:bg-gray-900">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-              {faq.question}
-            </h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
-              {faq.answer}
-            </p>
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center p-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl mb-6 text-blue-600 dark:text-blue-400">
+            <HelpCircle className="h-10 w-10" />
           </div>
-        ))}
+          <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Everything you need to know about using Sohelix.
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          {faqs.map((faq, index) => (
+            <div key={index} className="group rounded-2xl bg-white p-8 shadow-sm border border-gray-100 transition-all hover:shadow-md dark:bg-gray-900 dark:border-gray-800">
+              <div className="flex gap-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                  <ChevronRight className="h-5 w-5" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                    {faq.question}
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
