@@ -43,6 +43,25 @@ export default function App() {
               <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
               <Route path="/categories/:slug" element={<PageWrapper><CategoryPage /></PageWrapper>} />
               <Route path="/tools/:slug" element={<PageWrapper><ToolPage /></PageWrapper>} />
+              
+              {/* Programmatic SEO Routes for Resize Image */}
+              <Route path="/resize-image-to-100x100" element={<PageWrapper><ToolPage slug="resize-image" /></PageWrapper>} />
+              <Route path="/resize-image-to-600x600" element={<PageWrapper><ToolPage slug="resize-image" /></PageWrapper>} />
+              <Route path="/resize-image-for-instagram" element={<PageWrapper><ToolPage slug="resize-image" /></PageWrapper>} />
+              <Route path="/resize-image-for-passport" element={<PageWrapper><ToolPage slug="resize-image" /></PageWrapper>} />
+              <Route path="/resize-image-in-cm" element={<PageWrapper><ToolPage slug="resize-image" /></PageWrapper>} />
+              <Route path="/resize-image-in-mm" element={<PageWrapper><ToolPage slug="resize-image" /></PageWrapper>} />
+              <Route path="/resize-image-in-inch" element={<PageWrapper><ToolPage slug="resize-image" /></PageWrapper>} />
+
+              {/* Programmatic SEO Routes for Crop Image */}
+              <Route path="/crop-image-circle" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
+              <Route path="/crop-image-square" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
+              <Route path="/crop-image-16x9" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
+              <Route path="/crop-image-for-passport" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
+              <Route path="/crop-image-for-instagram" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
+              <Route path="/crop-image-for-youtube-thumbnail" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
+              <Route path="/crop-image-circle-online" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
+
               <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
               <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
               <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />

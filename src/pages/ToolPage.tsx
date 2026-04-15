@@ -77,6 +77,7 @@ import { CSVToJSONConverter } from '../components/tools/CSVToJSONConverter';
 import { JSONToCSVConverter } from '../components/tools/JSONToCSVConverter';
 import { HTMLMinifier } from '../components/tools/HTMLMinifier';
 import { CSSMinifier } from '../components/tools/CSSMinifier';
+import { ResizeImageTool } from '../components/tools/ResizeImageTool';
 import { JSMinifier } from '../components/tools/JSMinifier';
 import { ColorConverter } from '../components/tools/ColorConverter';
 import JSZip from 'jszip';
@@ -84,8 +85,9 @@ import { saveAs } from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useToolHistory } from '../hooks/useToolHistory';
 
-export const ToolPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
+export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
+  const { slug: paramSlug } = useParams<{ slug: string }>();
+  const slug = propSlug || paramSlug;
   const tool = TOOLS.find(t => t.slug === slug);
   const { addToHistory } = useToolHistory();
 
@@ -348,6 +350,8 @@ export const ToolPage: React.FC = () => {
       <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
         {tool.id === 'compress-image' ? (
           <CompressorTool tool={tool} />
+        ) : tool.id === 'resize-image' ? (
+          <ResizeImageTool tool={tool} />
         ) : tool.id === 'crop-image' ? (
           <CropperTool tool={tool} />
         ) : tool.id === 'qr-code-generator' ? (
@@ -685,87 +689,126 @@ export const ToolPage: React.FC = () => {
         )}
 
         {/* SEO Content Sections */}
-        <section className="mt-24 space-y-16">
-          {/* What is */}
-          <div className="prose prose-blue dark:prose-invert max-w-none">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What is {tool.name}?</h2>
-            <div 
-              className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400"
-              dangerouslySetInnerHTML={{ __html: tool.longContent }}
-            />
-          </div>
-
-          {/* How to Use */}
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How to Use {tool.name}</h2>
-            <ol className="mt-6 space-y-4 text-gray-600 dark:text-gray-400">
-              <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">1</span>
-                <span>Select the files you want to process from your device or drag and drop them into the tool area.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">2</span>
-                <span>Adjust the settings to your preference.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">3</span>
-                <span>Click the "Process" or "Calculate" button to start the client-side processing.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">4</span>
-                <span>Once finished, view your results or click the "Download" button to save your files.</span>
-              </li>
-            </ol>
-          </div>
-
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-            {/* Features */}
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Features</h2>
-              <ul className="mt-6 space-y-4">
-                {tool.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Benefits */}
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Benefits & Use Cases</h2>
-              <ul className="mt-6 space-y-4">
-                {tool.benefits.map((benefit, i) => (
-                  <li key={`benefit-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                    <CheckCircle2 className="h-5 w-5 text-blue-500" />
-                    {benefit}
-                  </li>
-                ))}
-                {tool.useCases.map((useCase, i) => (
-                  <li key={`usecase-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                    <CheckCircle2 className="h-5 w-5 text-blue-500" />
-                    {useCase}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* FAQ Section */}
-          {tool.faqs.length > 0 && (
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
-              <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-                {tool.faqs.map((faq, i) => (
-                  <div key={i} className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
-                    <h3 className="font-bold text-gray-900 dark:text-white">{faq.question}</h3>
-                    <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">{faq.answer}</p>
-                  </div>
-                ))}
+        <section className="mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <div className="lg:col-span-3 space-y-16">
+              {/* What is */}
+              <div className="prose prose-blue dark:prose-invert max-w-none">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What is {tool.name}?</h2>
+                <div 
+                  className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400"
+                  dangerouslySetInnerHTML={{ __html: tool.longContent }}
+                />
               </div>
+
+              {/* How to Use */}
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How to Use {tool.name}</h2>
+                <ol className="mt-6 space-y-4 text-gray-600 dark:text-gray-400">
+                  <li className="flex gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">1</span>
+                    <span>Select the files you want to process from your device or drag and drop them into the tool area.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">2</span>
+                    <span>Adjust the settings to your preference.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">3</span>
+                    <span>Click the "Process" or "Calculate" button to start the client-side processing.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">4</span>
+                    <span>Once finished, view your results or click the "Download" button to save your files.</span>
+                  </li>
+                </ol>
+              </div>
+
+              <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+                {/* Features */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Features</h2>
+                  <ul className="mt-6 space-y-4">
+                    {tool.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                        <CheckCircle2 className="h-5 w-5 text-green-500" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Benefits */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Benefits & Use Cases</h2>
+                  <ul className="mt-6 space-y-4">
+                    {tool.benefits.map((benefit, i) => (
+                      <li key={`benefit-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                        <CheckCircle2 className="h-5 w-5 text-blue-500" />
+                        {benefit}
+                      </li>
+                    ))}
+                    {tool.useCases.map((useCase, i) => (
+                      <li key={`usecase-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                        <CheckCircle2 className="h-5 w-5 text-blue-500" />
+                        {useCase}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* FAQ Section */}
+              {tool.faqs.length > 0 && (
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+                  <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                    {tool.faqs.map((faq, i) => (
+                      <div key={i} className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+                        <h3 className="font-bold text-gray-900 dark:text-white">{faq.question}</h3>
+                        <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">{faq.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+
+            {/* Sidebar */}
+            <aside className="space-y-8">
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <Icons.Zap className="h-5 w-5 text-yellow-500" />
+                  Popular Tools
+                </h3>
+                <div className="space-y-3">
+                  {TOOLS.filter(t => t.id !== tool.id).slice(0, 6).map(t => (
+                    <Link 
+                      key={t.id} 
+                      to={`/tools/${t.slug}`}
+                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
+                    >
+                      <div className="h-8 w-8 rounded bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                        {React.createElement((Icons as any)[t.icon] || Icons.FileImage, { className: "h-4 w-4" })}
+                      </div>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600">{t.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-gray-200 bg-blue-600 p-6 text-white shadow-lg shadow-blue-500/20">
+                <h3 className="text-lg font-bold mb-2">Need Help?</h3>
+                <p className="text-sm text-blue-100 mb-4">Our tools are free and secure. If you have any questions, feel free to contact us.</p>
+                <Link 
+                  to="/contact" 
+                  className="block w-full py-2 text-center bg-white text-blue-600 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors"
+                >
+                  Contact Support
+                </Link>
+              </div>
+            </aside>
+          </div>
         </section>
 
         {/* Related Tools Section */}

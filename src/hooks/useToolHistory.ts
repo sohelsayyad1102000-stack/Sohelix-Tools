@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 export interface HistoryItem {
@@ -10,7 +11,7 @@ export interface HistoryItem {
 export function useToolHistory() {
   const [history, setHistory] = useLocalStorage<HistoryItem[]>('tool-history', []);
 
-  const addToHistory = (tool: { id: string; name: string; slug: string }) => {
+  const addToHistory = useCallback((tool: { id: string; name: string; slug: string }) => {
     setHistory(prev => {
       const filtered = prev.filter(item => item.id !== tool.id);
       const newItem = {
@@ -19,9 +20,9 @@ export function useToolHistory() {
       };
       return [newItem, ...filtered].slice(0, 10);
     });
-  };
+  }, [setHistory]);
 
-  const clearHistory = () => setHistory([]);
+  const clearHistory = useCallback(() => setHistory([]), [setHistory]);
 
   return { history, addToHistory, clearHistory };
 }

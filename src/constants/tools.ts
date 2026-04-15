@@ -112,132 +112,188 @@ export const TOOLS: Tool[] = [
   {
     id: 'resize-image',
     name: 'Resize Image',
-    title: 'Resize Image Online',
-    description: 'Change image dimensions by pixels or percentage easily.',
+    title: 'Resize Image Online Free',
+    description: 'Resize images in pixels, cm, or mm with optional compression and format conversion — fast, free, and secure.',
     icon: 'Maximize2',
     slug: 'resize-image',
     category: 'image-tools',
     seo: {
-      title: 'Free Online Image Resizer - Change Image Dimensions Fast',
-      description: 'Resize JPG, PNG, and WebP images online for free. Change width and height in pixels or percentage. Maintain aspect ratio and high quality.',
-      keywords: ['image resizer', 'resize image online', 'change image dimensions', 'resize jpg', 'resize png'],
+      title: 'Free Online Image Resizer - Resize in Pixels, CM, MM',
+      description: 'Resize JPG, PNG, and WebP images online for free. Change dimensions in pixels, cm, mm, or inches. Includes compression and format conversion.',
+      keywords: ['image resizer', 'resize image online', 'resize image in cm', 'resize image in mm', 'resize image to 100x100', 'passport size photo resizer'],
     },
     features: [
-      'Resize by pixels or percentage',
-      'Maintain aspect ratio lock',
-      'Bulk resizing support',
-      'Instant preview',
+      'Resize in Pixels, CM, MM, or Inches',
+      'Maintain Aspect Ratio Toggle',
+      'Built-in Image Compression',
+      'Multi-format Output (JPG, PNG, WebP)',
+      'Bulk Processing Support',
+      '100% Client-side Privacy',
     ],
     benefits: [
-      'Perfect for social media profiles',
-      'Standardize image sizes for galleries',
-      'Quick adjustments for documents',
+      'Professional precision for printing',
+      'Optimized for social media & web',
+      'No registration or login required',
+      'Fast, secure, and free forever',
     ],
     useCases: [
-      'Creating thumbnails',
+      'Creating passport size photos (CM/MM)',
+      'Optimizing web assets for SEO',
       'Fitting images into specific UI layouts',
-      'Preparing photos for printing',
+      'Preparing photos for physical printing',
     ],
     faqs: [
       {
-        question: 'Can I resize multiple images at once?',
-        answer: 'Yes, you can upload and resize multiple images simultaneously.',
+        question: 'How do I resize an image to 100x100 pixels?',
+        answer: 'Upload your image, set the unit to "PX", enter 100 in both width and height fields, and click Resize.',
       },
       {
-        question: 'Will resizing make my image blurry?',
-        answer: 'Upscaling an image beyond its original size may cause blurriness, but downscaling maintains high clarity.',
+        question: 'Can I resize an image in CM or MM?',
+        answer: 'Yes! Sohelix supports professional units like CM and MM, perfect for passport photos or print documents.',
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Absolutely. All processing happens locally in your browser. Your images are never uploaded to our servers.',
       },
     ],
     longContent: `
-      <p>Need to change the dimensions of your photos for social media, email, or your website? Our <strong>Free Online Image Resizer</strong> is the perfect solution. It allows you to quickly and easily resize images to any width and height while maintaining the aspect ratio to prevent distortion.</p>
-      
-      <h3>Why Resize Images?</h3>
-      <p>Using images with the correct dimensions is critical for web performance. If you upload a 4000px wide image but only display it at 400px, you are forcing your users to download 10x more data than necessary. This slows down your page and hurts your SEO. By <a href="/tools/resize-image" class="underline hover:text-blue-600">resizing images online</a> with Sohelix, you ensure your site stays fast and efficient.</p>
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is Image Resizing?</h2>
+          <p class="text-gray-600 dark:text-gray-400">Image resizing is the process of changing the dimensions of a digital image. This can involve changing the <strong>pixel count</strong> for web use or adjusting the <strong>physical dimensions (CM/MM)</strong> for printing. Unlike simple scaling, professional resizing with Sohelix ensures that your image maintains its clarity and aspect ratio, preventing unwanted distortion.</p>
+        </section>
 
-      <h3>Social Media Presets</h3>
-      <p>We've included built-in presets for all major social platforms. Whether you're creating an Instagram Post (1080x1080), a Facebook Cover (1200x630), or a Twitter Header (1500x500), you can apply the correct dimensions with a single click. No more searching for "social media image sizes" every time you post.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Resize Image Online</h2>
+          <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400">
+            <li><strong>Upload:</strong> Drag and drop your images or click "Select Images" to begin.</li>
+            <li><strong>Configure:</strong> Choose your preferred unit (Pixels, CM, MM, or Inch).</li>
+            <li><strong>Dimensions:</strong> Enter your desired width and height. Use the "Maintain Aspect Ratio" toggle to keep proportions.</li>
+            <li><strong>Optional Settings:</strong> Enable compression or change the output format (JPG, PNG, WebP).</li>
+            <li><strong>Process:</strong> Click "Resize Image" and download your optimized files instantly.</li>
+          </ol>
+        </section>
 
-      <h3>Privacy-First Processing</h3>
-      <p>Like all Sohelix tools, our image resizer works 100% client-side. Your photos never leave your computer. We use your browser's native Canvas API to perform high-quality resampling, ensuring your resized images look sharp and professional without ever compromising your privacy.</p>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+            <h3 class="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">Pixels vs. Physical Units</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">While web developers focus on pixels for screen resolution, physical units like CM and MM are crucial for documents and printing. Our tool handles the conversion automatically using standard DPI settings.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
+            <h3 class="text-lg font-bold text-green-900 dark:text-green-400 mb-2">Lossless Resizing</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">We use high-quality resampling algorithms to ensure that downscaling your images doesn't result in a loss of sharpness, making your photos look professional at any size.</p>
+          </div>
+        </section>
 
-      <h3>Bulk Resizing Support</h3>
-      <p>Have a folder full of photos that all need to be the same size? Our tool supports bulk processing. Simply drag and drop all your files, set your desired dimensions, and download them all at once in a convenient ZIP file. It's a massive time-saver for photographers and content creators.</p>
-
-      <h3>Key Features:</h3>
-      <ul>
-        <li><strong>Maintain Aspect Ratio:</strong> Keep your images from looking stretched or squashed.</li>
-        <li><strong>Pixel-Perfect Precision:</strong> Set exact width and height in pixels.</li>
-        <li><strong>High-Quality Resampling:</strong> Advanced algorithms ensure clarity even when scaling down.</li>
-        <li><strong>Instant Preview:</strong> See the results before you download.</li>
-      </ul>
-
-      <p>Stop struggling with complex photo editing software. Sohelix provides a fast, free, and secure way to resize your images directly in your browser. No signup, no watermarks, just results.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Sohelix Image Resizer?</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Our tool is designed to beat competitors by offering a cleaner, faster, and more versatile experience. Here is why thousands of users trust us:</p>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Batch Processing:</strong> Resize hundreds of images at once and download them as a ZIP.</li>
+            <li><strong>Integrated Compression:</strong> No need to use a separate tool; resize and compress in one go.</li>
+            <li><strong>Format Flexibility:</strong> Convert your JPG to PNG or WebP during the resizing process.</li>
+            <li><strong>Privacy Guaranteed:</strong> Your files never leave your device. 100% browser-based processing.</li>
+          </ul>
+        </section>
+      </div>
     `,
   },
   {
     id: 'crop-image',
     name: 'Crop Image',
-    title: 'Crop Image Online',
-    description: 'Remove unwanted parts of an image with precision.',
+    title: 'Crop Image Online Free',
+    description: 'Crop images instantly with precision. No download required. Works on all devices.',
     icon: 'Crop',
     slug: 'crop-image',
     category: 'image-tools',
     seo: {
-      title: 'Free Online Image Cropper - Crop JPG, PNG, WebP Easily',
-      description: 'Crop your images online for free. Use preset aspect ratios or free-form selection. High precision cropping with instant download.',
-      keywords: ['image cropper', 'crop image online', 'remove image borders', 'crop photo'],
+      title: 'Free Online Image Cropper - Precise Crop JPG, PNG, WebP',
+      description: 'Crop images online for free with precision selection. Support for aspect ratios, circle crop, and multi-format output. Instant, secure, and browser-based.',
+      keywords: ['image cropper', 'crop image online', 'free photo cropper', 'circle crop online', 'passport photo cropper', 'crop png online'],
     },
     features: [
-      'Preset aspect ratios (1:1, 4:3, 16:9)',
-      'Free-form selection',
-      'Rotation while cropping',
-      'High-res output',
+      'Precise drag & resize crop box',
+      'Aspect ratio presets (1:1, 4:3, 16:9, Passport)',
+      'Circle crop mode for profile pictures',
+      'Rotate and Zoom controls',
+      'Real-time crop preview',
+      'Multi-format support (JPG, PNG, WebP, HEIC)',
     ],
     benefits: [
-      'Focus on the subject',
-      'Remove distracting backgrounds',
-      'Create perfect profile pictures',
+      'Focus on the subject by removing distractions',
+      'Optimize images for social media platforms',
+      'Reduce file size by removing unnecessary pixels',
+      '100% Private: Processing happens in your browser',
     ],
     useCases: [
-      'Photography editing',
-      'E-commerce product photos',
-      'Personal photo archiving',
+      'Passport and ID photos',
+      'Social media profile pictures and posts',
+      'Website thumbnails and banners',
+      'Removing unwanted background elements',
     ],
     faqs: [
       {
-        question: 'Is the cropping tool precise?',
-        answer: 'Yes, you can drag the corners to select the exact area you want to keep.',
+        question: 'How do I crop an image to a specific aspect ratio?',
+        answer: 'Select your image, then choose from the preset aspect ratios like 1:1, 4:3, or 16:9 in the settings sidebar. The crop box will automatically lock to that proportion.',
+      },
+      {
+        question: 'Can I crop an image into a circle?',
+        answer: 'Yes! Switch to the "Circle" mode in our cropper settings to create perfect circular crops for profile pictures.',
+      },
+      {
+        question: 'Is my data safe when using this cropper?',
+        answer: 'Absolutely. Sohelix uses client-side technology, meaning your images are processed entirely in your browser and are never uploaded to our servers.',
+      },
+      {
+        question: 'Does cropping reduce image quality?',
+        answer: 'No, our tool uses high-quality canvas rendering to ensure that the cropped area retains its original sharpness and detail.',
       },
     ],
     longContent: `
-      <p>Sometimes a photo is perfect except for a few distracting elements at the edges. Our <strong>Free Online Image Cropper</strong> gives you the control to frame your images exactly how you want them. Whether you're removing a photobomber, adjusting a composition, or preparing a profile picture, Sohelix makes it easy.</p>
-      
-      <h3>Precision Cropping Tools</h3>
-      <p>Our tool provides a high-precision interface that allows you to drag and resize the crop area with pixel-perfect accuracy. You can see the exact dimensions of your selection in real-time, ensuring you get the perfect cut every time. By <a href="/tools/crop-image" class="underline hover:text-blue-600">cropping images online</a>, you can focus on the most important parts of your visual content.</p>
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is Image Cropping?</h2>
+          <p class="text-gray-600 dark:text-gray-400">Image cropping is the process of removing unwanted outer areas from a photographic or illustrated image. The process usually consists of the removal of some of the peripheral areas of an image to remove extraneous junk from the picture, to improve its framing, to change the aspect ratio, or to accentuate or isolate the subject matter from its background.</p>
+          <p class="mt-4 text-gray-600 dark:text-gray-400">With our <strong>Free Online Image Cropper</strong>, you can perform these tasks with professional precision without needing to install complex software like Photoshop.</p>
+        </section>
 
-      <h3>Aspect Ratio Presets</h3>
-      <p>We support all common aspect ratios, including 1:1 (Square), 4:3, 16:9 (Widescreen), and more. These presets are essential for ensuring your images fit perfectly on platforms like Instagram, LinkedIn, and YouTube. You can also use the "Free" mode to create custom crops of any shape and size.</p>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+            <h3 class="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">Improve Focus</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">By removing distracting elements from the edges of your photo, you can draw the viewer's eye directly to the subject, creating a much more impactful visual.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
+            <h3 class="text-lg font-bold text-green-900 dark:text-green-400 mb-2">Optimize for Social Media</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Different platforms require different shapes. Use our presets to quickly crop for Instagram (1:1), YouTube (16:9), or professional headshots.</p>
+          </div>
+        </section>
 
-      <h3>Secure and Private</h3>
-      <p>Your personal photos are sensitive. That's why Sohelix never uploads your images to a server. All cropping is performed locally in your browser using advanced JavaScript. This ensures that your data remains on your device, providing peace of mind and lightning-fast performance.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Crop Image Online Free</h2>
+          <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400">
+            <li><strong>Upload Image:</strong> Drag and drop your JPG, PNG, or WebP file into the upload box.</li>
+            <li><strong>Adjust Selection:</strong> Use the handles on the crop box to select the area you want to keep. You can also move the entire box.</li>
+            <li><strong>Choose Mode:</strong> Select between "Rectangle" or "Circle" crop depending on your needs.</li>
+            <li><strong>Fine-tune:</strong> Use the Zoom and Rotate sliders to perfectly align your subject within the frame.</li>
+            <li><strong>Crop & Download:</strong> Click the "Crop Image" button and save your perfectly framed photo instantly.</li>
+          </ol>
+        </section>
 
-      <h3>How to Crop an Image Online:</h3>
-      <ol>
-        <li><strong>Upload:</strong> Select your image or drag it into the workspace.</li>
-        <li><strong>Select Area:</strong> Use the handles to define the part of the image you want to keep.</li>
-        <li><strong>Choose Ratio:</strong> Optionally select a preset aspect ratio to lock the proportions.</li>
-        <li><strong>Download:</strong> Click "Crop Image" and then download your perfectly framed result.</li>
-      </ol>
-
-      <h3>Why Use Sohelix for Cropping?</h3>
-      <ul>
-        <li><strong>No Watermarks:</strong> We never add branding to your images.</li>
-        <li><strong>High Resolution:</strong> We maintain the original quality of the cropped area.</li>
-        <li><strong>Zero Cost:</strong> Our tools are 100% free to use, forever.</li>
-        <li><strong>No Account Needed:</strong> Start cropping immediately without giving us your email.</li>
-      </ul>
-
-      <p>Join the thousands of users who use Sohelix for their daily image editing needs. If you need to further optimize your cropped image, don't forget to use our <a href="/tools/compress-image" class="underline hover:text-blue-600">image compressor</a> to reduce the file size for the web.</p>
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Professional Features, Zero Cost</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">Sohelix provides a high-performance <strong>image cropper</strong> that works entirely in your browser. This means your images are never uploaded to a server, providing 100% privacy and lightning-fast results. Whether you're preparing a passport photo or a social media post, our tool ensures precision and quality.</p>
+          
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <h4 class="font-bold text-gray-900 dark:text-white mb-4">Popular Crop Variations:</h4>
+            <div class="flex flex-wrap gap-4">
+              <a href="/tools/crop-image-circle" class="text-blue-600 hover:underline font-medium">Circle Crop Online</a>
+              <a href="/tools/crop-image-square" class="text-blue-600 hover:underline font-medium">Square Crop (1:1)</a>
+              <a href="/tools/crop-image-16x9" class="text-blue-600 hover:underline font-medium">Widescreen Crop (16:9)</a>
+              <a href="/tools/crop-image-for-passport" class="text-blue-600 hover:underline font-medium">Passport Photo Cropper</a>
+            </div>
+          </div>
+        </section>
+      </div>
     `,
   },
   {
