@@ -14,6 +14,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online Image Compressor - Reduce Image Size Without Quality Loss',
       description: 'Compress JPG, PNG, SVG, and GIF images online for free. Reduce file size by up to 90% while maintaining high quality. No upload required, 100% secure.',
       keywords: ['image compressor', 'reduce image size', 'compress jpg', 'compress png', 'online image optimizer'],
+      ogImage: 'https://sohelix.com/og/compress-image.png',
     },
     features: [
       'Fast client-side processing',
@@ -121,6 +122,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online Image Resizer - Resize in Pixels, CM, MM',
       description: 'Resize JPG, PNG, and WebP images online for free. Change dimensions in pixels, cm, mm, or inches. Includes compression and format conversion.',
       keywords: ['image resizer', 'resize image online', 'resize image in cm', 'resize image in mm', 'resize image to 100x100', 'passport size photo resizer'],
+      ogImage: 'https://sohelix.com/og/resize-image.png',
     },
     features: [
       'Resize in Pixels, CM, MM, or Inches',
@@ -210,6 +212,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online Image Cropper - Precise Crop JPG, PNG, WebP',
       description: 'Crop images online for free with precision selection. Support for aspect ratios, circle crop, and multi-format output. Instant, secure, and browser-based.',
       keywords: ['image cropper', 'crop image online', 'free photo cropper', 'circle crop online', 'passport photo cropper', 'crop png online'],
+      ogImage: 'https://sohelix.com/og/crop-image.png',
     },
     features: [
       'Precise drag & resize crop box',
@@ -489,6 +492,7 @@ export const TOOLS: Tool[] = [
       title: 'Free WebP Converter - Convert JPG/PNG to WebP Online',
       description: 'Convert your images to WebP format for faster website loading. Free online converter for JPG, PNG, and more.',
       keywords: ['webp converter', 'convert to webp', 'jpg to webp', 'png to webp', 'optimize for web'],
+      ogImage: 'https://sohelix.com/og/webp-converter.png',
     },
     features: [
       'Lossy & Lossless compression',
@@ -807,6 +811,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online Image to PDF Converter - Convert JPG, PNG to PDF',
       description: 'Convert your images to PDF online for free. Support for JPG, PNG, and WebP. Reorder images, set page size, and orientation. 100% secure and client-side.',
       keywords: ['image to pdf', 'convert jpg to pdf', 'png to pdf', 'online pdf maker', 'images to pdf'],
+      ogImage: 'https://sohelix.com/og/image-to-pdf.png',
     },
     features: [
       'Drag & drop reordering',
@@ -876,6 +881,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online PDF Merger - Combine PDF Files Instantly',
       description: 'Merge multiple PDF files into one online for free. Easy drag-and-drop reordering. Fast, secure, and works entirely in your browser.',
       keywords: ['merge pdf', 'combine pdf', 'join pdf files', 'pdf merger online', 'free pdf tools'],
+      ogImage: 'https://sohelix.com/og/merge-pdf.png',
     },
     features: [
       'Combine unlimited PDF files',
@@ -1012,6 +1018,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online BMI Calculator - Instant Results & Health Insights',
       description: 'Calculate your BMI online for free. Get instant visual feedback, ideal weight range, and health insights. Supports metric and imperial units. 100% private.',
       keywords: ['bmi calculator', 'body mass index', 'calculate bmi online', 'ideal weight calculator', 'health calculator', 'bmi calculator for men', 'bmi calculator for women'],
+      ogImage: 'https://sohelix.com/og/bmi-calculator.png',
     },
     features: [
       'Instant real-time calculation',
@@ -1420,6 +1427,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online EMI Calculator - Loan Repayment Calculator',
       description: 'Calculate your monthly loan EMI, total interest, and total payment. Plan your home, car, or personal loans effectively.',
       keywords: ['emi calculator', 'loan calculator', 'mortgage calculator', 'monthly payment', 'finance tool'],
+      ogImage: 'https://sohelix.com/og/emi-calculator.png',
     },
     features: [
       'Monthly EMI calculation',

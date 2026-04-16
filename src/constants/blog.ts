@@ -20,6 +20,7 @@ export const BLOG_POSTS: BlogPost[] = [
       title: 'BMI Calculator Guide - Calculate Body Mass Index Online',
       description: 'Learn how to calculate BMI online, understand your health category, and track your fitness progress with our comprehensive BMI guide.',
       keywords: ['bmi calculator', 'body mass index', 'calculate bmi online', 'bmi chart', 'healthy bmi range'],
+      ogImage: 'https://sohelix.com/og/bmi-calculator-guide.png',
     },
     content: `
       <div class="space-y-6">
@@ -253,6 +254,7 @@ export const BLOG_POSTS: BlogPost[] = [
       title: 'Inflation Calculator Guide - Understand Future Value & Purchasing Power',
       description: 'Learn how inflation affects your money over time. Estimate future costs, compare past prices, and plan your financial future with our inflation guide.',
       keywords: ['inflation calculator', 'future value of money', 'purchasing power', 'inflation calculation', 'financial planning'],
+      ogImage: 'https://sohelix.com/og/inflation-calculator-guide.png',
     },
     content: `
       <div class="space-y-6">

@@ -31,6 +31,7 @@ export const CategoryPage: React.FC = () => {
       <SEO
         title={categoryInfo.title}
         description={categoryInfo.description}
+        ogImage={`https://sohelix.com/og/${slug}.png`}
       />
 
       <div className="container mx-auto px-4 max-w-7xl py-8">

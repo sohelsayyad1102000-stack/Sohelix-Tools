@@ -14,6 +14,7 @@ import { Terms } from './pages/Terms';
 import { Disclaimer } from './pages/Disclaimer';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { OGPreview } from './components/OGPreview';
 import { AnimatePresence, motion } from 'motion/react';
 
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -94,6 +95,7 @@ export default function App() {
               <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
               <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
               <Route path="/disclaimer" element={<PageWrapper><Disclaimer /></PageWrapper>} />
+              <Route path="/admin/og-generator" element={<PageWrapper><OGPreview /></PageWrapper>} />
             </Routes>
           </main>
           <Footer />

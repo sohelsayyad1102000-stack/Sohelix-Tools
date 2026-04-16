@@ -347,6 +347,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         title={tool.seo.title}
         description={tool.seo.description}
         keywords={tool.seo.keywords}
+        ogImage={tool.seo.ogImage}
         schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
 
