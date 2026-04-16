@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { Mail, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('success') === 'true') {
+      setSubmitted(true);
+      // Clean up the URL
+      navigate('/contact', { replace: true });
+    }
+  }, [location, navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+    // Standard form submission will handle this
   };
 
   return (
@@ -36,7 +47,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 dark:text-white">Email Us</h3>
-                  <p className="text-sm text-gray-500">support@sohelix.com</p>
+                  <p className="text-sm text-gray-500">sohelix.contact@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -76,12 +87,24 @@ export const Contact = () => {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  action="https://formsubmit.co/sohelix.contact@gmail.com" 
+                  method="POST"
+                  className="space-y-6"
+                >
+                  {/* Hidden Fields */}
+                  <input type="hidden" name="_subject" value="New Contact Form Submission" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/contact?success=true` : ''} />
+                  <input type="hidden" name="_honey" className="hidden" />
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
                       <input 
                         type="text" 
+                        name="name"
                         required
                         className="w-full rounded-xl border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                         placeholder="Your Name"
@@ -91,6 +114,7 @@ export const Contact = () => {
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                       <input 
                         type="email" 
+                        name="email"
                         required
                         className="w-full rounded-xl border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                         placeholder="your@email.com"
@@ -99,7 +123,10 @@ export const Contact = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
-                    <select className="w-full rounded-xl border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+                    <select 
+                      name="inquiry_type"
+                      className="w-full rounded-xl border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                    >
                       <option>General Inquiry</option>
                       <option>Tool Suggestion</option>
                       <option>Bug Report</option>
@@ -109,6 +136,7 @@ export const Contact = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                     <textarea 
+                      name="message"
                       required
                       rows={5}
                       className="w-full rounded-xl border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
