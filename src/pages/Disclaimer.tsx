@@ -21,7 +21,7 @@ export const Disclaimer: React.FC = () => {
           </div>
           
           <div className="prose prose-blue dark:prose-invert max-w-none">
-            <p className="text-lg text-gray-600 dark:text-gray-400">Last Updated: April 14, 2026</p>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Last Updated: April 16, 2026</p>
             
             <p>The information provided by Sohelix ("we," "us," or "our") on our website is for general informational purposes only. All information on the site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.</p>
 
@@ -38,7 +38,7 @@ export const Disclaimer: React.FC = () => {
             <p>Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.</p>
 
             <h2>5. Contact Us</h2>
-            <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at <a href="mailto:legal@sohelix.com">legal@sohelix.com</a>.</p>
+            <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at <a href="mailto:sohelix.contact@gmail.com">sohelix.contact@gmail.com</a>.</p>
           </div>
         </div>
       </div>
