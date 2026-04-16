@@ -81,6 +81,7 @@ import { ResizeImageTool } from '../components/tools/ResizeImageTool';
 import { JSMinifier } from '../components/tools/JSMinifier';
 import { ColorConverter } from '../components/tools/ColorConverter';
 import { JpgToPngConverter } from '../components/tools/JpgToPngConverter';
+import { WebPConverter } from '../components/tools/WebPConverter';
 import { CalorieCalculator } from '../components/tools/CalorieCalculator';
 import { BMRCalculator } from '../components/tools/BMRCalculator';
 import { IdealWeightCalculator } from '../components/tools/IdealWeightCalculator';
@@ -379,6 +380,8 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           <CropperTool tool={tool} />
         ) : tool.id === 'jpg-to-png' ? (
           <JpgToPngConverter tool={tool} />
+        ) : tool.id === 'webp-converter' ? (
+          <WebPConverter tool={tool} />
         ) : tool.id === 'qr-code-generator' ? (
           <QRCodeGenerator tool={tool} />
         ) : tool.id === 'favicon-generator' ? (

@@ -68,6 +68,12 @@ export default function App() {
               <Route path="/jpg-to-png-transparent" element={<PageWrapper><ToolPage slug="jpg-to-png" /></PageWrapper>} />
               <Route path="/jpg-to-png-high-quality" element={<PageWrapper><ToolPage slug="jpg-to-png" /></PageWrapper>} />
 
+              {/* Programmatic SEO Routes for WebP Converter */}
+              <Route path="/jpg-to-webp" element={<PageWrapper><ToolPage slug="webp-converter" /></PageWrapper>} />
+              <Route path="/png-to-webp" element={<PageWrapper><ToolPage slug="webp-converter" /></PageWrapper>} />
+              <Route path="/convert-to-webp-lossless" element={<PageWrapper><ToolPage slug="webp-converter" /></PageWrapper>} />
+              <Route path="/optimize-images-for-web" element={<PageWrapper><ToolPage slug="webp-converter" /></PageWrapper>} />
+
               {/* Programmatic SEO Routes for BMI Calculator */}
               <Route path="/bmi-calculator-for-men" element={<PageWrapper><ToolPage slug="bmi-calculator" /></PageWrapper>} />
               <Route path="/bmi-calculator-for-women" element={<PageWrapper><ToolPage slug="bmi-calculator" /></PageWrapper>} />

@@ -491,20 +491,41 @@ export const TOOLS: Tool[] = [
       keywords: ['webp converter', 'convert to webp', 'jpg to webp', 'png to webp', 'optimize for web'],
     },
     features: [
-      'Superior compression',
-      'Supports transparency',
-      'Modern web standard',
+      'Lossy & Lossless compression',
+      'Batch conversion support',
+      'Adjustable quality settings',
+      'Custom resizing options',
+      'Metadata removal for extra savings',
+      '100% Client-side processing'
     ],
     benefits: [
-      'Faster page loads',
-      'Better Core Web Vitals',
-      'Smaller file sizes',
+      'Significantly faster page loads',
+      'Improved Core Web Vitals scores',
+      'Reduced bandwidth consumption',
+      'Better user experience on mobile',
+      'Total privacy for your images'
     ],
     useCases: [
-      'SEO optimization',
-      'Mobile app assets',
+      'Website speed optimization',
+      'E-commerce product images',
+      'Blog post visual assets',
+      'Mobile application development',
+      'Digital marketing materials'
     ],
-    faqs: [],
+    faqs: [
+      {
+        question: 'Is WebP better than JPEG?',
+        answer: 'Yes, WebP typically provides 25-34% better compression than JPEG at equivalent quality, leading to much smaller file sizes.'
+      },
+      {
+        question: 'Do all browsers support WebP?',
+        answer: 'Modern browsers including Chrome, Firefox, Safari, and Edge all have full support for WebP images.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Absolutely. Our WebP converter works entirely in your browser. Your images are never uploaded to any server.'
+      }
+    ],
     longContent: 'WebP is the modern image format for the web. It provides superior lossless and lossy compression for images on the web. Using WebP, webmasters and web developers can create smaller, richer images that make the web faster.',
   },
   {
