@@ -255,26 +255,40 @@ export const Home: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Trust Stats */}
-      <section className="py-12 border-b border-gray-100 dark:border-gray-800">
+      {/* Trust Stats Section */}
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.03),transparent_40%)]" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center text-center">
-              <div className="text-3xl font-black text-gray-900 dark:text-white mb-1">60+</div>
-              <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Free Tools</div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="text-3xl font-black text-gray-900 dark:text-white mb-1">100%</div>
-              <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Secure</div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="text-3xl font-black text-gray-900 dark:text-white mb-1">0</div>
-              <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Signups</div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="text-3xl font-black text-gray-900 dark:text-white mb-1">∞</div>
-              <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Usage</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            {[
+              { label: 'Free Tools', value: '60+', icon: LayoutGrid, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
+              { label: 'Secure', value: '100%', icon: Shield, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
+              { label: 'Signups', value: '0', icon: Lock, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
+              { label: 'Usage', value: '∞', icon: Zap, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative rounded-3xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 text-center transition-all hover:border-blue-200 dark:hover:border-blue-900/50 hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1"
+              >
+                <div className={cn(
+                  "mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl transition-transform group-hover:scale-110 group-hover:rotate-3",
+                  stat.bg,
+                  stat.color
+                )}>
+                  <stat.icon className="h-7 w-7" />
+                </div>
+                <div className="text-4xl font-black tracking-tight text-gray-900 dark:text-white mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
