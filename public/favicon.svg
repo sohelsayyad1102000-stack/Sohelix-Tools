@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="120" fill="url(#saas-grad)" />
+  <path d="M340 160C340 140 320 120 300 120H200C180 120 160 140 160 160V220C160 240 180 260 200 260H312C332 260 352 280 352 300V352C352 372 332 392 312 392H212C192 392 172 372 172 352" 
+        stroke="white" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <defs>
+    <linearGradient id="saas-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+  </defs>
+</svg>

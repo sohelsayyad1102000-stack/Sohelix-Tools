@@ -1,102 +1,112 @@
 import React from 'react';
 import { SEO } from '../components/SEO';
-import { Zap, Shield, Lock, MousePointer2, Globe, Heart } from 'lucide-react';
+import { Shield, Zap, MousePointer2, Smartphone, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export const About: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-16">
       <SEO 
-        title="About Us - Sohelix Free Online Image Tools"
-        description="Learn about Sohelix, our mission, and why we provide 100% free, client-side, secure image processing tools for everyone."
+        title="About Us - Sohelix Free Online Tools"
+        description="Learn about Sohelix's mission to provide fast, free, and privacy-focused online tools for images, PDFs, and everyday digital tasks."
       />
 
       <div className="container mx-auto px-4 max-w-4xl">
+        {/* Hero Section */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center justify-center p-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl mb-6 text-blue-600 dark:text-blue-400"
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight"
           >
-            <Zap className="h-10 w-10" />
-          </motion.div>
-          <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
-            About Sohelix
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Empowering creators with fast, secure, and 100% free online image and utility tools.
+            About Us
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+          >
+            We provide simple, fast, and free online tools to help you solve everyday digital problems.
+          </motion.p>
+        </div>
+
+        {/* What We Do */}
+        <div className="bg-white dark:bg-gray-900 p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 mb- aggregation-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">What We Do</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+            Sohelix offers a wide range of browser-based utilities for images, PDFs, and general digital tasks. 
+            Whether you need to resize a photo, merge documents, or convert data formats, our tools work 
+            directly in your browser. This means you skip the hassle of software installations and 
+            processing is done instantly where you are.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800">
-            <div className="flex items-center gap-3 mb-4 text-blue-600 dark:text-blue-400">
-              <Globe className="h-6 w-6" />
-              <h2 className="text-2xl font-bold">What is Sohelix?</h2>
-            </div>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Sohelix is a comprehensive suite of online image processing tools designed to make your digital life easier. Whether you are a web developer optimizing assets, a photographer resizing images, or just someone who needs to quickly convert a file format, Sohelix provides the tools you need directly in your browser.
-            </p>
-          </div>
-
-          <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800">
-            <div className="flex items-center gap-3 mb-4 text-purple-600 dark:text-purple-400">
-              <Heart className="h-6 w-6" />
-              <h2 className="text-2xl font-bold">Our Mission</h2>
-            </div>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Our mission is to democratize access to high-quality digital tools. We believe that basic image manipulation shouldn't require expensive software subscriptions or compromising your privacy. Our vision is to build the most reliable, fastest, and most secure client-side toolset on the web.
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-gray-900 p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Why Trust Us?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div className="flex gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400">
-                <Lock className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Zero Uploads</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">We don't have access to your files. Your privacy is guaranteed by our architecture.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-                <Zap className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Lightning Fast</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">No waiting for uploads or downloads. Processing happens instantly on your device.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
-                <Shield className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Always Free</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">No hidden fees, no watermarks, and no usage limits. We believe in an open web.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
-                <MousePointer2 className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900 dark:text-white mb-2">No Registration</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Start using our tools immediately. We don't ask for your personal information.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="prose prose-blue dark:prose-invert max-w-none text-center">
-          <p className="text-lg">
-            Thank you for choosing Sohelix. We are dedicated to continuously improving our platform to serve you better. 
-            If you have any suggestions or need a specific tool, feel free to reach out to us through our <a href="/contact" className="text-blue-600 font-bold hover:underline">contact page</a>.
+        {/* Our Mission */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg italic border-l-4 border-blue-500 pl-6 py-2">
+            "Our mission is to make powerful tools accessible to everyone — without complexity, cost, or unnecessary steps."
           </p>
+        </div>
+
+        {/* Why Choose Us */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: <Zap className="h-6 w-6" />, title: "Fast and Easy", text: "Process your files in seconds with a few simple clicks." },
+            { icon: <MousePointer2 className="h-6 w-6" />, title: "No Signup Required", text: "Start using any tool immediately without creating an account." },
+            { icon: <Smartphone className="h-6 w-6" />, title: "Works on All Devices", text: "Optimized for desktop, tablet, and mobile browsers." },
+            { icon: <CheckCircle2 className="h-6 w-6" />, title: "Simple Interface", text: "A clean, distraction-free design focused on the task at hand." }
+          ].map((item, index) => (
+            <div key={index} className="flex gap-4 bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+              <div className="flex-shrink-0 text-blue-600 dark:text-blue-400">{item.icon}</div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Privacy & Trust */}
+        <div className="bg-blue-50 dark:bg-blue-900/10 p-8 md:p-12 rounded-3xl border border-blue-100 dark:border-blue-900/20 mb-16">
+          <div className="flex items-center gap-3 mb-4 text-blue-700 dark:text-blue-300">
+            <Shield className="h-8 w-8" />
+            <h2 className="text-2xl font-bold">Privacy & Trust</h2>
+          </div>
+          <p className="text-blue-900 dark:text-blue-200 text-lg leading-relaxed font-medium">
+            We respect your privacy. Your files are not stored permanently and are automatically deleted 
+            after processing. We do not sell or share your data. Your confidence is the core of our service.
+          </p>
+        </div>
+
+        {/* Simple Stats Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-16 text-center">
+          {[
+            { label: "100% Free Tools" },
+            { label: "Fast Processing" },
+            { label: "Privacy Focused" }
+          ].map((stat, index) => (
+            <div key={index} className="bg-gray-100/50 dark:bg-gray-800/30 p-6 rounded-2xl">
+              <p className="text-gray-900 dark:text-white font-black text-xl">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Closing & Contact */}
+        <div className="text-center space-y-6">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
+            We are continuously improving and adding new tools to make your work easier.
+          </p>
+          <div className="pt-8 border-t border-gray-100 dark:border-gray-800">
+            <p className="text-gray-500 dark:text-gray-400">
+              If you have feedback or suggestions, feel free to contact us at:
+              <br />
+              <a href="mailto:sohelix.contact@gmail.com" className="text-blue-600 font-bold hover:underline text-lg">
+                sohelix.contact@gmail.com
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

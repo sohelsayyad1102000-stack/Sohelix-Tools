@@ -9,6 +9,13 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'April 16, 2026',
     author: 'Sohelix Team',
     category: 'Health & Fitness',
+    faqs: [
+      { question: 'What is a BMI calculator?', answer: 'A BMI calculator is a tool used to calculate body mass index using height and weight.' },
+      { question: 'How to calculate BMI online?', answer: 'You can calculate BMI online by entering your height and weight into a BMI calculator.' },
+      { question: 'What is BMI calculator with age?', answer: 'It is a BMI calculator that provides better insights by considering age.' },
+      { question: 'What is a healthy BMI?', answer: 'A healthy BMI is between 18.5 and 24.9.' },
+      { question: 'Is BMI accurate?', answer: 'BMI is a general indicator but not fully accurate for muscular individuals.' }
+    ],
     seo: {
       title: 'BMI Calculator Guide - Calculate Body Mass Index Online',
       description: 'Learn how to calculate BMI online, understand your health category, and track your fitness progress with our comprehensive BMI guide.',
@@ -235,6 +242,13 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'April 16, 2026',
     author: 'Sohelix Team',
     category: 'Finance',
+    faqs: [
+      { question: 'What does an inflation calculator do?', answer: 'It helps you measure how the value of money changes over time.' },
+      { question: 'Why does money lose value over time?', answer: 'Because prices of goods and services increase, reducing purchasing power.' },
+      { question: 'Can inflation be predicted?', answer: 'Inflation can be estimated based on trends, but exact values may vary.' },
+      { question: 'Is inflation always bad?', answer: 'Moderate inflation is normal, but high inflation can negatively impact the economy.' },
+      { question: 'How often should I consider inflation in planning?', answer: 'You should always include inflation in long-term financial decisions.' }
+    ],
     seo: {
       title: 'Inflation Calculator Guide - Understand Future Value & Purchasing Power',
       description: 'Learn how inflation affects your money over time. Estimate future costs, compare past prices, and plan your financial future with our inflation guide.',

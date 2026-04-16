@@ -13,12 +13,82 @@ export const BlogPost: React.FC = () => {
     return <Navigate to="/blog" replace />;
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.description,
+    "image": post.image || "https://sohelix.com/og-image.png",
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sohelix",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sohelix.com/logo.png"
+      }
+    },
+    "datePublished": "2026-04-16T09:00:00+00:00",
+    "dateModified": "2026-04-16T09:00:00+00:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://sohelix.com/blog/${post.slug}`
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://sohelix.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sohelix.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://sohelix.com/blog/${post.slug}`
+      }
+    ]
+  };
+
+  const faqSchema = post.faqs ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": post.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
+  const schemas: any[] = [articleSchema, breadcrumbSchema];
+  if (faqSchema) schemas.push(faqSchema);
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 py-12">
       <SEO 
         title={post.seo.title}
         description={post.seo.description}
         keywords={post.seo.keywords}
+        ogImage={post.image}
+        ogType="article"
+        schema={schemas}
       />
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">

@@ -35,6 +35,7 @@ export interface BlogPost {
   author: string;
   image?: string;
   category: string;
+  faqs?: { question: string; answer: string }[];
   seo: {
     title: string;
     description: string;

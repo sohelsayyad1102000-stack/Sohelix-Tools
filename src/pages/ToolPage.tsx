@@ -293,15 +293,52 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
 
   const webAppSchema = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "SoftwareApplication",
     "name": tool.name,
     "description": tool.description,
-    "applicationCategory": "MultimediaApplication",
+    "applicationCategory": tool.category === 'finance-tools' ? 'FinanceApplication' : 
+                          tool.category === 'calculator-tools' ? 'HealthApplication' :
+                          tool.category === 'image-tools' ? 'MultimediaApplication' :
+                          'UtilityApplication',
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
-      "price": "0"
+      "price": "0",
+      "priceCurrency": "USD"
     }
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": tool.name,
+    "url": `https://sohelix.com/tools/${tool.slug}`,
+    "description": tool.description
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://sohelix.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://sohelix.com/#tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": tool.name,
+        "item": `https://sohelix.com/tools/${tool.slug}`
+      }
+    ]
   };
 
   return (
@@ -310,7 +347,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         title={tool.seo.title}
         description={tool.seo.description}
         keywords={tool.seo.keywords}
-        schema={[faqSchema, webAppSchema]}
+        schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
 
       {/* Breadcrumbs */}

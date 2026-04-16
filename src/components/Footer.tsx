@@ -1,19 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Github, Twitter, Mail } from 'lucide-react';
+import { Github, Twitter, Mail } from 'lucide-react';
 import { TOOLS } from '../constants/tools';
+import { CATEGORY_INFO } from '../constants/categories';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
+  // Helper to get dynamic categories
+  const getCategories = () => {
+    const categoriesSet = new Set(TOOLS.map(tool => tool.category));
+    return Array.from(categoriesSet)
+      .map(slug => ({
+        slug,
+        name: CATEGORY_INFO[slug]?.title.replace('Free ', '').replace(' Online', '') || slug.replace('-', ' '),
+        path: `/categories/${slug}`
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  };
+
+  const categories = getCategories();
+
   return (
     <footer className="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-5">
           <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
-                <Zap className="h-5 w-5 fill-current" />
-              </div>
-              <span className="text-lg font-bold text-gray-900 dark:text-white">Sohelix</span>
+              <Logo iconOnly className="h-8 w-8" />
+              <span className="text-xl font-black tracking-tight text-gray-900 dark:text-white">Sohelix</span>
             </Link>
             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
               Free online tools for everyone. Fast, secure, and 100% client-side.
@@ -39,12 +53,13 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Categories</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/categories/image-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Image Tools</Link></li>
-              <li><Link to="/categories/pdf-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">PDF Tools</Link></li>
-              <li><Link to="/categories/calculator-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Calculator Tools</Link></li>
-              <li><Link to="/categories/seo-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">SEO Tools</Link></li>
-              <li><Link to="/categories/text-tools" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Text Tools</Link></li>
-              <li><Link to="/categories/utilities" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Utility Tools</Link></li>
+              {categories.map(category => (
+                <li key={category.slug}>
+                  <Link to={category.path} className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
