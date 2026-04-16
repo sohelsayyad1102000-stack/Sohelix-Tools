@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Tools', path: '/#tools' },
   { name: 'Categories', path: '/#tools' },
-  { name: 'Blog', path: '#' },
+  { name: 'Blog', path: '/blog' },
 ];
 
 const CATEGORIES = [

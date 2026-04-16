@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TOOLS } from '../constants/tools';
+import { BLOG_POSTS } from '../constants/blog';
 import { ToolCard } from '../components/ToolCard';
 import { SEO } from '../components/SEO';
 import { motion, AnimatePresence } from 'motion/react';
@@ -24,7 +25,9 @@ import {
   Settings,
   Calculator,
   TrendingUp,
-  MoreHorizontal
+  MoreHorizontal,
+  BookOpen,
+  Calendar
 } from 'lucide-react';
 import * as Icons from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -437,6 +440,43 @@ export const Home: React.FC = () => {
             </button>
           </div>
         )}
+      </section>
+
+      {/* Latest from Blog */}
+      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between mb-12">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
+              <BookOpen className="h-5 w-5" />
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Latest from Blog</h2>
+          </div>
+          <Link 
+            to="/blog"
+            className="text-sm font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center gap-1"
+          >
+            View All Posts <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {BLOG_POSTS.slice(0, 3).map(post => (
+            <Link 
+              key={post.id}
+              to={`/blog/${post.slug}`}
+              className="group flex flex-col bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-xl transition-all hover:-translate-y-1"
+            >
+              <div className="p-8">
+                <div className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-4">{post.category}</div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">{post.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{post.description}</p>
+                <div className="mt-6 flex items-center gap-2 text-xs text-gray-400">
+                  <Calendar className="h-3 w-3" />
+                  {post.date}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* How to Use Section */}

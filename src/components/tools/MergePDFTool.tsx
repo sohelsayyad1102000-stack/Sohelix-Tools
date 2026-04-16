@@ -127,7 +127,13 @@ export const MergePDFTool: React.FC<MergePDFToolProps> = ({ tool }) => {
       // Generate thumbnail for first page
       let preview = '';
       try {
-        const loadingTask = pdfjsLib.getDocument(new Uint8Array(arrayBuffer));
+        const loadingTask = pdfjsLib.getDocument({
+          data: new Uint8Array(arrayBuffer.slice(0)),
+          cMapUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/cmaps/',
+          cMapPacked: true,
+          standardFontDataUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/standard_fonts/',
+          disableFontFace: false,
+        });
         const pdfDoc = await loadingTask.promise;
         const page = await pdfDoc.getPage(1);
         const viewport = page.getViewport({ scale: 0.2 });

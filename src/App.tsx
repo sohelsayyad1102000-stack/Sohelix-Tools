@@ -12,6 +12,8 @@ import { FAQ } from './pages/FAQ';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
 import { Disclaimer } from './pages/Disclaimer';
+import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
 import { AnimatePresence, motion } from 'motion/react';
 
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -82,6 +84,9 @@ export default function App() {
               <Route path="/calorie-calculator-for-weight-loss" element={<PageWrapper><ToolPage slug="calorie-calculator" /></PageWrapper>} />
               <Route path="/bmr-calculator-for-men" element={<PageWrapper><ToolPage slug="bmr-calculator" /></PageWrapper>} />
               <Route path="/body-fat-percentage-calculator" element={<PageWrapper><ToolPage slug="body-fat-calculator" /></PageWrapper>} />
+
+              <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+              <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
 
               <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
               <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />

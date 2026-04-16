@@ -16,6 +16,7 @@ import {
   FileText
 } from 'lucide-react';
 import * as pdfjsLib from 'pdfjs-dist';
+import 'pdfjs-dist/web/pdf_viewer.css';
 import { cn, formatBytes } from '../../lib/utils';
 
 // Use the local worker from pdfjs-dist
@@ -42,6 +43,7 @@ export const PDFReaderTool: React.FC<PDFReaderToolProps> = ({ tool }) => {
   const [thumbnails, setThumbnails] = useState<string[]>([]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const textLayerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -50,7 +52,13 @@ export const PDFReaderTool: React.FC<PDFReaderToolProps> = ({ tool }) => {
     setFile(selectedFile);
     try {
       const arrayBuffer = await selectedFile.arrayBuffer();
-      const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+      const loadingTask = pdfjsLib.getDocument({ 
+        data: arrayBuffer.slice(0),
+        cMapUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/cmaps/',
+        cMapPacked: true,
+        standardFontDataUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/standard_fonts/',
+        disableFontFace: false, // Ensure font face is NOT disabled
+      });
       const pdfDoc = await loadingTask.promise;
       setPdf(pdfDoc);
       setNumPages(pdfDoc.numPages);
@@ -84,16 +92,36 @@ export const PDFReaderTool: React.FC<PDFReaderToolProps> = ({ tool }) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d')!;
     
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
+    // Set canvas dimensions
+    const pixelRatio = window.devicePixelRatio || 1;
+    canvas.height = viewport.height * pixelRatio;
+    canvas.width = viewport.width * pixelRatio;
+    canvas.style.height = `${viewport.height}px`;
+    canvas.style.width = `${viewport.width}px`;
+
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
     const renderContext = {
       canvasContext: context,
       viewport: viewport,
-      canvas: canvas
     };
     
     await page.render(renderContext).promise;
+
+    // Render text layer for better font compatibility and selection
+    if (textLayerRef.current) {
+      textLayerRef.current.innerHTML = '';
+      textLayerRef.current.style.height = `${viewport.height}px`;
+      textLayerRef.current.style.width = `${viewport.width}px`;
+      
+      const textContent = await page.getTextContent();
+      const textLayer = new pdfjsLib.TextLayer({
+        textContentSource: textContent,
+        container: textLayerRef.current,
+        viewport: viewport,
+      });
+      await textLayer.render();
+    }
   }, [pdf, scale]);
 
   useEffect(() => {
@@ -221,8 +249,12 @@ export const PDFReaderTool: React.FC<PDFReaderToolProps> = ({ tool }) => {
               <p className="text-sm font-bold text-gray-500">Loading Document...</p>
             </div>
           ) : (
-            <div className="shadow-2xl bg-white dark:bg-white/5">
+            <div className="relative shadow-2xl bg-white dark:bg-white/5">
               <canvas ref={canvasRef} className="max-w-full h-auto" />
+              <div 
+                ref={textLayerRef} 
+                className="textLayer absolute top-0 left-0 origin-top-left" 
+              />
             </div>
           )}
         </div>

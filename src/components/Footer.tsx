@@ -29,6 +29,7 @@ export const Footer: React.FC = () => {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Quick Links</h3>
             <ul className="mt-4 space-y-2">
               <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Home</Link></li>
+              <li><Link to="/blog" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Blog</Link></li>
               <li><Link to="/about" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">About</Link></li>
               <li><Link to="/contact" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Contact</Link></li>
               <li><Link to="/faq" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">FAQ</Link></li>

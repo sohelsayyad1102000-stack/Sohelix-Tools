@@ -55,7 +55,13 @@ export const PDFPageCounter: React.FC<PDFPageCounterProps> = ({ tool }) => {
     
     try {
       const arrayBuffer = await selectedFile.arrayBuffer();
-      const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+      const loadingTask = pdfjsLib.getDocument({ 
+        data: arrayBuffer.slice(0),
+        cMapUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/cmaps/',
+        cMapPacked: true,
+        standardFontDataUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/standard_fonts/',
+        disableFontFace: false,
+      });
       const pdfDoc = await loadingTask.promise;
       const info = await pdfDoc.getMetadata();
       

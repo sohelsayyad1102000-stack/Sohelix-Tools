@@ -33,8 +33,17 @@ export const PDFPreview: React.FC<PDFPreviewProps> = ({ data, maxPages = 3, clas
       setError(null);
       try {
         // Ensure data is in the right format for getDocument
+        // We slice the buffer to prevent detachment issues if the same data is reused
+        const pdfData = data instanceof Uint8Array 
+          ? new Uint8Array(data.buffer.slice(0)) 
+          : new Uint8Array((data as ArrayBuffer).slice(0));
+
         const loadingTask = pdfjsLib.getDocument({ 
-          data: data instanceof Uint8Array ? data : new Uint8Array(data as ArrayBuffer) 
+          data: pdfData,
+          cMapUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/cmaps/',
+          cMapPacked: true,
+          standardFontDataUrl: 'https://unpkg.com/pdfjs-dist@5.6.205/standard_fonts/',
+          disableFontFace: false,
         });
         
         const pdf = await loadingTask.promise;

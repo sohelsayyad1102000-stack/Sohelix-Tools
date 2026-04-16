@@ -24,3 +24,20 @@ export interface ToolCategory {
   name: string;
   description: string;
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  content: string;
+  date: string;
+  author: string;
+  image?: string;
+  category: string;
+  seo: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+}

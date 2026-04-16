@@ -27,7 +27,6 @@ import {
   rotateImage, 
   blurImage, 
   watermarkImage, 
-  memeImage,
   cropImage
 } from '../lib/image-processing';
 import { CompressorTool } from '../components/tools/CompressorTool';
@@ -119,8 +118,6 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
   const [width, setWidth] = useLocalStorage<number | ''>('tool-width', '');
   const [height, setHeight] = useLocalStorage<number | ''>('tool-height', '');
   const [watermarkText, setWatermarkText] = useLocalStorage('tool-watermark', 'Sohelix');
-  const [topText, setTopText] = useLocalStorage('tool-toptext', 'TOP TEXT');
-  const [bottomText, setBottomText] = useLocalStorage('tool-bottomtext', 'BOTTOM TEXT');
   const [rotationAngle, setRotationAngle] = useLocalStorage('tool-rotation', 90);
   const [blurAmount, setBlurAmount] = useLocalStorage('tool-blur', 5);
   const [autoDownload, setAutoDownload] = useLocalStorage('tool-autodownload', false);
@@ -197,8 +194,6 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           processedBlob = await blurImage(file, blurAmount);
         } else if (tool.id === 'image-watermark') {
           processedBlob = await watermarkImage(file, watermarkText);
-        } else if (tool.id === 'meme-generator') {
-          processedBlob = await memeImage(file, topText, bottomText);
         } else {
           processedBlob = file;
         }
@@ -608,29 +603,6 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                         onChange={(e) => setWatermarkText(e.target.value)}
                         className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                       />
-                    </div>
-                  )}
-
-                  {tool.id === 'meme-generator' && (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Top Text</label>
-                        <input 
-                          type="text" 
-                          value={topText} 
-                          onChange={(e) => setTopText(e.target.value)}
-                          className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Bottom Text</label>
-                        <input 
-                          type="text" 
-                          value={bottomText} 
-                          onChange={(e) => setBottomText(e.target.value)}
-                          className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                        />
-                      </div>
                     </div>
                   )}
 
