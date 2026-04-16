@@ -80,6 +80,11 @@ import { CSSMinifier } from '../components/tools/CSSMinifier';
 import { ResizeImageTool } from '../components/tools/ResizeImageTool';
 import { JSMinifier } from '../components/tools/JSMinifier';
 import { ColorConverter } from '../components/tools/ColorConverter';
+import { JpgToPngConverter } from '../components/tools/JpgToPngConverter';
+import { CalorieCalculator } from '../components/tools/CalorieCalculator';
+import { BMRCalculator } from '../components/tools/BMRCalculator';
+import { IdealWeightCalculator } from '../components/tools/IdealWeightCalculator';
+import { BodyFatCalculator } from '../components/tools/BodyFatCalculator';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -257,7 +262,25 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
     setResults([]);
   };
 
-  if (!tool) return <div className="p-12 text-center">Tool not found</div>;
+  if (!tool) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 text-center">
+        <div className="h-20 w-20 rounded-3xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-6">
+          <Icons.Calculator className="h-10 w-10 text-gray-400" />
+        </div>
+        <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-4">Tool Not Found</h1>
+        <p className="text-gray-500 dark:text-gray-400 max-w-md mb-8">
+          The tool you are looking for might have been moved or renamed. Explore our collection of 60+ professional tools.
+        </p>
+        <Link 
+          to="/"
+          className="px-8 py-3 rounded-2xl bg-blue-600 text-white font-bold shadow-xl shadow-blue-500/30 hover:bg-blue-700 transition-all"
+        >
+          Browse All Tools
+        </Link>
+      </div>
+    );
+  }
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -354,6 +377,8 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           <ResizeImageTool tool={tool} />
         ) : tool.id === 'crop-image' ? (
           <CropperTool tool={tool} />
+        ) : tool.id === 'jpg-to-png' ? (
+          <JpgToPngConverter tool={tool} />
         ) : tool.id === 'qr-code-generator' ? (
           <QRCodeGenerator tool={tool} />
         ) : tool.id === 'favicon-generator' ? (
@@ -378,6 +403,14 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           <PDFPageRotator tool={tool} />
         ) : tool.id === 'bmi-calculator' ? (
           <BMICalculator tool={tool} />
+        ) : tool.id === 'calorie-calculator' ? (
+          <CalorieCalculator tool={tool} />
+        ) : tool.id === 'bmr-calculator' ? (
+          <BMRCalculator tool={tool} />
+        ) : tool.id === 'ideal-weight-calculator' ? (
+          <IdealWeightCalculator tool={tool} />
+        ) : tool.id === 'body-fat-calculator' ? (
+          <BodyFatCalculator tool={tool} />
         ) : tool.id === 'interest-calculator' ? (
           <InterestCalculator tool={tool} />
         ) : tool.id === 'emi-calculator' ? (

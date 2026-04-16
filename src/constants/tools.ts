@@ -299,38 +299,183 @@ export const TOOLS: Tool[] = [
   {
     id: 'jpg-to-png',
     name: 'JPG to PNG',
-    title: 'Convert JPG to PNG',
-    description: 'Convert JPG images to PNG format with transparency support.',
+    title: 'JPG to PNG Converter Online Free',
+    description: 'Convert JPG images to PNG instantly with high quality. Fast processing, batch conversion, and lossless output — no installation required.',
     icon: 'FileImage',
     slug: 'jpg-to-png',
     category: 'image-tools',
     seo: {
-      title: 'Convert JPG to PNG Online - Free & High Quality',
-      description: 'Convert your JPG files to PNG format online for free. High quality conversion, no file size limits, and 100% secure processing.',
-      keywords: ['jpg to png', 'convert jpg to png', 'online image converter', 'jpg to png free'],
+      title: 'Free Online JPG to PNG Converter - High Quality & Batch Conversion',
+      description: 'Convert JPG to PNG online for free. High-quality lossless output, batch processing support, and 100% secure client-side conversion. No download or registration required.',
+      keywords: ['jpg to png', 'convert jpg to png', 'online image converter', 'jpg to png free', 'batch jpg to png', 'lossless jpg to png'],
     },
     features: [
-      'High fidelity conversion',
-      'Batch processing',
-      'No quality loss',
-      'Instant download',
+      'Instant client-side conversion',
+      'Batch processing (up to 20 images)',
+      'Lossless PNG output quality',
+      'Background handling (Transparent/White)',
+      'No file upload (Privacy first)',
+      'ZIP download for bulk results',
     ],
     benefits: [
-      'Better compatibility for some apps',
-      'Lossless format conversion',
-      'Easy to use',
+      'Better quality for editing',
+      'Transparency support for design',
+      'Universal compatibility',
+      '100% Secure & Private',
     ],
     useCases: [
-      'Developers needing PNG assets',
-      'Users converting photos for specific software',
+      'Web designers needing transparent assets',
+      'Developers converting UI elements',
+      'Social media managers',
+      'Preparing images for professional printing',
     ],
     faqs: [
       {
-        question: 'Will the file size increase?',
-        answer: 'PNG is a lossless format, so the file size might be larger than the original JPG.',
+        question: 'Is this JPG to PNG converter free?',
+        answer: 'Yes, Sohelix JPG to PNG converter is 100% free with no limits on the number of conversions.',
+      },
+      {
+        question: 'Will I lose quality during conversion?',
+        answer: 'No, PNG is a lossless format. Our tool ensures that every pixel from your original JPG is preserved in the resulting PNG.',
+      },
+      {
+        question: 'Can I convert multiple JPG files at once?',
+        answer: 'Absolutely! You can upload up to 20 JPG images at a time and convert them all in one click.',
+      },
+      {
+        question: 'Are my images stored on your server?',
+        answer: 'Never. All processing happens locally in your browser. Your images are never uploaded or stored on our servers.',
       },
     ],
-    longContent: 'Converting between image formats is a fundamental need for designers and developers. JPG is great for photos, but PNG is often required for logos or images that need transparency. Sohelix provides a fast, reliable way to <a href="/tools/jpg-to-png" class="underline hover:text-blue-200">convert image formats</a> without ever sending them to a server. If you need the reverse, use our <a href="/tools/png-to-jpg" class="underline hover:text-blue-200">PNG to JPG converter</a>.',
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is JPG to PNG Conversion?</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">JPG (or JPEG) is a lossy image format designed for photographs, where some data is discarded to achieve smaller file sizes. PNG, on the other hand, is a <strong>lossless format</strong> that supports transparency and maintains perfect quality. Converting JPG to PNG is the process of moving your image data into a container that preserves every detail and allows for professional editing without further degradation.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Convert JPG to PNG?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Better Quality for Editing</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Since PNG is lossless, you can save and re-save the image multiple times during editing without losing sharpness or introducing artifacts.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Transparency Support</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">While JPGs always have a solid background, PNGs allow for transparent areas, making them essential for logos, icons, and web design.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Web Design Flexibility</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">PNGs are the standard for web assets that need to overlay on different background colors or patterns seamlessly.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Professional Printing</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Many professional printing services prefer PNG for graphics to ensure that text and sharp lines remain crisp.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Convert JPG to PNG Online</h2>
+          <ol class="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Upload JPG Images:</strong> Drag and drop your files or click "Select Images" to browse. You can upload up to 20 files at once.</li>
+            <li><strong>Configure Settings:</strong> Choose your background handling (Transparent or White) and simulate target quality.</li>
+            <li><strong>Click Convert:</strong> Hit the "Convert to PNG" button. The process happens instantly in your browser.</li>
+            <li><strong>Download Results:</strong> Download images individually or grab everything in a single ZIP file.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">JPG vs PNG: Comparison Table</h2>
+          <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-800">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                <tr>
+                  <th class="px-6 py-4 font-bold">Feature</th>
+                  <th class="px-6 py-4 font-bold">JPG (JPEG)</th>
+                  <th class="px-6 py-4 font-bold">PNG</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-800 text-gray-600 dark:text-gray-400">
+                <tr>
+                  <td class="px-6 py-4 font-bold">Compression</td>
+                  <td class="px-6 py-4">Lossy (Data discarded)</td>
+                  <td class="px-6 py-4">Lossless (No data loss)</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-bold">Transparency</td>
+                  <td class="px-6 py-4">No</td>
+                  <td class="px-6 py-4">Yes</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-bold">File Size</td>
+                  <td class="px-6 py-4">Small (Optimized)</td>
+                  <td class="px-6 py-4">Larger (High detail)</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-bold">Best For</td>
+                  <td class="px-6 py-4">Photographs</td>
+                  <td class="px-6 py-4">Logos, Icons, Graphics</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Advanced Image Conversion Tools</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">Sohelix provides a suite of professional image tools to handle all your conversion needs. Our <strong>JPG to PNG converter</strong> is just the beginning. Explore our other specialized tools to optimize your workflow.</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-4">Conversion Pages:</h4>
+              <div class="flex flex-col gap-2">
+                <a href="/tools/png-to-jpg" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> PNG to JPG Converter
+                </a>
+                <a href="/tools/jpg-to-webp" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> JPG to WebP Converter
+                </a>
+                <a href="/tools/webp-to-jpg" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> WebP to JPG Converter
+                </a>
+                <a href="/tools/heic-to-jpg" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> HEIC to JPG Converter
+                </a>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-4">Related Tools:</h4>
+              <div class="flex flex-col gap-2">
+                <a href="/tools/crop-image" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> Crop Image Online
+                </a>
+                <a href="/tools/resize-image" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> Resize Image Online
+                </a>
+                <a href="/tools/compress-image" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> Compress Image Online
+                </a>
+                <a href="/tools/image-to-pdf" class="text-blue-600 hover:underline flex items-center gap-2">
+                  <ArrowRight class="h-3 w-3" /> Image to PDF Converter
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Programmatic SEO Variations</h2>
+          <div class="flex flex-wrap gap-4">
+            <a href="/jpg-to-png-100kb" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG 100KB</a>
+            <a href="/jpg-to-png-for-web" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG for Web</a>
+            <a href="/jpg-to-png-transparent" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG Transparent</a>
+            <a href="/jpg-to-png-high-quality" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG High Quality</a>
+          </div>
+        </section>
+      </div>
+    `,
   },
   {
     id: 'webp-converter',
@@ -855,68 +1000,337 @@ export const TOOLS: Tool[] = [
   {
     id: 'bmi-calculator',
     name: 'BMI Calculator',
-    title: 'Body Mass Index (BMI) Calculator',
-    description: 'Calculate your BMI and find out if you are in a healthy weight range.',
+    title: 'BMI Calculator Online Free',
+    description: 'Calculate your Body Mass Index instantly with visual results, health insights, and accurate body weight analysis — no signup required.',
     icon: 'Calculator',
     slug: 'bmi-calculator',
     category: 'calculator-tools',
     isNew: true,
     seo: {
-      title: 'Free Online BMI Calculator - Calculate Body Mass Index',
-      description: 'Calculate your BMI online for free. Supports metric and imperial units. Get instant results and weight category classification.',
-      keywords: ['bmi calculator', 'body mass index', 'weight category', 'health calculator', 'fitness tool'],
+      title: 'Free Online BMI Calculator - Instant Results & Health Insights',
+      description: 'Calculate your BMI online for free. Get instant visual feedback, ideal weight range, and health insights. Supports metric and imperial units. 100% private.',
+      keywords: ['bmi calculator', 'body mass index', 'calculate bmi online', 'ideal weight calculator', 'health calculator', 'bmi calculator for men', 'bmi calculator for women'],
     },
     features: [
-      'Metric & Imperial support',
-      'Instant BMI calculation',
-      'Weight category classification',
-      'Healthy range visualization',
-      'Privacy-focused'
+      'Instant real-time calculation',
+      'Animated BMI gauge visualization',
+      'Ideal weight range analysis',
+      'Metric & Imperial unit support',
+      'BMI Prime & Calorie estimates',
+      '100% Private (No data leaves your device)',
     ],
     benefits: [
-      'Track your health status',
-      'Identify weight-related risks',
-      'Easy to use interface'
+      'Understand your weight status instantly',
+      'Identify healthy weight targets',
+      'Monitor fitness progress easily',
+      'No registration or signup needed',
     ],
     useCases: [
       'Personal health monitoring',
-      'Fitness progress tracking',
-      'Medical screening'
+      'Fitness and weight loss tracking',
+      'Quick health screenings',
+      'Educational health analysis',
     ],
     faqs: [
       {
-        question: 'What is a healthy BMI?',
-        answer: 'A healthy BMI for most adults is between 18.5 and 24.9.'
-      }
+        question: 'What is BMI?',
+        answer: 'BMI stands for Body Mass Index. It is a simple calculation using a person\'s height and weight to estimate body fat and screen for weight categories that may lead to health problems.',
+      },
+      {
+        question: 'How is BMI calculated?',
+        answer: 'The standard formula for BMI is weight (kg) / [height (m)]². For imperial units, the formula is 703 × weight (lbs) / [height (in)]².',
+      },
+      {
+        question: 'Is BMI accurate for everyone?',
+        answer: 'While BMI is a useful screening tool, it has limitations. It does not directly measure body fat and may not be accurate for athletes with high muscle mass, pregnant women, or the elderly.',
+      },
+      {
+        question: 'What is a healthy BMI range?',
+        answer: 'For most adults, a healthy BMI range is between 18.5 and 24.9. Below 18.5 is considered underweight, 25.0-29.9 is overweight, and 30.0 or above is obese.',
+      },
     ],
     longContent: `
-      <p>Want to know if you're in a healthy weight range? Our <strong>Free Online BMI Calculator</strong> is a quick and reliable way to determine your Body Mass Index (BMI). It's an essential tool for anyone interested in monitoring their health and fitness levels.</p>
-      
-      <h3>What is BMI?</h3>
-      <p>Body Mass Index (BMI) is a simple calculation using a person's height and weight. The formula is BMI = kg/m2 where kg is a person's weight in kilograms and m2 is their height in metres squared. By <a href="/tools/bmi-calculator" class="underline hover:text-blue-600">calculating your BMI online</a>, you can get a general indication of whether you are underweight, have a healthy weight, are overweight, or are obese.</p>
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is BMI (Body Mass Index)?</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Body Mass Index (BMI) is a value derived from the mass (weight) and height of a person. The BMI is defined as the body mass divided by the square of the body height, and is universally expressed in units of kg/m². It is a widely used diagnostic tool to identify weight-related health risks and categorize individuals into weight groups like underweight, normal, overweight, and obese.</p>
+        </section>
 
-      <h3>Metric and Imperial Support</h3>
-      <p>We understand that different regions use different measurement systems. That's why our calculator supports both Metric (kilograms and centimeters) and Imperial (pounds, feet, and inches) units. You can easily switch between them to get your results in the format you're most comfortable with.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Use the BMI Calculator</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Our interactive BMI tool is designed for speed and accuracy. Simply follow these steps:</p>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Select Units:</strong> Choose between Metric (kg/cm) or Imperial (lbs/ft/in).</li>
+            <li><strong>Enter Stats:</strong> Input your weight, height, age, and gender.</li>
+            <li><strong>Instant Results:</strong> Watch your BMI and health insights update in real-time as you type.</li>
+            <li><strong>Analyze Insights:</strong> Review your BMI category, ideal weight range, and BMI Prime metric.</li>
+          </ul>
+        </section>
 
-      <h3>Instant Results and Classification</h3>
-      <p>Our tool provides instant feedback. As soon as you enter your height and weight, your BMI is calculated and displayed along with your weight category classification. We also provide a visual scale to help you see where you stand relative to the healthy weight range (18.5 to 24.9).</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">BMI Categories & Ranges</h2>
+          <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-800">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                <tr>
+                  <th class="px-6 py-4 font-bold">Category</th>
+                  <th class="px-6 py-4 font-bold">BMI Range (kg/m²)</th>
+                  <th class="px-6 py-4 font-bold">Health Risk</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-800 text-gray-600 dark:text-gray-400">
+                <tr>
+                  <td class="px-6 py-4 font-bold text-blue-600">Underweight</td>
+                  <td class="px-6 py-4">&lt; 18.5</td>
+                  <td class="px-6 py-4">Higher risk of nutritional deficiency</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-bold text-green-600">Normal Weight</td>
+                  <td class="px-6 py-4">18.5 – 24.9</td>
+                  <td class="px-6 py-4">Lowest risk of weight-related disease</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-bold text-yellow-600">Overweight</td>
+                  <td class="px-6 py-4">25.0 – 29.9</td>
+                  <td class="px-6 py-4">Increased risk of heart disease & diabetes</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 font-bold text-red-600">Obese</td>
+                  <td class="px-6 py-4">&gt; 30.0</td>
+                  <td class="px-6 py-4">High risk of chronic health conditions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-      <h3>Privacy-Focused Health Tracking</h3>
-      <p>Your health data is personal. Unlike other health apps that require registration and store your data on their servers, Sohelix is 100% private. Our <strong>BMI Calculator</strong> works entirely in your web browser. Your height and weight are never sent to our servers, ensuring your personal health information remains on your device.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Is BMI Accurate?</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">While BMI is a great starting point for health assessment, it is important to understand its limitations:</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Muscle vs. Fat</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">BMI does not distinguish between muscle mass and body fat. Athletes may have a "high" BMI but very low body fat.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Body Composition</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">It doesn't account for where fat is stored (e.g., visceral fat around organs), which is a key health indicator.</p>
+            </div>
+          </div>
+        </section>
 
-      <h3>Key Features:</h3>
-      <ul>
-        <li><strong>Dual Unit Support:</strong> Use Metric or Imperial units.</li>
-        <li><strong>Instant Calculation:</strong> Get your BMI result in milliseconds.</li>
-        <li><strong>Clear Classification:</strong> Know exactly which weight category you fall into.</li>
-        <li><strong>Healthy Range Guide:</strong> See the target weight for your height.</li>
-        <li><strong>No Account Needed:</strong> Use the tool immediately without signing up.</li>
-      </ul>
+        <section class="bg-blue-600 rounded-3xl p-8 text-white shadow-xl shadow-blue-500/20">
+          <h3 class="text-2xl font-bold mb-4">Take Control of Your Health</h3>
+          <p class="text-blue-100 mb-6 leading-relaxed">Our BMI calculator is just one tool in your health journey. For a more comprehensive analysis, consider using our other specialized health calculators.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/tools/calorie-calculator" class="px-6 py-3 rounded-xl bg-white text-blue-600 font-bold hover:bg-blue-50 transition-colors">Calorie Calculator</a>
+            <a href="/tools/bmr-calculator" class="px-6 py-3 rounded-xl bg-blue-700 text-white font-bold hover:bg-blue-800 transition-colors border border-blue-500">BMR Calculator</a>
+          </div>
+        </section>
 
-      <h3>Why Monitor Your BMI?</h3>
-      <p>While BMI is not a direct measure of body fat, it is a useful screening tool to identify potential weight-related health risks. Maintaining a healthy BMI can reduce the risk of various conditions, including heart disease, type 2 diabetes, and certain types of cancer. Use our results as a starting point for discussions with your healthcare provider.</p>
-
-      <p>Take control of your health journey with Sohelix. Our tools are designed to be fast, free, and secure. If you're also tracking your age for official documents, try our <a href="/tools/age-calculator" class="underline hover:text-blue-600">Age Calculator</a>.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Programmatic Health Tools</h2>
+          <div class="flex flex-wrap gap-4">
+            <a href="/bmi-calculator-for-men" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">BMI for Men</a>
+            <a href="/bmi-calculator-for-women" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">BMI for Women</a>
+            <a href="/bmi-calculator-india" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">BMI Calculator India</a>
+            <a href="/ideal-weight-calculator" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">Ideal Weight Calculator</a>
+          </div>
+        </section>
+      </div>
+    `,
+  },
+  {
+    id: 'calorie-calculator',
+    name: 'Calorie Calculator',
+    title: 'Calorie Calculator Online Free',
+    description: 'Calculate your daily calorie needs based on your activity level and fitness goals — maintain, lose, or gain weight.',
+    icon: 'Zap',
+    slug: 'calorie-calculator',
+    category: 'calculator-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online Calorie Calculator - Daily Calorie Needs & Goals',
+      description: 'Calculate your daily calorie needs for weight loss, maintenance, or gain. Includes BMR, TDEE, and macronutrient breakdown. 100% private.',
+      keywords: ['calorie calculator', 'daily calorie needs', 'tdee calculator', 'weight loss calculator', 'calorie deficit calculator'],
+    },
+    features: [
+      'Mifflin-St Jeor Equation accuracy',
+      'Activity level adjustments',
+      'Goal-based calorie targets',
+      'Macronutrient breakdown (P/C/F)',
+      'Metric & Imperial support',
+      'Instant real-time results',
+    ],
+    benefits: [
+      'Personalized nutrition planning',
+      'Achieve weight goals faster',
+      'Understand your metabolism',
+      'No registration required',
+    ],
+    useCases: [
+      'Weight loss planning',
+      'Muscle gain tracking',
+      'Daily nutrition monitoring',
+      'Fitness coaching',
+    ],
+    faqs: [
+      {
+        question: 'What is TDEE?',
+        answer: 'TDEE stands for Total Daily Energy Expenditure. It is the total number of calories your body burns in a day, including physical activity.',
+      },
+      {
+        question: 'How many calories should I eat to lose weight?',
+        answer: 'To lose about 0.5kg per week, a deficit of 500 calories per day from your TDEE is generally recommended.',
+      },
+    ],
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Understanding Your Calorie Needs</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Calories are the energy that fuels your body. Knowing how many calories you need daily is the foundation of any successful fitness or health plan. Our <strong>Calorie Calculator</strong> uses the scientifically validated Mifflin-St Jeor equation to provide highly accurate estimates of your energy requirements.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">The calculator takes your age, gender, height, and weight to determine your Basal Metabolic Rate (BMR). It then applies an activity multiplier to find your Total Daily Energy Expenditure (TDEE). Finally, it adjusts this number based on your specific goal (weight loss, maintenance, or gain).</p>
+        </section>
+      </div>
+    `,
+  },
+  {
+    id: 'bmr-calculator',
+    name: 'BMR Calculator',
+    title: 'BMR Calculator Online Free',
+    description: 'Calculate your Basal Metabolic Rate (BMR) to understand how many calories your body burns at rest.',
+    icon: 'Activity',
+    slug: 'bmr-calculator',
+    category: 'calculator-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online BMR Calculator - Basal Metabolic Rate Finder',
+      description: 'Calculate your BMR online for free. Understand your resting metabolism and daily energy needs. Supports metric and imperial units.',
+      keywords: ['bmr calculator', 'basal metabolic rate', 'resting metabolism', 'calorie burn at rest', 'metabolic rate calculator'],
+    },
+    features: [
+      'Accurate BMR calculation',
+      'Maintenance calorie breakdown',
+      'Metric & Imperial support',
+      'Instant results',
+      'Privacy-focused',
+    ],
+    benefits: [
+      'Understand your baseline energy needs',
+      'Foundation for diet planning',
+      'Track metabolic changes',
+    ],
+    useCases: [
+      'Starting a new diet',
+      'Understanding metabolic health',
+      'Scientific health analysis',
+    ],
+    faqs: [
+      {
+        question: 'What is BMR?',
+        answer: 'BMR (Basal Metabolic Rate) is the number of calories your body needs to accomplish its most basic (basal) life-sustaining functions, such as breathing and circulation, while at rest.',
+      },
+    ],
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is Basal Metabolic Rate (BMR)?</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Your BMR is the minimum amount of energy your body requires to function at rest. This includes vital processes like breathing, heart rate, and temperature regulation. Even if you stayed in bed all day, your body would still burn these calories.</p>
+        </section>
+      </div>
+    `,
+  },
+  {
+    id: 'ideal-weight-calculator',
+    name: 'Ideal Weight Calculator',
+    title: 'Ideal Weight Calculator Online Free',
+    description: 'Find your ideal body weight based on your height, gender, and various scientific formulas.',
+    icon: 'Scale',
+    slug: 'ideal-weight-calculator',
+    category: 'calculator-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online Ideal Weight Calculator - Find Your Target Weight',
+      description: 'Calculate your ideal body weight using Devine, Robinson, Miller, and Hamwi formulas. Get a healthy weight range for your height.',
+      keywords: ['ideal weight calculator', 'target weight', 'healthy weight for height', 'weight goal calculator', 'devine formula'],
+    },
+    features: [
+      'Multiple scientific formulas',
+      'Average ideal weight calculation',
+      'Gender-specific results',
+      'Metric & Imperial support',
+    ],
+    benefits: [
+      'Set realistic weight goals',
+      'Compare different scientific methods',
+      'Identify healthy weight targets',
+    ],
+    useCases: [
+      'Goal setting for weight loss',
+      'Health screenings',
+      'Fitness planning',
+    ],
+    faqs: [
+      {
+        question: 'What is the Devine Formula?',
+        answer: 'The Devine formula is one of the most commonly used methods for determining ideal body weight in clinical settings.',
+      },
+    ],
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How Ideal Weight is Calculated</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">There is no single "perfect" weight for everyone. Scientists have developed several formulas over the years to estimate a healthy weight range based on height and gender. Our tool provides an average of the four most popular methods: Devine, Robinson, Miller, and Hamwi.</p>
+        </section>
+      </div>
+    `,
+  },
+  {
+    id: 'body-fat-calculator',
+    name: 'Body Fat Calculator',
+    title: 'Body Fat Calculator Online Free',
+    description: 'Estimate your body fat percentage using the US Navy Method based on body measurements.',
+    icon: 'TrendingUp',
+    slug: 'body-fat-calculator',
+    category: 'calculator-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Online Body Fat Calculator - US Navy Method',
+      description: 'Calculate your body fat percentage online for free. Uses US Navy Method with neck, waist, and hip measurements. Accurate and private.',
+      keywords: ['body fat calculator', 'calculate body fat percentage', 'us navy body fat method', 'lean body mass calculator', 'fat mass calculator'],
+    },
+    features: [
+      'US Navy Method accuracy',
+      'Fat mass & Lean mass analysis',
+      'Category classification',
+      'Metric & Imperial support',
+    ],
+    benefits: [
+      'More accurate than BMI for athletes',
+      'Track body composition changes',
+      'Identify health risks from body fat',
+    ],
+    useCases: [
+      'Bodybuilding and fitness tracking',
+      'Health monitoring',
+      'Weight loss quality check',
+    ],
+    faqs: [
+      {
+        question: 'How accurate is the US Navy Method?',
+        answer: 'While not as accurate as a DEXA scan, the US Navy Method is considered one of the most reliable measurement-based methods for estimating body fat percentage.',
+      },
+    ],
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Measure Body Fat?</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Body fat percentage is often a better indicator of health and fitness than total weight or BMI, as it distinguishes between fat mass and lean muscle mass. This is especially important for active individuals and athletes.</p>
+        </section>
+      </div>
     `,
   },
   {

@@ -62,6 +62,21 @@ export default function App() {
               <Route path="/crop-image-for-youtube-thumbnail" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
               <Route path="/crop-image-circle-online" element={<PageWrapper><ToolPage slug="crop-image" /></PageWrapper>} />
 
+              {/* Programmatic SEO Routes for JPG to PNG */}
+              <Route path="/jpg-to-png-100kb" element={<PageWrapper><ToolPage slug="jpg-to-png" /></PageWrapper>} />
+              <Route path="/jpg-to-png-for-web" element={<PageWrapper><ToolPage slug="jpg-to-png" /></PageWrapper>} />
+              <Route path="/jpg-to-png-transparent" element={<PageWrapper><ToolPage slug="jpg-to-png" /></PageWrapper>} />
+              <Route path="/jpg-to-png-high-quality" element={<PageWrapper><ToolPage slug="jpg-to-png" /></PageWrapper>} />
+
+              {/* Programmatic SEO Routes for BMI Calculator */}
+              <Route path="/bmi-calculator-for-men" element={<PageWrapper><ToolPage slug="bmi-calculator" /></PageWrapper>} />
+              <Route path="/bmi-calculator-for-women" element={<PageWrapper><ToolPage slug="bmi-calculator" /></PageWrapper>} />
+              <Route path="/bmi-calculator-india" element={<PageWrapper><ToolPage slug="bmi-calculator" /></PageWrapper>} />
+              <Route path="/ideal-weight-calculator" element={<PageWrapper><ToolPage slug="ideal-weight-calculator" /></PageWrapper>} />
+              <Route path="/calorie-calculator-for-weight-loss" element={<PageWrapper><ToolPage slug="calorie-calculator" /></PageWrapper>} />
+              <Route path="/bmr-calculator-for-men" element={<PageWrapper><ToolPage slug="bmr-calculator" /></PageWrapper>} />
+              <Route path="/body-fat-percentage-calculator" element={<PageWrapper><ToolPage slug="body-fat-calculator" /></PageWrapper>} />
+
               <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
               <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
               <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
