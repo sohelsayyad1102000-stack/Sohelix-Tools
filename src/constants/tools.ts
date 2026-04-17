@@ -795,7 +795,7 @@ export const TOOLS: Tool[] = [
         <li><strong>Instant Results:</strong> No waiting, no refreshing, just instant data.</li>
       </ul>
 
-      <p>Whether you're filling out an official form, checking age requirements for a service, or just curious about your life duration, Sohelix provides the most accurate and secure age calculation tool online. If you're interested in other health-related metrics, try our <a href="/tools/bmi-calculator" class="underline hover:text-blue-600">BMI Calculator</a>.</p>
+      <p>Whether you're filling out an official form, checking age requirements for a service, or just curious about your life duration, Sohelix provides the most accurate and secure age calculation tool online. For a deeper understanding of how age is calculated, check out our <a href="/blog/age-calculator-guide" class="underline hover:text-blue-600">comprehensive guide on age calculation</a>. If you're interested in other health-related metrics, try our <a href="/tools/bmi-calculator" class="underline hover:text-blue-600">BMI Calculator</a>.</p>
     `,
   },
   {

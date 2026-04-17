@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { build } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,29 +17,13 @@ async function runPrerender() {
     global.Image = class {};
   }
 
-  // 1. Build the client
-  console.log('📦 Building client...');
-  await build({
-    root,
-    build: {
-      outDir: 'dist',
-      minify: true,
-    }
-  });
-
-  // 2. Build the server entry
-  console.log('📦 Building server-entry...');
-  await build({
-    root,
-    build: {
-      ssr: 'src/entry-server.tsx',
-      outDir: 'dist/server',
-      minify: true,
-    }
-  });
-
   // 3. Load the server entry
-  const { render } = await import(path.resolve(root, 'dist/server/entry-server.js'));
+  const serverEntryPath = path.resolve(root, 'dist/server/entry-server.js');
+  if (!fs.existsSync(serverEntryPath)) {
+    console.error('❌ Server entry not found. Build server first.');
+    process.exit(1);
+  }
+  const { render } = await import(serverEntryPath);
 
   // 4. Load routes
   const routesPath = path.resolve(root, 'src/routes-list.json');
