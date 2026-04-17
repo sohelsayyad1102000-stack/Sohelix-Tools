@@ -21,7 +21,7 @@ interface CurrencyConfig {
   symbol: string;
   locale: string;
   unit: string;
-  denominations: Omit<DenomRow, 'bundles' | 'loose'>[];
+  denominations: Omit<DenomRow, 'count'>[];
 }
 
 const CURRENCIES: Record<string, CurrencyConfig> = {

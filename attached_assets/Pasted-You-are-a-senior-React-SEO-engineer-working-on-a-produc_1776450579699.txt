@@ -1,0 +1,172 @@
+You are a senior React + SEO engineer working on a production project called "Sohelix".
+
+The project contains a currency converter tool that already uses live exchange rates.
+
+🚨 CRITICAL CONSTRAINTS (DO NOT BREAK ANYTHING):
+
+* DO NOT change UI layout or styling
+* DO NOT modify routing or URLs
+* DO NOT break existing converter logic
+* DO NOT affect other tools
+* Only ADD new features safely
+
+---
+
+GOAL:
+Upgrade the currency converter with advanced features for user value and SEO ranking.
+
+---
+
+## 1. CURRENCY TREND GRAPH (HIGH PRIORITY)
+
+Add a trend chart showing exchange rate movement.
+
+REQUIREMENTS:
+
+* Fetch historical exchange rates (last 7 days, 30 days, 1 year)
+* Use same API (if supported) or fallback API
+* Plot line chart (use existing chart library if available)
+
+DATA STRUCTURE:
+
+* X-axis: date
+* Y-axis: exchange rate
+
+FEATURES:
+
+* Time range selector:
+
+  * 1D
+  * 7D
+  * 1M
+  * 1Y
+
+* Smooth line chart
+
+* Tooltip on hover (rate + date)
+
+* Show trend direction:
+
+  * ↑ increase
+  * ↓ decrease
+
+PERFORMANCE:
+
+* Fetch only when currencies change
+* Cache results
+
+---
+
+## 2. POPULAR CURRENCY PAIRS (SEO BOOST)
+
+Add a section below the converter:
+
+Example pairs:
+
+* USD → INR
+* INR → USD
+* EUR → INR
+* GBP → INR
+* USD → EUR
+* AED → INR
+
+REQUIREMENTS:
+
+* Each pair clickable
+* Clicking auto-updates converter
+* Display live rate next to each pair
+
+EXAMPLE:
+
+"1 USD = ₹83.12"
+
+---
+
+## 3. SEO CONTENT BLOCK (VERY IMPORTANT)
+
+Add a dynamic content section below the tool.
+
+GENERATE TEXT LIKE:
+
+* Current exchange rate explanation
+* Market insight
+* Example conversions
+* Currency comparison
+
+EXAMPLE:
+
+"The current USD to INR rate is ₹83.12. This means 1 US Dollar equals 83.12 Indian Rupees. Over the past week, the rate has increased by 0.5%..."
+
+REQUIREMENTS:
+
+* Content must update dynamically based on selected currencies
+* Must be visible in HTML (not client-hidden)
+* Use proper headings (H2, H3)
+
+---
+
+## 4. FAQ SECTION (SEO GOLD)
+
+Add FAQs:
+
+* What is the current exchange rate?
+* Why do rates change?
+* Best time to exchange currency?
+* How accurate is this converter?
+
+Use structured schema (FAQ schema)
+
+---
+
+## 5. STRUCTURED DATA (IMPORTANT)
+
+Add JSON-LD schema:
+
+* FAQ schema
+* Tool schema
+* Breadcrumb schema
+
+---
+
+## 6. INTERNAL LINKING
+
+Add links to:
+
+* EMI Calculator
+* Percentage Calculator
+* Currency Denomination Tool
+
+---
+
+## 7. PERFORMANCE
+
+* Lazy load chart
+* Cache API responses
+* Avoid unnecessary re-renders
+
+---
+
+## 8. UX IMPROVEMENTS
+
+* Show "Live Rate" badge
+* Show last updated time
+* Add swap button (if not present)
+
+---
+
+FINAL OUTPUT:
+
+* Show only new components added
+* Show integration points
+* Ensure no existing code is broken
+
+---
+
+EXPECTED RESULT:
+
+* Converter becomes content-rich
+* Increased user engagement
+* Improved SEO ranking potential
+* Matches competitor-level tools
+
+Do NOT over-engineer. Focus on performance, SEO, and user value.
