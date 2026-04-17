@@ -13,8 +13,7 @@ interface DenomRow {
   value: number;
   label: string;
   isNote: boolean;
-  bundles: number;
-  loose: number;
+  count: number;
 }
 
 interface CurrencyConfig {
@@ -98,7 +97,7 @@ const CHART_COLORS = [
 ];
 
 function makeFreshRows(cfg: CurrencyConfig): DenomRow[] {
-  return cfg.denominations.map(d => ({ ...d, bundles: 0, loose: 0 }));
+  return cfg.denominations.map(d => ({ ...d, count: 0 }));
 }
 
 function formatAmount(amount: number, cfg: CurrencyConfig): string {
@@ -160,9 +159,9 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
     setRows(makeFreshRows(CURRENCIES[key]));
   };
 
-  const update = (index: number, field: 'bundles' | 'loose', raw: string) => {
+  const update = (index: number, raw: string) => {
     const val = Math.max(0, parseInt(raw) || 0);
-    setRows(prev => prev.map((r, i) => i === index ? { ...r, [field]: val } : r));
+    setRows(prev => prev.map((r, i) => i === index ? { ...r, count: val } : r));
   };
 
   const reset = () => setRows(makeFreshRows(cfg));
@@ -170,8 +169,7 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
   const calc = useMemo(() => {
     const withSubtotal = rows.map(r => ({
       ...r,
-      count: r.bundles * 100 + r.loose,
-      subtotal: Math.round((r.bundles * 100 + r.loose) * r.value * 100) / 100,
+      subtotal: Math.round(r.count * r.value * 100) / 100,
     }));
 
     const totalNotes  = withSubtotal.filter(r => r.isNote).reduce((a, r) => a + r.count, 0);
@@ -188,7 +186,7 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
   const handleCopy = () => {
     const lines = calc.withSubtotal
       .filter(r => r.subtotal > 0)
-      .map(r => `${r.label.padEnd(6)}  Bundles: ${r.bundles}  Loose: ${r.loose}  Subtotal: ${formatAmount(r.subtotal, cfg)}`);
+      .map(r => `${r.label.padEnd(6)}  Count: ${r.count}  Subtotal: ${formatAmount(r.subtotal, cfg)}`);
 
     const text = [
       `Currency Denomination Breakdown (${cfg.code})`,
@@ -210,16 +208,12 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
     const sym = cfg.symbol;
     const data = calc.withSubtotal.map(r => ({
       Denomination: r.label,
-      'Bundles (×100)': r.bundles,
-      Loose: r.loose,
-      'Total Count': r.count,
+      'No. of Notes/Coins': r.count,
       [`Subtotal (${sym})`]: r.subtotal,
     }));
     data.push({
       Denomination: 'TOTAL',
-      'Bundles (×100)': '' as any,
-      Loose: '' as any,
-      'Total Count': calc.totalNotes + calc.totalCoins,
+      'No. of Notes/Coins': calc.totalNotes + calc.totalCoins,
       [`Subtotal (${sym})`]: calc.totalAmount,
     });
     downloadCSV(data, `currency_denomination_${cfg.code.toLowerCase()}.csv`);
@@ -246,27 +240,16 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
             {row.label}
           </span>
         </td>
-        <td className="px-4 py-3">
+        <td className="px-4 py-3 text-center">
           <input
             type="number"
             min={0}
-            value={row.bundles || ''}
-            onChange={e => update(i, 'bundles', e.target.value)}
+            value={row.count || ''}
+            onChange={e => update(i, e.target.value)}
             placeholder="0"
             className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-center font-bold text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none no-print"
           />
-          <span className="hidden print:block text-center font-bold">{row.bundles}</span>
-        </td>
-        <td className="px-4 py-3">
-          <input
-            type="number"
-            min={0}
-            value={row.loose || ''}
-            onChange={e => update(i, 'loose', e.target.value)}
-            placeholder="0"
-            className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-center font-bold text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none no-print"
-          />
-          <span className="hidden print:block text-center font-bold">{row.loose}</span>
+          <span className="hidden print:block text-center font-bold">{row.count}</span>
         </td>
         <td className="px-4 py-3 text-right font-mono font-bold text-gray-900 dark:text-white">
           {sub > 0
@@ -319,10 +302,7 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                   <th className="px-4 py-3 text-left font-bold text-gray-600 dark:text-gray-300 w-28">Denomination</th>
-                  <th className="px-4 py-3 text-center font-bold text-gray-600 dark:text-gray-300">
-                    Bundles <span className="text-xs font-normal text-gray-400">(×100)</span>
-                  </th>
-                  <th className="px-4 py-3 text-center font-bold text-gray-600 dark:text-gray-300">Loose</th>
+                  <th className="px-4 py-3 text-center font-bold text-gray-600 dark:text-gray-300">No. of Notes/Coins</th>
                   <th className="px-4 py-3 text-right font-bold text-gray-600 dark:text-gray-300">Subtotal</th>
                 </tr>
               </thead>
@@ -330,7 +310,7 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
                 {noteRows.length > 0 && (
                   <>
                     <tr>
-                      <td colSpan={4} className="px-4 py-2 bg-blue-50/60 dark:bg-blue-900/10">
+                      <td colSpan={3} className="px-4 py-2 bg-blue-50/60 dark:bg-blue-900/10">
                         <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Notes / Bills</span>
                       </td>
                     </tr>
@@ -340,7 +320,7 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
                 {coinRows.length > 0 && (
                   <>
                     <tr>
-                      <td colSpan={4} className="px-4 py-2 bg-amber-50/60 dark:bg-amber-900/10">
+                      <td colSpan={3} className="px-4 py-2 bg-amber-50/60 dark:bg-amber-900/10">
                         <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Coins</span>
                       </td>
                     </tr>
