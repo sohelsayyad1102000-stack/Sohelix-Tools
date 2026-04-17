@@ -14,17 +14,19 @@ import { CalculatorInput } from '../CalculatorInput';
 import { ClientOnly } from '../ClientOnly';
 
 const CURRENCIES = [
-  { code: 'USD', name: 'US Dollar',          symbol: '$',   rate: 1 },
-  { code: 'INR', name: 'Indian Rupee',        symbol: '₹',   rate: 83.50 },
-  { code: 'EUR', name: 'Euro',               symbol: '€',   rate: 0.92 },
-  { code: 'GBP', name: 'British Pound',       symbol: '£',   rate: 0.79 },
-  { code: 'JPY', name: 'Japanese Yen',        symbol: '¥',   rate: 156.40 },
-  { code: 'AUD', name: 'Australian Dollar',   symbol: 'A$',  rate: 1.51 },
-  { code: 'CAD', name: 'Canadian Dollar',     symbol: 'C$',  rate: 1.37 },
-  { code: 'AED', name: 'UAE Dirham',          symbol: 'د.إ', rate: 3.67 },
-  { code: 'SAR', name: 'Saudi Riyal',         symbol: '﷼',   rate: 3.75 },
-  { code: 'SGD', name: 'Singapore Dollar',    symbol: 'S$',  rate: 1.35 },
+  { code: 'USD', name: 'US Dollar',          symbol: '$'   },
+  { code: 'INR', name: 'Indian Rupee',        symbol: '₹'   },
+  { code: 'EUR', name: 'Euro',               symbol: '€'   },
+  { code: 'GBP', name: 'British Pound',       symbol: '£'   },
+  { code: 'JPY', name: 'Japanese Yen',        symbol: '¥'   },
+  { code: 'AUD', name: 'Australian Dollar',   symbol: 'A$'  },
+  { code: 'CAD', name: 'Canadian Dollar',     symbol: 'C$'  },
+  { code: 'AED', name: 'UAE Dirham',          symbol: 'د.إ' },
+  { code: 'SAR', name: 'Saudi Riyal',         symbol: '﷼'   },
+  { code: 'SGD', name: 'Singapore Dollar',    symbol: 'S$'  },
 ];
+
+const LIVE_RATES_URL = 'https://open.er-api.com/v6/latest/USD';
 
 const FRANKFURTER_SUPPORTED = new Set([
   'USD','EUR','GBP','JPY','AUD','CAD','SGD','INR','CHF','NZD',
@@ -67,49 +69,51 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
   const [amount, setAmount]             = useState(100);
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency]     = useState('INR');
-  const [liveRate, setLiveRate]         = useState<number | null>(null);
-  const [liveLoading, setLiveLoading]   = useState(false);
+  const [allRates, setAllRates]         = useState<Record<string, number> | null>(null);
+  const [ratesLoading, setRatesLoading] = useState(true);
+  const [apiError, setApiError]         = useState<string | null>(null);
   const [lastUpdated, setLastUpdated]   = useState<Date | null>(null);
   const [trendData, setTrendData]       = useState<{ date: string; rate: number }[]>([]);
   const [trendRange, setTrendRange]     = useState<TrendRange>('7D');
   const [trendLoading, setTrendLoading] = useState(false);
 
-  const rateCache  = useRef<Map<string, number>>(new Map());
   const trendCache = useRef<Map<string, { date: string; rate: number }[]>>(new Map());
 
-  const isLivePair = FRANKFURTER_SUPPORTED.has(fromCurrency) && FRANKFURTER_SUPPORTED.has(toCurrency);
+  const isChartPair = FRANKFURTER_SUPPORTED.has(fromCurrency) && FRANKFURTER_SUPPORTED.has(toCurrency);
 
-  const staticRate = useMemo(() => {
-    const f = CURRENCIES.find(c => c.code === fromCurrency);
-    const t = CURRENCIES.find(c => c.code === toCurrency);
-    return f && t ? t.rate / f.rate : 1;
-  }, [fromCurrency, toCurrency]);
+  // Compute live exchange rate from fetched rates table (all relative to USD)
+  const exchangeRate = useMemo(() => {
+    if (!allRates) return null;
+    const fromRate = allRates[fromCurrency] ?? null;
+    const toRate   = allRates[toCurrency]   ?? null;
+    if (fromRate === null || toRate === null) return null;
+    return toRate / fromRate;
+  }, [allRates, fromCurrency, toCurrency]);
 
-  const exchangeRate = liveRate !== null ? liveRate : staticRate;
-  const result = Math.round(amount * exchangeRate * 10000) / 10000;
+  const result = exchangeRate !== null ? Math.round(amount * exchangeRate * 10000) / 10000 : null;
 
-  const fetchLiveRate = useCallback(async (from: string, to: string) => {
-    if (from === to) { setLiveRate(1); return; }
-    if (!FRANKFURTER_SUPPORTED.has(from) || !FRANKFURTER_SUPPORTED.has(to)) {
-      setLiveRate(null); return;
-    }
-    const key = `${from}-${to}`;
-    if (rateCache.current.has(key)) {
-      setLiveRate(rateCache.current.get(key)!); return;
-    }
-    setLiveLoading(true);
+  // Fetch all live rates once on mount (open.er-api.com — free, no auth, CORS-enabled)
+  const fetchAllRates = useCallback(async () => {
+    setRatesLoading(true);
+    setApiError(null);
     try {
-      const res  = await fetch(`https://api.frankfurter.app/latest?from=${from}&to=${to}`);
+      const res  = await fetch(LIVE_RATES_URL);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      const rate = data?.rates?.[to];
-      if (rate) {
-        rateCache.current.set(key, rate);
-        setLiveRate(rate);
-        setLastUpdated(new Date());
+      if (data?.result !== 'success' || !data?.rates) {
+        throw new Error(data?.error_type ?? 'Invalid API response');
       }
-    } catch { setLiveRate(null); }
-    finally  { setLiveLoading(false); }
+      setAllRates(data.rates as Record<string, number>);
+      setLastUpdated(new Date());
+    } catch (err: any) {
+      setApiError('Live rates unavailable. Please try again later.');
+      setAllRates(null);
+    } finally {
+      setRatesLoading(false);
+    }
   }, []);
+
+  useEffect(() => { fetchAllRates(); }, [fetchAllRates]);
 
   const fetchTrend = useCallback(async (from: string, to: string, range: TrendRange) => {
     if (!FRANKFURTER_SUPPORTED.has(from) || !FRANKFURTER_SUPPORTED.has(to)) {
@@ -139,13 +143,11 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
     finally  { setTrendLoading(false); }
   }, []);
 
-  useEffect(() => { fetchLiveRate(fromCurrency, toCurrency); }, [fromCurrency, toCurrency, fetchLiveRate]);
   useEffect(() => { fetchTrend(fromCurrency, toCurrency, trendRange); }, [fromCurrency, toCurrency, trendRange, fetchTrend]);
 
   const swap = () => {
     setFromCurrency(toCurrency);
     setToCurrency(fromCurrency);
-    setLiveRate(null);
   };
 
   const getSymbol = (code: string) => CURRENCIES.find(c => c.code === code)?.symbol ?? '';
@@ -164,11 +166,12 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
     return Math.round(((last - first) / first) * 10000) / 100;
   }, [trendData]);
 
-  const getPairRate = (from: string, to: string) => {
-    const f = CURRENCIES.find(c => c.code === from);
-    const t = CURRENCIES.find(c => c.code === to);
-    if (!f || !t) return '—';
-    const r = t.rate / f.rate;
+  const getPairRate = (from: string, to: string): string => {
+    if (!allRates) return '…';
+    const fRate = allRates[from];
+    const tRate = allRates[to];
+    if (!fRate || !tRate) return '—';
+    const r = tRate / fRate;
     return r >= 10 ? r.toFixed(2) : r.toFixed(4);
   };
 
@@ -193,7 +196,7 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
       {
         '@type': 'Question',
         name: `What is the current ${fromCurrency} to ${toCurrency} exchange rate?`,
-        acceptedAnswer: { '@type': 'Answer', text: `The current rate is approximately 1 ${fromCurrency} = ${fmtRate(exchangeRate)} ${toCurrency}.` },
+        acceptedAnswer: { '@type': 'Answer', text: `The current rate is approximately 1 ${fromCurrency} = ${exchangeRate !== null ? fmtRate(exchangeRate) : '—'} ${toCurrency}.` },
       },
       {
         '@type': 'Question',
@@ -228,7 +231,7 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
     ...(tool.faqs || []),
     {
       question: `What is the current ${fromCurrency} to ${toCurrency} exchange rate?`,
-      answer: `The current rate is approximately 1 ${fromCurrency} = ${getSymbol(toCurrency)}${fmtRate(exchangeRate)} ${toCurrency}. Rates are sourced live from the ECB via Frankfurter API.`,
+      answer: `The current rate is approximately 1 ${fromCurrency} = ${getSymbol(toCurrency)}${exchangeRate !== null ? fmtRate(exchangeRate) : '—'} ${toCurrency}. Rates are sourced live via ExchangeRate-API.`,
     },
     {
       question: 'Why do currency exchange rates change?',
@@ -334,33 +337,50 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
           </div>
         </div>
 
+        {/* API Error Banner */}
+        {apiError && (
+          <div className="mt-6 flex items-center gap-3 rounded-2xl border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-900/20 px-5 py-4">
+            <span className="text-red-500 dark:text-red-400 font-bold text-sm">⚠ {apiError}</span>
+            <button
+              onClick={fetchAllRates}
+              className="ml-auto flex items-center gap-1.5 rounded-lg bg-red-100 dark:bg-red-900/40 px-3 py-1.5 text-xs font-bold text-red-700 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-900/60 transition-colors"
+            >
+              <RefreshCcw className="h-3.5 w-3.5" /> Retry
+            </button>
+          </div>
+        )}
+
         {/* Result */}
-        <div className="mt-12 text-center space-y-4 p-8 rounded-3xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 print:bg-gray-50 print:border-gray-200">
+        <div className="mt-8 text-center space-y-4 p-8 rounded-3xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 print:bg-gray-50 print:border-gray-200">
           <ClientOnly>
             <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">
               {amount.toLocaleString()} {fromCurrency} =
             </p>
           </ClientOnly>
           <motion.h2
-            key={result}
+            key={String(result)}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white"
           >
-            <ClientOnly fallback={<span>{getSymbol(toCurrency)}0.00</span>}>
-              {liveLoading
-                ? <span className="animate-pulse text-gray-400">...</span>
-                : `${getSymbol(toCurrency)}${result.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+            <ClientOnly fallback={<span className="animate-pulse text-gray-400">…</span>}>
+              {ratesLoading
+                ? <span className="animate-pulse text-gray-400">…</span>
+                : result !== null
+                  ? `${getSymbol(toCurrency)}${result.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                  : <span className="text-red-400 text-4xl">Rate unavailable</span>
               }
             </ClientOnly>
           </motion.h2>
           <div className="flex flex-col items-center gap-1">
             <ClientOnly>
-              <p className="text-sm text-blue-600 font-black dark:text-blue-400">
-                1 {fromCurrency} = {fmtRate(exchangeRate)} {toCurrency}
-              </p>
+              {exchangeRate !== null && (
+                <p className="text-sm text-blue-600 font-black dark:text-blue-400">
+                  1 {fromCurrency} = {fmtRate(exchangeRate)} {toCurrency}
+                </p>
+              )}
               <p className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter no-print">
-                {isLivePair && liveRate !== null ? '✓ Live ECB rate' : 'Indicative rate — live data not available for this pair'}
+                {allRates && !apiError ? '✓ Live rate via ExchangeRate-API' : ''}
               </p>
             </ClientOnly>
           </div>
@@ -368,7 +388,7 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
       </section>
 
       {/* Trend Chart */}
-      {isLivePair && (
+      {isChartPair && (
         <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900 no-print">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-3 flex-wrap">
@@ -468,7 +488,7 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
             return (
               <button
                 key={`${pair.from}-${pair.to}`}
-                onClick={() => { setFromCurrency(pair.from); setToCurrency(pair.to); setLiveRate(null); }}
+                onClick={() => { setFromCurrency(pair.from); setToCurrency(pair.to); }}
                 className={cn(
                   'rounded-2xl border p-4 text-left transition-all hover:shadow-md',
                   isActive
@@ -526,9 +546,12 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           The current <strong>{getName(fromCurrency)} ({fromCurrency})</strong> to{' '}
           <strong>{getName(toCurrency)} ({toCurrency})</strong> exchange rate is{' '}
-          <strong>{fmtRate(exchangeRate)}</strong>. This means{' '}
-          <strong>1 {fromCurrency} = {getSymbol(toCurrency)}{fmtRate(exchangeRate)} {toCurrency}</strong> today.
-          {isLivePair && trendData.length >= 2 && trendDirection !== 'neutral' && (
+          {exchangeRate !== null
+            ? <><strong>{fmtRate(exchangeRate)}</strong>. This means{' '}
+                <strong>1 {fromCurrency} = {getSymbol(toCurrency)}{fmtRate(exchangeRate)} {toCurrency}</strong> today.</>
+            : <span>currently loading…</span>
+          }
+          {isChartPair && exchangeRate !== null && trendData.length >= 2 && trendDirection !== 'neutral' && (
             <> Over the past {trendRange === '7D' ? '7 days' : trendRange === '1M' ? '30 days' : 'year'}, the rate has{' '}
               {trendDirection === 'up' ? 'increased' : 'decreased'} by{' '}
               <strong>{Math.abs(trendPercent)}%</strong>.</>
@@ -543,7 +566,10 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
             <div key={n} className="rounded-xl bg-gray-50 dark:bg-gray-800 p-4 text-center">
               <p className="text-xs text-gray-500 font-bold">{getSymbol(fromCurrency)}{n.toLocaleString()} {fromCurrency}</p>
               <p className="text-sm font-black text-blue-600 dark:text-blue-400 mt-1">
-                {getSymbol(toCurrency)}{(n * exchangeRate).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                {exchangeRate !== null
+                  ? `${getSymbol(toCurrency)}${(n * exchangeRate).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                  : '—'
+                }
               </p>
             </div>
           ))}
@@ -555,7 +581,7 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           The {fromCurrency}/{toCurrency} pair shows how many {getName(toCurrency)}s buy one {getName(fromCurrency)}.
           Exchange rates move continuously based on central bank decisions, inflation data, trade flows,
-          and investor sentiment. Our converter fetches live ECB-sourced rates so you always work with
+          and investor sentiment. Our converter fetches live rates from ExchangeRate-API so you always work with
           accurate, up-to-date figures. Use the trend chart above to spot recent direction and decide
           when to convert.
         </p>
