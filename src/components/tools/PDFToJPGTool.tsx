@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import * as pdfjsLib from 'pdfjs-dist';
 import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+import FileSaver from 'file-saver';
 import { cn, formatBytes } from '../../lib/utils';
 
 // Use the local worker from pdfjs-dist
@@ -139,7 +139,7 @@ export const PDFToJPGTool: React.FC<PDFToJPGToolProps> = ({ tool }) => {
       }
 
       const content = await zip.generateAsync({ type: 'blob' });
-      saveAs(content, `${file.name.replace('.pdf', '')}_images.zip`);
+      FileSaver.saveAs(content, `${file.name.replace('.pdf', '')}_images.zip`);
     } catch (err: any) {
       setError(err.message || 'Error during conversion.');
     } finally {

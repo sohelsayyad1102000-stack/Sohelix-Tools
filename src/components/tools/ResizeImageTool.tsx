@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Upload, Download, RefreshCcw, Trash2, Settings2, FileImage, AlertCircle, CheckCircle2, X, Maximize2, Move, RotateCw, ZoomIn } from 'lucide-react';
+import FileSaver from 'file-saver';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn, formatBytes } from '../../lib/utils';
 import imageCompression from 'browser-image-compression';
@@ -242,8 +243,7 @@ export const ResizeImageTool: React.FC<ResizeImageToolProps> = ({ tool }) => {
       const zip = new JSZip();
       res.forEach(r => zip.file(r.name, r.blob));
       const content = await zip.generateAsync({ type: 'blob' });
-      const { saveAs } = await import('file-saver');
-      saveAs(content, 'resized_images_sohelix.zip');
+      FileSaver.saveAs(content, 'resized_images_sohelix.zip');
     }
   };
 

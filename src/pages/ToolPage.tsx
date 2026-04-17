@@ -86,7 +86,7 @@ import { BMRCalculator } from '../components/tools/BMRCalculator';
 import { IdealWeightCalculator } from '../components/tools/IdealWeightCalculator';
 import { BodyFatCalculator } from '../components/tools/BodyFatCalculator';
 import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+import FileSaver from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useToolHistory } from '../hooks/useToolHistory';
 
@@ -248,7 +248,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         }
       });
       const content = await zip.generateAsync({ type: 'blob' });
-      saveAs(content, 'sohelix_images.zip');
+      FileSaver.saveAs(content, 'sohelix_images.zip');
     }
   };
 

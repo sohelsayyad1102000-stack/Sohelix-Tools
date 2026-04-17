@@ -21,7 +21,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { cn, formatBytes } from '../../lib/utils';
 import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+import FileSaver from 'file-saver';
 import { convertFormat } from '../../lib/image-processing';
 
 interface WebPConverterProps {
@@ -167,7 +167,7 @@ export const WebPConverter: React.FC<WebPConverterProps> = ({ tool }) => {
 
   const downloadSingle = (item: FileItem) => {
     if (item.result) {
-      saveAs(item.result.blob, item.result.name);
+      FileSaver.saveAs(item.result.blob, item.result.name);
     }
   };
 
@@ -188,7 +188,7 @@ export const WebPConverter: React.FC<WebPConverterProps> = ({ tool }) => {
     });
 
     const content = await zip.generateAsync({ type: 'blob' });
-    saveAs(content, 'sohelix_webp_images.zip');
+    FileSaver.saveAs(content, 'sohelix_webp_images.zip');
   };
 
   return (

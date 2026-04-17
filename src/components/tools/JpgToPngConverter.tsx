@@ -19,7 +19,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { cn, formatBytes } from '../../lib/utils';
 import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+import FileSaver from 'file-saver';
 
 interface JpgToPngConverterProps {
   tool: any;
@@ -188,7 +188,7 @@ export const JpgToPngConverter: React.FC<JpgToPngConverterProps> = ({ tool }) =>
 
   const downloadSingle = (item: FileItem) => {
     if (item.result) {
-      saveAs(item.result.blob, item.result.name);
+      FileSaver.saveAs(item.result.blob, item.result.name);
     }
   };
 
@@ -209,7 +209,7 @@ export const JpgToPngConverter: React.FC<JpgToPngConverterProps> = ({ tool }) =>
     });
 
     const content = await zip.generateAsync({ type: 'blob' });
-    saveAs(content, 'converted_png_images.zip');
+    FileSaver.saveAs(content, 'converted_png_images.zip');
   };
 
   return (

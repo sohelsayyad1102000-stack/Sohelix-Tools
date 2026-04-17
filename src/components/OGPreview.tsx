@@ -13,8 +13,7 @@ import {
   FileSearch,
   CheckCircle2,
   TrendingUp,
-  Percent,
-  Mandi
+  Percent
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 

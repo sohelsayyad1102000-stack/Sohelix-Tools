@@ -1,10 +1,17 @@
-import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
+import { hydrateRoot, createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+const container = document.getElementById('root')!;
+const app = (
+  <BrowserRouter>
     <App />
-  </StrictMode>,
+  </BrowserRouter>
 );
+
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app);
+} else {
+  createRoot(container).render(app);
+}

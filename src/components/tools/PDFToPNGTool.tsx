@@ -18,7 +18,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import * as pdfjsLib from 'pdfjs-dist';
 import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+import FileSaver from 'file-saver';
 import { cn, formatBytes } from '../../lib/utils';
 
 // Use the local worker from pdfjs-dist
@@ -171,7 +171,7 @@ export const PDFToPNGTool: React.FC<PDFToPNGToolProps> = ({ tool }) => {
       }
 
       const content = await zip.generateAsync({ type: 'blob' });
-      saveAs(content, `${file.name.replace('.pdf', '')}_images.zip`);
+      FileSaver.saveAs(content, `${file.name.replace('.pdf', '')}_images.zip`);
     } catch (err: any) {
       console.error('Error converting PDF:', err);
       setError(err.message || 'An error occurred during conversion.');
