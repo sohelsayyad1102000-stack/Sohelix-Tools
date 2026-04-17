@@ -87,7 +87,7 @@ export const Footer: React.FC = () => {
         </div>
         <div className="mt-12 border-t border-gray-100 pt-8 dark:border-gray-800">
           <p className="text-center text-xs text-gray-400">
-            &copy; {new Date().getFullYear()} Sohelix. All rights reserved. Built with privacy in mind.
+            &copy; {2026} Sohelix. All rights reserved. Built with privacy in mind.
           </p>
         </div>
       </div>

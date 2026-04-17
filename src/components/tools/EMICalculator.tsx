@@ -4,6 +4,7 @@ import { cn } from '../../lib/utils';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import { CalculatorInput } from '../CalculatorInput';
 import { getCurrencySymbol, formatCurrency } from '../../lib/finance';
+import { ClientOnly } from '../ClientOnly';
 
 interface EMICalculatorProps {
   tool: any;
@@ -124,7 +125,9 @@ Total Payment: ${formatCurrency(totalPayment, currency)}`;
       {/* Print Header */}
       <div className="hidden print:block text-center mb-8">
         <h1 className="text-2xl font-black text-gray-900">{tool.title || 'EMI Calculator'} Report</h1>
-        <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        <ClientOnly>
+          <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        </ClientOnly>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

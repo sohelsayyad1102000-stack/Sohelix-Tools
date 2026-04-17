@@ -27,6 +27,10 @@ export default defineConfig(({mode}) => {
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
+    ssr: {
+      noExternal: [],
+      external: ['react', 'react-dom', 'react-helmet-async', 'react-router-dom'],
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),

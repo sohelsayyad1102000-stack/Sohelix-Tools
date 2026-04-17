@@ -24,7 +24,11 @@ export const SEO: React.FC<SEOProps> = ({
 }) => {
   const siteName = 'Sohelix';
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
-  const url = typeof window !== 'undefined' ? window.location.href : 'https://sohelix.com';
+  const [url, setUrl] = React.useState('https://sohelix.com');
+
+  React.useEffect(() => {
+    setUrl(window.location.href);
+  }, []);
 
   const defaultSchemas = [
     {

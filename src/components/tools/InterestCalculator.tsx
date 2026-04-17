@@ -5,6 +5,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, AreaChart, A
 import { cn, downloadCSV } from '../../lib/utils';
 import { CalculatorInput } from '../CalculatorInput';
 import { getCurrencySymbol, formatCurrency } from '../../lib/finance';
+import { ClientOnly } from '../ClientOnly';
 
 interface InterestCalculatorProps {
   tool: any;
@@ -125,7 +126,9 @@ Rate: ${rate}% for ${time} years`;
       {/* Print Header */}
       <div className="hidden print:block text-center mb-8">
         <h1 className="text-2xl font-black text-gray-900">{tool.title || 'Interest Calculator'} Report</h1>
-        <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        <ClientOnly>
+          <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        </ClientOnly>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

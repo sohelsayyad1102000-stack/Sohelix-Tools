@@ -3,6 +3,7 @@ import { Coins, ArrowRightLeft, RefreshCcw, TrendingUp, Info, Calculator, Globe,
 import { motion } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { CalculatorInput } from '../CalculatorInput';
+import { ClientOnly } from '../ClientOnly';
 
 const CURRENCIES = [
   { code: 'USD', name: 'US Dollar', symbol: '$', rate: 1 },
@@ -65,7 +66,9 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
       {/* Print Header */}
       <div className="hidden print:block text-center mb-8">
         <h1 className="text-2xl font-black text-gray-900">{tool.title || 'Currency Converter'} Report</h1>
-        <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        <ClientOnly>
+          <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        </ClientOnly>
       </div>
 
       <section className="rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900 print:shadow-none print:border-none">
@@ -124,16 +127,20 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
 
         {/* Result Display */}
         <div className="mt-12 text-center space-y-4 p-8 rounded-3xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 print:bg-gray-50 print:border-gray-200">
-          <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">
-            {amount.toLocaleString()} {fromCurrency} =
-          </p>
+          <ClientOnly>
+            <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">
+              {amount.toLocaleString()} {fromCurrency} =
+            </p>
+          </ClientOnly>
           <motion.h2 
             key={result}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white"
           >
-            {getSymbol(toCurrency)}{result.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            <ClientOnly fallback={<span>{getSymbol(toCurrency)}0.00</span>}>
+              {getSymbol(toCurrency)}{result.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </ClientOnly>
           </motion.h2>
           <div className="flex flex-col items-center gap-1">
             <p className="text-sm text-blue-600 font-black dark:text-blue-400">

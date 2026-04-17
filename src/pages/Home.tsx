@@ -151,7 +151,7 @@ export const Home: React.FC = () => {
               </div>
 
               {/* Suggestions Dropdown */}
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {isSearchFocused && searchQuery && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -209,7 +209,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Sticky Search Bar */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isSticky && (
           <motion.div
             initial={{ y: -100 }}

@@ -58,8 +58,44 @@ async function runPrerender() {
     console.log(`✨ Prerendering route: ${url}`);
     
     try {
-      const appHtml = render(url);
-      const html = template.replace('<!--app-html-->', appHtml);
+      const { html: rawAppHtml, helmet } = render(url);
+      
+      let appHtml = rawAppHtml.trim();
+
+      // 3. Clean up appHtml to remove ANY leaked SEO tags (they should only be in headTags)
+      // This is CRITICAL to prevent hydration mismatches
+      appHtml = appHtml
+        .replace(/<title[^>]*>.*?<\/title>/gi, '')
+        .replace(/<meta[^>]*>/gi, '')
+        .replace(/<link[^>]*>/gi, '')
+        .replace(/<script[^>]*type="application\/ld\+json"[^>]*>.*?<\/script>/gi, '')
+        .trim();
+
+      // 2. Capture Helmet tags from rawAppHtml (in case context sharing failed)
+      // We look for title, meta, link and ld+json scripts OUTSIDE or INSIDE the wrapper
+      let headTags = '';
+      
+      const titleMatch = rawAppHtml.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+      const metaMatches = rawAppHtml.match(/<meta[^>]*>/gi) || [];
+      const linkMatches = rawAppHtml.match(/<link[^>]*>/gi) || [];
+      const scriptMatches = rawAppHtml.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi) || [];
+
+      if (helmet && helmet.title) {
+        // Use helmet object if available (preferred)
+        headTags = `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}${helmet.script.toString()}`;
+      } else {
+        // Fallback to regex extraction
+        headTags = `
+          ${titleMatch ? titleMatch[0] : ''}
+          ${metaMatches.join('\n')}
+          ${linkMatches.join('\n')}
+          ${scriptMatches.join('\n')}
+        `.trim();
+      }
+
+      let html = template
+        .replace('<!--app-html-->', appHtml)
+        .replace('<!--app-head-->', headTags);
 
       const filePath = path.join(root, 'dist', url === '/' ? 'index.html' : `${url}/index.html`);
       

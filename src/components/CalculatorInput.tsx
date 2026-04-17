@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../lib/utils';
+import { ClientOnly } from './ClientOnly';
 
 interface CalculatorInputProps {
   label: string;
@@ -88,8 +89,12 @@ export const CalculatorInput: React.FC<CalculatorInputProps> = ({
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600 dark:bg-gray-700"
       />
       <div className="flex justify-between text-[10px] text-gray-400 font-medium uppercase tracking-wider">
-        <span>{prefix}{min.toLocaleString()}{!prefix && suffix}</span>
-        <span>{prefix}{max.toLocaleString()}{!prefix && suffix}</span>
+        <ClientOnly fallback={<span>{prefix}{min}{!prefix && suffix}</span>}>
+          <span>{prefix}{min.toLocaleString()}{!prefix && suffix}</span>
+        </ClientOnly>
+        <ClientOnly fallback={<span>{prefix}{max}{!prefix && suffix}</span>}>
+          <span>{prefix}{max.toLocaleString()}{!prefix && suffix}</span>
+        </ClientOnly>
       </div>
     </div>
   );

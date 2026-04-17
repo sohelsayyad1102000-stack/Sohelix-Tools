@@ -1,17 +1,16 @@
-import { hydrateRoot, createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx';
 import './index.css';
 
 const container = document.getElementById('root')!;
-const app = (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
+const root = createRoot(container);
 
-if (container.hasChildNodes()) {
-  hydrateRoot(container, app);
-} else {
-  createRoot(container).render(app);
-}
+root.render(
+  <HelmetProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </HelmetProvider>
+);

@@ -3,6 +3,7 @@ import { Percent, RefreshCcw, Copy, Check, Calculator, Info, TrendingUp, Trendin
 import { motion } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { CalculatorInput } from '../CalculatorInput';
+import { ClientOnly } from '../ClientOnly';
 
 interface PercentageCalculatorProps {
   tool: any;
@@ -56,7 +57,9 @@ export const PercentageCalculator: React.FC<PercentageCalculatorProps> = ({ tool
       {/* Print Header */}
       <div className="hidden print:block text-center mb-8">
         <h1 className="text-2xl font-black text-gray-900">{tool.title || 'Percentage Calculator'} Report</h1>
-        <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        <ClientOnly>
+          <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        </ClientOnly>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -87,7 +90,9 @@ export const PercentageCalculator: React.FC<PercentageCalculatorProps> = ({ tool
             <div className="pt-6 border-t border-gray-100 dark:border-gray-800">
               <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Result</p>
               <div className="flex items-center justify-between p-4 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 print:bg-blue-50 print:border-blue-200">
-                <p className="text-3xl font-black text-blue-600 dark:text-blue-400">{s1Result.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                <ClientOnly fallback={<p className="text-3xl font-black text-blue-600 dark:text-blue-400">{s1Result.toFixed(2)}</p>}>
+                  <p className="text-3xl font-black text-blue-600 dark:text-blue-400">{s1Result.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                </ClientOnly>
                 <button 
                   onClick={() => copy(s1Result.toString(), 's1')} 
                   className="p-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors text-gray-400 hover:text-blue-600 no-print"
@@ -186,7 +191,7 @@ export const PercentageCalculator: React.FC<PercentageCalculatorProps> = ({ tool
                 {s3Result >= 0 ? 'Increase' : 'Decrease'} of {Math.abs(s3Result).toFixed(2)}%
               </p>
               <p className="text-sm text-gray-500 leading-relaxed">
-                The value {s3Result >= 0 ? 'grew' : 'fell'} by <span className="font-bold text-gray-900 dark:text-white">{(s3Y - s3X).toLocaleString()}</span> units.
+                The value {s3Result >= 0 ? 'grew' : 'fell'} by <ClientOnly fallback={<span className="font-bold text-gray-900 dark:text-white">{(s3Y - s3X).toFixed(0)}</span>}><span className="font-bold text-gray-900 dark:text-white">{(s3Y - s3X).toLocaleString()}</span></ClientOnly> units.
               </p>
               <button 
                 onClick={() => copy(`${s3Result.toFixed(2)}%`, 's3')}

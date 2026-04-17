@@ -5,6 +5,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Ba
 import { cn, downloadCSV } from '../../lib/utils';
 import { CalculatorInput } from '../CalculatorInput';
 import { getCurrencySymbol, formatCurrency } from '../../lib/finance';
+import { ClientOnly } from '../ClientOnly';
 
 interface AdvancedLoanCalculatorProps {
   tool: any;
@@ -135,7 +136,9 @@ Loan Amount: ${formatCurrency(loanAmount, currency)} at ${interestRate}% for ${l
       {/* Print Header */}
       <div className="hidden print:block text-center mb-8">
         <h1 className="text-2xl font-black text-gray-900">{tool.title || 'Loan Calculator'} Report</h1>
-        <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        <ClientOnly>
+          <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
+        </ClientOnly>
       </div>
 
       {/* Loan Type Tabs */}

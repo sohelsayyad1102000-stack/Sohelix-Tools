@@ -25,19 +25,20 @@ const getCategories = () => {
 
 export const Navbar: React.FC = () => {
   const categories = getCategories();
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const theme = localStorage.getItem('theme');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      return (theme || systemTheme) === 'dark';
-    }
-    return false;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check initial theme
+    const theme = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const initialIsDark = (theme || systemTheme) === 'dark';
+    setIsDarkMode(initialIsDark);
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
