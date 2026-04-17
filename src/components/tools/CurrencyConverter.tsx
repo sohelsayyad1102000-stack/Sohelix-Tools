@@ -75,7 +75,8 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
   const [lastUpdated, setLastUpdated]   = useState<Date | null>(null);
   const [trendData, setTrendData]       = useState<{ date: string; rate: number }[]>([]);
   const [trendRange, setTrendRange]     = useState<TrendRange>('7D');
-  const [trendLoading, setTrendLoading] = useState(false);
+  const [trendLoading, setTrendLoading] = useState(true);
+  const [trendError, setTrendError]     = useState(false);
 
   const trendCache = useRef<Map<string, { date: string; rate: number }[]>>(new Map());
 
@@ -117,30 +118,48 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
 
   const fetchTrend = useCallback(async (from: string, to: string, range: TrendRange) => {
     if (!FRANKFURTER_SUPPORTED.has(from) || !FRANKFURTER_SUPPORTED.has(to)) {
-      setTrendData([]); return;
+      setTrendData([]); setTrendLoading(false); setTrendError(false); return;
     }
     if (from === to) {
-      setTrendData([{ date: new Date().toISOString().slice(0, 10), rate: 1 }]); return;
+      setTrendData([{ date: new Date().toISOString().slice(0, 10), rate: 1 }]);
+      setTrendLoading(false); setTrendError(false); return;
     }
     const cacheKey = `${from}-${to}-${range}`;
     if (trendCache.current.has(cacheKey)) {
-      setTrendData(trendCache.current.get(cacheKey)!); return;
+      setTrendData(trendCache.current.get(cacheKey)!);
+      setTrendLoading(false); setTrendError(false); return;
     }
     setTrendLoading(true);
+    setTrendError(false);
+    setTrendData([]);
     try {
       const { start, end } = getDateRange(range);
-      const res  = await fetch(`https://api.frankfurter.app/${start}..${end}?from=${from}&to=${to}`);
+      const frankfurterBase = import.meta.env.DEV
+        ? '/api/frankfurter'
+        : 'https://api.frankfurter.app';
+      const res = await fetch(
+        `${frankfurterBase}/${start}..${end}?from=${from}&to=${to}`
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      const points = Object.entries(data.rates || {})
+      if (!data?.rates || Object.keys(data.rates).length === 0) {
+        throw new Error('Empty response');
+      }
+      const points = Object.entries(data.rates)
         .sort(([a], [b]) => a.localeCompare(b))
         .map(([date, rates]: [string, any]) => ({
           date,
-          rate: Math.round(rates[to] * 10000) / 10000,
-        }));
+          rate: Math.round((rates[to] ?? 0) * 10000) / 10000,
+        }))
+        .filter(p => p.rate > 0);
       trendCache.current.set(cacheKey, points);
       setTrendData(points);
-    } catch { setTrendData([]); }
-    finally  { setTrendLoading(false); }
+    } catch {
+      setTrendData([]);
+      setTrendError(true);
+    } finally {
+      setTrendLoading(false);
+    }
   }, []);
 
   useEffect(() => { fetchTrend(fromCurrency, toCurrency, trendRange); }, [fromCurrency, toCurrency, trendRange, fetchTrend]);
@@ -435,6 +454,18 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
               <div className="h-52 flex items-center justify-center">
                 <RefreshCcw className="h-6 w-6 text-gray-400 animate-spin" />
               </div>
+            ) : trendError ? (
+              <div className="h-52 flex flex-col items-center justify-center gap-3">
+                <p className="text-sm text-red-400 dark:text-red-500 font-medium">
+                  Could not load historical data. Check your connection and try again.
+                </p>
+                <button
+                  onClick={() => fetchTrend(fromCurrency, toCurrency, trendRange)}
+                  className="flex items-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 px-4 py-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <RefreshCcw className="h-3.5 w-3.5" /> Retry
+                </button>
+              </div>
             ) : trendData.length > 1 ? (
               <ResponsiveContainer width="100%" height={220}>
                 <AreaChart data={trendData} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
@@ -473,7 +504,9 @@ export const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ tool }) =>
                 </AreaChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-center text-sm text-gray-400 py-14">No historical data available for this range.</p>
+              <div className="h-52 flex items-center justify-center">
+                <RefreshCcw className="h-6 w-6 text-gray-400 animate-spin" />
+              </div>
             )}
           </ClientOnly>
         </section>

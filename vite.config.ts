@@ -46,6 +46,14 @@ export default defineConfig(({mode}) => {
       watch: {
         ignored: ['**/.local/**', '**/.git/**', '**/node_modules/**'],
       },
+      proxy: {
+        '/api/frankfurter': {
+          target: 'https://api.frankfurter.app',
+          changeOrigin: true,
+          secure: true,
+          rewrite: (path) => path.replace(/^\/api\/frankfurter/, ''),
+        },
+      },
     },
   };
 });
