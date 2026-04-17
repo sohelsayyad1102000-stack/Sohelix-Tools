@@ -25,7 +25,12 @@ const getCategories = () => {
 
 export const Navbar: React.FC = () => {
   const categories = getCategories();
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -33,15 +38,7 @@ export const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check initial theme
-    const theme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const initialIsDark = (theme || systemTheme) === 'dark';
-    setIsDarkMode(initialIsDark);
-  }, []);
-
-  useEffect(() => {
-    const root = window.document.documentElement;
+    const root = document.documentElement;
     if (isDarkMode) {
       root.classList.add('dark');
       localStorage.setItem('theme', 'dark');

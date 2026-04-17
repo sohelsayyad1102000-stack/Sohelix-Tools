@@ -1,0 +1,85 @@
+You are a senior React + Tailwind CSS developer working on a production website called "Sohelix".
+
+The project uses:
+
+* React (Vite)
+* Client-side rendering (createRoot, no hydration)
+* Static pre-rendering (SSG) for SEO
+* Tailwind CSS for styling
+
+PROBLEM:
+The dark mode toggle button is not working properly. When clicking the toggle, the UI does not switch correctly between light and dark mode.
+
+GOAL:
+Fix the dark mode toggle so that:
+
+* It switches instantly on button click
+* It persists user preference using localStorage
+* It applies correctly on page load (no flicker)
+* It works consistently across all pages and components
+
+🚨 CRITICAL CONSTRAINTS (DO NOT BREAK ANYTHING):
+
+* DO NOT change UI design, layout, or styling system
+* DO NOT break any existing tools or features
+* DO NOT modify routing or SEO setup
+* DO NOT change project architecture (CSR + SSG must remain)
+* Only fix the theme switching logic
+
+REQUIREMENTS:
+
+1. THEME APPLICATION
+
+* Ensure dark mode is controlled via a class on the <html> element (not body)
+* Confirm Tailwind is configured to use class-based dark mode
+
+2. TOGGLE BEHAVIOR
+
+* Fix the toggle button so it correctly adds/removes the dark class
+* Ensure the UI updates immediately after clicking
+
+3. STATE + STORAGE SYNC
+
+* Synchronize React state with localStorage
+* Ensure no mismatch between stored theme and UI
+
+4. INITIAL LOAD HANDLING
+
+* Apply saved theme before React renders
+* Prevent flash of incorrect theme
+
+5. REMOVE CONFLICTS
+
+* Identify and remove any conflicting logic:
+
+  * system preference overrides
+  * duplicate theme handlers
+  * incorrect useEffect logic
+
+6. GLOBAL CONSISTENCY
+
+* Ensure dark mode works across all pages and components
+* No component should override the global theme unintentionally
+
+7. DEBUG + VERIFY
+
+* Add minimal checks to confirm:
+
+  * dark class is applied correctly
+  * toggle works reliably
+* No console errors
+
+FINAL OUTPUT:
+
+* Explain what was causing the issue
+* Describe what changes were made (without unnecessary refactoring)
+* Ensure solution is simple, stable, and production-safe
+
+EXPECTED RESULT:
+
+* Dark mode toggle works instantly
+* Theme persists after reload
+* No flicker on load
+* No impact on other features
+
+Do not over-engineer. Do not redesign. Only fix the dark mode behavior safely.
