@@ -1,0 +1,122 @@
+You are a senior React developer working on an existing production project called "Sohelix".
+
+The project already contains 100+ tools and uses:
+
+* React (Vite)
+* Client-side rendering (createRoot, NO hydration)
+* Static pre-rendering (SSG) for SEO
+* Existing UI system (Tailwind or similar)
+* Existing export features (Copy, Print, PDF, CSV)
+
+🚨 CRITICAL CONSTRAINTS (DO NOT BREAK ANYTHING):
+
+* DO NOT change any existing UI design, layout, or styles globally
+* DO NOT modify routing or URLs
+* DO NOT break any existing tools or features
+* DO NOT remove or alter shared components
+* DO NOT change project architecture (CSR + SSG must remain intact)
+* Only ADD this new tool functionality safely
+
+GOAL:
+Implement a "Currency Denomination Calculator" tool exactly like the reference UI.
+
+FEATURE REQUIREMENTS:
+
+1. DENOMINATION TABLE
+
+* Columns:
+
+  * Denomination (₹500, ₹200, ₹100, ₹50, ₹20, ₹10, ₹5, ₹2, ₹1)
+  * Bundles (×100)
+  * Loose
+  * Subtotal
+* Subtotal formula:
+  subtotal = (bundles * 100 + loose) * denomination
+
+2. TOTAL CALCULATIONS
+
+* Total Notes (₹10 and above)
+* Total Coins (₹5 and below)
+* Total Amount (formatted in Indian currency style)
+
+3. AMOUNT IN WORDS
+
+* Convert total amount into readable Indian format text
+* Example:
+  "Nine Lakh Twenty Four Thousand Rupees Only"
+
+4. LIVE CALCULATION
+
+* Values should update instantly when user types
+* No page reload
+
+5. PIE CHART
+
+* Show denomination distribution based on subtotal
+* Use existing chart library if already installed (do not add unnecessary new libraries)
+* Only render chart on client side if needed
+
+6. EXPORT FEATURES (REUSE EXISTING SYSTEM)
+
+* Copy
+* Print
+* PDF
+* CSV
+* Do NOT rewrite export logic—reuse shared utilities if available
+
+7. STATE MANAGEMENT
+
+* Use local component state (useState / useMemo)
+* Do NOT introduce global state libraries
+
+8. PERFORMANCE + SAFETY
+
+* Avoid unnecessary re-renders
+* Use useMemo for calculations
+* Do NOT use Date.now(), Math.random(), or browser-only APIs in initial render that affect layout
+
+9. SEO SAFETY (VERY IMPORTANT)
+
+* Ensure all visible content (totals, labels, headings) is present in prerendered HTML
+* Do NOT wrap important content in ClientOnly unless absolutely required
+
+10. COMPONENT STRUCTURE
+
+* Create a new isolated component:
+  CurrencyDenominationCalculator.tsx
+* Keep logic modular and readable
+* Follow existing code style of the project
+
+11. UI MATCHING
+
+* Match the provided UI structure:
+
+  * Table layout
+  * Totals section
+  * "In Words" section
+  * Chart section
+  * Export buttons
+* Use existing CSS/Tailwind classes (do not redesign)
+
+12. EDGE CASE HANDLING
+
+* Empty input = 0
+* Prevent negative values
+* Handle large numbers properly
+
+FINAL OUTPUT:
+
+* Provide complete working React component
+* Ensure it integrates safely into existing tool system
+* Clearly explain where to place the file
+* Mention any minimal imports required
+
+EXPECTED RESULT:
+
+* Tool works perfectly
+* No impact on other tools
+* No console errors
+* Fully SEO compatible
+* Matches existing design system
+
+Do NOT over-engineer. Do NOT refactor unrelated code. Only implement this tool safely.
