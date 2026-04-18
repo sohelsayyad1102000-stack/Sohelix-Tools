@@ -2238,20 +2238,8 @@ export const TOOLS: Tool[] = [
     ],
     faqs: [
       {
-        question: 'What is a "Bundle" in this calculator?',
-        answer: 'A bundle represents 100 notes or coins of the same denomination. For example, entering 5 bundles of ₹500 means 500 notes, totalling ₹2,50,000.'
-      },
-      {
-        question: 'How is the subtotal calculated?',
-        answer: 'Subtotal = (Bundles × 100 + Loose) × Denomination. So 2 bundles + 15 loose notes of ₹100 = (200 + 15) × 100 = ₹21,500.'
-      },
-      {
-        question: 'What is the difference between Total Notes and Total Coins?',
-        answer: 'Total Notes counts all ₹10 and above denominations. Total Coins counts ₹5, ₹2, and ₹1 denominations.'
-      },
-      {
-        question: 'How does the "Amount in Words" work?',
-        answer: 'The amount in words uses the Indian numbering system (Crore, Lakh, Thousand) and formats the total as readable text, e.g., "Nine Lakh Twenty Four Thousand Rupees Only".'
+        question: 'Can I add custom denominations?',
+        answer: 'Yes, you can add or remove denominations to match your specific currency or needs.'
       }
     ],
     longContent: 'Tired of counting cash manually? Our <a href="/tools/currency-denomination" class="underline hover:text-blue-200">Currency Denomination Calculator</a> simplifies the process. Just enter the count for each note or coin, and the tool instantly calculates the total value, providing a clear breakdown for your records.'

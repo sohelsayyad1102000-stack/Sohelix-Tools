@@ -37,23 +37,9 @@ export default defineConfig(({mode}) => {
       },
     },
     server: {
-      host: '0.0.0.0',
-      port: 5000,
-      allowedHosts: true,
-      hmr: process.env.DISABLE_HMR !== 'true'
-        ? { clientPort: 443 }
-        : false,
-      watch: {
-        ignored: ['**/.local/**', '**/.git/**', '**/node_modules/**'],
-      },
-      proxy: {
-        '/api/frankfurter': {
-          target: 'https://api.frankfurter.app',
-          changeOrigin: true,
-          secure: true,
-          rewrite: (path) => path.replace(/^\/api\/frankfurter/, ''),
-        },
-      },
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
 });
