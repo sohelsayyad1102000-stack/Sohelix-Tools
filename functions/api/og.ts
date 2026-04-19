@@ -22,7 +22,10 @@ const CATEGORIES = {
   'utilities': { name: 'Utility', color: '#3b82f6' },
 };
 
-export async function onRequest(context) {
+export async function onRequest(context: any) {
+  const { searchParams } = new URL(context.request.url);
+  const slug = searchParams.get('slug');
+
   try {
     // Initialize Satori dynamically to ensure polyfill is applied first
     if (!satoriInstance) {
@@ -37,35 +40,21 @@ export async function onRequest(context) {
       // Already initialized or failed
     }
 
-    const { searchParams } = new URL(context.request.url);
-    const slug = searchParams.get('slug');
+    // Find tool with strict fallback
+    const toolMatch = TOOLS.find(t => t.slug === slug);
+    const tool = toolMatch || {
+      title: "Sohelix Tools",
+      description: "Free Online Browser Tools",
+      category: "utilities"
+    };
 
-    // Find tool
-    const tool = TOOLS.find(t => t.slug === slug);
-    
-    // Dynamic Title & Category
-    let title = "Sohelix Tools";
-    let categoryKey = 'utilities';
-    
-    if (tool) {
-      title = tool.name;
-      categoryKey = tool.category;
-    } else if (slug === 'sohelix-homepage-og' || slug === 'home') {
-      title = "All-in-One Online Toolbox";
-      categoryKey = 'utilities';
-    } else if (slug === 'sohelix-qr-code-generator') {
-      title = "Professional QR Code Generator";
-      categoryKey = 'utilities';
-    } else if (slug) {
-      // If not a tool, maybe it's a category slug
-      // We can try to humanize it
-      title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    }
-
-    const category = CATEGORIES[categoryKey] || CATEGORIES['utilities'];
+    // Use tool.title as headline for better dynamic content
+    const title = tool.title || "Sohelix Tools";
+    const categoryKey = tool.category || 'utilities';
+    const category = CATEGORIES[categoryKey as keyof typeof CATEGORIES] || CATEGORIES['utilities'];
     const accentColor = category.color;
 
-    // Fetch font
+    // Fetch font - use a reliable source
     const fontData = await fetch('https://github.com/google/fonts/raw/main/ofl/inter/Inter-Bold.ttf').then(res => res.arrayBuffer());
 
     const svg = await satoriInstance(
@@ -88,22 +77,7 @@ export async function onRequest(context) {
             overflow: 'hidden',
           },
           children: [
-            // Background Noise/Artifacts (Optional visual depth)
-            {
-              type: 'div',
-              props: {
-                style: {
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  opacity: 0.03,
-                  backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
-                }
-              }
-            },
-            // Top-Left Branding
+            // Branding
             {
               type: 'div',
               props: {
@@ -111,157 +85,145 @@ export async function onRequest(context) {
                   position: 'absolute',
                   top: '60px',
                   left: '60px',
-                  fontSize: '24px',
-                  fontWeight: 600,
-                  letterSpacing: '-0.025em',
-                  opacity: 0.3,
-                  color: 'white',
+                  fontSize: '28px',
+                  fontWeight: 800,
+                  opacity: 0.4,
+                  letterSpacing: '-0.02em',
                 },
                 children: 'sohelix.com'
               }
             },
-            // Main Content
+            // Main Content Area
             {
               type: 'div',
               props: {
                 style: {
                   display: 'flex',
                   flexDirection: 'column',
-                  marginTop: '40px',
-                  width: '720px',
-                  zIndex: 10,
+                  maxWidth: '800px',
+                  zIndex: 20,
                 },
                 children: [
+                  // Category Badge
                   {
                     type: 'div',
                     props: {
                       style: {
-                        fontSize: '72px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        backgroundColor: `${accentColor}22`,
+                        border: `1px solid ${accentColor}44`,
+                        padding: '8px 16px',
+                        borderRadius: '100px',
+                        marginBottom: '32px',
+                        width: 'fit-content',
+                      },
+                      children: [
+                        {
+                          type: 'div',
+                          props: {
+                            style: {
+                              width: '10px',
+                              height: '10px',
+                              backgroundColor: accentColor,
+                              borderRadius: '50%',
+                              marginRight: '12px',
+                              boxShadow: `0 0 10px ${accentColor}`,
+                            }
+                          }
+                        },
+                        {
+                          type: 'div',
+                          props: {
+                            style: {
+                              fontSize: '20px',
+                              fontWeight: 700,
+                              color: accentColor,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.1em',
+                            },
+                            children: category.name
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  // Headline
+                  {
+                    type: 'div',
+                    props: {
+                      style: {
+                        fontSize: '70px',
                         fontWeight: 800,
                         letterSpacing: '-0.04em',
-                        lineHeight: 1.05,
-                        marginBottom: '20px',
+                        lineHeight: 1.1,
+                        marginBottom: '24px',
+                        textShadow: '0 4px 12px rgba(0,0,0,0.3)',
                       },
                       children: title
                     }
                   },
+                  // Subtitle
                   {
                     type: 'div',
                     props: {
                       style: {
-                        fontSize: '32px',
-                        opacity: 0.5,
+                        fontSize: '34px',
+                        opacity: 0.7,
                         fontWeight: 500,
                         lineHeight: 1.4,
+                        marginBottom: '40px',
                       },
-                      children: 'Fast, secure, and always 100% free browser tools.'
-                    }
-                  }
-                ]
-              }
-            },
-            // Category Badge (Bottom-Left)
-            {
-              type: 'div',
-              props: {
-                style: {
-                  position: 'absolute',
-                  bottom: '60px',
-                  left: '60px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  padding: '10px 20px',
-                  borderRadius: '12px',
-                },
-                children: [
-                  {
-                    type: 'div',
-                    props: {
-                      style: {
-                        width: '8px',
-                        height: '8px',
-                        backgroundColor: accentColor,
-                        borderRadius: '50%',
-                        marginRight: '12px',
-                        boxShadow: `0 0 12px ${accentColor}`,
-                      }
+                      children: 'Professional-grade tools, 100% free, entirely in your browser.'
                     }
                   },
+                  // CTA
                   {
                     type: 'div',
                     props: {
                       style: {
-                        fontSize: '20px',
-                        fontWeight: 600,
+                        display: 'flex',
+                        alignItems: 'center',
+                        fontSize: '28px',
+                        fontWeight: 700,
                         color: 'white',
-                        opacity: 0.9,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
+                        backgroundColor: '#2563eb',
+                        padding: '16px 32px',
+                        borderRadius: '16px',
+                        boxShadow: '0 8px 24px rgba(37, 99, 235, 0.3)',
+                        width: 'fit-content',
                       },
-                      children: category.name
+                      children: 'Try it now →'
                     }
                   }
                 ]
               }
             },
-            // Right Side Abstract Visual
+            // Decorative Right Side
             {
               type: 'div',
               props: {
                 style: {
                   position: 'absolute',
-                  top: '50%',
-                  right: '-50px',
-                  transform: 'translateY(-50%)',
+                  right: '-10%',
+                  top: '20%',
+                  width: '600px',
+                  height: '600px',
+                  borderRadius: '100%',
+                  border: `2px solid ${accentColor}11`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '500px',
-                  height: '500px',
                 },
                 children: [
-                  // Inner Glow
                   {
                     type: 'div',
                     props: {
                       style: {
-                        position: 'absolute',
-                        width: '300px',
-                        height: '300px',
-                        borderRadius: '50%',
-                        backgroundColor: accentColor,
-                        opacity: 0.1,
-                        filter: 'blur(60px)',
-                      }
-                    }
-                  },
-                  // Decorative Circle
-                  {
-                    type: 'div',
-                    props: {
-                      style: {
-                        width: '360px',
-                        height: '360px',
-                        borderRadius: '50%',
-                        border: `1.5px solid ${accentColor}`,
-                        opacity: 0.15,
-                      }
-                    }
-                  },
-                  // Outer Ring
-                  {
-                    type: 'div',
-                    props: {
-                      style: {
-                        position: 'absolute',
-                        width: '460px',
-                        height: '460px',
-                        borderRadius: '50%',
-                        border: `1px solid ${accentColor}`,
-                        opacity: 0.05,
+                        width: '450px',
+                        height: '450px',
+                        borderRadius: '100%',
+                        border: `1px solid ${accentColor}22`,
                       }
                     }
                   }
@@ -286,10 +248,7 @@ export async function onRequest(context) {
     );
 
     const resvg = new Resvg(svg, {
-      fitTo: {
-        mode: 'width',
-        value: 1200,
-      },
+      fitTo: { mode: 'width', value: 1200 },
     });
     
     const pngData = resvg.render().asPng();
@@ -301,10 +260,10 @@ export async function onRequest(context) {
         "Access-Control-Allow-Origin": "*"
       }
     });
+
   } catch (error) {
-    console.error('OG generation failed:', error);
-    return new Response("OG generation failed", {
-      status: 500
-    });
+    console.error('OG generation fatal error:', error);
+    // Return a last-resort error response if even the generator fails
+    return new Response("OG Generation Error", { status: 500 });
   }
 }

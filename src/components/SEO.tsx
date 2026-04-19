@@ -21,7 +21,13 @@ export const SEO: React.FC<SEOProps> = ({
   noindex = false,
 }) => {
   const siteName = 'Sohelix';
-  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  let fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  
+  // SEO optimization: Keep title under 60 chars
+  if (fullTitle.length > 60) {
+    fullTitle = fullTitle.substring(0, 57) + '...';
+  }
+
   const [url, setUrl] = React.useState('https://sohelix.com');
 
   React.useEffect(() => {
