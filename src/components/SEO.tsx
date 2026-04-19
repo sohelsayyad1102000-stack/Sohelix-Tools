@@ -33,8 +33,8 @@ export const SEO: React.FC<SEOProps> = ({
   React.useEffect(() => {
     setUrl(window.location.href);
   }, []);
-
-  const ogImageUrl = `https://sohelix.com/api/og${slug ? `?slug=${encodeURIComponent(slug)}` : ''}`;
+  
+  const ogImageUrl = `https://sohelix.com/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}${slug ? `&slug=${encodeURIComponent(slug)}` : ''}`;
 
   const defaultSchemas = [
     {

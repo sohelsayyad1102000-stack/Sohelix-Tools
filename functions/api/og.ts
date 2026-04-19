@@ -23,16 +23,15 @@ export async function onRequest(context: any) {
   try {
     const { searchParams } = new URL(context.request.url);
     const slug = searchParams.get('slug');
+    const titleParam = searchParams.get('title');
+    const descParam = searchParams.get('desc');
 
     // 1. SAFE DATA
     const toolMatch = TOOLS.find(t => t.slug === slug);
-    const tool = toolMatch || {
-      title: "Sohelix Tools",
-      description: "Free Online Browser Tools"
-    };
+    const tool = toolMatch || {};
 
-    const title = String((tool as any).title || "Sohelix Tools");
-    const description = String((tool as any).description || "Free Online Browser Tools");
+    const title = titleParam || String((tool as any).title || "Sohelix Tools");
+    const description = descParam || String((tool as any).description || "Free Online Browser Tools");
 
     // Initialize Satori polyfill and instances
     if (!satoriInstance) {
