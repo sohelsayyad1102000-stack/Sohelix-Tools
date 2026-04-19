@@ -11,6 +11,19 @@ import wasm from '@resvg/resvg-wasm/index_bg.wasm';
 import { TOOLS } from '../../src/constants/tools';
 
 let satoriInstance: any = null;
+let wasmInitialized = false;
+
+async function initResvg() {
+  if (!wasmInitialized) {
+    try {
+      await initWasm(wasm);
+      wasmInitialized = true;
+    } catch (e) {
+      // Already initialized or handled
+      wasmInitialized = true;
+    }
+  }
+}
 
 const CATEGORIES = {
   'finance-tools': { name: 'Finance', color: '#22c55e' },
@@ -43,12 +56,8 @@ export async function onRequest(context: any) {
       satoriInstance = mod.default || mod;
     }
 
-    // Initialize WASM
-    try {
-      await initWasm(wasm);
-    } catch (e) {
-      // Already initialized
-    }
+    // 2. BEFORE rendering:
+    await initResvg();
 
     // Fetch font (REQUIRED for Satori text rendering)
     const fontData = await fetch('https://github.com/google/fonts/raw/main/ofl/inter/Inter-Bold.ttf').then(res => res.arrayBuffer());
@@ -115,11 +124,27 @@ export async function onRequest(context: any) {
       }
     );
 
-    // 3. RESVG WASM
-    const resvg = new Resvg(svg);
+    // 3. Validate SVG BEFORE passing to Resvg:
+    if (!svg || typeof svg !== "string") {
+      throw new Error("Invalid SVG");
+    }
+
+    // 4. Render safely:
+    const resvg = new Resvg(svg, {
+      fitTo: {
+        mode: "width",
+        value: 1200
+      }
+    });
+
     const pngData = resvg.render().asPng();
 
-    // 4. SAFE RETURN
+    // 5. Validate PNG:
+    if (!pngData || pngData.length === 0) {
+      throw new Error("Invalid PNG output");
+    }
+
+    // 6. Return buffer correctly:
     return new Response(pngData, {
       headers: {
         "Content-Type": "image/png",
@@ -131,11 +156,19 @@ export async function onRequest(context: any) {
   } catch (e) {
     console.error("OG ERROR:", e);
 
-    // 5. FULL TRY/CATCH FALLBACK
-    // Note: Returning a real PNG header with string content is technically invalid,
-    // but following prompt instructions for a "safe" return.
-    return new Response("Fallback", {
-      status: 200,
+    // 7. FAILSAFE (VERY IMPORTANT):
+    // return simple working fallback image
+    const fallback = new Uint8Array([
+      137, 80, 78, 71, 13, 10, 26, 10, // PNG Header
+      0, 0, 0, 13, 73, 72, 68, 82,   // IHDR
+      0, 0, 0, 1, 0, 0, 0, 1,      // 1x1
+      8, 2, 0, 0, 0, 144, 119, 83, 222,
+      0, 0, 0, 12, 73, 68, 65, 84,
+      8, 215, 99, 248, 255, 255, 63, 0, 5, 254, 2, 254, 220, 68, 230, 215,
+      0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130
+    ]);
+
+    return new Response(fallback, {
       headers: {
         "Content-Type": "image/png",
         "Access-Control-Allow-Origin": "*"
