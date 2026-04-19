@@ -5,25 +5,9 @@ if (typeof globalThis.process === 'undefined') {
   globalThis.process = { env: {} };
 }
 
-import { initWasm, Resvg } from '@resvg/resvg-wasm';
-// @ts-ignore
-import wasm from '@resvg/resvg-wasm/index_bg.wasm';
 import { TOOLS } from '../../src/constants/tools';
 
 let satoriInstance: any = null;
-let wasmInitialized = false;
-
-async function initResvg() {
-  if (!wasmInitialized) {
-    try {
-      await initWasm(wasm);
-      wasmInitialized = true;
-    } catch (e) {
-      // Already initialized or handled
-      wasmInitialized = true;
-    }
-  }
-}
 
 const CATEGORIES = {
   'finance-tools': { name: 'Finance', color: '#22c55e' },
@@ -55,9 +39,6 @@ export async function onRequest(context: any) {
       const mod = await import('satori');
       satoriInstance = mod.default || mod;
     }
-
-    // 2. BEFORE rendering:
-    await initResvg();
 
     // Fetch font (REQUIRED for Satori text rendering)
     const fontData = await fetch('https://github.com/google/fonts/raw/main/ofl/inter/Inter-Bold.ttf').then(res => res.arrayBuffer());
@@ -124,30 +105,15 @@ export async function onRequest(context: any) {
       }
     );
 
-    // 3. Validate SVG BEFORE passing to Resvg:
+    // 3. Validate SVG:
     if (!svg || typeof svg !== "string") {
       throw new Error("Invalid SVG");
     }
 
-    // 4. Render safely:
-    const resvg = new Resvg(svg, {
-      fitTo: {
-        mode: "width",
-        value: 1200
-      }
-    });
-
-    const pngData = resvg.render().asPng();
-
-    // 5. Validate PNG:
-    if (!pngData || pngData.length === 0) {
-      throw new Error("Invalid PNG output");
-    }
-
-    // 6. Return buffer correctly:
-    return new Response(pngData, {
+    // 4. RETURN SVG DIRECTLY:
+    return new Response(svg, {
       headers: {
-        "Content-Type": "image/png",
+        "Content-Type": "image/svg+xml",
         "Cache-Control": "public, max-age=31536000",
         "Access-Control-Allow-Origin": "*"
       }
@@ -156,21 +122,17 @@ export async function onRequest(context: any) {
   } catch (e) {
     console.error("OG ERROR:", e);
 
-    // 7. FAILSAFE (VERY IMPORTANT):
-    // return simple working fallback image
-    const fallback = new Uint8Array([
-      137, 80, 78, 71, 13, 10, 26, 10, // PNG Header
-      0, 0, 0, 13, 73, 72, 68, 82,   // IHDR
-      0, 0, 0, 1, 0, 0, 0, 1,      // 1x1
-      8, 2, 0, 0, 0, 144, 119, 83, 222,
-      0, 0, 0, 12, 73, 68, 65, 84,
-      8, 215, 99, 248, 255, 255, 63, 0, 5, 254, 2, 254, 220, 68, 230, 215,
-      0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130
-    ]);
+    // 5. FAILSAFE SVG:
+    const fallbackSvg = `
+      <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100%" height="100%" fill="#0f172a" />
+        <text x="50%" y="50%" font-family="sans-serif" font-size="48" fill="white" text-anchor="middle">Sohelix Tools</text>
+      </svg>
+    `;
 
-    return new Response(fallback, {
+    return new Response(fallbackSvg.trim(), {
       headers: {
-        "Content-Type": "image/png",
+        "Content-Type": "image/svg+xml",
         "Access-Control-Allow-Origin": "*"
       }
     });
