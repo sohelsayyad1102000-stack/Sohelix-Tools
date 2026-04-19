@@ -6,6 +6,7 @@ interface SEOProps {
   description: string;
   keywords?: string[];
   canonical?: string;
+  slug?: string;
   schema?: any | any[];
   noindex?: boolean;
 }
@@ -15,6 +16,7 @@ export const SEO: React.FC<SEOProps> = ({
   description,
   keywords,
   canonical,
+  slug,
   schema,
   noindex = false,
 }) => {
@@ -25,6 +27,8 @@ export const SEO: React.FC<SEOProps> = ({
   React.useEffect(() => {
     setUrl(window.location.href);
   }, []);
+
+  const ogImageUrl = `https://sohelix.com/api/og${slug ? `?slug=${encodeURIComponent(slug)}` : ''}`;
 
   const defaultSchemas = [
     {
@@ -55,7 +59,18 @@ export const SEO: React.FC<SEOProps> = ({
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       {!noindex && <meta name="robots" content="index, follow" />}
 
-      {/* Basic SEO tags only - OG and Twitter system removed */}
+      {/* Dynamic OG Image System */}
+      <meta property="og:site_name" content={siteName} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={canonical || url} />
+      <meta property="og:image" content={ogImageUrl} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImageUrl} />
 
       {/* Schema Markup */}
       {combinedSchema.map((s, i) => (

@@ -31,6 +31,7 @@ export const CategoryPage: React.FC = () => {
       <SEO
         title={categoryInfo.title}
         description={categoryInfo.description}
+        slug={slug}
       />
 
       <div className="container mx-auto px-4 max-w-7xl py-8">
