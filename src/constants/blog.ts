@@ -20,7 +20,6 @@ export const BLOG_POSTS: BlogPost[] = [
       title: 'BMI Calculator Guide - Calculate Body Mass Index Online',
       description: 'Learn how to calculate BMI online, understand your health category, and track your fitness progress with our comprehensive BMI guide.',
       keywords: ['bmi calculator', 'body mass index', 'calculate bmi online', 'bmi chart', 'healthy bmi range'],
-      ogImage: 'https://sohelix.com/og/bmi-calculator-guide.png',
     },
     content: `
       <div class="space-y-6">
@@ -254,7 +253,6 @@ export const BLOG_POSTS: BlogPost[] = [
       title: 'Inflation Calculator Guide - Understand Future Value & Purchasing Power',
       description: 'Learn how inflation affects your money over time. Estimate future costs, compare past prices, and plan your financial future with our inflation guide.',
       keywords: ['inflation calculator', 'future value of money', 'purchasing power', 'inflation calculation', 'financial planning'],
-      ogImage: 'https://sohelix.com/og/inflation-calculator-guide.png',
     },
     content: `
       <div class="space-y-6">
@@ -552,7 +550,6 @@ export const BLOG_POSTS: BlogPost[] = [
       title: 'Age Calculator Guide - Calculate Exact Age by DOB (Years, Months, Days)',
       description: 'Calculate your exact age in years, months, and days. Find total days lived and time until your next birthday with our accurate age calculator guide.',
       keywords: ['age calculator', 'calculate age from dob', 'exact age calculator', 'age in years months days', 'age in days', 'birthday countdown'],
-      ogImage: 'https://sohelix.com/og/age-calculator-guide.png',
     },
     content: `
       <div class="space-y-6">

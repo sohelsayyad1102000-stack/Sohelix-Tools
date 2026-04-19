@@ -102,7 +102,6 @@ export const Home: React.FC = () => {
         title="Sohelix Tools – Free Online Browser Tools"
         description="Access 100+ free online tools including calculators, PDF tools, SEO tools, and more. No sign-up required."
         keywords={['free online tools', 'image tools', 'pdf tools', 'seo tools', 'sohelix', 'tinywow alternative']}
-        ogImage="https://sohelix.com/og/sohelix-homepage-og.png"
         canonical="https://sohelix.com"
       />
 

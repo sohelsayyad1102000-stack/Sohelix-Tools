@@ -11,7 +11,6 @@ export interface Tool {
     title: string;
     description: string;
     keywords: string[];
-    ogImage?: string;
   };
   features: string[];
   benefits: string[];
@@ -41,6 +40,5 @@ export interface BlogPost {
     title: string;
     description: string;
     keywords: string[];
-    ogImage?: string;
   };
 }

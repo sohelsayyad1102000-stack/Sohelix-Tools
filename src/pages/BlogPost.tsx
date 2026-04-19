@@ -86,8 +86,6 @@ export const BlogPost: React.FC = () => {
         title={post.seo.title}
         description={post.seo.description}
         keywords={post.seo.keywords}
-        ogImage={post.seo.ogImage || post.image}
-        ogType="article"
         schema={schemas}
       />
 

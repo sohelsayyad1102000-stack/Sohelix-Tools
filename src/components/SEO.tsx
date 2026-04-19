@@ -6,8 +6,6 @@ interface SEOProps {
   description: string;
   keywords?: string[];
   canonical?: string;
-  ogImage?: string;
-  ogType?: string;
   schema?: any | any[];
   noindex?: boolean;
 }
@@ -17,8 +15,6 @@ export const SEO: React.FC<SEOProps> = ({
   description,
   keywords,
   canonical,
-  ogImage = 'https://sohelix.com/og/default.png',
-  ogType = 'website',
   schema,
   noindex = false,
 }) => {
@@ -59,19 +55,7 @@ export const SEO: React.FC<SEOProps> = ({
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       {!noindex && <meta name="robots" content="index, follow" />}
 
-      {/* Open Graph */}
-      <meta property="og:site_name" content={siteName} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={canonical || url} />
-      <meta property="og:image" content={ogImage} />
-
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      {/* Basic SEO tags only - OG and Twitter system removed */}
 
       {/* Schema Markup */}
       {combinedSchema.map((s, i) => (
