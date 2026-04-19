@@ -1,5 +1,7 @@
 import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
+import { initWasm, Resvg } from '@resvg/resvg-wasm';
+// @ts-ignore
+import wasm from '@resvg/resvg-wasm/index_bg.wasm';
 import { TOOLS } from '../../src/constants/tools';
 
 const CATEGORIES = {
@@ -13,6 +15,13 @@ const CATEGORIES = {
 };
 
 export async function onRequest(context) {
+  // Initialize WASM
+  try {
+    await initWasm(wasm);
+  } catch (e) {
+    // Already initialized or failed
+  }
+
   const { searchParams } = new URL(context.request.url);
   const slug = searchParams.get('slug');
 
