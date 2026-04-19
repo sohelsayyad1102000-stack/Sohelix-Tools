@@ -32,6 +32,9 @@ export async function onRequest(context: any) {
 
     const title = titleParam || String((tool as any).title || "Sohelix Tools");
     const description = descParam || String((tool as any).description || "Free Online Browser Tools");
+    const categoryKey = (tool as any).category || 'utilities';
+    const category = CATEGORIES[categoryKey as keyof typeof CATEGORIES] || CATEGORIES['utilities'];
+    const accentColor = category.color;
 
     // Initialize Satori polyfill and instances
     if (!satoriInstance) {
@@ -42,7 +45,7 @@ export async function onRequest(context: any) {
     // Fetch font (REQUIRED for Satori text rendering)
     const fontData = await fetch('https://github.com/google/fonts/raw/main/ofl/inter/Inter-Bold.ttf').then(res => res.arrayBuffer());
 
-    // 2. SIMPLE SATORI LAYOUT
+    // 2. PREMIUM SaaS LAYOUT
     const svg = await satoriInstance(
       {
         type: "div",
@@ -53,38 +56,144 @@ export async function onRequest(context: any) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "60px",
-            backgroundColor: "#0f172a",
-            color: "white"
+            padding: "80px",
+            backgroundColor: "#020617",
+            backgroundImage: `radial-gradient(circle at 90% 10%, ${accentColor}33 0%, transparent 60%), radial-gradient(circle at 10% 90%, #1e1b4b 0%, transparent 50%)`,
+            color: "white",
+            fontFamily: "Inter",
+            position: "relative",
+            overflow: "hidden",
           },
           children: [
+            // Branding
             {
               type: "div",
               props: {
-                style: { fontSize: 24, opacity: 0.6 },
+                style: {
+                  position: "absolute",
+                  top: "60px",
+                  left: "80px",
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  opacity: 0.4,
+                  letterSpacing: "-0.02em",
+                },
                 children: "sohelix.com"
               }
             },
+            // Content
             {
               type: "div",
               props: {
                 style: {
-                  fontSize: 64,
-                  fontWeight: "bold",
-                  marginTop: 20
+                  display: "flex",
+                  flexDirection: "column",
+                  maxWidth: "750px",
+                  zIndex: 10,
                 },
-                children: title
+                children: [
+                  // Category Badge
+                  {
+                    type: "div",
+                    props: {
+                      style: {
+                        display: "flex",
+                        alignItems: "center",
+                        backgroundColor: `${accentColor}15`,
+                        border: `1px solid ${accentColor}33`,
+                        padding: "8px 16px",
+                        borderRadius: "100px",
+                        marginBottom: "32px",
+                        width: "fit-content",
+                      },
+                      children: [
+                        {
+                          type: "div",
+                          props: {
+                            style: {
+                              width: "8px",
+                              height: "8px",
+                              backgroundColor: accentColor,
+                              borderRadius: "50%",
+                              marginRight: "10px",
+                              boxShadow: `0 0 10px ${accentColor}`,
+                            }
+                          }
+                        },
+                        {
+                          type: "div",
+                          props: {
+                            style: {
+                              fontSize: "18px",
+                              fontWeight: 700,
+                              color: accentColor,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.1em",
+                            },
+                            children: category.name
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  // Title
+                  {
+                    type: "div",
+                    props: {
+                      style: {
+                        fontSize: "72px",
+                        fontWeight: 800,
+                        letterSpacing: "-0.04em",
+                        lineHeight: 1.1,
+                        marginBottom: "24px",
+                      },
+                      children: title
+                    }
+                  },
+                  // Description
+                  {
+                    type: "div",
+                    props: {
+                      style: {
+                        fontSize: "30px",
+                        opacity: 0.7,
+                        fontWeight: 500,
+                        lineHeight: 1.4,
+                      },
+                      children: description
+                    }
+                  }
+                ]
+              }
+            },
+            // Abstract visual element
+            {
+              type: "div",
+              props: {
+                style: {
+                  position: "absolute",
+                  right: "-50px",
+                  bottom: "-50px",
+                  width: "400px",
+                  height: "400px",
+                  borderRadius: "200px",
+                  border: `2px solid ${accentColor}11`,
+                  opacity: 0.5,
+                }
               }
             },
             {
               type: "div",
               props: {
                 style: {
-                  fontSize: 28,
-                  marginTop: 20,
-                  opacity: 0.8
-                },
-                children: description
+                  position: "absolute",
+                  right: "0px",
+                  bottom: "0px",
+                  width: "300px",
+                  height: "300px",
+                  borderRadius: "150px",
+                  border: `1px solid ${accentColor}22`,
+                }
               }
             }
           ]
