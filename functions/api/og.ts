@@ -5,11 +5,12 @@ if (typeof globalThis.process === 'undefined') {
   globalThis.process = { env: {} };
 }
 
-import satori from 'satori';
 import { initWasm, Resvg } from '@resvg/resvg-wasm';
 // @ts-ignore
 import wasm from '@resvg/resvg-wasm/index_bg.wasm';
 import { TOOLS } from '../../src/constants/tools';
+
+let satoriInstance: any = null;
 
 const CATEGORIES = {
   'finance-tools': { name: 'Finance', color: '#22c55e' },
@@ -22,6 +23,12 @@ const CATEGORIES = {
 };
 
 export async function onRequest(context) {
+  // Initialize Satori dynamically to ensure polyfill is applied first
+  if (!satoriInstance) {
+    const mod = await import('satori');
+    satoriInstance = mod.default || mod;
+  }
+
   // Initialize WASM
   try {
     await initWasm(wasm);
@@ -57,7 +64,7 @@ export async function onRequest(context) {
   // Using a solid public link for Inter-Bold
   const fontData = await fetch('https://github.com/google/fonts/raw/main/ofl/inter/Inter-Bold.ttf').then(res => res.arrayBuffer());
 
-  const svg = await satori(
+  const svg = await satoriInstance(
     {
       type: 'div',
       props: {
