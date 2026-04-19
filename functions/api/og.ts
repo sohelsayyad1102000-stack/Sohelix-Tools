@@ -1,3 +1,10 @@
+// Polyfill for Satori in Cloudflare Workers
+// @ts-ignore
+if (typeof globalThis.process === 'undefined') {
+  // @ts-ignore
+  globalThis.process = { env: {} };
+}
+
 import satori from 'satori';
 import { initWasm, Resvg } from '@resvg/resvg-wasm';
 // @ts-ignore
