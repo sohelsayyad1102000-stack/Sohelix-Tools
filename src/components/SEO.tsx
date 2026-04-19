@@ -66,11 +66,15 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonical || url} />
       <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImageUrl} />
+      <meta name="twitter:image:width" content="1200" />
+      <meta name="twitter:image:height" content="630" />
 
       {/* Schema Markup */}
       {combinedSchema.map((s, i) => (
