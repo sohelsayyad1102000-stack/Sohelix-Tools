@@ -18,12 +18,45 @@ async function runPrerender() {
   }
 
   // 3. Load the server entry
-  const serverEntryPath = path.resolve(root, 'dist/server/entry-server.js');
-  if (!fs.existsSync(serverEntryPath)) {
-    console.error('❌ Server entry not found. Build server first.');
+  const entryPats = [
+    path.resolve(root, 'dist/server/entry-server.js'),
+    path.resolve(root, 'dist/server/entry-server.mjs'),
+    path.resolve(root, 'dist/server/src/entry-server.js'),
+    path.resolve(root, 'dist/server/src/entry-server.mjs'),
+  ];
+  
+  let serverEntryPath = null;
+  for (const p of entryPats) {
+    if (fs.existsSync(p)) {
+      serverEntryPath = p;
+      break;
+    }
+  }
+  
+  if (!serverEntryPath) {
+    console.error('❌ Server entry not found at any expected location:');
+    entryPats.forEach(p => console.log(`  - ${p}`));
+    console.log('Listing dist/server recursively:');
+    function listRec(dir) {
+       if (!fs.existsSync(dir)) return;
+       const files = fs.readdirSync(dir);
+       for(const f of files) {
+          const p = path.join(dir, f);
+          if(fs.statSync(p).isDirectory()) listRec(p);
+          else console.log(p);
+       }
+    }
+    listRec(path.resolve(root, 'dist/server'));
     process.exit(1);
   }
+  
+  console.log(`📦 Loading server entry from: ${serverEntryPath}`);
   const { render } = await import(serverEntryPath);
+
+  if (!render) {
+    console.error('❌ Render function not exported from server entry.');
+    process.exit(1);
+  }
 
   // 4. Load routes
   const routesPath = path.resolve(root, 'src/routes-list.json');

@@ -1,10 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const root = path.resolve(__dirname, '..');
+
 // This script extracts slugs from constants to generate a flat list of routes for SSG
-const toolsContent = fs.readFileSync(path.resolve(process.cwd(), 'src/constants/tools.ts'), 'utf-8');
-const blogContent = fs.readFileSync(path.resolve(process.cwd(), 'src/constants/blog.ts'), 'utf-8');
-const categoriesContent = fs.readFileSync(path.resolve(process.cwd(), 'src/constants/categories.ts'), 'utf-8');
+const toolsContent = fs.readFileSync(path.resolve(root, 'src/constants/tools.ts'), 'utf-8');
+const blogContent = fs.readFileSync(path.resolve(root, 'src/constants/blog.ts'), 'utf-8');
+const categoriesContent = fs.readFileSync(path.resolve(root, 'src/constants/categories.ts'), 'utf-8');
 
 const routes = [
   '/',
@@ -67,5 +73,5 @@ routes.push(...programmatic);
 // Ensure unique routes
 const uniqueRoutes = [...new Set(routes)];
 
-fs.writeFileSync(path.resolve(process.cwd(), 'src/routes-list.json'), JSON.stringify(uniqueRoutes, null, 2));
-console.log('âœ… src/routes-list.json generated with', uniqueRoutes.length, 'routes');
+fs.writeFileSync(path.resolve(root, 'src/routes-list.json'), JSON.stringify(uniqueRoutes, null, 2));
+console.log('✅ src/routes-list.json generated with', uniqueRoutes.length, 'routes');

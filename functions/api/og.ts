@@ -49,8 +49,12 @@ export async function onRequest(context) {
   if (tool) {
     title = tool.name;
     categoryKey = tool.category;
-  } else if (slug === 'home') {
-    title = "Sohelix Tools";
+  } else if (slug === 'sohelix-homepage-og' || slug === 'home') {
+    title = "All-in-One Online Toolbox";
+    categoryKey = 'utilities';
+  } else if (slug === 'sohelix-qr-code-generator') {
+    title = "Professional QR Code Generator";
+    categoryKey = 'utilities';
   } else if (slug) {
     // If not a tool, maybe it's a category slug
     // We can try to humanize it
@@ -75,79 +79,68 @@ export async function onRequest(context) {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
-          backgroundColor: '#030712', // Dark navy
-          backgroundImage: `radial-gradient(circle at 100% 0%, ${accentColor}33 0%, transparent 50%), radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 50%)`,
-          padding: '80px',
+          backgroundColor: '#020617', // Extremely dark slate
+          backgroundImage: `radial-gradient(circle at 90% 10%, ${accentColor}44 0%, transparent 60%), radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 40%)`,
+          padding: '60px',
           fontFamily: 'Inter',
           color: 'white',
           position: 'relative',
           overflow: 'hidden',
         },
         children: [
-          // Background Glow
+          // Background Noise/Artifacts (Optional visual depth)
           {
             type: 'div',
             props: {
               style: {
                 position: 'absolute',
-                top: '10%',
-                right: '10%',
-                width: '400px',
-                height: '400px',
-                background: accentColor,
-                opacity: 0.15,
-                filter: 'blur(100px)',
-                borderRadius: '50%',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                opacity: 0.03,
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
               }
             }
           },
-          // Website Label
+          // Top-Left Branding
           {
             type: 'div',
             props: {
               style: {
                 position: 'absolute',
-                top: '40px',
-                left: '80px',
+                top: '60px',
+                left: '60px',
                 fontSize: '24px',
                 fontWeight: 600,
-                opacity: 0.4,
+                letterSpacing: '-0.025em',
+                opacity: 0.3,
                 color: 'white',
               },
               children: 'sohelix.com'
             }
           },
-          // Main Content Area
+          // Main Content
           {
             type: 'div',
             props: {
               style: {
                 display: 'flex',
                 flexDirection: 'column',
-                width: '700px',
+                marginTop: '40px',
+                width: '720px',
+                zIndex: 10,
               },
               children: [
                 {
                   type: 'div',
                   props: {
                     style: {
-                      fontSize: '32px',
-                      marginBottom: '16px',
-                      color: accentColor,
-                      fontWeight: 700,
-                      opacity: 0.9,
-                    },
-                    children: 'FREE ONLINE TOOL'
-                  }
-                },
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: '84px',
+                      fontSize: '72px',
                       fontWeight: 800,
-                      lineHeight: 1.1,
-                      marginBottom: '24px',
+                      letterSpacing: '-0.04em',
+                      lineHeight: 1.05,
+                      marginBottom: '20px',
                     },
                     children: title
                   }
@@ -157,8 +150,9 @@ export async function onRequest(context) {
                   props: {
                     style: {
                       fontSize: '32px',
-                      opacity: 0.6,
+                      opacity: 0.5,
                       fontWeight: 500,
+                      lineHeight: 1.4,
                     },
                     children: 'Fast, secure, and always 100% free browser tools.'
                   }
@@ -166,32 +160,33 @@ export async function onRequest(context) {
               ]
             }
           },
-          // Category Badge
+          // Category Badge (Bottom-Left)
           {
             type: 'div',
             props: {
               style: {
                 position: 'absolute',
-                bottom: '80px',
-                right: '80px',
+                bottom: '60px',
+                left: '60px',
                 display: 'flex',
                 alignItems: 'center',
-                backgroundColor: `${accentColor}22`,
-                border: `1px solid ${accentColor}44`,
-                padding: '12px 24px',
-                borderRadius: '100px',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                padding: '10px 20px',
+                borderRadius: '12px',
               },
               children: [
                 {
                   type: 'div',
                   props: {
                     style: {
-                      width: '12px',
-                      height: '12px',
+                      width: '8px',
+                      height: '8px',
                       backgroundColor: accentColor,
                       borderRadius: '50%',
                       marginRight: '12px',
-                      boxShadow: `0 0 10px ${accentColor}`,
+                      boxShadow: `0 0 12px ${accentColor}`,
                     }
                   }
                 },
@@ -199,9 +194,12 @@ export async function onRequest(context) {
                   type: 'div',
                   props: {
                     style: {
-                      fontSize: '24px',
+                      fontSize: '20px',
                       fontWeight: 600,
-                      color: accentColor,
+                      color: 'white',
+                      opacity: 0.9,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
                     },
                     children: category.name
                   }
@@ -209,40 +207,62 @@ export async function onRequest(context) {
               ]
             }
           },
-          // Decorative Abstract Shape
+          // Right Side Abstract Visual
           {
-            type: 'svg',
+            type: 'div',
             props: {
-              width: '400',
-              height: '400',
-              viewBox: '0 0 200 200',
               style: {
                 position: 'absolute',
-                top: '115px',
-                right: '80px',
-                opacity: 0.2,
+                top: '50%',
+                right: '-50px',
+                transform: 'translateY(-50%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '500px',
+                height: '500px',
               },
               children: [
+                // Inner Glow
                 {
-                  type: 'path',
+                  type: 'div',
                   props: {
-                    d: 'M40,100 C40,40 100,20 160,100 C160,160 100,180 40,100',
-                    fill: 'none',
-                    stroke: accentColor,
-                    strokeWidth: '4',
-                    strokeDasharray: '12,8',
+                    style: {
+                      position: 'absolute',
+                      width: '300px',
+                      height: '300px',
+                      borderRadius: '50%',
+                      backgroundColor: accentColor,
+                      opacity: 0.1,
+                      filter: 'blur(60px)',
+                    }
                   }
                 },
+                // Decorative Circle
                 {
-                  type: 'circle',
+                  type: 'div',
                   props: {
-                    cx: '100',
-                    cy: '100',
-                    r: '60',
-                    fill: 'none',
-                    stroke: accentColor,
-                    strokeWidth: '1',
-                    opacity: 0.5,
+                    style: {
+                      width: '360px',
+                      height: '360px',
+                      borderRadius: '50%',
+                      border: `1.5px solid ${accentColor}`,
+                      opacity: 0.15,
+                    }
+                  }
+                },
+                // Outer Ring
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      position: 'absolute',
+                      width: '460px',
+                      height: '460px',
+                      borderRadius: '50%',
+                      border: `1px solid ${accentColor}`,
+                      opacity: 0.05,
+                    }
                   }
                 }
               ]
