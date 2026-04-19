@@ -2181,6 +2181,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Online Currency Converter - Real-Time Exchange Rates',
       description: 'Convert USD, INR, EUR, GBP, and more instantly. Get real-time exchange rates and historical trends. Free online finance tool.',
       keywords: ['currency converter', 'exchange rates', 'usd to inr', 'forex converter', 'money converter'],
+      ogImage: 'https://sohelix.com/og/currency-converter.png',
     },
     features: [
       'Real-time exchange rates',
@@ -2219,6 +2220,7 @@ export const TOOLS: Tool[] = [
       title: 'Free Currency Denomination Calculator - Cash Counter',
       description: 'Calculate total cash value easily. Supports multiple currencies and custom denominations. Perfect for businesses and cash handling.',
       keywords: ['denomination calculator', 'cash counter', 'money counter', 'currency calculator', 'cash management'],
+      ogImage: 'https://sohelix.com/og/currency-denomination.png',
     },
     features: [
       'Multi-currency support',
