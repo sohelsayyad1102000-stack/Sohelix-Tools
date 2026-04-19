@@ -114,7 +114,7 @@ export const Navbar: React.FC = () => {
               onBlur={() => setTimeout(() => setShowSearch(false), 200)}
             />
             {showSearch && searchQuery && (
-              <div className="absolute top-full mt-3 w-full overflow-hidden rounded-3xl border border-gray-200/50 bg-white/95 backdrop-blur-xl shadow-2xl shadow-blue-500/10 dark:border-gray-700/50 dark:bg-gray-900/95 z-50 p-2">
+              <div className="absolute top-full mt-3 w-full overflow-hidden rounded-3xl border border-gray-200/50 bg-white/95 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:border-gray-700/50 dark:bg-gray-900/95 z-[9999] p-2">
                 {filteredTools.length > 0 ? (
                   filteredTools.map(tool => (
                     <button

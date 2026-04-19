@@ -99,14 +99,15 @@ export const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
       <SEO
-        title="Sohelix - Free Online Tools for Everyone (60+ Tools)"
-        description="Access 60+ powerful, free online tools for images, PDFs, SEO, and more. 100% secure, client-side processing. No signup required."
+        title="Sohelix Tools – Free Online Browser Tools"
+        description="Access 100+ free online tools including calculators, PDF tools, SEO tools, and more. No sign-up required."
         keywords={['free online tools', 'image tools', 'pdf tools', 'seo tools', 'sohelix', 'tinywow alternative']}
-        ogImage="https://sohelix.com/og/default.png"
+        ogImage="https://sohelix.com/og/sohelix-homepage-og.png"
+        canonical="https://sohelix.com"
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gray-50 dark:bg-gray-900/50 px-4 py-24 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-gray-50 dark:bg-gray-900/50 px-4 py-24 sm:px-6 lg:px-8">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(37,99,235,0.05)_0%,transparent_100%)]" />
         
         <div className="mx-auto max-w-4xl text-center">
@@ -157,7 +158,7 @@ export const Home: React.FC = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 right-0 mt-4 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden z-50"
+                    className="absolute top-full left-0 right-0 mt-4 bg-white dark:bg-gray-800 rounded-3xl shadow-[0_8px_24px_rgba(0,0,0,0.1)] border border-gray-100 dark:border-gray-700 overflow-hidden z-[9999]"
                   >
                     <div className="p-4">
                       <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-4 mb-2">Suggestions</p>

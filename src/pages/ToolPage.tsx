@@ -349,6 +349,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         description={tool.seo.description}
         keywords={tool.seo.keywords}
         ogImage={tool.seo.ogImage}
+        canonical={`https://sohelix.com/tools/${tool.slug}`}
         schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
 

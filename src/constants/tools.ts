@@ -637,9 +637,10 @@ export const TOOLS: Tool[] = [
     category: 'utilities',
     isNew: true,
     seo: {
-      title: 'Free Online QR Code Generator - Create Custom QR Codes with Logo',
-      description: 'Generate professional QR codes online for free. Support for URLs, Text, Email, WiFi, and more. Customize colors, styles, and add your logo.',
+      title: 'Free QR Code Generator – Create QR Codes Instantly',
+      description: 'Generate QR codes instantly for URLs, text, and more. Fast, secure, and 100% free.',
       keywords: ['qr code generator', 'create qr code', 'custom qr code', 'qr code with logo', 'free qr generator'],
+      ogImage: 'https://sohelix.com/og/sohelix-qr-code-generator.png',
     },
     features: [
       'Multiple input types (URL, Text, WiFi, etc.)',
