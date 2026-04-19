@@ -72,8 +72,8 @@ export const Home: React.FC = () => {
     { id: 'text-tools', name: 'Text Tools', icon: Type },
     { id: 'seo-tools', name: 'SEO Tools', icon: Search },
     { id: 'utilities', name: 'Utility Tools', icon: Settings },
-    { id: 'calculator-tools', name: 'Calculators', icon: Calculator },
-    { id: 'finance-tools', name: 'Finance', icon: TrendingUp },
+    { id: 'calculator-tools', name: 'Calculators Tools', icon: Calculator },
+    { id: 'finance-tools', name: 'Finance Tools', icon: TrendingUp },
   ];
 
   const searchSuggestions = useMemo(() => {
@@ -188,7 +188,7 @@ export const Home: React.FC = () => {
                                   {item.type === 'category' && <span className="ml-2 text-[10px] font-bold uppercase text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-1.5 py-0.5 rounded">Category</span>}
                                 </p>
                                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                                  {item.type === 'category' ? `Browse all ${item.name}` : item.category.replace('-', ' ')}
+                                  {item.type === 'category' ? `Browse all ${item.name}` : categories.find(c => c.id === item.category)?.name || item.category.replace('-', ' ')}
                                 </p>
                               </div>
                             </button>
@@ -217,41 +217,41 @@ export const Home: React.FC = () => {
             exit={{ y: -100 }}
             className="fixed top-0 left-0 right-0 z-[60] bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 py-3 px-4 shadow-lg"
           >
-            <div className="max-w-7xl mx-auto flex items-center gap-4">
-              <Link to="/" className="flex items-center gap-2 shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
-                  <Zap className="h-5 w-5 fill-current" />
-                </div>
-                <span className="text-lg font-bold text-gray-900 dark:text-white hidden sm:block">Sohelix</span>
-              </Link>
-              <div className="relative flex-1 max-w-2xl mx-auto">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                  <Search className="h-4 w-4 text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  className="block w-full rounded-full border-0 bg-gray-100 dark:bg-gray-800 py-2 pl-10 pr-4 text-sm text-gray-900 dark:text-white ring-1 ring-inset ring-gray-200 dark:ring-gray-700 focus:ring-2 focus:ring-blue-600 outline-none"
-                  placeholder="Search tools..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <Link to="/" className="flex items-center gap-2 shrink-0">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
+                <Zap className="h-5 w-5 fill-current" />
               </div>
-              <div className="hidden md:flex items-center gap-4 shrink-0">
-                {categories.slice(1, 4).map(cat => (
-                  <button
-                    key={cat.id}
-                    onClick={() => {
-                      setActiveCategory(cat.id);
-                      const el = document.getElementById('tools');
-                      el?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="text-sm font-medium text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
-                  >
-                    {cat.name}
-                  </button>
-                ))}
+              <span className="text-lg font-bold text-gray-900 dark:text-white hidden sm:block">Sohelix</span>
+            </Link>
+            <div className="relative flex-1 max-w-2xl mx-auto">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                <Search className="h-4 w-4 text-gray-400" />
               </div>
+              <input
+                type="text"
+                className="block w-full rounded-full border-0 bg-gray-100 dark:bg-gray-800 py-2 pl-10 pr-4 text-sm text-gray-900 dark:text-white ring-1 ring-inset ring-gray-200 dark:ring-gray-700 focus:ring-2 focus:ring-blue-600 outline-none"
+                placeholder="Search tools..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
             </div>
+            <div className="hidden md:flex items-center gap-4 shrink-0">
+              {categories.slice(1, 4).map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    setActiveCategory(cat.id);
+                    const el = document.getElementById('tools');
+                    el?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-sm font-medium text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+          </div>
           </motion.div>
         )}
       </AnimatePresence>

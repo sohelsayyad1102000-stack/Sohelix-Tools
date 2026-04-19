@@ -1,6 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOOLS } from '../constants/tools';
+import { CATEGORY_INFO } from '../constants/categories';
 import { SEO } from '../components/SEO';
 import { cn, formatBytes } from '../lib/utils';
 import * as Icons from 'lucide-react';
@@ -356,7 +357,9 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <ChevronRight className="h-4 w-4" />
-          <Link to={`/categories/${tool.category}`} className="hover:text-blue-600 capitalize">{tool.category.replace('-', ' ')}</Link>
+          <Link to={`/categories/${tool.category}`} className="hover:text-blue-600">
+            {CATEGORY_INFO[tool.category]?.title.replace('Free ', '').replace(' Online', '') || tool.category.replace('-', ' ')}
+          </Link>
           <ChevronRight className="h-4 w-4" />
           <span className="font-medium text-gray-900 dark:text-white">{tool.name}</span>
         </nav>

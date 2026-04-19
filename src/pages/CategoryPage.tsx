@@ -39,7 +39,9 @@ export const CategoryPage: React.FC = () => {
         <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <ChevronRight className="h-4 w-4" />
-          <span className="font-medium text-gray-900 dark:text-white capitalize">{slug?.replace('-', ' ')}</span>
+          <span className="font-medium text-gray-900 dark:text-white">
+            {categoryInfo.title.replace('Free ', '').replace(' Online', '')}
+          </span>
         </nav>
 
         {/* Category Header & SEO Content */}
