@@ -135,7 +135,7 @@ Loan Amount: ${formatCurrency(loanAmount, currency)} at ${interestRate}% for ${l
 
       {/* Print Header */}
       <div className="hidden print:block text-center mb-8">
-        <h1 className="text-2xl font-black text-gray-900">{tool.title || 'Loan Calculator'} Report</h1>
+        <h2 className="text-2xl font-black text-gray-900">{tool.title || 'Advanced Loan Calculator'} Report</h2>
         <ClientOnly>
           <p className="text-gray-500">Generated on {new Date().toLocaleDateString()}</p>
         </ClientOnly>

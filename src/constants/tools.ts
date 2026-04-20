@@ -2277,15 +2277,15 @@ export const TOOLS: Tool[] = [
   {
     id: 'advanced-loan-calculator',
     name: 'Advanced Loan Calculator',
-    title: 'Advanced Loan & Mortgage Calculator',
-    description: 'Detailed loan analysis with amortization schedules and interest breakdowns.',
+    title: 'Advanced Loan Calculator',
+    description: 'Calculate EMI, total interest, and amortization schedule instantly with our advanced loan calculator.',
     icon: 'Home',
     slug: 'advanced-loan-calculator',
     category: 'finance-tools',
     isNew: true,
     seo: {
       title: 'Advanced Loan Calculator - Detailed Amortization Schedule',
-      description: 'Calculate loan EMIs, total interest, and view a full amortization schedule. Compare home, car, and personal loans with ease.',
+      description: 'Calculate EMI, total interest, and amortization schedule instantly with our advanced loan calculator.',
       keywords: ['loan calculator', 'mortgage calculator', 'amortization schedule', 'loan comparison', 'debt planner'],
     },
     features: [

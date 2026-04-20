@@ -8,6 +8,7 @@ import {
   LayoutGrid, 
   ShieldCheck, 
   Zap,
+  ArrowRight,
   ArrowRightLeft,
   Scissors,
   FileSearch,
@@ -33,63 +34,35 @@ const OGCard: React.FC<OGCardProps> = ({ title, subtitle, icon: Icon, slug, type
     <div 
       className={cn(
         "relative w-[1200px] h-[630px] overflow-hidden flex flex-col items-center justify-center text-white font-sans",
-        isBlog ? "bg-gradient-to-br from-[#10B981] to-[#059669]" : // Green for blog
-        isCategory ? "bg-gradient-to-br from-[#6366F1] to-[#4338CA]" : // Indigo for categories
-        "bg-gradient-to-br from-[#2563EB] to-[#4F46E5]" // Blue for tools
+        "bg-[#020617]" // Clean dark background
       )}
       id={`og-${slug}`}
     >
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full -mr-64 -mt-64 blur-3xl opacity-60" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full -ml-32 -mb-32 blur-3xl opacity-60" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-white/[0.02] rotate-12 blur-2xl" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full -mr-64 -mt-64 blur-3xl opacity-60" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/10 rounded-full -ml-32 -mb-32 blur-3xl opacity-60" />
       
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-24">
-        {/* Entity Type Badge */}
-        <div className="mb-6 px-6 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-xl font-bold uppercase tracking-widest opacity-80">
-          {type}
+        {/* Branding */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 text-3xl font-black tracking-[0.2em] opacity-40">
+          SOHELIX.COM
         </div>
 
-        <div className="mb-10 p-10 bg-white/10 backdrop-blur-2xl rounded-[48px] border border-white/20 shadow-2xl">
-          <Icon className="w-24 h-24 text-white" />
-        </div>
-        
         <h1 className={cn(
-          "font-black leading-tight mb-8 tracking-tight drop-shadow-2xl",
+          "font-black leading-tight mb-6 tracking-tight drop-shadow-2xl",
           title.length > 20 ? "text-[110px]" : "text-[140px]"
         )}>
           {title}
         </h1>
         
-        <p className="text-5xl font-semibold text-white max-w-4xl leading-tight opacity-95">
+        <p className="text-4xl font-medium text-gray-300 max-w-4xl leading-tight mb-12">
           {subtitle}
         </p>
-      </div>
 
-      {/* Brand Footer Section */}
-      <div className="absolute bottom-0 w-full bg-black/10 backdrop-blur-md py-10 px-20 flex items-center justify-between border-t border-white/5">
-        <div className="flex flex-col items-start">
-          <span className="text-4xl font-black tracking-tight flex items-center gap-3">
-            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-              <span className={cn(
-                "text-2xl font-black",
-                isBlog ? "text-[#059669]" : isCategory ? "text-[#4338CA]" : "text-[#2563EB]"
-              )}>S</span>
-            </div>
-            SOHELIX
-          </span>
-          <span className="text-xl font-medium text-blue-100/60 mt-1 uppercase tracking-[0.3em]">
-            Smart Tools. Zero Friction.
-          </span>
-        </div>
-        
-        <div className="flex items-center gap-6">
-          <span className="text-2xl font-bold px-6 py-2 bg-white/10 rounded-full border border-white/10">
-            {isBlog ? 'Read More' : isCategory ? 'Browse Tools' : 'Free To Use'}
-          </span>
-          <span className="text-2xl font-bold px-6 py-2 bg-white/10 rounded-full border border-white/10">No Login</span>
-          <span className="text-2xl font-bold px-6 py-2 bg-white/10 rounded-full border border-white/10">Instant</span>
+        {/* CTA */}
+        <div className="flex items-center gap-4 bg-blue-600 px-10 py-5 rounded-2xl shadow-xl shadow-blue-600/20 text-4xl font-bold">
+          Try it now <ArrowRight className="w-10 h-10" />
         </div>
       </div>
     </div>
@@ -97,19 +70,11 @@ const OGCard: React.FC<OGCardProps> = ({ title, subtitle, icon: Icon, slug, type
 };
 
 const OG_TEMPLATES: OGCardProps[] = [
-  // --- TOOLS ---
+  { slug: 'home', title: 'Sohelix Tools', subtitle: '60+ Professional browser tools for fast & secure daily tasks', icon: Zap, type: 'tool' },
   { slug: 'bmi-calculator', title: 'BMI Calculator', subtitle: 'Reach your health goals with instant BMI calculation', icon: Calculator, type: 'tool' },
-  { slug: 'emi-calculator', title: 'EMI Calculator', subtitle: 'Plan your loans smarter with precise monthly updates', icon: Percent, type: 'tool' },
-  { slug: 'compress-image', title: 'Image Compressor', subtitle: 'Speed up your website with ultra-fast image optimization', icon: Maximize2, type: 'tool' },
-  { slug: 'webp-converter', title: 'WebP Converter', subtitle: 'Boost performance with lightweight WebP conversion', icon: ArrowRightLeft, type: 'tool' },
-  
-  // --- CATEGORIES ---
-  { slug: 'image-tools', title: 'Image Tools', subtitle: 'Unlock professional photo editing directly in your browser', icon: Image, type: 'category' },
-  { slug: 'finance-tools', title: 'Finance Tools', subtitle: 'Master your money with our collection of smart calculators', icon: TrendingUp, type: 'category' },
-  
-  // --- BLOG ---
-  { slug: 'bmi-guide', title: 'The BMI Guide', subtitle: 'Everything you need to know about tracking your health', icon: FileSearch, type: 'blog' },
-  { slug: 'inflation-guide', title: 'Inflation 101', subtitle: 'Protect your purchasing power in an ever-changing economy', icon: TrendingUp, type: 'blog' },
+  { slug: 'qr-code-generator', title: 'QR Code Generator', subtitle: 'Create professional custom QR codes with logos instantly', icon: Zap, type: 'tool' },
+  { slug: 'advanced-loan-calculator', title: 'Advanced Loan Calculator', subtitle: 'EMI, Interest & Amortization in seconds', icon: Calculator, type: 'tool' },
+  { slug: 'default', title: 'Sohelix Tools', subtitle: 'Smart Tools. Zero Friction. Processing 100% in Browser.', icon: Zap, type: 'tool' },
 ];
 
 export const OGPreview: React.FC = () => {

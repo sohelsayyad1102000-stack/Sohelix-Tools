@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteObject } from 'react-router-dom';
+import { RouteObject, Navigate } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ToolPage } from './pages/ToolPage';
 import { CategoryPage } from './pages/CategoryPage';
@@ -59,6 +59,10 @@ export const routes: RouteObject[] = [
 
   { path: '/blog', element: <Blog /> },
   { path: '/blog/:slug', element: <BlogPost /> },
+  
+  // SEO Redirects
+  { path: '/advanced-loan-mortgage-calculator', element: <Navigate to="/tools/advanced-loan-calculator" replace /> },
+  { path: '/tools/advanced-loan-mortgage-calculator', element: <Navigate to="/tools/advanced-loan-calculator" replace /> },
 
   { path: '/about', element: <About /> },
   { path: '/contact', element: <Contact /> },

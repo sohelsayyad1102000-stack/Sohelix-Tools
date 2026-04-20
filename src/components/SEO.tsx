@@ -34,7 +34,9 @@ export const SEO: React.FC<SEOProps> = ({
     setUrl(window.location.href);
   }, []);
   
-  const ogImageUrl = `https://sohelix.com/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}${slug ? `&slug=${encodeURIComponent(slug)}` : ''}`;
+  // Use static PNG OG images for maximum compatibility
+  const ogImageSlug = slug || 'default';
+  const ogImageUrl = `https://sohelix.com/og/${ogImageSlug}.png`;
 
   const defaultSchemas = [
     {
