@@ -2937,5 +2937,593 @@ export const TOOLS: Tool[] = [
       }
     ],
     longContent: 'Our <a href="/tools/color-converter" class="underline hover:text-blue-200">Color Code Converter</a> is a simple but powerful tool for anyone working with digital colors. It provides instant conversions between the most common web color formats, helping you maintain consistency across your projects.'
+  },
+  {
+    id: 'pdf-to-text',
+    name: 'PDF to Text',
+    title: 'Free PDF to Text Converter Online',
+    description: 'Extract text from PDF documents instantly. Supports multi-page PDFs, page range selection, and formatting preservation.',
+    icon: 'FileText',
+    slug: 'pdf-to-text',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free PDF to Text Converter - Extract Text From PDF Online',
+      description: 'Extract text from PDF files online for free. Supports multi-page PDFs, custom page ranges, and instant .txt download. No upload required.',
+      keywords: ['free pdf to text converter', 'extract text from pdf online', 'pdf to txt', 'convert pdf to text', 'pdf text extractor'],
+    },
+    features: [
+      'High-accuracy text extraction',
+      'Multi-page PDF support',
+      'Select specific page ranges',
+      'Search within extracted text',
+      'Download as .txt file',
+      'Copy to clipboard functionality'
+    ],
+    benefits: [
+      'Save time on manual typing',
+      'Extract data from reports and ebooks',
+      '100% private - no files uploaded to server',
+      'Fast client-side processing'
+    ],
+    useCases: [
+      'Students extracting quotes from papers',
+      'Businesses digitizing PDF reports',
+      'Developers scraping text for data analysis'
+    ],
+    faqs: [
+      {
+        question: 'Is this PDF to Text converter free?',
+        answer: 'Yes, our PDF to Text converter is 100% free to use with no hidden charges or limitations on the number of files.'
+      },
+      {
+        question: 'Are my PDF files safe?',
+        answer: 'Absolutely. All processing happens directly in your browser. Your files are never uploaded to our servers, ensuring total privacy.'
+      },
+      {
+        question: 'Does it support scanned PDFs?',
+        answer: 'This tool extracts selectable text. For scanned PDFs containing images of text, please use our Image to Text (OCR) tool.'
+      },
+      {
+        question: 'Can I extract a specific page range?',
+        answer: 'Yes, you can easily define a start and end page to extract text only from the sections you need.'
+      },
+      {
+        question: 'Will it preserve the layout?',
+        answer: 'The tool extracts plain text while attempting to maintain basic line structures. Complex tables and multi-column layouts may vary.'
+      }
+    ],
+    longContent: `
+      <h2>Introduction</h2>
+      <p>Need to get text out of a PDF document quickly? Whether it is a research paper, a legal document, or an ebook, manually copying and pasting text page by page is a hassle. Our <strong>Free PDF to Text Converter</strong> allows you to extract all text from any PDF file in seconds. It is fast, accurate, and works entirely in your browser.</p>
+      
+      <p><a href="/tools/pdf-to-text" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Try PDF to Text Tool</a></p>
+
+      <h2>What is a PDF to Text Converter?</h2>
+      <p>A PDF to Text converter is a utility that parses the internal structure of a PDF document to identify and extract readable text characters. Unlike a screenshot or an image, the extracted text can be edited, searched, and formatted in any word processor. Our tool uses the powerful PDF.js library to ensure high reliability and speed.</p>
+
+      <h2>How to Use PDF to Text Tool</h2>
+      <ol>
+        <li><strong>Upload File:</strong> Drag and drop your PDF file or click to browse.</li>
+        <li><strong>Set range:</strong> Use the page range selectors if you only need text from specific pages.</li>
+        <li><strong>Extract:</strong> Click the "Extract Text Now" button to begin the process.</li>
+        <li><strong>Review & Save:</strong> Search through the results, copy individual pages, or download everything as a .txt file.</li>
+      </ol>
+
+      <h2>Features and Benefits</h2>
+      <ul>
+        <li><strong>Client-Side Processing:</strong> Your sensitive documents stay on your device. We never see your files.</li>
+        <li><strong>Multi-Page Handling:</strong> Process 100+ page documents with ease.</li>
+        <li><strong>Search functionality:</strong> Quickly find specific keywords within the extracted text blocks.</li>
+        <li><strong>Page-Wise Output:</strong> Text is organized by page number for easy reference.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Can I use this on mobile?</h3>
+      <p>Yes! Our website is fully responsive and the PDF to Text tool works flawlessly on all modern smartphones and tablets.</p>
+      <h3>Is there a file size limit?</h3>
+      <p>Since the tool runs on your device, the limit depends on your browser's memory. Typically, files up to 50MB work perfectly.</p>
+
+      <h2>Related Tools</h2>
+      <p>If you need to manage your PDF files further, check out our <a href="/tools/pdf-metadata-viewer" class="underline">PDF Metadata Viewer</a> or convert your documents to images using <a href="/tools/pdf-to-jpg" class="underline">PDF to JPG</a>.</p>
+    `
+  },
+  {
+    id: 'pdf-metadata-viewer',
+    name: 'PDF Metadata Viewer',
+    title: 'Free PDF Metadata Viewer & Extractor',
+    description: 'View hidden metadata of your PDF files including author, title, creation date, and security status.',
+    icon: 'Info',
+    slug: 'pdf-metadata-viewer',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free PDF Metadata Viewer - Extract PDF Info Online',
+      description: 'View and extract PDF metadata online. Discover author, creator, version, and security info. Free, private, and no upload required.',
+      keywords: ['pdf metadata viewer', 'check pdf author', 'extract pdf info', 'pdf properties viewer', 'view pdf hidden data'],
+    },
+    features: [
+      'Extract title and author info',
+      'View creation and modification dates',
+      'Check PDF version and security level',
+      'Export metadata as JSON',
+      'Clean, intuitive dashboard'
+    ],
+    benefits: [
+      'Verify document authenticity',
+      'Check for hidden PII before sharing',
+      'Inspect document history and standards',
+      '100% private and secure'
+    ],
+    useCases: [
+      'Legal professionals verifying document dates',
+      'Researchers checking citation metadata',
+      'Privacy-conscious users removing hidden data'
+    ],
+    faqs: [
+      {
+        question: 'What metadata can I see?',
+        answer: 'You can view the Title, Author, Subject, Keywords, Creator, Producer, Creation Date, Modification Date, and Page Count.'
+      },
+      {
+        question: 'Can I download the metadata?',
+        answer: 'Yes, you can copy the metadata to your clipboard or download it as a professional JSON file.'
+      },
+      {
+        question: 'Is it safe to upload sensitive PDFs?',
+        answer: 'Your files are NOT uploaded. Our tool reads the metadata directly in your browser, so your documents never leave your computer.'
+      }
+    ],
+    longContent: `
+      <h2>Introduction</h2>
+      <p>Every PDF file contains hidden information known as "Metadata". This data can reveal who created the file, when it was last edited, and even what software was used. Our <strong>PDF Metadata Viewer</strong> helps you quickly uncover these details for free.</p>
+
+      <p><a href="/tools/pdf-metadata-viewer" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Open Metadata Viewer</a></p>
+
+      <h2>Why View PDF Metadata?</h2>
+      <p>Metadata is crucial for professional workflows. In legal and academic fields, verifying the "Creation Date" or "Producer" can confirm a document's origin. For individuals, checking metadata is a great way to ensure you are not accidentally sharing your computer name or work history when sending a resume or report.</p>
+
+      <h2>How to Use</h2>
+      <ol>
+        <li>Drag your PDF file into the designated area.</li>
+        <li>Wait a sub-second for the tool to parse the header.</li>
+        <li>Explore the structured table showing all available metadata.</li>
+        <li>Copy or export the data if needed for your records.</li>
+      </ol>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Security Audit:</strong> Quickly see if a PDF is encrypted or has restricted permissions.</li>
+        <li><strong>JSON Export:</strong> Perfect for developers who need to integrate PDF info into other systems.</li>
+        <li><strong>Version Check:</strong> See if the PDF complies with specific standards like PDF/A.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Does this work with password-protected PDFs?</h3>
+      <p>If the metadata itself is encrypted, the tool will notify you. In most cases, basic metadata is readable even in secured files.</p>
+
+      <h2>Related Tools</h2>
+      <p>Once you've checked your file info, you might want to <a href="/tools/pdf-to-text" class="underline">extract its text</a> or use our <a href="/tools/image-to-pdf" class="underline">Image to PDF converter</a>.</p>
+    `
+  },
+  {
+    id: 'image-to-text',
+    name: 'Image to Text (OCR)',
+    title: 'Free Image to Text (OCR) Converter Online',
+    description: 'Convert images into editable text using high-accuracy OCR. Supports multi-language detection, confidence scores, and instant copy.',
+    icon: 'ScanText',
+    slug: 'image-to-text',
+    category: 'image-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Image to Text OCR - Online OCR Converter',
+      description: 'Convert JPG, PNG, and WebP images to text online. High accuracy OCR with support for 10+ languages. Extract text from images instantly and free.',
+      keywords: ['ocr image to text', 'extract text from image', 'online ocr free', 'img to text', 'jpg to word text'],
+    },
+    features: [
+      'Advanced Tesseract.js OCR engine',
+      'Support for 10+ major languages',
+      'Real-time processing progress',
+      'OCR accuracy confidence score',
+      'Edit extracted text in-browser',
+      'Copy or download .txt output'
+    ],
+    benefits: [
+      'Digitize physical notes and documents',
+      'Quickly copy text from screenshots',
+      'Multilingual text recognition',
+      'Private and safe client-side processing'
+    ],
+    useCases: [
+      'Students transcribing whiteboard photos',
+      'Data entry automation from paper forms',
+      'Extracting contact info from business cards'
+    ],
+    faqs: [
+      {
+        question: 'What is OCR?',
+        answer: 'OCR stands for Optical Character Recognition. It is a technology that recognizes text within digital images.'
+      },
+      {
+        question: 'Which image formats are supported?',
+        answer: 'We support all major formats including JPG, PNG, JPEG, WebP, and BMP.'
+      },
+      {
+        question: 'Is this OCR tool free?',
+        answer: 'Yes, all our tools are free. We use Tesseract.js to provide professional OCR level performance for free.'
+      },
+      {
+        question: 'Can it recognize handwriting?',
+        answer: 'Handwriting recognition is complex. Our tool works best with typed or printed text. Clear handwriting may work, but accuracy varies.'
+      }
+    ],
+    longContent: `
+      <h2>Introduction</h2>
+      <p>Ever had a screenshot or a photo of a document and wished you could just copy the text? Manually typing it out takes forever. Our <strong>Free Image to Text (OCR)</strong> tool solves this problem by using artificial intelligence to "read" your images and extract the text for you.</p>
+
+      <p><a href="/tools/image-to-text" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Start Extracting Text</a></p>
+
+      <h2>What is Image to Text (OCR)?</h2>
+      <p>OCR technology analyzes the shapes and patterns within an image to identify letters, numbers, and symbols. Once recognized, these characters are converted into digital text that you can edit in any app. Our tool uses <strong>Tesseract.js</strong>, the world's most popular open-source OCR engine, optimized for browser performance.</p>
+
+      <h2>How to Use</h2>
+      <ol>
+        <li><strong>Upload:</strong> Choose the image you want to extract text from.</li>
+        <li><strong>Choose Language:</strong> Select the source language for better accuracy.</li>
+        <li><strong>Run OCR:</strong> Click the button and watch the progress bar.</li>
+        <li><strong>Edit & Copy:</strong> Review the results and copy them to your clipboard.</li>
+      </ol>
+
+      <h2>Features and Benefits</h2>
+      <ul>
+        <li><strong>Multi-Language Support:</strong> From English to Japanese, our OCR supports various scripts.</li>
+        <li><strong>High Accuracy:</strong> Includes a confidence score so you know how reliable the extraction is.</li>
+        <li><strong>Zero Privacy Risk:</strong> Your image is processed on your machine. It is never sent to any cloud server.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Does it work on low-quality images?</h3>
+      <p>The better the image quality, the better the result. Try to ensure the text is not blurry and has good contrast with the background.</p>
+
+      <h2>Related Tools</h2>
+      <p>If you need to convert an image directly to a document, try our <a href="/tools/image-to-word" class="underline">Image to Word</a> tool. For PDF files, use the <a href="/tools/pdf-to-text" class="underline">PDF to Text</a> converter.</p>
+    `
+  },
+  {
+    id: 'image-to-word',
+    name: 'Image to Word',
+    title: 'Free Image to Word (.docx) Converter',
+    description: 'Convert JPG, PNG and images into editable Microsoft Word documents. Perfect for digitizing scanned pages and notes.',
+    icon: 'FileText',
+    slug: 'image-to-word',
+    category: 'image-tools',
+    isNew: true,
+    seo: {
+      title: 'Free Image to Word Converter - Convert Image to DOCX Online',
+      description: 'Convert images to Word documents for free. High accuracy OCR conversion to professional .docx format. Combine multiple images into one Word file.',
+      keywords: ['convert image to word', 'image to docx online', 'jpg to word free', 'png to word editable', 'ocr image to word'],
+    },
+    features: [
+      'High-quality conversion to .docx',
+      'Batch process multiple images into one doc',
+      'Maintains basic paragraph structure',
+      'Multiple language support',
+      'Fast, direct download'
+    ],
+    benefits: [
+      'Convert scanned documents to editable files',
+      'Save hours of manual re-typing',
+      'Professional output ready for editing',
+      'Privacy guaranteed - local processing'
+    ],
+    useCases: [
+      'Office workers converting memos to reports',
+      'Students digitizing textbook pages',
+      'Journalists transcribing interview notes'
+    ],
+    faqs: [
+      {
+        question: 'Can I edit the Word document?',
+        answer: 'Yes, the output is a standard .docx file that you can open and edit in Microsoft Word, Google Docs, or LibreOffice.'
+      },
+      {
+        question: 'Can I convert multiple images at once?',
+        answer: 'Yes, you can upload multiple images and our tool will combine the extracted text into a single Word document.'
+      },
+      {
+        question: 'Is my data safe?',
+        answer: 'Yes, like all Sohelix tools, the conversion happens in your browser. No data is sent to our servers.'
+      }
+    ],
+    longContent: `
+      <h2>Introduction</h2>
+      <p>Converting a photo of text into a Word document used to require expensive software. Not anymore! Our <strong>Image to Word Converter</strong> uses advanced OCR to transform your images into editable .docx files instantly. It's the perfect way to digitize physical documents for work or school.</p>
+
+      <p><a href="/tools/image-to-word" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Convert to Word Now</a></p>
+
+      <h2>How it Works</h2>
+      <p>The tool combined Optical Character Recognition (OCR) with a document generation engine. First, it extracts the text from your uploaded images (supporting various languages). Then, it packages that text into a professionally formatted Microsoft Word file structure, including proper margins and font settings.</p>
+
+      <h2>Features</h2>
+      <ul>
+        <li><strong>One Click DOCX:</strong> No complicated settings. Just upload and download.</li>
+        <li><strong>Paragraph Detection:</strong> We try to preserve the spacing between text blocks to minimize your manual editing time.</li>
+        <li><strong>Universal Compatibility:</strong> Works on Windows, Mac, iOS, and Android.</li>
+      </ul>
+
+      <h2>Step-by-Step Guide</h2>
+      <ol>
+        <li>Drag and drop your images into the tool.</li>
+        <li>Arrange them if needed.</li>
+        <li>Click "Convert to Word".</li>
+        <li>Download your editable .docx file and start working!</li>
+      </ol>
+
+      <h2>FAQ</h2>
+      <h3>What file formats can I open the result in?</h3>
+      <p>The .docx format is the industry standard. It is compatible with Microsoft Word, Apple Pages, Google Docs, and WPS Office.</p>
+
+      <h2>Related Tools</h2>
+      <p>If you just need the raw text, use <a href="/tools/image-to-text" class="underline">Image to Text (OCR)</a>. If you have many images to pack into a single file, try our <a href="/tools/image-to-pdf" class="underline">Image to PDF</a> tool.</p>
+    `
+  },
+  {
+    id: 'base64-to-image',
+    name: 'Base64 to Image',
+    title: 'Free Base64 to Image Converter & Decoder',
+    description: 'Transform Base64 strings back into viewable images. Supports automatic format detection for PNG, JPG, SVG, and more.',
+    icon: 'FileImage',
+    slug: 'base64-to-image',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Base64 to Image Converter - Decode Base64 Online',
+      description: 'Decode Base64 strings into images instantly. Free online tool to convert base64 to JPG, PNG, and SVG. Supports auto-detection and live preview.',
+      keywords: ['base64 to image', 'decode base64 string', 'base64 to png', 'base64 to jpg', 'base64 to svg', 'online base64 decoder'],
+    },
+    features: [
+      'Instant string-to-image decoding',
+      'Auto-detects image format (PNG, JPG, SVG, etc.)',
+      'Live image preview',
+      'Handles strings with or without data-uri prefix',
+      'Download decoded image instantly',
+      'Simple, developer-friendly interface'
+    ],
+    benefits: [
+      'Verify base64 encoded image data',
+      'Debug web and mobile app icons',
+      'Recover images from code snippets',
+      'Safe and private - no data sent to server'
+    ],
+    useCases: [
+      'Web developers debugging CSS data-uris',
+      'Data analysts extracting images from JSON',
+      'Software engineers verifying API responses'
+    ],
+    faqs: [
+      {
+        question: 'What is Base64?',
+        answer: 'Base64 is a grouping of binary-to-text encoding schemes that represent binary data in an ASCII string format.'
+      },
+      {
+        question: 'Does the string need a prefix?',
+        answer: 'No. Our tool can handle raw base64 strings as well as those starting with "data:image/..." tags.'
+      },
+      {
+        question: 'Which formats are supported?',
+        answer: 'We support decoding into all major browser formats, including PNG, JPEG, GIF, SVG, and WebP.'
+      },
+      {
+        question: 'Is my data secure?',
+        answer: 'Yes. The decoding happens entirely within your browser window. Your base64 strings are never transmitted to any server.'
+      }
+    ],
+    longContent: `
+      <h2>Introduction</h2>
+      <p>Base64 encoding is widely used on the web to embed images directly into HTML or CSS. But if you have a long string of code and need to see the actual image, you need a decoder. Our <strong>Base64 to Image Converter</strong> makes this process instant and easy.</p>
+
+      <p><a href="/tools/base64-to-image" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">Open Decoder Tool</a></p>
+
+      <h2>What is Base64 to Image Conversion?</h2>
+      <p>This tool reverses the encoding process. It takes a text representation of an image's binary data and reconstructs the original pixel data. This is particularly useful for developers who need to verify icons or small graphical assets stored in databases or config files.</p>
+
+      <h2>Quick Features</h2>
+      <ul>
+        <li><strong>Smart Detection:</strong> Simply paste your string, and we will figure out if it is a PNG, JPG, or SVG for you.</li>
+        <li><strong>One-Click Download:</strong> Once decoded, save the image directly to your device.</li>
+        <li><strong>Developer Ready:</strong> High performance and supports very large strings.</li>
+      </ul>
+
+      <h2>How to Use</h2>
+      <ol>
+        <li>Copy the Base64 string you want to decode.</li>
+        <li>Paste it into the large text area in our tool.</li>
+        <li>The image preview will appear immediately on the right.</li>
+        <li>Click "Download Image" to save the file.</li>
+      </ol>
+
+      <h2>FAQ</h2>
+      <h3>Why is my image not appearing?</h3>
+      <p>Make sure the string you pasted is a valid base64 representation of an image. If the string is truncated or contains invalid characters, the decoder will show an error.</p>
+
+      <h2>Related Tools</h2>
+      <p>If you need to go the other way, use our <a href="/tools/image-to-base64" class="underline">Image to Base64</a> tool. For processing larger groups of images, check out the <a href="/tools/webp-converter" class="underline">WebP Converter</a>.</p>
+    `
+  },
+  {
+    id: 'pdf-to-word',
+    name: 'PDF to Word Converter',
+    title: 'Free PDF to Word Converter Online',
+    description: 'Convert PDF files to editable Microsoft Word documents instantly with high accuracy. Support for multi-page PDFs and OCR.',
+    icon: 'FileText',
+    slug: 'pdf-to-word',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Free PDF to Word Converter Online - Convert PDF to DOCX Instantly',
+      description: 'Convert PDF to Word online for free with high accuracy. Our tool supports multi-page PDFs, OCR for scanned documents, and preserves formatting. No software required.',
+      keywords: ['PDF to Word converter', 'free PDF to Word online', 'convert PDF to DOCX', 'PDF to Word without software', 'OCR PDF to Word', 'pdf to doc', 'online pdf converter'],
+    },
+    features: [
+      'Fast client-side PDF to Word conversion',
+      'High accuracy OCR for scanned documents',
+      'Preserve multi-page structure and formatting',
+      'No file upload (process locally for privacy)',
+      'Batch processing for multiple PDFs'
+    ],
+    benefits: [
+      'Edit PDF content in Microsoft Word easily',
+      'Save time with automated text extraction',
+      '100% secure and private local processing',
+      'Works on mobile and desktop without installation'
+    ],
+    useCases: [
+      'Students converting research papers for editing',
+      'Professionals updating old PDF contracts',
+      'Digitizing scanned documents into editable text',
+      'Collaborative document editing'
+    ],
+    faqs: [
+      {
+        question: 'Is this PDF to Word converter really free?',
+        answer: 'Yes! Sohelix provides a completely free tool with no hidden subscriptions or limits on file quantity.'
+      },
+      {
+        question: 'Do I need to install any software?',
+        answer: 'No. Our converter is 100% web-based and runs in any modern browser on Windows, Mac, Linux, and mobile devices.'
+      },
+      {
+        question: 'How accurate is the OCR?',
+        answer: 'We use Tesseract.js, which is one of the most accurate open-source OCR engines available. It works best on high-resolution scans with clear text.'
+      },
+      {
+        question: 'Are my files safe?',
+        answer: 'Absolutely. We do not use a backend server for processing. All conversion logic happens locally on your device, so your data remains strictly private.'
+      },
+      {
+        question: 'Can I convert multiple PDFs at once?',
+        answer: 'Yes, our tool supports batch uploading and processing for maximum efficiency.'
+      },
+      {
+        question: 'Does it support scanned PDFs?',
+        answer: 'Yes, even if your PDF consists only of images, our OCR feature will detect and extract the text for you.'
+      }
+    ],
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Free PDF to Word Converter Online</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Need to edit a PDF but don't know where to start? Our <strong>free PDF to Word converter online</strong> is the ultimate solution for turning static PDF documents into fully editable Microsoft Word (.docx) files. Whether you're working with simple text files or complex layouts, our browser-based tool ensures that your formatting is preserved, making the transition from PDF to Word seamless and efficient.</p>
+          
+          <div class="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-2xl border border-blue-100 dark:border-blue-900/20 mb-8">
+            <h2 class="text-xl font-bold text-blue-900 dark:text-blue-400 mb-3">What is a PDF to Word Converter?</h2>
+            <p class="text-gray-700 dark:text-gray-300">A PDF to Word converter is a specialized utility that analyzes the structure of a PDF file—including text, images, and layout—and reconstructs it within a Word document format. Unlike simple copy-pasting, which often loses formatting and alignment, our tool uses advanced algorithms to ensure that paragraphs, headings, and images stay exactly where they belong.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Use Our PDF to Word Converter Online</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <ul class="space-y-4">
+              <li class="flex items-start space-x-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">1</span>
+                <p class="text-gray-600 dark:text-gray-400"><strong>Upload Your PDF:</strong> Click the "Select PDF" button or simply drag and drop your files into the designated area.</p>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">2</span>
+                <p class="text-gray-600 dark:text-gray-400"><strong>Select Options:</strong> Choose specific page ranges if you only need certain parts of the document.</p>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">3</span>
+                <p class="text-gray-600 dark:text-gray-400"><strong>Advanced Processing:</strong> Our tool automatically detects if your PDF is scanned. If it is, we use high-powered OCR (Optical Character Recognition) to extract the text.</p>
+              </li>
+            </ul>
+            <ul class="space-y-4">
+              <li class="flex items-start space-x-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">4</span>
+                <p class="text-gray-600 dark:text-gray-400"><strong>Convert & Preview:</strong> Click the convert button and watch as the tool processes your file locally. You can preview the extracted text before finalizing.</p>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">5</span>
+                <p class="text-gray-600 dark:text-gray-400"><strong>Download DOCX:</strong> Once finished, download your editable Word file or copy the text directly to your clipboard.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Key Features of Sohelix PDF to Word Converter</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition-hover hover:shadow-md">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">OCR PDF to Word</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Don't let scanned documents stop you. Our integrated Tesseract.js engine extracts text from images with industry-leading precision.</p>
+            </div>
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition-hover hover:shadow-md">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Multi-Page Support</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Convert entire books or reports in one go without splitting files. We handle large documents with ease.</p>
+            </div>
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition-hover hover:shadow-md">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Format Preservation</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">We strive to keep your fonts, sizes, and alignments intact during the conversion process from PDF to DOCX.</p>
+            </div>
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition-hover hover:shadow-md">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Privacy First</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Since everything happens in your browser, your sensitive documents never leave your computer. No server uploads required.</p>
+            </div>
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm transition-hover hover:shadow-md">
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Batch Processing</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Upload multiple PDFs and convert them all simultaneously to save time. Perfect for large administrative tasks.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Benefits of Converting PDF to Word</h2>
+          <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl">
+            <ul class="space-y-4">
+              <li class="flex items-start space-x-3 text-gray-600 dark:text-gray-400">
+                <svg class="w-6 h-6 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <p><strong>Full Editability:</strong> Unlock the power to change text, swap images, and reformat layouts in a environment you're comfortable with using Microsoft Word.</p>
+              </li>
+              <li class="flex items-start space-x-3 text-gray-600 dark:text-gray-400">
+                <svg class="w-6 h-6 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <p><strong>Searchable Text:</strong> Turn static images of documents into searchable, indexable text files, improving your internal data management.</p>
+              </li>
+              <li class="flex items-start space-x-3 text-gray-600 dark:text-gray-400">
+                <svg class="w-6 h-6 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <p><strong>Professional Workflows:</strong> Easily integrate PDF content into your team's existing Word-based collaboration tools like OneDrive or Google Docs.</p>
+              </li>
+              <li class="flex items-start space-x-3 text-gray-600 dark:text-gray-400">
+                <svg class="w-6 h-6 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <p><strong>Cost-Effective:</strong> Why pay for expensive desktop software when you can <strong>convert PDF to Word without software</strong> for free right here?</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Expert Tips for High-Accuracy Conversion</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">While our tool is highly advanced, there are a few things you can do to ensure the best possible results:</p>
+          <div class="prose dark:prose-invert max-w-none">
+            <ul>
+              <li><strong>Clear Scans:</strong> If you're converting a physical document, ensure it is scanned at a resolution of 300 DPI or higher for the best <strong>OCR PDF to Word</strong> performance.</li>
+              <li><strong>Plain Fonts:</strong> Standard fonts like Arial, Times New Roman, and Calibri are recognized with nearly 100% accuracy.</li>
+              <li><strong>Simple Layouts:</strong> While we support complex columns and tables, the most flawless conversions come from standard single-column documents.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Related PDF Tools</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Looking for more ways to manage your documents? Check out our suite of free PDF utilities:</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/tools/pdf-to-text" class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">PDF to Text</a>
+            <a href="/tools/pdf-to-jpg" class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">PDF to JPG</a>
+            <a href="/tools/pdf-to-png" class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">PDF to PNG</a>
+            <a href="/tools/pdf-reader" class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">Online PDF Reader</a>
+          </div>
+        </section>
+      </div>
+    `
   }
 ];

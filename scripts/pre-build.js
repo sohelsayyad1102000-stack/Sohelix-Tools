@@ -67,6 +67,9 @@ const programmatic = [
     '/calorie-calculator-for-weight-loss',
     '/bmr-calculator-for-men',
     '/body-fat-percentage-calculator',
+    '/pdf-to-word-without-software',
+    '/ocr-pdf-to-word-online',
+    '/convert-pdf-to-docx-free',
 ];
 routes.push(...programmatic);
 

@@ -86,6 +86,12 @@ import { CalorieCalculator } from '../components/tools/CalorieCalculator';
 import { BMRCalculator } from '../components/tools/BMRCalculator';
 import { IdealWeightCalculator } from '../components/tools/IdealWeightCalculator';
 import { BodyFatCalculator } from '../components/tools/BodyFatCalculator';
+import { PDFToTextTool } from '../components/tools/PDFToTextTool';
+import { PDFMetadataViewer } from '../components/tools/PDFMetadataViewer';
+import { ImageToTextOCR } from '../components/tools/ImageToTextOCR';
+import { ImageToWordTool } from '../components/tools/ImageToWordTool';
+import { PDFToWordTool } from '../components/tools/PDFToWordTool';
+import { Base64ToImageTool } from '../components/tools/Base64ToImageTool';
 import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -451,6 +457,18 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           <IdealWeightCalculator tool={tool} />
         ) : tool.id === 'body-fat-calculator' ? (
           <BodyFatCalculator tool={tool} />
+        ) : tool.id === 'pdf-to-text' ? (
+          <PDFToTextTool tool={tool} />
+        ) : tool.id === 'pdf-metadata-viewer' ? (
+          <PDFMetadataViewer tool={tool} />
+        ) : tool.id === 'image-to-text' ? (
+          <ImageToTextOCR tool={tool} />
+        ) : tool.id === 'image-to-word' ? (
+          <ImageToWordTool tool={tool} />
+        ) : tool.id === 'base64-to-image' ? (
+          <Base64ToImageTool tool={tool} />
+        ) : tool.id === 'pdf-to-word' ? (
+          <PDFToWordTool tool={tool} />
         ) : tool.id === 'interest-calculator' ? (
           <InterestCalculator tool={tool} />
         ) : tool.id === 'emi-calculator' ? (

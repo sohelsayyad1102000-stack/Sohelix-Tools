@@ -57,6 +57,11 @@ export const routes: RouteObject[] = [
   { path: '/bmr-calculator-for-men', element: <ToolPage slug="bmr-calculator" /> },
   { path: '/body-fat-percentage-calculator', element: <ToolPage slug="body-fat-calculator" /> },
 
+  // Programmatic SEO Routes for PDF to Word
+  { path: '/pdf-to-word-without-software', element: <ToolPage slug="pdf-to-word" /> },
+  { path: '/ocr-pdf-to-word-online', element: <ToolPage slug="pdf-to-word" /> },
+  { path: '/convert-pdf-to-docx-free', element: <ToolPage slug="pdf-to-word" /> },
+
   { path: '/blog', element: <Blog /> },
   { path: '/blog/:slug', element: <BlogPost /> },
   
