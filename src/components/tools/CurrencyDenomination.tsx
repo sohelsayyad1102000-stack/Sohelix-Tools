@@ -178,62 +178,146 @@ ${breakdown}`;
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Calculator Section */}
         <section className="lg:col-span-2 space-y-6">
-          <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl dark:border-gray-800 dark:bg-gray-900 overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-800">
-                  <th className="px-6 py-4 text-xs font-black uppercase tracking-wider text-gray-500">Denomination</th>
-                  <th className="px-6 py-4 text-xs font-black uppercase tracking-wider text-gray-500 text-center">Notes</th>
-                  <th className="px-6 py-4 text-xs font-black uppercase tracking-wider text-gray-500 text-center">Loose</th>
-                  <th className="px-6 py-4 text-xs font-black uppercase tracking-wider text-gray-500 text-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                {denominations.map((d, i) => (
-                  <tr key={d.value} className={cn(
-                    "group transition-colors",
-                    (d.notes + d.loose) > 0 ? "bg-blue-50/20 dark:bg-blue-900/10" : "hover:bg-gray-50 dark:hover:bg-gray-800/20"
-                  )}>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="h-10 w-16 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 font-black text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700">
-                          {d.value}
-                        </div>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center justify-center gap-2 print:hidden">
-                        <input
-                          type="number"
-                          value={d.notes || ''}
-                          onChange={(e) => updateNotes(i, parseInt(e.target.value) || 0)}
-                          placeholder="0"
-                          className="w-20 rounded-xl border-gray-200 bg-gray-50 px-3 py-2 text-center font-bold focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                        />
-                      </div>
-                      <div className="hidden print:block text-center font-bold">{d.notes}</div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center justify-center gap-2 print:hidden">
-                        <input
-                          type="number"
-                          value={d.loose || ''}
-                          onChange={(e) => updateLoose(i, parseInt(e.target.value) || 0)}
-                          placeholder="0"
-                          className="w-20 rounded-xl border-gray-200 bg-gray-50 px-3 py-2 text-center font-bold focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                        />
-                      </div>
-                      <div className="hidden print:block text-center font-bold">{d.loose}</div>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <span className="font-mono font-bold text-gray-900 dark:text-white">
-                        {formatIndianCurrency((d.notes + d.loose) * d.value, currency)}
-                      </span>
-                    </td>
+          {/* Mobile and Tablet View: Card-based Layout */}
+          <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {denominations.map((d, i) => (
+              <div 
+                key={d.value} 
+                className={cn(
+                  "p-5 rounded-2xl border transition-all duration-300",
+                  (d.notes + d.loose) > 0 
+                    ? "bg-blue-50/50 border-blue-200 dark:bg-blue-900/10 dark:border-blue-800" 
+                    : "bg-white border-gray-100 dark:bg-gray-900 dark:border-gray-800"
+                )}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="h-10 w-16 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 font-black text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 shadow-sm">
+                    {d.value}
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Amount</p>
+                    <p className="font-mono font-bold text-blue-600 dark:text-blue-400">
+                      {formatIndianCurrency((d.notes + d.loose) * d.value, currency)}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Notes</label>
+                    <div className="flex items-center gap-1">
+                      <button 
+                        onClick={() => updateNotes(i, d.notes - 1)}
+                        className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-blue-600"
+                      >
+                        <Minus className="h-3 w-3" />
+                      </button>
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        value={d.notes || ''}
+                        onChange={(e) => updateNotes(i, parseInt(e.target.value) || 0)}
+                        placeholder="0"
+                        className="w-full rounded-xl border-gray-200 bg-gray-50 dark:bg-gray-800/50 px-2 py-2 text-center font-bold focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:text-white transition-all"
+                      />
+                      <button 
+                        onClick={() => updateNotes(i, d.notes + 1)}
+                        className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-blue-600"
+                      >
+                        <Plus className="h-3 w-3" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Loose</label>
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      value={d.loose || ''}
+                      onChange={(e) => updateLoose(i, parseInt(e.target.value) || 0)}
+                      placeholder="0"
+                      className="w-full rounded-xl border-gray-200 bg-gray-50 dark:bg-gray-800/50 px-2 py-2 text-center font-bold focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:text-white transition-all"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop View: Full Table Layout */}
+          <div className="hidden lg:block overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl dark:border-gray-800 dark:bg-gray-900 relative">
+            <div className="overflow-x-auto max-h-[800px] custom-scrollbar">
+              <table className="w-full text-left border-collapse">
+                <thead className="sticky top-0 z-10 bg-gray-50 dark:bg-gray-800 shadow-sm">
+                  <tr className="border-b border-gray-100 dark:border-gray-700">
+                    <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500">Denomination</th>
+                    <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500 text-center">Notes Count</th>
+                    <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500 text-center">Loose / Coins</th>
+                    <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500 text-right">Subtotal</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                  {denominations.map((d, i) => (
+                    <tr key={d.value} className={cn(
+                      "group transition-all duration-200",
+                      (d.notes + d.loose) > 0 ? "bg-blue-50/20 dark:bg-blue-900/10" : "hover:bg-gray-50 dark:hover:bg-gray-800/20"
+                    )}>
+                      <td className="px-8 py-6">
+                        <div className="flex items-center gap-3 text-gray-900 dark:text-white font-black text-lg">
+                          <div className="h-10 w-16 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 group-hover:scale-110 transition-transform">
+                            {d.value}
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-8 py-6">
+                        <div className="flex items-center justify-center gap-3 print:hidden">
+                          <button 
+                            onClick={() => updateNotes(i, d.notes - 1)}
+                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all"
+                          >
+                            <Minus className="h-4 w-4" />
+                          </button>
+                          <input
+                            type="number"
+                            value={d.notes || ''}
+                            onChange={(e) => updateNotes(i, parseInt(e.target.value) || 0)}
+                            placeholder="0"
+                            className="w-24 rounded-xl border-gray-200 bg-gray-50 px-4 py-2.5 text-center font-bold text-lg focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800/50 dark:text-white transition-all shadow-inner"
+                          />
+                          <button 
+                            onClick={() => updateNotes(i, d.notes + 1)}
+                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all"
+                          >
+                            <Plus className="h-4 w-4" />
+                          </button>
+                        </div>
+                        <div className="hidden print:block text-center font-bold text-lg">{d.notes}</div>
+                      </td>
+                      <td className="px-8 py-6">
+                        <div className="flex items-center justify-center gap-3 print:hidden">
+                          <input
+                            type="number"
+                            value={d.loose || ''}
+                            onChange={(e) => updateLoose(i, parseInt(e.target.value) || 0)}
+                            placeholder="0"
+                            className="w-24 rounded-xl border-gray-200 bg-gray-50 px-4 py-2.5 text-center font-bold text-lg focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800/50 dark:text-white transition-all shadow-inner"
+                          />
+                        </div>
+                        <div className="hidden print:block text-center font-bold text-lg">{d.loose}</div>
+                      </td>
+                      <td className="px-8 py-6 text-right">
+                        <span className={cn(
+                          "font-mono font-black text-xl transition-colors",
+                          (d.notes + d.loose) > 0 ? "text-blue-600 dark:text-blue-400" : "text-gray-900 dark:text-white"
+                        )}>
+                          {formatIndianCurrency((d.notes + d.loose) * d.value, currency)}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
