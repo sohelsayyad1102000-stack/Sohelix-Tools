@@ -15,7 +15,7 @@ export const BlogPost: React.FC = () => {
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
     "image": post.image || "https://sohelix.com/og-image.png",
