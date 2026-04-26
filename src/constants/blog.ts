@@ -3298,4 +3298,446 @@ export const BLOG_POSTS: BlogPost[] = [
       </div>
     `,
   },
+  {
+    id: 'how-to-split-pdf',
+    title: 'How to Split a PDF: The Complete Guide to Separating PDF Pages Free Online',
+    slug: 'how-to-split-pdf',
+    description: 'Learn how to split a PDF into separate pages or multiple files for free. Use Sohelix\'s free online PDF splitter — no signup, no watermark, works on any device.',
+    date: 'April 25, 2026',
+    author: 'Sohelix Team',
+    category: 'PDF Tools',
+    faqs: [
+      { question: 'How do I split a PDF for free?', answer: 'Use Sohelix Split PDF — it is completely free with no watermarks, no account required, and no usage limits. On Mac, the built-in Preview app is also a free option that requires no downloads.' },
+      { question: 'Is it safe to split a PDF online?', answer: 'Yes, when using a trusted tool. Sohelix encrypts all file transfers using HTTPS and automatically deletes your uploaded files after processing. Your documents are never stored permanently or shared with third parties.' },
+      { question: 'Can I split a PDF without Adobe Acrobat?', answer: 'Yes. Sohelix Split PDF is a free alternative that requires no Adobe subscription. Mac users can use Preview. Windows users can use the Print-to-PDF workaround. None of these options require Adobe software.' },
+      { question: 'Will splitting a PDF reduce the quality?', answer: 'No. Splitting a PDF does not affect image quality, font rendering, or text fidelity. Pages are reorganized into new files without any re-compression or re-rendering — the output quality is identical to the original.' },
+      { question: 'How do I split a password-protected PDF?', answer: 'You need to remove the password protection before splitting. Sohelix offers an Unlock PDF tool for this purpose. Once the password is removed, upload the unlocked file to sohelix.com/tools/split-pdf and split as usual.' },
+      { question: 'Can I split a scanned PDF?', answer: 'Yes. Scanned PDFs are treated as image-based documents — each scanned page is still a discrete unit that can be extracted or separated normally using Sohelix.' },
+      { question: 'How do I split a PDF into individual pages?', answer: 'Go to sohelix.com/tools/split-pdf, upload your PDF, select "Split All Pages", and click Split. Download the ZIP file containing one separate PDF per page.' },
+      { question: 'How do I separate pages in a PDF on my phone?', answer: 'Open sohelix.com/tools/split-pdf in your phone\'s browser — Chrome on Android or Safari on iPhone. The tool is fully mobile-optimized. Upload your PDF, choose your split settings, and download your output files without installing any app.' },
+      { question: 'What is the difference between splitting and extracting a PDF?', answer: 'Splitting means dividing the entire document into multiple files based on a rule — every page, every N pages, or a defined range. Extracting means selecting specific pages and saving only those pages as a new document.' },
+      { question: 'How do I unmerge a PDF?', answer: 'Upload the merged PDF to sohelix.com/tools/split-pdf, enter the page ranges corresponding to the original individual files, and split. This effectively reverses the merge and restores your separate documents.' }
+    ],
+    seo: {
+      title: 'How to Split a PDF Free Online | Sohelix PDF Splitter',
+      description: 'Learn how to split a PDF into separate pages or multiple files for free. Use Sohelix\'s free online PDF splitter — no signup, no watermark, works on any device.',
+      keywords: ['split pdf', 'separate pdf pages', 'extract pdf pages', 'unmerge pdf', 'online pdf splitter', 'free pdf tool'],
+    },
+    content: `
+      <div class="space-y-12">
+        <section>
+          <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+            If you've ever needed to split a PDF — whether to extract a single page, separate a large document into smaller files, or break up a merged report — you've come to the right place.
+          </p>
+          <p class="mt-4 text-gray-600 dark:text-gray-400">
+            In this complete guide, you'll learn exactly how to split PDF pages on any device, for free, without installing software. Whether you're on Windows, Mac, iPhone, or Android, we'll walk you through every method step-by-step.
+          </p>
+          <p class="mt-4 text-gray-600 dark:text-gray-400 font-bold">
+            The fastest method? Use Sohelix Split PDF — a free online PDF splitter that works instantly in your browser, on any device, with no signup required.
+          </p>
+          
+          <div class="mt-8 flex flex-col items-center sm:items-start">
+            <a href="https://sohelix.com/tools/split-pdf" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-2xl font-black shadow-xl shadow-blue-500/30 hover:bg-blue-700 hover:scale-[1.02] active:scale-95 transition-all text-center w-full sm:w-auto">
+              Split PDF Free — No Signup Needed
+            </a>
+          </div>
+        </section>
+
+        <!-- Functional Table of Contents -->
+        <section class="hidden md:block bg-gray-50 dark:bg-gray-900 rounded-[2rem] p-10 border border-gray-100 dark:border-gray-800">
+          <h2 class="text-xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-widest flex items-center gap-3">
+            <span class="h-1 bg-blue-600 w-8"></span>
+            Table of Contents
+          </h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
+            <li><a href="#what-is-splitting" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">What Does It Mean to Split a PDF?</a></li>
+            <li><a href="#why-split-pdf" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">Why Would You Need to Split a PDF?</a></li>
+            <li><a href="#how-to-split-online" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">How to Split Online for Free</a></li>
+            <li><a href="#split-on-windows" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">How to Split PDF on Windows</a></li>
+            <li><a href="#split-on-mac" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">How to Separate Pages on Mac</a></li>
+            <li><a href="#split-on-mobile" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">How to Split on Mobile</a></li>
+            <li><a href="#split-multiple-files" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">Split into Multiple Files</a></li>
+            <li><a href="#extract-specific-pages" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">Extract Specific Pages</a></li>
+            <li><a href="#split-in-half" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">How to Split a PDF in Half</a></li>
+            <li><a href="#unmerge-pdf" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">How to Unmerge PDF Documents</a></li>
+            <li><a href="#split-by-bookmarks" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">How to Split by Bookmarks</a></li>
+            <li><a href="#save-individual-pages" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">Save Individual Pages</a></li>
+            <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2">Frequently Asked Questions</a></li>
+          </ul>
+        </section>
+
+        <section id="what-is-splitting" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">What Does It Mean to Split a PDF?</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Splitting a PDF means dividing one PDF file into two or more separate documents. Depending on your goal, this can mean:
+          </p>
+          <ul class="list-disc list-inside mt-6 space-y-3 text-gray-600 dark:text-gray-400">
+            <li>Extracting individual pages and saving each as its own PDF file</li>
+            <li>Dividing a document into custom page ranges (e.g., pages 1–10 and pages 11–20)</li>
+            <li>Pulling out specific pages and saving them separately</li>
+            <li>Cutting a PDF in half to create two equal documents</li>
+          </ul>
+          <p class="mt-6 text-gray-600 dark:text-gray-400 italic bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+            You may also see this described as separating PDF pages, cutting a PDF, extracting pages from a PDF, PDF trimming, or unmerging PDF documents — these all refer to the same core action.
+          </p>
+        </section>
+
+        <section id="why-split-pdf" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">Why Would You Need to Split a PDF?</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Splitting a PDF is one of the most common document tasks for students, professionals, and businesses alike. Common reasons include:
+          </p>
+          <ul class="list-disc list-inside mt-6 space-y-4 text-gray-600 dark:text-gray-400">
+            <li><strong class="text-gray-900 dark:text-white">Sharing selective content</strong> — Send only the relevant pages of a report instead of the whole document</li>
+            <li><strong class="text-gray-900 dark:text-white">Extracting invoices or forms</strong> — Pull individual forms from a bulk-scanned PDF</li>
+            <li><strong class="text-gray-900 dark:text-white">Breaking up large documents</strong> — Make a 200-page manual easier to navigate by splitting it into chapters</li>
+            <li><strong class="text-gray-900 dark:text-white">Fixing merged PDFs</strong> — Reverse an accidental merge and recover individual files</li>
+            <li><strong class="text-gray-900 dark:text-white">Reducing file size</strong> — Smaller, page-specific PDFs are easier to email and upload</li>
+            <li><strong class="text-gray-900 dark:text-white">Organizing legal or financial documents</strong> — Separate contracts, receipts, or certificates from bundled files</li>
+          </ul>
+        </section>
+
+        <section id="how-to-split-online" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Split a PDF Online for Free — Fastest Method</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            The quickest and easiest way to split any PDF is using Sohelix Split PDF — a free online PDF splitter tool that requires no software installation, no account, and no technical knowledge.
+          </p>
+          
+          <h3 class="text-xl font-black text-gray-900 dark:text-white mt-10 mb-6 uppercase tracking-wider">Why Use Sohelix to Split Your PDF?</h3>
+          <div class="overflow-x-auto rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm mb-10">
+            <table class="w-full text-left border-collapse min-w-[500px]">
+              <thead>
+                <tr class="bg-blue-600 text-white">
+                  <th class="px-8 py-5 text-sm font-black uppercase tracking-wider">Feature</th>
+                  <th class="px-8 py-5 text-sm font-black uppercase tracking-wider text-right">Sohelix Split PDF</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Price</td>
+                  <td class="px-8 py-4 text-blue-600 dark:text-blue-400 font-black text-right">100% Free</td>
+                </tr>
+                <tr class="bg-gray-50/50 dark:bg-gray-800/30">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Account Required</td>
+                  <td class="px-8 py-4 text-gray-600 dark:text-gray-400 text-right">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Watermarks on Output</td>
+                  <td class="px-8 py-4 text-gray-600 dark:text-gray-400 text-right">None</td>
+                </tr>
+                <tr class="bg-gray-50/50 dark:bg-gray-800/30">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Works on Mobile</td>
+                  <td class="px-8 py-4 text-gray-600 dark:text-gray-400 text-right">Yes — any browser</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Platforms</td>
+                  <td class="px-8 py-4 text-gray-600 dark:text-gray-400 text-right">Windows / Mac / Linux</td>
+                </tr>
+                <tr class="bg-gray-50/50 dark:bg-gray-800/30">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Split by Page Range</td>
+                  <td class="px-8 py-4 text-gray-600 dark:text-gray-400 text-right">Yes</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Extract Specific Pages</td>
+                  <td class="px-8 py-4 text-gray-600 dark:text-gray-400 text-right">Yes</td>
+                </tr>
+                <tr class="bg-gray-50/50 dark:bg-gray-800/30">
+                  <td class="px-8 py-4 font-bold text-gray-900 dark:text-white">Processing Speed</td>
+                  <td class="px-8 py-4 text-gray-600 dark:text-gray-400 text-right">Instant</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="text-xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-wider">Step-by-Step: How to Split a PDF Using Sohelix</h3>
+          <div class="space-y-6 mb-10">
+            <div class="flex gap-6 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <span class="flex-shrink-0 h-10 w-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-lg shadow-blue-500/20">1</span>
+              <div>
+                <p class="font-black text-lg text-gray-900 dark:text-white mb-2">Step 1 — Open the tool</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Go to <a href="https://sohelix.com/tools/split-pdf" class="text-blue-600 font-bold hover:underline">sohelix.com/tools/split-pdf</a> in any web browser — Chrome, Safari, Edge, or Firefox.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <span class="flex-shrink-0 h-10 w-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-lg shadow-blue-500/20">2</span>
+              <div>
+                <p class="font-black text-lg text-gray-900 dark:text-white mb-2">Step 2 — Upload your PDF</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Click the upload area or drag and drop your PDF file directly onto the page. Sohelix supports files of all sizes.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <span class="flex-shrink-0 h-10 w-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-lg shadow-blue-500/20">3</span>
+              <div>
+                <p class="font-black text-lg text-gray-900 dark:text-white mb-2">Step 3 — Choose your split mode</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Select how you want to split your PDF: Split All Pages, Split by Page Range, or Extract Specific Pages.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <span class="flex-shrink-0 h-10 w-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-lg shadow-blue-500/20">4</span>
+              <div>
+                <p class="font-black text-lg text-gray-900 dark:text-white mb-2">Step 4 — Click "Split PDF"</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Sohelix processes your file instantly — no waiting, no queue.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <span class="flex-shrink-0 h-10 w-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-lg shadow-blue-500/20">5</span>
+              <div>
+                <p class="font-black text-lg text-gray-900 dark:text-white mb-2">Step 5 — Download your files</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Download your split PDFs individually, or get all files at once in a single ZIP archive.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 bg-blue-50 dark:bg-blue-900/20 rounded-[2rem] border-l-8 border-blue-600 shadow-sm">
+            <h4 class="font-black text-blue-900 dark:text-white mb-4 flex items-center gap-3">
+              <div class="bg-blue-600 p-2 rounded-lg text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              PRIVACY NOTE
+            </h4>
+            <p class="text-blue-800 dark:text-blue-300 leading-relaxed font-medium">
+              Sohelix uses HTTPS encryption for all file transfers. Your uploaded files are automatically deleted from the server after processing — your documents remain completely private.
+            </p>
+          </div>
+
+          <div class="mt-12 flex flex-col items-center sm:items-start border-t border-gray-100 dark:border-gray-800 pt-10">
+            <a href="https://sohelix.com/tools/split-pdf" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-blue-500/40 hover:bg-blue-700 hover:scale-[1.02] active:scale-95 transition-all text-center w-full sm:w-auto text-lg uppercase tracking-wider">
+              Split PDF Free — No Signup Needed
+            </a>
+          </div>
+        </section>
+
+        <section id="split-on-windows" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Split PDF Pages on Windows</h2>
+          <div class="space-y-10">
+            <div class="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <h3 class="text-xl font-black text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <div class="h-2 w-2 bg-blue-600 rounded-full"></div>
+                Option A: Use Sohelix Online
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">The simplest way on Windows is to use Sohelix Split PDF directly in your browser. Open Chrome, Edge, or Firefox, and split your PDF in seconds without any software installation.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <h3 class="text-xl font-black text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <div class="h-2 w-2 bg-blue-600 rounded-full"></div>
+                Option B: Windows Print-to-PDF
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6 font-medium">Windows 10/11 includes a built-in feature to extract page ranges:</p>
+              <ul class="space-y-4">
+                <li class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                  <span class="font-black text-blue-600">01</span> Open your PDF in Microsoft Edge
+                </li>
+                <li class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                  <span class="font-black text-blue-600">02</span> Press <strong>Ctrl + P</strong> for the Print dialog
+                </li>
+                <li class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                  <span class="font-black text-blue-600">03</span> Select <strong>Microsoft Print to PDF</strong> as the printer
+                </li>
+                <li class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                  <span class="font-black text-blue-600">04</span> Enter your target page range or specific page numbers
+                </li>
+                <li class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                  <span class="font-black text-blue-600">05</span> Click <strong>Print</strong> and save your new file
+                </li>
+              </ul>
+              <p class="mt-8 text-sm text-gray-500 italic flex items-center gap-2">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z"></path></svg>
+                Limitation: Requires manual repetition for multiple files. For volume splitting, Sohelix is significantly faster.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="split-on-mac" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Separate Pages in a PDF on Mac</h2>
+          <div class="space-y-10">
+            <div class="bg-blue-50/50 dark:bg-blue-900/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/20">
+              <h3 class="text-xl font-black text-gray-900 dark:text-white mb-4">Option A: Sohelix Online (Safari Recommended)</h3>
+              <p class="text-gray-600 dark:text-gray-400">Visit <a href="https://sohelix.com/tools/split-pdf" class="text-blue-600 font-bold underline">sohelix.com/tools/split-pdf</a> on your Mac browser. Upload, choose settings, and download in seconds.</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+              <h3 class="text-xl font-black text-gray-900 dark:text-white mb-4">Option B: Mac Preview</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6">Every Mac has the powerful Preview app built-in for desktop splitting:</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-3">Extract Pages:</h4>
+                  <ul class="text-sm space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Open PDF in Preview</li>
+                    <li>• Select <strong>View → Thumbnails</strong></li>
+                    <li>• Drag thumbnails directly to your Desktop</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-3">Save Ranges:</h4>
+                  <ul class="text-sm space-y-2 text-gray-600 dark:text-gray-400">
+                    <li>• Press <strong>Command (⌘) + P</strong></li>
+                    <li>• Enter your page range</li>
+                    <li>• Select <strong>Save as PDF</strong> from the dropdown</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="split-on-mobile" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Split a PDF on iPhone and Android</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-700">
+              <h3 class="text-xl font-black text-gray-900 dark:text-white mb-4">iPhone (iOS)</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">Open Safari and visit Sohelix. Upload your PDF from the Files app, configure your split, and download instantly to your device storage.</p>
+            </div>
+            <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-700">
+              <h3 class="text-xl font-black text-gray-900 dark:text-white mb-4">Android</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">Use Chrome to navigate to Sohelix. Select your document from your downloads or storage, set your ranges, and get your files without installing any apps.</p>
+            </div>
+          </div>
+          <div class="p-6 bg-blue-50 dark:bg-blue-900/10 rounded-2xl text-center font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest text-xs">
+            SOHELIX IS FULLY OPTIMIZED FOR MOBILE BROWSERS — NO APP REQUIRED
+          </div>
+        </section>
+
+        <section id="split-multiple-files" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Split a PDF into Multiple Files</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            To divide a large PDF into multiple documents automatically, follow these steps on Sohelix:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div class="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 text-center">
+              <div class="text-blue-600 font-black text-2xl mb-2">01</div>
+              <p class="text-sm font-bold text-gray-900 dark:text-white">Upload Large File</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 text-center">
+              <div class="text-blue-600 font-black text-2xl mb-2">02</div>
+              <p class="text-sm font-bold text-gray-900 dark:text-white">Set Page Ranges</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 text-center">
+              <div class="text-blue-600 font-black text-2xl mb-2">03</div>
+              <p class="text-sm font-bold text-gray-900 dark:text-white">Download ZIP</p>
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm italic">Example: Enter "1-20, 21-40, 41-60" to break a 60-page PDF into three perfect 20-page sections instantly.</p>
+        </section>
+
+        <section id="extract-specific-pages" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Extract Specific Pages from a PDF</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+            When you don't need the whole document, use our visual extractor:
+          </p>
+          <div class="p-8 bg-gray-50 dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-800">
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-black">✓</span>
+                <span class="text-gray-700 dark:text-gray-300">Select "Extract Specific Pages" on the tool page</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-black">✓</span>
+                <span class="text-gray-700 dark:text-gray-300">Click individual page thumbnails to highlight what you want to keep</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-black">✓</span>
+                <span class="text-gray-700 dark:text-gray-300">Supports non-consecutive pages (e.g., Pages 2, 5, and 12)</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-black">✓</span>
+                <span class="text-gray-700 dark:text-gray-300">Click Extract and download your targeted PDF</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="split-in-half" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Split a PDF in Half</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Divide your PDF into exactly two equal parts in under 60 seconds:
+          </p>
+          <div class="mt-8 p-10 bg-blue-600 rounded-[2.5rem] text-white shadow-xl shadow-blue-500/30">
+            <div class="flex flex-col sm:flex-row items-center gap-10">
+              <div class="flex-1 text-center sm:text-left">
+                <p class="font-black text-2xl mb-4 uppercase">The Fast Formula</p>
+                <p class="opacity-90 leading-relaxed">Identify the total pages, find the midpoint, and set two ranges on Sohelix. Range 1: 1–Midpoint. Range 2: (Midpoint+1)–Total.</p>
+              </div>
+              <div class="h-1 bg-white/20 w-12 sm:w-1 sm:h-12"></div>
+              <div class="flex-1 text-center">
+                <p class="font-mono text-3xl font-black">100% QUALITY</p>
+                <p class="text-xs uppercase tracking-widest mt-2 font-bold opacity-70 italic whitespace-nowrap">Retained during splitting</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="unmerge-pdf" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Unmerge PDF Documents</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Reverse an accidental merge easily. Upload your file, define the original document boundaries using ranges (e.g., 1-5 for one file, 6-10 for the next), and Sohelix will reconstruct your original separate documents instantly.
+          </p>
+        </section>
+
+        <section id="split-by-bookmarks" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Split a PDF by Bookmarks</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            For eBooks or lengthy manuals, manual page counting is impossible. Our "Split by Bookmarks" mode reads your PDF's internal structure and automatically cuts the file at every chapter or top-level bookmark header.
+          </p>
+        </section>
+
+        <section id="save-individual-pages" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">How to Save Individual Pages of a PDF</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+            Need 100 pages as 100 separate files? Don't do it manually. Our "Split All Pages" mode handles this in one click and provides a single ZIP file for download.
+          </p>
+          
+          <div class="flex flex-col items-center sm:items-start border-t border-gray-100 dark:border-gray-800 pt-10">
+            <a href="https://sohelix.com/tools/split-pdf" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-2xl shadow-blue-500/40 hover:bg-blue-700 hover:scale-[1.02] active:scale-95 transition-all text-center w-full sm:w-auto text-lg uppercase tracking-wider">
+              Split PDF Free — No Signup Needed
+            </a>
+          </div>
+        </section>
+
+        <section id="faq" class="scroll-mt-24">
+          <h2 class="border-l-8 border-blue-600 pl-6 text-3xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-tight">Frequently Asked Questions</h2>
+          <div class="grid grid-cols-1 gap-6">
+            <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-800">
+              <h4 class="font-black text-lg text-gray-900 dark:text-white mb-3">How do I split a PDF for free?</h4>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Use Sohelix Split PDF — it is completely free with no watermarks, no account required, and no usage limits. On Mac, the built-in Preview app is also a free option.</p>
+            </div>
+            <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-800">
+              <h4 class="font-black text-lg text-gray-900 dark:text-white mb-3">Is it safe to split a PDF online?</h4>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Yes, when using a trusted tool. Sohelix encrypts all file transfers using HTTPS and automatically deletes your uploaded files after processing to ensure your data stays private.</p>
+            </div>
+            <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-800">
+              <h4 class="font-black text-lg text-gray-900 dark:text-white mb-3">Can I split a PDF without Adobe Acrobat?</h4>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Yes. Sohelix is a powerful free alternative that requires no Adobe subscription. Mac Preview and Windows Print-to-PDF are also great non-Adobe options.</p>
+            </div>
+            <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-800">
+              <h4 class="font-black text-lg text-gray-900 dark:text-white mb-3">Will splitting a PDF reduce the quality?</h4>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">No. Pages are simply reorganized into new files without any re-compression or re-rendering. The output quality is identical to the source document.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-gray-900 rounded-[3rem] p-12 text-center text-white border border-gray-800 shadow-2xl relative overflow-hidden">
+          <div class="absolute inset-0 bg-blue-600/10 pointer-events-none"></div>
+          <h2 class="text-4xl font-black mb-8 relative z-10 uppercase tracking-tighter">Ready to Split Your PDF?</h2>
+          <p class="text-lg mb-10 opacity-80 max-w-2xl mx-auto relative z-10 leading-relaxed">
+            No signup required. No watermarks. No cost. Just instant, professional results directly in your browser.
+          </p>
+          <div class="relative z-10">
+            <a href="https://sohelix.com/tools/split-pdf" class="inline-block bg-blue-600 text-white px-12 py-5 rounded-2xl font-black shadow-2xl shadow-blue-500/20 hover:bg-blue-700 hover:scale-[1.05] active:scale-95 transition-all text-xl uppercase tracking-widest">
+              Launch PDF Splitter
+            </a>
+          </div>
+        </section>
+
+        <section class="pt-12 border-t border-gray-100 dark:border-gray-800">
+          <h2 class="text-xl font-black text-gray-900 dark:text-white mb-10 uppercase tracking-[0.2em] text-center">Explore More Sohelix Utilities</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="/tools/merge-pdf" class="p-6 bg-gray-50 dark:bg-gray-800 rounded-3xl hover:bg-blue-600 hover:text-white transition-all font-black text-center border border-gray-100 dark:border-gray-800 group"><div class="text-blue-600 group-hover:text-white mb-1">↑↓</div>Merge PDF</a>
+            <a href="/tools/compress-pdf" class="p-6 bg-gray-50 dark:bg-gray-800 rounded-3xl hover:bg-blue-600 hover:text-white transition-all font-black text-center border border-gray-100 dark:border-gray-800 group"><div class="text-blue-600 group-hover:text-white mb-1">↘↙</div>Compress</a>
+            <a href="/tools/pdf-to-word" class="p-6 bg-gray-50 dark:bg-gray-800 rounded-3xl hover:bg-blue-600 hover:text-white transition-all font-black text-center border border-gray-100 dark:border-gray-800 group"><div class="text-blue-600 group-hover:text-white mb-1">W</div>PDF to Word</a>
+            <a href="/tools/unlock-pdf" class="p-6 bg-gray-50 dark:bg-gray-800 rounded-3xl hover:bg-blue-600 hover:text-white transition-all font-black text-center border border-gray-100 dark:border-gray-800 group"><div class="text-blue-600 group-hover:text-white mb-1">🔓</div>Unlock</a>
+          </div>
+        </section>
+      </div>
+    `,
+  },
 ];
