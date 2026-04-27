@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants/blog';
-import { TOOLS } from '../constants/tools';
 import { SEO } from '../components/SEO';
-import { Calendar, User, ArrowLeft, Share2, Clock, Shield } from 'lucide-react';
+import { Calendar, User, ArrowLeft, Share2, Clock } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export const BlogPost: React.FC = () => {
@@ -81,9 +80,6 @@ export const BlogPost: React.FC = () => {
   const schemas: any[] = [articleSchema, breadcrumbSchema];
   if (faqSchema) schemas.push(faqSchema);
 
-  const featuredTool = TOOLS.find(t => post.slug.includes(t.slug) || (t.id === post.id.replace('-guide', '')));
-  const relatedPosts = BLOG_POSTS.filter(p => p.id !== post.id && p.category === post.category).slice(0, 3);
-
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 py-12">
       <SEO 
@@ -160,46 +156,6 @@ export const BlogPost: React.FC = () => {
           >
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </motion.div>
-
-          {featuredTool && (
-            <div className="my-16 p-8 rounded-[2.5rem] bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-2xl shadow-blue-500/20 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-500">
-                <Shield className="h-40 w-40" />
-              </div>
-              <div className="relative z-10 text-center lg:text-left">
-                <h3 className="text-2xl font-black mb-4">Try the {featuredTool.name}</h3>
-                <p className="text-blue-50 mb-8 max-w-2xl text-lg opacity-90">
-                  Join millions of users who trust Sohelix for fast, secure, and private browser-side processing. No server uploads ever.
-                </p>
-                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  <Link 
-                    to={`/tools/${featuredTool.slug}`}
-                    className="px-8 py-4 rounded-2xl bg-white text-blue-600 font-black shadow-xl hover:scale-105 transition-all text-center"
-                  >
-                    Open {featuredTool.name}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {relatedPosts.length > 0 && (
-            <section className="mt-16 pt-16 border-t border-gray-100 dark:border-gray-800">
-              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-8 text-center">Related Articles</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {relatedPosts.map((rp) => (
-                  <Link key={rp.id} to={`/blog/${rp.slug}`} className="group block">
-                    <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl p-6 border border-transparent hover:border-blue-500 transition-all">
-                      <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
-                        {rp.title}
-                      </h4>
-                      <p className="text-sm text-gray-500 line-clamp-2">{rp.description}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
 
           <footer className="mt-16 pt-12 border-t border-gray-100 dark:border-gray-800">
             <div className="bg-gray-50 dark:bg-gray-900 rounded-3xl p-8 text-center">

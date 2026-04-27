@@ -19,7 +19,6 @@ import {
   Lock,
   MousePointer2
 } from 'lucide-react';
-import { BLOG_POSTS } from '../constants/blog';
 import { motion } from 'motion/react';
 import { 
   compressImage, 
@@ -144,11 +143,6 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
   const relatedTools = useMemo(() => {
     if (!tool) return [];
     return TOOLS.filter(t => t.id !== tool.id && t.category === tool.category).slice(0, 4);
-  }, [tool]);
-
-  const relatedArticles = useMemo(() => {
-    if (!tool) return [];
-    return BLOG_POSTS.filter(p => p.slug.includes(tool.slug) || p.category === tool.category).slice(0, 3);
   }, [tool]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -328,7 +322,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": tool.name,
-    "url": `https://sohelix.com/${tool.slug}`,
+    "url": `https://sohelix.com/tools/${tool.slug}`,
     "description": tool.description
   };
 
@@ -352,7 +346,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         "@type": "ListItem",
         "position": 3,
         "name": tool.name,
-        "item": `https://sohelix.com/${tool.slug}`
+        "item": `https://sohelix.com/tools/${tool.slug}`
       }
     ]
   };
@@ -364,7 +358,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         description={tool.seo.description}
         keywords={tool.seo.keywords}
         slug={tool.slug}
-        canonical={`https://sohelix.com/${tool.slug}`}
+        canonical={`https://sohelix.com/tools/${tool.slug}`}
         schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
 
@@ -775,29 +769,6 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         <section className="mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
             <div className="lg:col-span-3 space-y-16">
-              
-              {relatedArticles.length > 0 && (
-                <div className="mb-12 bg-blue-50 dark:bg-blue-900/10 p-6 rounded-3xl border border-blue-100 dark:border-blue-900/20">
-                  <h3 className="font-black text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <Icons.FileText className="h-5 w-5 text-blue-600" />
-                    Helpful Guides & Articles
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {relatedArticles.map(article => (
-                      <Link 
-                        key={article.id} 
-                        to={`/blog/${article.slug}`}
-                        className="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-blue-500 transition-all group"
-                      >
-                        <h4 className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors line-clamp-2">
-                          {article.title}
-                        </h4>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* What is */}
               <div className="prose prose-blue dark:prose-invert max-w-none">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What is {tool.name}?</h2>
@@ -927,7 +898,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                 return (
                   <Link 
                     key={rt.id} 
-                    to={`/${rt.slug}`}
+                    to={`/tools/${rt.slug}`}
                     className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
                   >
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
