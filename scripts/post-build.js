@@ -10,49 +10,60 @@ const root = path.resolve(__dirname, '..');
 // This script generates sitemap.xml and robots.txt after SSG build
 const BASE_URL = 'https://sohelix.com';
 const DIST_DIR = path.resolve(root, 'dist');
-
-// We'll read the tools and blog posts to get all routes
-// For simplicity in this script, we'll scan the dist directory for index.html files
-function getRoutes(dir, routes = []) {
-  if (!fs.existsSync(dir)) return routes;
-  const files = fs.readdirSync(dir);
-  for (const file of files) {
-    const filePath = path.join(dir, file);
-    if (fs.statSync(filePath).isDirectory()) {
-      getRoutes(filePath, routes);
-    } else if (file === 'index.html') {
-      let route = '/' + path.relative(DIST_DIR, dir);
-      if (route === '/') route = '';
-      // Exclude admin or other private routes if any
-      if (!route.startsWith('/admin')) {
-        routes.push(route);
-      }
-    }
-  }
-  return routes;
-}
+const ROUTES_PATH = path.resolve(root, 'src/routes-list.json');
 
 console.log('Generating SEO files...');
 
 try {
-  const routes = getRoutes(DIST_DIR);
+  let routes = [];
+  if (fs.existsSync(ROUTES_PATH)) {
+    routes = JSON.parse(fs.readFileSync(ROUTES_PATH, 'utf-8'));
+  } else {
+    console.warn('⚠️ src/routes-list.json missing. Attempting directory scan...');
+    // Fallback logic
+    function getRoutes(dir, list = []) {
+      if (!fs.existsSync(dir)) return list;
+      const files = fs.readdirSync(dir);
+      for (const file of files) {
+        const filePath = path.join(dir, file);
+        if (fs.statSync(filePath).isDirectory()) {
+          getRoutes(filePath, list);
+        } else if (file === 'index.html') {
+          let route = '/' + path.relative(DIST_DIR, dir);
+          if (route === '/') route = '';
+          if (!route.startsWith('/admin')) list.push(route);
+        }
+      }
+      return list;
+    }
+    routes = getRoutes(DIST_DIR);
+  }
   
   if (routes.length === 0) {
-    console.warn('⚠️ No routes found in dist directory. Skipping sitemap generation.');
+    console.warn('⚠️ No routes found. Skipping sitemap generation.');
   } else {
     // 1. Generate Sitemap
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(route => `  <url>
-    <loc>${BASE_URL}${route === '' ? '/' : route}</loc>
+    <loc>${BASE_URL}${route === '' ? '/' : (route === '/' ? '/' : route)}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${route === '' ? '1.0' : (route.startsWith('/tools') ? '0.8' : '0.5')}</priority>
+    <changefreq>${route === '/' ? 'daily' : 'weekly'}</changefreq>
+    <priority>${route === '/' ? '1.0' : (route.startsWith('/tools') ? '0.8' : (route.startsWith('/blog') ? '0.7' : '0.5'))}</priority>
   </url>`).join('\n')}
 </urlset>`;
 
+    if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
+    
     fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemap);
     console.log('✅ sitemap.xml generated with', routes.length, 'routes');
+    
+    // Also copy to public so it exists in source
+    const publicDir = path.resolve(root, 'public');
+    if (fs.existsSync(publicDir)) {
+      fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
+      console.log('✅ sitemap.xml copied to public');
+    }
   }
 
   // 2. Generate robots.txt
