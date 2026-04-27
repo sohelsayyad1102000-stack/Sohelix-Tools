@@ -144,56 +144,118 @@ export const TOOLS: Tool[] = [
     ],
     faqs: [
       {
-        question: 'How do I resize an image to 100x100 pixels?',
-        answer: 'Upload your image, set the unit to "PX", enter 100 in both width and height fields, and click Resize.',
+        question: 'How do I resize an image in CM or MM?',
+        answer: 'Sohelix supports professional physical units. Simply upload your image, select "CM" or "MM" from the unit dropdown, enter your desired dimensions, and our tool will handle the conversion based on standard printing DPI (300).',
       },
       {
-        question: 'Can I resize an image in CM or MM?',
-        answer: 'Yes! Sohelix supports professional units like CM and MM, perfect for passport photos or print documents.',
+        question: 'What is the best size for an Instagram post?',
+        answer: 'For a standard square post, use 1080x1080 pixels. For portraits, 1080x1350 is recommended. Our tool includes these as one-click presets for your convenience.',
+      },
+      {
+        question: 'Can I resize an image without losing quality?',
+        answer: 'While increasing an image size (upscaling) can lead to blurriness, downscaling with Sohelix uses advanced interpolation algorithms (Lanczos/Bicubic) to maintain maximum sharpness and detail.',
       },
       {
         question: 'Is my data safe?',
-        answer: 'Absolutely. All processing happens locally in your browser. Your images are never uploaded to our servers.',
+        answer: 'Yes. All image processing occurs entirely within your browser. Your files are never uploaded to any server, ensuring 100% privacy and security.',
+      },
+      {
+        question: 'Does this tool support bulk resizing?',
+        answer: 'Absolutely. You can upload dozens of images simultaneously, apply uniform settings, and download all processed files in a single ZIP archive.',
       },
     ],
     longContent: `
       <div class="space-y-8">
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is Image Resizing?</h2>
-          <p class="text-gray-600 dark:text-gray-400">Image resizing is the process of changing the dimensions of a digital image. This can involve changing the <strong>pixel count</strong> for web use or adjusting the <strong>physical dimensions (CM/MM)</strong> for printing. Unlike simple scaling, professional resizing with Sohelix ensures that your image maintains its clarity and aspect ratio, preventing unwanted distortion.</p>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">The Ultimate Guide to Online Image Resizing</h2>
+          <p class="text-gray-600 dark:text-gray-400">In the digital age, having the correct image dimensions is crucial for web performance, social media engagement, and professional printing. Sohelix provides a professional-grade <strong>Image Resizer</strong> that works entirely in your browser. Whether you need to change pixels for a website, or dimensions in CM/MM for a passport application, we have you covered.</p>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Resize Image Online</h2>
-          <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400">
-            <li><strong>Upload:</strong> Drag and drop your images or click "Select Images" to begin.</li>
-            <li><strong>Configure:</strong> Choose your preferred unit (Pixels, CM, MM, or Inch).</li>
-            <li><strong>Dimensions:</strong> Enter your desired width and height. Use the "Maintain Aspect Ratio" toggle to keep proportions.</li>
-            <li><strong>Optional Settings:</strong> Enable compression or change the output format (JPG, PNG, WebP).</li>
-            <li><strong>Process:</strong> Click "Resize Image" and download your optimized files instantly.</li>
-          </ol>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Precision Resizing in CM, MM, and Inches</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Unlike standard web resizers that only handle pixels, Sohelix is built for physical precision. This is essential for:</p>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Passport Photos:</strong> Resize to 3.5cm x 4.5cm or 2x2 inches with millimeter precision.</li>
+            <li><strong>Graphic Design:</strong> Preparing assets for flyers, brochures, and physical marketing material.</li>
+            <li><strong>Government Forms:</strong> Meeting strict dimension requirements for online applications and document uploads.</li>
+          </ul>
         </section>
 
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-            <h3 class="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">Pixels vs. Physical Units</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">While web developers focus on pixels for screen resolution, physical units like CM and MM are crucial for documents and printing. Our tool handles the conversion automatically using standard DPI settings.</p>
+            <h3 class="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">Web Optimization (Pixels)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Optimize your hero banners, product images, and blog thumbnails to the exact pixel dimensions required by your CSS framework, reducing layout shift and improving Core Web Vitals.</p>
           </div>
           <div class="p-6 rounded-2xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-            <h3 class="text-lg font-bold text-green-900 dark:text-green-400 mb-2">Lossless Resizing</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">We use high-quality resampling algorithms to ensure that downscaling your images doesn't result in a loss of sharpness, making your photos look professional at any size.</p>
+            <h3 class="text-lg font-bold text-green-900 dark:text-green-400 mb-2">Print Ready (CM/MM)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Convert your digital photos into print-ready assets by specifying physical dimensions. Our tool automatically calculates the necessary pixel density for high-quality 300 DPI prints.</p>
           </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Sohelix Image Resizer?</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Our tool is designed to beat competitors by offering a cleaner, faster, and more versatile experience. Here is why thousands of users trust us:</p>
-          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li><strong>Batch Processing:</strong> Resize hundreds of images at once and download them as a ZIP.</li>
-            <li><strong>Integrated Compression:</strong> No need to use a separate tool; resize and compress in one go.</li>
-            <li><strong>Format Flexibility:</strong> Convert your JPG to PNG or WebP during the resizing process.</li>
-            <li><strong>Privacy Guaranteed:</strong> Your files never leave your device. 100% browser-based processing.</li>
-          </ul>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Resize Images Online (Step-by-Step)</h2>
+          <ol class="list-decimal list-inside space-y-4 text-gray-600 dark:text-gray-400">
+            <li><strong>Upload:</strong> Drag and drop your JPG, PNG, or WebP files. You can process multiple files at once.</li>
+            <li><strong>Select Unit:</strong> Choose between Pixels (PX), Centimeters (CM), Millimeters (MM), or Inches (IN).</li>
+            <li><strong>Set Dimensions:</strong> Enter your target Width and Height. Keep "Maintain Aspect Ratio" enabled to prevent image stretching.</li>
+            <li><strong>Quality Check:</strong> Use the optional compression settings to reduce file size while maintaining visual clarity.</li>
+            <li><strong>Download:</strong> Click "Resize Image" and download your results instantly.</li>
+          </ol>
+        </section>
+
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-200 dark:border-gray-800">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Use Cases for Professional Resizing</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+              <span><strong>E-commerce:</strong> Standardize all product photos to a uniform 1:1 square ratio.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+              <span><strong>Social Media:</strong> Resize for Instagram, YouTube thumbnails, and LinkedIn banners.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+              <span><strong>Printing:</strong> Prepare photos for 4x6 or 5x7 physical prints with CM precision.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+              <span><strong>Forms:</strong> Meet specific KB and CM requirements for official documents.</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Common Image Sizes & Dimensions</h2>
+          <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white">
+                <tr>
+                  <th class="px-4 py-3">Platform/Use</th>
+                  <th class="px-4 py-3">Standard Size</th>
+                  <th class="px-4 py-3">Aspect Ratio</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-800 text-gray-600 dark:text-gray-400">
+                <tr><td class="px-4 py-3">Instagram Post</td><td class="px-4 py-3">1080 x 1080 px</td><td class="px-4 py-3">1:1</td></tr>
+                <tr><td class="px-4 py-3">YouTube Thumbnail</td><td class="px-4 py-3">1280 x 720 px</td><td class="px-4 py-3">16:9</td></tr>
+                <tr><td class="px-4 py-3">Passport (Standard)</td><td class="px-4 py-3">3.5 x 4.5 cm</td><td class="px-4 py-3">Custom</td></tr>
+                <tr><td class="px-4 py-3">Twitter Header</td><td class="px-4 py-3">1500 x 500 px</td><td class="px-4 py-3">3:1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Consolidated Tool Variants</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">We have consolidated all specialized resizing requirements into this master tool to provide you with a unified, high-performance experience. You no longer need separate apps for:</p>
+          <div class="flex flex-wrap gap-3">
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Resize in CM</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Resize in MM</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Resize in Inch</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Passport Photo Resizer</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Bulk Image Resizer</span>
+          </div>
         </section>
       </div>
     `,
@@ -233,64 +295,86 @@ export const TOOLS: Tool[] = [
     ],
     faqs: [
       {
-        question: 'How do I crop an image to a specific aspect ratio?',
-        answer: 'Select your image, then choose from the preset aspect ratios like 1:1, 4:3, or 16:9 in the settings sidebar. The crop box will automatically lock to that proportion.',
-      },
-      {
         question: 'Can I crop an image into a circle?',
-        answer: 'Yes! Switch to the "Circle" mode in our cropper settings to create perfect circular crops for profile pictures.',
+        answer: 'Yes! Sohelix includes a specialized "Circle Crop" mode. Simply toggle the shape setting to Circle, adjust your selection, and download your perfectly round profile picture.',
       },
       {
-        question: 'Is my data safe when using this cropper?',
-        answer: 'Absolutely. Sohelix uses client-side technology, meaning your images are processed entirely in your browser and are never uploaded to our servers.',
+        question: 'What aspect ratios are supported?',
+        answer: 'We provide presets for Square (1:1), standard photos (4:3, 3:2), widescreen (16:9), and professional formats like US & EU Passport sizes. You can also define any custom ratio.',
+      },
+      {
+        question: 'How do I crop for a YouTube thumbnail?',
+        answer: 'Select the 16:9 aspect ratio preset. This ensures your image fits perfectly on YouTube without black bars or stretching.',
       },
       {
         question: 'Does cropping reduce image quality?',
-        answer: 'No, our tool uses high-quality canvas rendering to ensure that the cropped area retains its original sharpness and detail.',
+        answer: 'No. Our tool extracts the selected pixels directly from the original data using high-fidelity rendering, ensuring the remaining image stays as sharp as the original.',
+      },
+      {
+        question: 'Is my privacy protected?',
+        answer: '100%. All cropping operations happen locally in your browser. Your images are never uploaded to our servers, keeping your personal photos completely private.',
       },
     ],
     longContent: `
       <div class="space-y-8">
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is Image Cropping?</h2>
-          <p class="text-gray-600 dark:text-gray-400">Image cropping is the process of removing unwanted outer areas from a photographic or illustrated image. The process usually consists of the removal of some of the peripheral areas of an image to remove extraneous junk from the picture, to improve its framing, to change the aspect ratio, or to accentuate or isolate the subject matter from its background.</p>
-          <p class="mt-4 text-gray-600 dark:text-gray-400">With our <strong>Free Online Image Cropper</strong>, you can perform these tasks with professional precision without needing to install complex software like Photoshop.</p>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Professional Online Image Cropper & Editor</h2>
+          <p class="text-gray-600 dark:text-gray-400">Cropping is the most effective way to improve the composition of your photos and focus on what matters. Sohelix offers a powerful, <strong>Free Online Image Cropper</strong> that handles everything from basic trimming to specialized circle crops for profile pictures. No installation, no registration, just instant results.</p>
         </section>
 
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-            <h3 class="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">Improve Focus</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">By removing distracting elements from the edges of your photo, you can draw the viewer's eye directly to the subject, creating a much more impactful visual.</p>
+          <div class="p-6 rounded-2xl bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-900/20">
+            <h3 class="text-lg font-bold text-indigo-900 dark:text-indigo-400 mb-2">Circle Crop Online</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Perfect for creating modern profile pictures for LinkedIn, Twitter, and Slack. Our circle crop tool ensures your subject is perfectly centered and the background is cleanly removed.</p>
           </div>
-          <div class="p-6 rounded-2xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-            <h3 class="text-lg font-bold text-green-900 dark:text-green-400 mb-2">Optimize for Social Media</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Different platforms require different shapes. Use our presets to quickly crop for Instagram (1:1), YouTube (16:9), or professional headshots.</p>
+          <div class="p-6 rounded-2xl bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20">
+            <h3 class="text-lg font-bold text-amber-900 dark:text-amber-400 mb-2">Aspect Ratio Mastery</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Don't guess dimensions. Use our locked aspect ratio presets to ensure your images meet the exact requirements of social platforms and printing standards.</p>
           </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Crop Image Online Free</h2>
-          <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400">
-            <li><strong>Upload Image:</strong> Drag and drop your JPG, PNG, or WebP file into the upload box.</li>
-            <li><strong>Adjust Selection:</strong> Use the handles on the crop box to select the area you want to keep. You can also move the entire box.</li>
-            <li><strong>Choose Mode:</strong> Select between "Rectangle" or "Circle" crop depending on your needs.</li>
-            <li><strong>Fine-tune:</strong> Use the Zoom and Rotate sliders to perfectly align your subject within the frame.</li>
-            <li><strong>Crop & Download:</strong> Click the "Crop Image" button and save your perfectly framed photo instantly.</li>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Crop Images Online (Step-by-Step)</h2>
+          <ol class="list-decimal list-inside space-y-4 text-gray-600 dark:text-gray-400">
+            <li><strong>Import:</strong> Select your JPG, PNG, WebP, or HEIC image from your device.</li>
+            <li><strong>Select Shape:</strong> Choose between "Rectangle" or "Circle" crop modes.</li>
+            <li><strong>Adjust Selection:</strong> Drag the corners of the crop box to frame your subject. You can also rotate and zoom for perfect alignment.</li>
+            <li><strong>Lock Ratio:</strong> Use presets like 1:1, 4:3, or 16:9 to maintain consistent proportions.</li>
+            <li><strong>Instant Download:</strong> Click "Crop Image" to process and save your file in high resolution.</li>
           </ol>
         </section>
 
-        <section class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Professional Features, Zero Cost</h3>
-          <p class="text-gray-600 dark:text-gray-400 mb-6">Sohelix provides a high-performance <strong>image cropper</strong> that works entirely in your browser. This means your images are never uploaded to a server, providing 100% privacy and lightning-fast results. Whether you're preparing a passport photo or a social media post, our tool ensures precision and quality.</p>
-          
-          <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <h4 class="font-bold text-gray-900 dark:text-white mb-4">Popular Crop Variations:</h4>
-            <div class="flex flex-wrap gap-4">
-              <a href="/tools/crop-image-circle" class="text-blue-600 hover:underline font-medium">Circle Crop Online</a>
-              <a href="/tools/crop-image-square" class="text-blue-600 hover:underline font-medium">Square Crop (1:1)</a>
-              <a href="/tools/crop-image-16x9" class="text-blue-600 hover:underline font-medium">Widescreen Crop (16:9)</a>
-              <a href="/tools/crop-image-for-passport" class="text-blue-600 hover:underline font-medium">Passport Photo Cropper</a>
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-200 dark:border-gray-800">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why Use Sohelix Cropper?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Cross-Platform Compatibility</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Works seamlessly on Windows, macOS, Linux, and mobile devices directly in your web browser.</p>
             </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">No File Uploads</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">We prioritize your bandwidth and privacy by processing everything client-side. Large files process instantly.</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Social Presets</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Built-in templates for YouTube thumbnails, Instagram posts, and professional headshots.</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">HEIC Support</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Crop iPhone photos (HEIC) directly and download them as optimized JPGs or PNGs.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Consolidated Feature List</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">Our master crop tool replaces the need for dozens of small, single-purpose apps. One page for all your framing needs:</p>
+          <div class="flex flex-wrap gap-3">
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Circle Crop Online</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">1:1 Square Cropper</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Passport Photo Cropper</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">YouTube Thumbnail Cropper</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Insta Portrait Cropper</span>
           </div>
         </section>
       </div>
@@ -332,146 +416,91 @@ export const TOOLS: Tool[] = [
     faqs: [
       {
         question: 'Is this JPG to PNG converter free?',
-        answer: 'Yes, Sohelix JPG to PNG converter is 100% free with no limits on the number of conversions.',
+        answer: 'Yes, Sohelix JPG to PNG converter is 100% free with no limits on the number of conversions. Our tool is designed for high-performance batch processing without costs.',
       },
       {
-        question: 'Will I lose quality during conversion?',
-        answer: 'No, PNG is a lossless format. Our tool ensures that every pixel from your original JPG is preserved in the resulting PNG.',
+        question: 'How do I get a transparent background?',
+        answer: 'When converting images that have a clear subject or a single-color background, PNG format supports transparency. While our standard converter preserves existing pixel data, we recommend using our background remover (coming soon) for full transparency extraction.',
       },
       {
-        question: 'Can I convert multiple JPG files at once?',
-        answer: 'Absolutely! You can upload up to 20 JPG images at a time and convert them all in one click.',
+        question: 'Can I convert JPG to PNG and keep the file size small (100KB)?',
+        answer: 'PNG is a lossless format, so it often results in larger files than JPG. However, by optimizing the source or using our integrated compression setting, you can achieve specific target sizes like 100KB while maintaining PNG quality.',
       },
       {
         question: 'Are my images stored on your server?',
-        answer: 'Never. All processing happens locally in your browser. Your images are never uploaded or stored on our servers.',
+        answer: 'Never. All processing happens locally in your browser. Your images are never uploaded or stored on our servers, ensuring total data sovereignty.',
       },
     ],
     longContent: `
       <div class="space-y-8">
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is JPG to PNG Conversion?</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">JPG (or JPEG) is a lossy image format designed for photographs, where some data is discarded to achieve smaller file sizes. PNG, on the other hand, is a <strong>lossless format</strong> that supports transparency and maintains perfect quality. Converting JPG to PNG is the process of moving your image data into a container that preserves every detail and allows for professional editing without further degradation.</p>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">High-Quality Online JPG to PNG Converter</h2>
+          <p class="text-gray-600 dark:text-gray-400">Transform your compressed JPG photos into lossless PNG assets with professional precision. Sohelix provides a unified platform for <strong>JPG to PNG conversion</strong> that prioritizes image integrity, transparency support, and batch efficiency. No software downloads required—just high-fidelity results in your browser.</p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-sky-50 dark:bg-sky-900/10 border border-sky-100 dark:border-sky-900/20">
+            <h3 class="text-lg font-bold text-sky-900 dark:text-sky-400 mb-2">Lossless Conversion</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Moving from JPG to PNG prevents further quality degradation. This is ideal for images that require future editing, ensuring that text and sharp edges remain crisp and artifact-free.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-violet-50 dark:bg-violet-900/10 border border-violet-100 dark:border-violet-900/20">
+            <h3 class="text-lg font-bold text-violet-900 dark:text-violet-400 mb-2">Transparency Support</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Convert logos and graphics to PNG to unlock transparency features, allowing your assets to be placed on any background color or pattern without unsightly white borders.</p>
+          </div>
         </section>
 
         <section>
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Convert JPG to PNG?</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Better Quality for Editing</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Since PNG is lossless, you can save and re-save the image multiple times during editing without losing sharpness or introducing artifacts.</p>
-            </div>
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Transparency Support</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">While JPGs always have a solid background, PNGs allow for transparent areas, making them essential for logos, icons, and web design.</p>
-            </div>
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Web Design Flexibility</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">PNGs are the standard for web assets that need to overlay on different background colors or patterns seamlessly.</p>
-            </div>
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Professional Printing</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Many professional printing services prefer PNG for graphics to ensure that text and sharp lines remain crisp.</p>
-            </div>
-          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">While JPG is excellent for photographs and saving space, PNG is the superior choice for professionals who need detail preservation. Our tool is optimized for:</p>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Graphic Design:</strong> Converting source photos for layered compositions.</li>
+            <li><strong>Web Development:</strong> Creating high-quality UI assets that need transparency.</li>
+            <li><strong>Digital Art:</strong> Preserving the nuances of digital painting without compression noise.</li>
+            <li><strong>Print Media:</strong> Ensuring high-resolution output for brochures and flyers.</li>
+          </ul>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Convert JPG to PNG Online</h2>
-          <ol class="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li><strong>Upload JPG Images:</strong> Drag and drop your files or click "Select Images" to browse. You can upload up to 20 files at once.</li>
-            <li><strong>Configure Settings:</strong> Choose your background handling (Transparent or White) and simulate target quality.</li>
-            <li><strong>Click Convert:</strong> Hit the "Convert to PNG" button. The process happens instantly in your browser.</li>
-            <li><strong>Download Results:</strong> Download images individually or grab everything in a single ZIP file.</li>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Convert JPG to PNG Instantly</h2>
+          <ol class="list-decimal list-inside space-y-4 text-gray-600 dark:text-gray-400">
+            <li><strong>Select Files:</strong> Click "Select Files" or drag & drop up to 20 JPG files into the converter.</li>
+            <li><strong>Automatic Processing:</strong> Our browser-based engine instantly starts the conversion—no server wait times.</li>
+            <li><strong>Batch Options:</strong> Apply uniform quality settings to all images in your queue.</li>
+            <li><strong>Download:</strong> Save your new PNG files individually or as a single, organized ZIP archive.</li>
           </ol>
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">JPG vs PNG: Comparison Table</h2>
-          <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-800">
-            <table class="w-full text-left text-sm">
-              <thead class="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
-                <tr>
-                  <th class="px-6 py-4 font-bold">Feature</th>
-                  <th class="px-6 py-4 font-bold">JPG (JPEG)</th>
-                  <th class="px-6 py-4 font-bold">PNG</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200 dark:divide-gray-800 text-gray-600 dark:text-gray-400">
-                <tr>
-                  <td class="px-6 py-4 font-bold">Compression</td>
-                  <td class="px-6 py-4">Lossy (Data discarded)</td>
-                  <td class="px-6 py-4">Lossless (No data loss)</td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold">Transparency</td>
-                  <td class="px-6 py-4">No</td>
-                  <td class="px-6 py-4">Yes</td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold">File Size</td>
-                  <td class="px-6 py-4">Small (Optimized)</td>
-                  <td class="px-6 py-4">Larger (High detail)</td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold">Best For</td>
-                  <td class="px-6 py-4">Photographs</td>
-                  <td class="px-6 py-4">Logos, Icons, Graphics</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Advanced Image Conversion Tools</h3>
-          <p class="text-gray-600 dark:text-gray-400 mb-6">Sohelix provides a suite of professional image tools to handle all your conversion needs. Our <strong>JPG to PNG converter</strong> is just the beginning. Explore our other specialized tools to optimize your workflow.</p>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <h4 class="font-bold text-gray-900 dark:text-white mb-4">Conversion Pages:</h4>
-              <div class="flex flex-col gap-2">
-                <a href="/tools/png-to-jpg" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> PNG to JPG Converter
-                </a>
-                <a href="/tools/jpg-to-webp" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> JPG to WebP Converter
-                </a>
-                <a href="/tools/webp-to-jpg" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> WebP to JPG Converter
-                </a>
-                <a href="/tools/heic-to-jpg" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> HEIC to JPG Converter
-                </a>
-              </div>
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-200 dark:border-gray-800">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Standardized Use Cases</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-sky-600 mt-1 flex-shrink-0" />
+              <span><strong>Logos:</strong> Convert old JPG logos to PNG to add transparency.</span>
             </div>
-            <div>
-              <h4 class="font-bold text-gray-900 dark:text-white mb-4">Related Tools:</h4>
-              <div class="flex flex-col gap-2">
-                <a href="/tools/crop-image" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> Crop Image Online
-                </a>
-                <a href="/tools/resize-image" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> Resize Image Online
-                </a>
-                <a href="/tools/compress-image" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> Compress Image Online
-                </a>
-                <a href="/tools/image-to-pdf" class="text-blue-600 hover:underline flex items-center gap-2">
-                  <ArrowRight class="h-3 w-3" /> Image to PDF Converter
-                </a>
-              </div>
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-sky-600 mt-1 flex-shrink-0" />
+              <span><strong>Screenshots:</strong> Save software screenshots in PNG to keep text perfectly legible.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-sky-600 mt-1 flex-shrink-0" />
+              <span><strong>Social Assets:</strong> Prepare graphics for YouTube thumbnails and social posts.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <CheckCircle2 class="h-4 w-4 text-sky-600 mt-1 flex-shrink-0" />
+              <span><strong>Scanning:</strong> Convert scanned documents from JPG to high-quality PNG.</span>
             </div>
           </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Programmatic SEO Variations</h2>
-          <div class="flex flex-wrap gap-4">
-            <a href="/jpg-to-png-100kb" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG 100KB</a>
-            <a href="/jpg-to-png-for-web" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG for Web</a>
-            <a href="/jpg-to-png-transparent" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG Transparent</a>
-            <a href="/jpg-to-png-high-quality" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">JPG to PNG High Quality</a>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Consolidated Conversion Variants</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">We have unified all JPG-to-PNG related requirements into this single canonical destination. Skip the duplicate search results and use this master tool for:</p>
+          <div class="flex flex-wrap gap-3">
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">JPG to PNG 100KB</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">JPG to PNG for Web</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Transparent PNG Converter</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">High Resolution JPG to PNG</span>
+             <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium dark:bg-gray-900 dark:border-gray-800">Lossless conversion</span>
           </div>
         </section>
       </div>

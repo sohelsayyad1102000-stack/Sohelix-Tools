@@ -328,7 +328,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": tool.name,
-    "url": `https://sohelix.com/tools/${tool.slug}`,
+    "url": `https://sohelix.com/${tool.slug}`,
     "description": tool.description
   };
 
@@ -352,7 +352,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         "@type": "ListItem",
         "position": 3,
         "name": tool.name,
-        "item": `https://sohelix.com/tools/${tool.slug}`
+        "item": `https://sohelix.com/${tool.slug}`
       }
     ]
   };
@@ -364,7 +364,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         description={tool.seo.description}
         keywords={tool.seo.keywords}
         slug={tool.slug}
-        canonical={`https://sohelix.com/tools/${tool.slug}`}
+        canonical={`https://sohelix.com/${tool.slug}`}
         schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
 
@@ -927,7 +927,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                 return (
                   <Link 
                     key={rt.id} 
-                    to={`/tools/${rt.slug}`}
+                    to={`/${rt.slug}`}
                     className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
                   >
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">

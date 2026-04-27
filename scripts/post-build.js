@@ -45,12 +45,19 @@ try {
     // 1. Generate Sitemap
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(route => `  <url>
+${routes.map(route => {
+  let priority = '0.5';
+  if (route === '/' || route === '') priority = '1.0';
+  else if (route.startsWith('/blog/')) priority = '0.6';
+  else if (!['/about', '/contact', '/faq', '/privacy-policy', '/terms', '/disclaimer', '/blog'].includes(route)) priority = '0.8';
+  
+  return `  <url>
     <loc>${BASE_URL}${route === '' ? '/' : (route === '/' ? '/' : route)}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${route === '/' ? 'daily' : 'weekly'}</changefreq>
-    <priority>${route === '/' ? '1.0' : (route.startsWith('/tools') ? '0.8' : (route.startsWith('/blog') ? '0.7' : '0.5'))}</priority>
-  </url>`).join('\n')}
+    <priority>${priority}</priority>
+  </url>`;
+}).join('\n')}
 </urlset>`;
 
     if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });

@@ -18,6 +18,19 @@ export const routes: RouteObject[] = [
   { path: '/categories/:slug', element: <CategoryPage /> },
   { path: '/tools/:slug', element: <ToolPage /> },
   
+  // Main Canonical Tool Routes
+  { path: '/compress-image', element: <ToolPage slug="compress-image" /> },
+  { path: '/resize-image', element: <ToolPage slug="resize-image" /> },
+  { path: '/crop-image', element: <ToolPage slug="crop-image" /> },
+  { path: '/jpg-to-png', element: <ToolPage slug="jpg-to-png" /> },
+  { path: '/webp-converter', element: <ToolPage slug="webp-converter" /> },
+  { path: '/bmi-calculator', element: <ToolPage slug="bmi-calculator" /> },
+  { path: '/calorie-calculator', element: <ToolPage slug="calorie-calculator" /> },
+  { path: '/bmr-calculator', element: <ToolPage slug="bmr-calculator" /> },
+  { path: '/ideal-weight-calculator', element: <ToolPage slug="ideal-weight-calculator" /> },
+  { path: '/body-fat-calculator', element: <ToolPage slug="body-fat-calculator" /> },
+  { path: '/pdf-to-word', element: <ToolPage slug="pdf-to-word" /> },
+
   // Programmatic SEO Routes for Resize Image
   { path: '/resize-image-to-100x100', element: <ToolPage slug="resize-image" /> },
   { path: '/resize-image-to-600x600', element: <ToolPage slug="resize-image" /> },
