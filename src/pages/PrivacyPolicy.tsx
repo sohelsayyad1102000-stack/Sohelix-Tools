@@ -20,31 +20,31 @@ export const PrivacyPolicy = () => {
             {/* Trust Statement */}
             <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl border border-blue-100 dark:border-blue-900/30">
               <p className="text-blue-900 dark:text-blue-200 font-semibold m-0 italic">
-                "We do not store, view, or share your uploaded files. All files are automatically deleted within a short period after processing."
+                "Your files NEVER leave your device. All processing is done locally in your browser for 100% privacy and security."
               </p>
             </div>
 
             <section>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">1. Privacy Overview</h2>
               <p>
-                At Sohelix, your privacy is our top priority. We provide over 60 utility tools—including image tools, PDF converters, and SEO utilities—designed with a "Privacy First" approach. We believe that your data belongs to you, and our platform is built to reflect that commitment.
+                At Sohelix, your privacy is our top priority. We provide over 60 utility tools—including image tools, PDF converters, and SEO utilities—designed with a "100% Client-Side" approach. This means your files are processed directly in your browser and are never uploaded to our servers.
               </p>
               <ul className="list-disc list-inside space-y-2">
-                <li><strong>Temporary Storage:</strong> All uploaded files are stored temporarily on our secure servers only for the duration needed to process them.</li>
-                <li><strong>Automatic Deletion:</strong> Your files are automatically and permanently deleted from our servers exactly <strong>1 hour</strong> after the last processing step.</li>
-                <li><strong>Timer Resets:</strong> If you perform multiple operations on the same file (e.g., resizing then compressing), the deletion timer resets to ensure you have enough time to finish your work.</li>
+                <li><strong>No Server Uploads:</strong> Unlike other tools, Sohelix does not require you to upload your sensitive files to a remote server. Everything stays on your device.</li>
+                <li><strong>Browser-Based Processing:</strong> We use modern web technologies (WebAssembly, Canvas, and JavaScript) to perform all calculations and conversions locally.</li>
+                <li><strong>Total Privacy:</strong> Since your data never leaves your computer, it is physically impossible for us or any third party to view, store, or intercept your files.</li>
               </ul>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">2. File Handling Policy</h2>
               <p>
-                We handle your files with extreme care to maintain total confidentiality:
+                Because our tools operate locally, our file handling policy is simple:
               </p>
               <ul className="list-disc list-inside space-y-2">
-                <li><strong>Secure Processing:</strong> All file transfers are encrypted using industry-standard HTTPS (SSL/TLS) encryption.</li>
-                <li><strong>No Manual Access:</strong> Our employees and systems do not manually access, view, or open your uploaded files. The entire processing workflow is automated.</li>
-                <li><strong>Zero Sharing:</strong> We do not share your files, or any data extracted from them, with third parties.</li>
+                <li><strong>Zero Data Retention:</strong> We do not have a "deletion period" because we never receive your files in the first place.</li>
+                <li><strong>No Manual Access:</strong> It is impossible for our team to access your files.</li>
+                <li><strong>Self-Contained Workflow:</strong> Once you close the tab, all temporary memory used by the tool to process your file is cleared by your browser.</li>
               </ul>
             </section>
 

@@ -92,6 +92,9 @@ import { ImageToTextOCR } from '../components/tools/ImageToTextOCR';
 import { ImageToWordTool } from '../components/tools/ImageToWordTool';
 import { PDFToWordTool } from '../components/tools/PDFToWordTool';
 import { Base64ToImageTool } from '../components/tools/Base64ToImageTool';
+import { RandomNumberGenerator } from '../components/tools/RandomNumberGenerator';
+import { CompressPDFTool } from '../components/tools/CompressPDFTool';
+import { UnlockPDFTool } from '../components/tools/UnlockPDFTool';
 import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -469,6 +472,12 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           <Base64ToImageTool tool={tool} />
         ) : tool.id === 'pdf-to-word' ? (
           <PDFToWordTool tool={tool} />
+        ) : tool.id === 'random-number-generator' ? (
+          <RandomNumberGenerator />
+        ) : tool.id === 'compress-pdf' ? (
+          <CompressPDFTool />
+        ) : tool.id === 'unlock-pdf' ? (
+          <UnlockPDFTool />
         ) : tool.id === 'interest-calculator' ? (
           <InterestCalculator tool={tool} />
         ) : tool.id === 'emi-calculator' ? (

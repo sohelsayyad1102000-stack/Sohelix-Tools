@@ -24,8 +24,8 @@ export const Terms = () => {
             <h2>2. Description of Service</h2>
             <p>Sohelix provides a collection of free online image processing and utility tools. These tools are provided "as is" and are intended for personal and professional use. We reserve the right to modify, interrupt, or discontinue any tool or feature at any time without notice. We do not guarantee uptime or error-free operation.</p>
 
-            <h2>3. File Usage and Data Processing</h2>
-            <p>Users can upload files for processing through our tools. These files are processed automatically by the system and are NOT stored permanently. All uploaded files are automatically deleted after a short period (typically within 1 hour or less). You are fully responsible for keeping and backing up your files after download; we do not guarantee storage, backup, or recovery of any uploaded data. <strong>All uploaded files are automatically deleted after processing. We do not store or manually access user files.</strong></p>
+            <h2>3. Privacy and Data Processing</h2>
+            <p>Sohelix is built with a "Privacy First" architecture. Most of our tools process files <strong>100% locally in your browser</strong>. This means your files are never uploaded to our servers, ensuring total privacy and security. For tools that may require server-side processing, files are handled automatically and permanently deleted immediately after processing. We do not store, view, or share your files with third parties. You are responsible for downloading and backing up your results; we maintain no copies of your data.</p>
 
             <h2>4. User Responsibilities</h2>
             <p>You are fully responsible for the files you process using our tools and the content you upload. You agree not to use Sohelix for any illegal or unauthorized purpose, including but not limited to:</p>

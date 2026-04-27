@@ -3525,5 +3525,127 @@ export const TOOLS: Tool[] = [
         </section>
       </div>
     `
+  },
+  {
+    id: 'random-number-generator',
+    name: 'Random Number Generator',
+    title: 'Free Random Number Generator (RNG) Online',
+    description: 'Generate truly random numbers within any range. Perfect for giveaways, contests, and statistical sampling.',
+    icon: 'Shuffle',
+    slug: 'random-number-generator',
+    category: 'utilities',
+    isNew: true,
+    seo: {
+      title: 'Free Random Number Generator - Generate Random Numbers Online',
+      description: 'Generate random numbers instantly. Custom ranges, secure algorithms, and zero predictable patterns. Free online RNG tool.',
+      keywords: ['random number generator', 'rng online', 'generate random number', 'custom range rng', 'picker wheel alternate'],
+    },
+    features: [
+      'Custom min/max range',
+      'Generate multiple numbers at once',
+      'Unique (no duplicates) option',
+      'Instant results'
+    ],
+    benefits: [
+      'Fair giveaways and contests',
+      'Statistical data sampling',
+      'Decision making support'
+    ],
+    useCases: [
+      'Teachers picking students',
+      'Streamers running giveaways',
+      'Developers testing algorithms'
+    ],
+    faqs: [
+      {
+        question: 'Is this RNG truly random?',
+        answer: 'Our tool uses cryptographically secure random number generation when available, ensuring high-quality randomness suitable for most digital needs.'
+      },
+      {
+        question: 'Can I generate decimal numbers?',
+        answer: 'This version focuses on integer generation, but stay tuned for updates supporting floating-point results.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/random-number-generator" class="underline hover:text-blue-200">Random Number Generator</a> provides a clean and simple interface for all your randomness needs. Whether you need a single number between 1 and 100 or a list of 50 unique numbers for a lottery, our tool handles it with ease.'
+  },
+  {
+    id: 'compress-pdf',
+    name: 'Compress PDF',
+    title: 'Compress PDF Online - Reduce PDF File Size',
+    description: 'Reduce the file size of your PDF documents while maintaining the best possible quality. Free, fast and secure.',
+    icon: 'Minimize2',
+    slug: 'compress-pdf',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Compress PDF Online - Reduce PDF Size Without Losing Quality',
+      description: 'Shrink your PDF files for easier emailing and faster uploading. High quality compression, 100% private, and works in your browser.',
+      keywords: ['compress pdf', 'reduce pdf size', 'shrink pdf online', 'pdf optimizer free', 'small pdf'],
+    },
+    features: [
+      'Adjustable compression levels',
+      'Batch compression support',
+      'Quality preservation',
+      'Instant download'
+    ],
+    benefits: [
+      'Send large PDFs via email easily',
+      'Save storage space',
+      'Faster document loading'
+    ],
+    useCases: [
+      'Students uploading assignments',
+      'Businesses sending reports',
+      'Archiving old documents'
+    ],
+    faqs: [
+      {
+        question: 'Will compressing my PDF reduce text quality?',
+        answer: 'Our tool targets image resolution and metadata first, so text quality remains crisp and readable even at high compression levels.'
+      },
+       {
+        question: 'Is there a file size limit?',
+        answer: 'Since processing is client-side, the limit depends on your device memory. Most standard documents up to 50MB compress smoothly.'
+      }
+    ],
+    longContent: 'Use our <a href="/tools/compress-pdf" class="underline hover:text-blue-200">PDF Compressor</a> to optimize your documents for the web. By reducing redundant data and downsizing high-resolution images within the file, we can significantly cut the file size without compromising the readability of your content.'
+  },
+  {
+    id: 'unlock-pdf',
+    name: 'Unlock PDF',
+    title: 'Unlock PDF - Remove Password from PDF Online',
+    description: 'Remove passwords and security restrictions from your PDF files instantly. 100% private and secure.',
+    icon: 'Unlock',
+    slug: 'unlock-pdf',
+    category: 'pdf-tools',
+    isNew: true,
+    seo: {
+      title: 'Unlock PDF Online - Remove Password Protection Easily',
+      description: 'Remove PDF passwords and restrictions for free. Access secured documents instantly. No file upload required, all processing is local.',
+      keywords: ['unlock pdf', 'remove pdf password', 'pdf restriction remover', 'decrypt pdf online', 'free pdf unlocker'],
+    },
+    features: [
+      'Remove opening passwords',
+      'Strip printing and editing restrictions',
+      'Fast client-side decryption',
+      'Clean output file'
+    ],
+    benefits: [
+      'Access your own locked files',
+      'Enable printing for protected docs',
+      'Combine previously locked pages'
+    ],
+    useCases: [
+      'Forgetting your own PDF password',
+      'Printing "secured" reports',
+      'Editing read-only documents'
+    ],
+    faqs: [
+      {
+        question: 'Does this tool "crack" unknown passwords?',
+        answer: 'No, you must know the password to remove it. This tool is for authorized access only.'
+      }
+    ],
+    longContent: 'Our <a href="/tools/unlock-pdf" class="underline hover:text-blue-200">Unlock PDF Tool</a> allows you to regain full control over your documents. If you have a password-protected file and want to remove the unlock prompt forever, just enter the password once here.'
   }
 ];

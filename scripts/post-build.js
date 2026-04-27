@@ -59,7 +59,11 @@ ${routes.map(route => `  <url>
   const robots = `User-agent: *
 Allow: /
 
-Sitemap: ${BASE_URL}/sitemap.xml`;
+Sitemap: ${BASE_URL}/sitemap.xml
+
+Disallow:
+/admin/
+/login/`;
 
   if (!fs.existsSync(DIST_DIR)) {
     console.log('🏗️ Creating dist directory as it does not exist...');

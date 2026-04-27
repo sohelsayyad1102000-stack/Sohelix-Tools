@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
 
 Sitemap: https://sohelix.com/sitemap.xml
+
+Disallow:
+/admin/
+/login/
