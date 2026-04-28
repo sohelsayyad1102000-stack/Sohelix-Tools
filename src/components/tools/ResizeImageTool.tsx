@@ -81,6 +81,13 @@ export const ResizeImageTool: React.FC<ResizeImageToolProps> = ({ tool }) => {
     }
   }, []);
 
+  useEffect(() => {
+    return () => {
+      previews.forEach(url => URL.revokeObjectURL(url));
+      results.forEach(res => URL.revokeObjectURL(res.url));
+    };
+  }, [previews, results]);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       addFiles(Array.from(e.target.files));
@@ -111,21 +118,27 @@ export const ResizeImageTool: React.FC<ResizeImageToolProps> = ({ tool }) => {
     // Auto-fill dimensions from first file if empty
     if (validFiles.length > 0 && !width && !height) {
       const img = new Image();
-      img.src = URL.createObjectURL(validFiles[0]);
+      const tempUrl = URL.createObjectURL(validFiles[0]);
+      img.src = tempUrl;
       img.onload = () => {
         setWidth(pxToUnit(img.width, unit));
         setHeight(pxToUnit(img.height, unit));
+        URL.revokeObjectURL(tempUrl);
       };
+      img.onerror = () => URL.revokeObjectURL(tempUrl);
     }
   };
 
   const removeFile = (index: number) => {
+    URL.revokeObjectURL(previews[index]);
     setFiles(prev => prev.filter((_, i) => i !== index));
     setPreviews(prev => prev.filter((_, i) => i !== index));
     setResults([]);
   };
 
   const clearAll = () => {
+    previews.forEach(url => URL.revokeObjectURL(url));
+    results.forEach(res => URL.revokeObjectURL(res.url));
     setFiles([]);
     setPreviews([]);
     setResults([]);

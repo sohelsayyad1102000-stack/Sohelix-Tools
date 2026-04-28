@@ -82,6 +82,13 @@ export const CropperTool: React.FC<CropperToolProps> = ({ tool }) => {
     }
   }, [location.pathname]);
 
+  // cleanup on unmount or before creating new preview
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const selectedFile = e.target.files[0];

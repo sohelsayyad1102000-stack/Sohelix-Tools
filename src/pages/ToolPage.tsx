@@ -4,7 +4,6 @@ import { TOOLS } from '../constants/tools';
 import { CATEGORY_INFO } from '../constants/categories';
 import { SEO } from '../components/SEO';
 import { cn, formatBytes } from '../lib/utils';
-import * as Icons from 'lucide-react';
 import { 
   Upload, 
   Download, 
@@ -17,9 +16,14 @@ import {
   Shield,
   Zap,
   Lock,
-  MousePointer2
+  MousePointer2,
+  Loader2,
+  FileText,
+  Calculator,
+  Zap as ZapIcon
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { DynamicIcon } from '../components/DynamicIcon';
 import { 
   compressImage, 
   resizeImage, 
@@ -30,71 +34,75 @@ import {
   watermarkImage, 
   cropImage
 } from '../lib/image-processing';
-import { CompressorTool } from '../components/tools/CompressorTool';
-import { CropperTool } from '../components/tools/CropperTool';
-import { QRCodeGenerator } from '../components/tools/QRCodeGenerator';
-import { FaviconGenerator } from '../components/tools/FaviconGenerator';
-import { AgeCalculator } from '../components/tools/AgeCalculator';
-import { ImageToPDFTool } from '../components/tools/ImageToPDFTool';
-import { MergePDFTool } from '../components/tools/MergePDFTool';
-import { SplitPDFTool } from '../components/tools/SplitPDFTool';
-import { PDFToPNGTool } from '../components/tools/PDFToPNGTool';
-import { PDFToJPGTool } from '../components/tools/PDFToJPGTool';
-import { PDFReaderTool } from '../components/tools/PDFReaderTool';
-import { PDFPageCounter } from '../components/tools/PDFPageCounter';
-import { PDFPageRotator } from '../components/tools/PDFPageRotator';
-import { BMICalculator } from '../components/tools/BMICalculator';
-import { InterestCalculator } from '../components/tools/InterestCalculator';
-import { EMICalculator } from '../components/tools/EMICalculator';
-import { MetaTagGenerator } from '../components/tools/MetaTagGenerator';
-import { RobotsTxtGenerator } from '../components/tools/RobotsTxtGenerator';
-import { SitemapGenerator } from '../components/tools/SitemapGenerator';
-import { SlugGenerator } from '../components/tools/SlugGenerator';
-import { SerpPreview } from '../components/tools/SerpPreview';
-import { WordCounter } from '../components/tools/WordCounter';
-import { CaseConverter } from '../components/tools/CaseConverter';
-import { LineSorter } from '../components/tools/LineSorter';
-import { WhitespaceRemover } from '../components/tools/WhitespaceRemover';
-import { LoremIpsumGenerator } from '../components/tools/LoremIpsumGenerator';
-import { TextToHex } from '../components/tools/TextToHex';
-import { HexToText } from '../components/tools/HexToText';
-import { ColorPaletteGenerator } from '../components/tools/ColorPaletteGenerator';
-import { ImageColorPicker } from '../components/tools/ImageColorPicker';
-import { WebPToJPG } from '../components/tools/WebPToJPG';
-import { TimestampConverter } from '../components/tools/TimestampConverter';
-import { JSONFormatter } from '../components/tools/JSONFormatter';
-import { Base64Converter } from '../components/tools/Base64Converter';
-import { CurrencyConverter } from '../components/tools/CurrencyConverter';
-import { CurrencyDenomination } from '../components/tools/CurrencyDenomination';
-import { SIPCalculator } from '../components/tools/SIPCalculator';
-import { AdvancedLoanCalculator } from '../components/tools/AdvancedLoanCalculator';
-import { PercentageCalculator } from '../components/tools/PercentageCalculator';
-import { InflationCalculator } from '../components/tools/InflationCalculator';
-import { UUIDGenerator } from '../components/tools/UUIDGenerator';
-import { RegexTester } from '../components/tools/RegexTester';
-import { URLEncoderDecoder } from '../components/tools/URLEncoderDecoder';
-import { CSVToJSONConverter } from '../components/tools/CSVToJSONConverter';
-import { JSONToCSVConverter } from '../components/tools/JSONToCSVConverter';
-import { HTMLMinifier } from '../components/tools/HTMLMinifier';
-import { CSSMinifier } from '../components/tools/CSSMinifier';
-import { ResizeImageTool } from '../components/tools/ResizeImageTool';
-import { JSMinifier } from '../components/tools/JSMinifier';
-import { ColorConverter } from '../components/tools/ColorConverter';
-import { JpgToPngConverter } from '../components/tools/JpgToPngConverter';
-import { WebPConverter } from '../components/tools/WebPConverter';
-import { CalorieCalculator } from '../components/tools/CalorieCalculator';
-import { BMRCalculator } from '../components/tools/BMRCalculator';
-import { IdealWeightCalculator } from '../components/tools/IdealWeightCalculator';
-import { BodyFatCalculator } from '../components/tools/BodyFatCalculator';
-import { PDFToTextTool } from '../components/tools/PDFToTextTool';
-import { PDFMetadataViewer } from '../components/tools/PDFMetadataViewer';
-import { ImageToTextOCR } from '../components/tools/ImageToTextOCR';
-import { ImageToWordTool } from '../components/tools/ImageToWordTool';
-import { PDFToWordTool } from '../components/tools/PDFToWordTool';
-import { Base64ToImageTool } from '../components/tools/Base64ToImageTool';
-import { RandomNumberGenerator } from '../components/tools/RandomNumberGenerator';
-import { CompressPDFTool } from '../components/tools/CompressPDFTool';
-import { UnlockPDFTool } from '../components/tools/UnlockPDFTool';
+
+// Heavy Tool Components - Dynamically Imported
+const CompressorTool = React.lazy(() => import('../components/tools/CompressorTool').then(m => ({ default: m.CompressorTool })));
+const CropperTool = React.lazy(() => import('../components/tools/CropperTool').then(m => ({ default: m.CropperTool })));
+const QRCodeGenerator = React.lazy(() => import('../components/tools/QRCodeGenerator').then(m => ({ default: m.QRCodeGenerator })));
+const FaviconGenerator = React.lazy(() => import('../components/tools/FaviconGenerator').then(m => ({ default: m.FaviconGenerator })));
+const AgeCalculator = React.lazy(() => import('../components/tools/AgeCalculator').then(m => ({ default: m.AgeCalculator })));
+const ImageToPDFTool = React.lazy(() => import('../components/tools/ImageToPDFTool').then(m => ({ default: m.ImageToPDFTool })));
+const MergePDFTool = React.lazy(() => import('../components/tools/MergePDFTool').then(m => ({ default: m.MergePDFTool })));
+const SplitPDFTool = React.lazy(() => import('../components/tools/SplitPDFTool').then(m => ({ default: m.SplitPDFTool })));
+const PDFToPNGTool = React.lazy(() => import('../components/tools/PDFToPNGTool').then(m => ({ default: m.PDFToPNGTool })));
+const PDFToJPGTool = React.lazy(() => import('../components/tools/PDFToJPGTool').then(m => ({ default: m.PDFToJPGTool })));
+const PDFReaderTool = React.lazy(() => import('../components/tools/PDFReaderTool').then(m => ({ default: m.PDFReaderTool })));
+const PDFPageCounter = React.lazy(() => import('../components/tools/PDFPageCounter').then(m => ({ default: m.PDFPageCounter })));
+const PDFPageRotator = React.lazy(() => import('../components/tools/PDFPageRotator').then(m => ({ default: m.PDFPageRotator })));
+const BMICalculator = React.lazy(() => import('../components/BMICalculator').then(m => ({ default: m.BMICalculator })));
+const InterestCalculator = React.lazy(() => import('../components/tools/InterestCalculator').then(m => ({ default: m.InterestCalculator })));
+const EMICalculator = React.lazy(() => import('../components/tools/EMICalculator').then(m => ({ default: m.EMICalculator })));
+const MetaTagGenerator = React.lazy(() => import('../components/tools/MetaTagGenerator').then(m => ({ default: m.MetaTagGenerator })));
+const RobotsTxtGenerator = React.lazy(() => import('../components/tools/RobotsTxtGenerator').then(m => ({ default: m.RobotsTxtGenerator })));
+const SitemapGenerator = React.lazy(() => import('../components/tools/SitemapGenerator').then(m => ({ default: m.SitemapGenerator })));
+const SlugGenerator = React.lazy(() => import('../components/tools/SlugGenerator').then(m => ({ default: m.SlugGenerator })));
+const SerpPreview = React.lazy(() => import('../components/tools/SerpPreview').then(m => ({ default: m.SerpPreview })));
+const WordCounter = React.lazy(() => import('../components/tools/WordCounter').then(m => ({ default: m.WordCounter })));
+const CaseConverter = React.lazy(() => import('../components/tools/CaseConverter').then(m => ({ default: m.CaseConverter })));
+const LineSorter = React.lazy(() => import('../components/tools/LineSorter').then(m => ({ default: m.LineSorter })));
+const WhitespaceRemover = React.lazy(() => import('../components/tools/WhitespaceRemover').then(m => ({ default: m.WhitespaceRemover })));
+const LoremIpsumGenerator = React.lazy(() => import('../components/tools/LoremIpsumGenerator').then(m => ({ default: m.LoremIpsumGenerator })));
+const TextToHex = React.lazy(() => import('../components/tools/TextToHex').then(m => ({ default: m.TextToHex })));
+const HexToText = React.lazy(() => import('../components/tools/HexToText').then(m => ({ default: m.HexToText })));
+const ColorPaletteGenerator = React.lazy(() => import('../components/tools/ColorPaletteGenerator').then(m => ({ default: m.ColorPaletteGenerator })));
+const ImageColorPicker = React.lazy(() => import('../components/tools/ImageColorPicker').then(m => ({ default: m.ImageColorPicker })));
+const WebPToJPG = React.lazy(() => import('../components/tools/WebPToJPG').then(m => ({ default: m.WebPToJPG })));
+const TimestampConverter = React.lazy(() => import('../components/tools/TimestampConverter').then(m => ({ default: m.TimestampConverter })));
+const JSONFormatter = React.lazy(() => import('../components/tools/JSONFormatter').then(m => ({ default: m.JSONFormatter })));
+const Base64Converter = React.lazy(() => import('../components/tools/Base64Converter').then(m => ({ default: m.Base64Converter })));
+const CurrencyConverter = React.lazy(() => import('../components/tools/CurrencyConverter').then(m => ({ default: m.CurrencyConverter })));
+const CurrencyDenomination = React.lazy(() => import('../components/tools/CurrencyDenomination').then(m => ({ default: m.CurrencyDenomination })));
+const SIPCalculator = React.lazy(() => import('../components/tools/SIPCalculator').then(m => ({ default: m.SIPCalculator })));
+const AdvancedLoanCalculator = React.lazy(() => import('../components/tools/AdvancedLoanCalculator').then(m => ({ default: m.AdvancedLoanCalculator })));
+const PercentageCalculator = React.lazy(() => import('../components/tools/PercentageCalculator').then(m => ({ default: m.PercentageCalculator })));
+const InflationCalculator = React.lazy(() => import('../components/tools/InflationCalculator').then(m => ({ default: m.InflationCalculator })));
+const UUIDGenerator = React.lazy(() => import('../components/tools/UUIDGenerator').then(m => ({ default: m.UUIDGenerator })));
+const RegexTester = React.lazy(() => import('../components/tools/RegexTester').then(m => ({ default: m.RegexTester })));
+const URLEncoderDecoder = React.lazy(() => import('../components/tools/URLEncoderDecoder').then(m => ({ default: m.URLEncoderDecoder })));
+const CSVToJSONConverter = React.lazy(() => import('../components/tools/CSVToJSONConverter').then(m => ({ default: m.CSVToJSONConverter })));
+const JSONToCSVConverter = React.lazy(() => import('../components/tools/JSONToCSVConverter').then(m => ({ default: m.JSONToCSVConverter })));
+const HTMLMinifier = React.lazy(() => import('../components/tools/HTMLMinifier').then(m => ({ default: m.HTMLMinifier })));
+const CSSMinifier = React.lazy(() => import('../components/tools/CSSMinifier').then(m => ({ default: m.CSSMinifier })));
+const ResizeImageTool = React.lazy(() => import('../components/tools/ResizeImageTool').then(m => ({ default: m.ResizeImageTool })));
+const JSMinifier = React.lazy(() => import('../components/tools/JSMinifier').then(m => ({ default: m.JSMinifier })));
+const ColorConverter = React.lazy(() => import('../components/tools/ColorConverter').then(m => ({ default: m.ColorConverter })));
+const JpgToPngConverter = React.lazy(() => import('../components/tools/JpgToPngConverter').then(m => ({ default: m.JpgToPngConverter })));
+const WebPConverter = React.lazy(() => import('../components/tools/WebPConverter').then(m => ({ default: m.WebPConverter })));
+const CalorieCalculator = React.lazy(() => import('../components/tools/CalorieCalculator').then(m => ({ default: m.CalorieCalculator })));
+const BMRCalculator = React.lazy(() => import('../components/tools/BMRCalculator').then(m => ({ default: m.BMRCalculator })));
+const IdealWeightCalculator = React.lazy(() => import('../components/tools/IdealWeightCalculator').then(m => ({ default: m.IdealWeightCalculator })));
+const BodyFatCalculator = React.lazy(() => import('../components/tools/BodyFatCalculator').then(m => ({ default: m.BodyFatCalculator })));
+const PDFToTextTool = React.lazy(() => import('../components/tools/PDFToTextTool').then(m => ({ default: m.PDFToTextTool })));
+const PDFMetadataViewer = React.lazy(() => import('../components/tools/PDFMetadataViewer').then(m => ({ default: m.PDFMetadataViewer })));
+const ImageToTextOCR = React.lazy(() => import('../components/tools/ImageToTextOCR').then(m => ({ default: m.ImageToTextOCR })));
+const ImageToWordTool = React.lazy(() => import('../components/tools/ImageToWordTool').then(m => ({ default: m.ImageToWordTool })));
+const PDFToWordTool = React.lazy(() => import('../components/tools/PDFToWordTool').then(m => ({ default: m.PDFToWordTool })));
+const Base64ToImageTool = React.lazy(() => import('../components/tools/Base64ToImageTool').then(m => ({ default: m.Base64ToImageTool })));
+const RandomNumberGenerator = React.lazy(() => import('../components/tools/RandomNumberGenerator').then(m => ({ default: m.RandomNumberGenerator })));
+const CompressPDFTool = React.lazy(() => import('../components/tools/CompressPDFTool').then(m => ({ default: m.CompressPDFTool })));
+const UnlockPDFTool = React.lazy(() => import('../components/tools/UnlockPDFTool').then(m => ({ default: m.UnlockPDFTool })));
+const InterestCalculatorVariant = React.lazy(() => import('../components/tools/InterestCalculator').then(m => ({ default: m.InterestCalculator })));
+const EMICalculatorVariant = React.lazy(() => import('../components/tools/EMICalculator').then(m => ({ default: m.EMICalculator })));
 import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -165,6 +173,19 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
     // Fallback to category matches
     return TOOLS.filter(t => t.id !== tool.id && t.category === tool.category).slice(0, 4);
   }, [tool]);
+
+  // cleanup on unmount or file change
+  React.useEffect(() => {
+    return () => {
+      previews.forEach(url => URL.revokeObjectURL(url));
+      results.forEach(res => {
+        if (typeof res.blob !== 'string') {
+          // No direct way to clean up here if we don't store URLs, 
+          // but we do create URLs in downloadAll.
+        }
+      });
+    };
+  }, [previews]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -293,7 +314,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 text-center">
         <div className="h-20 w-20 rounded-3xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-6">
-          <Icons.Calculator className="h-10 w-10 text-gray-400" />
+          <Calculator className="h-10 w-10 text-gray-400" />
         </div>
         <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-4">Tool Not Found</h1>
         <p className="text-gray-500 dark:text-gray-400 max-w-md mb-8">
@@ -440,352 +461,145 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
 
       {/* Tool Interface */}
       <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
-        {tool.id === 'compress-image' ? (
-          <CompressorTool tool={tool} />
-        ) : tool.id === 'resize-image' ? (
-          <ResizeImageTool tool={tool} />
-        ) : tool.id === 'crop-image' ? (
-          <CropperTool tool={tool} />
-        ) : tool.id === 'jpg-to-png' ? (
-          <JpgToPngConverter tool={tool} />
-        ) : tool.id === 'webp-converter' ? (
-          <WebPConverter tool={tool} />
-        ) : tool.id === 'qr-code-generator' ? (
-          <QRCodeGenerator tool={tool} />
-        ) : tool.id === 'favicon-generator' ? (
-          <FaviconGenerator tool={tool} />
-        ) : tool.id === 'age-calculator' ? (
-          <AgeCalculator tool={tool} />
-        ) : tool.id === 'image-to-pdf' ? (
-          <ImageToPDFTool tool={tool} />
-        ) : tool.id === 'merge-pdf' ? (
-          <MergePDFTool tool={tool} />
-        ) : tool.id === 'split-pdf' ? (
-          <SplitPDFTool tool={tool} />
-        ) : tool.id === 'pdf-to-png' ? (
-          <PDFToPNGTool tool={tool} />
-        ) : tool.id === 'pdf-to-jpg' ? (
-          <PDFToJPGTool tool={tool} />
-        ) : tool.id === 'pdf-reader' ? (
-          <PDFReaderTool tool={tool} />
-        ) : tool.id === 'pdf-page-counter' ? (
-          <PDFPageCounter tool={tool} />
-        ) : tool.id === 'pdf-page-rotator' ? (
-          <PDFPageRotator tool={tool} />
-        ) : tool.id === 'bmi-calculator' ? (
-          <BMICalculator tool={tool} />
-        ) : tool.id === 'calorie-calculator' ? (
-          <CalorieCalculator tool={tool} />
-        ) : tool.id === 'bmr-calculator' ? (
-          <BMRCalculator tool={tool} />
-        ) : tool.id === 'ideal-weight-calculator' ? (
-          <IdealWeightCalculator tool={tool} />
-        ) : tool.id === 'body-fat-calculator' ? (
-          <BodyFatCalculator tool={tool} />
-        ) : tool.id === 'pdf-to-text' ? (
-          <PDFToTextTool tool={tool} />
-        ) : tool.id === 'pdf-metadata-viewer' ? (
-          <PDFMetadataViewer tool={tool} />
-        ) : tool.id === 'image-to-text' ? (
-          <ImageToTextOCR tool={tool} />
-        ) : tool.id === 'image-to-word' ? (
-          <ImageToWordTool tool={tool} />
-        ) : tool.id === 'base64-to-image' ? (
-          <Base64ToImageTool tool={tool} />
-        ) : tool.id === 'pdf-to-word' ? (
-          <PDFToWordTool tool={tool} />
-        ) : tool.id === 'random-number-generator' ? (
-          <RandomNumberGenerator />
-        ) : tool.id === 'compress-pdf' ? (
-          <CompressPDFTool />
-        ) : tool.id === 'unlock-pdf' ? (
-          <UnlockPDFTool />
-        ) : tool.id === 'interest-calculator' ? (
-          <InterestCalculator tool={tool} />
-        ) : tool.id === 'emi-calculator' ? (
-          <EMICalculator tool={tool} />
-        ) : tool.id === 'meta-tag-generator' ? (
-          <MetaTagGenerator />
-        ) : tool.id === 'robots-txt-generator' ? (
-          <RobotsTxtGenerator />
-        ) : tool.id === 'sitemap-generator' ? (
-          <SitemapGenerator />
-        ) : tool.id === 'slug-generator' ? (
-          <SlugGenerator />
-        ) : tool.id === 'serp-preview' ? (
-          <SerpPreview />
-        ) : tool.id === 'word-counter' ? (
-          <WordCounter />
-        ) : tool.id === 'case-converter' ? (
-          <CaseConverter />
-        ) : tool.id === 'line-sorter' ? (
-          <LineSorter />
-        ) : tool.id === 'whitespace-remover' ? (
-          <WhitespaceRemover />
-        ) : tool.id === 'lorem-ipsum-generator' ? (
-          <LoremIpsumGenerator />
-        ) : tool.id === 'text-to-hex' ? (
-          <TextToHex />
-        ) : tool.id === 'hex-to-text' ? (
-          <HexToText />
-        ) : tool.id === 'color-palette-generator' ? (
-          <ColorPaletteGenerator />
-        ) : tool.id === 'image-color-picker' ? (
-          <ImageColorPicker />
-        ) : tool.id === 'webp-to-jpg' ? (
-          <WebPToJPG />
-        ) : tool.id === 'timestamp-converter' ? (
-          <TimestampConverter />
-        ) : tool.id === 'json-formatter' ? (
-          <JSONFormatter />
-        ) : tool.id === 'base64-converter' ? (
-          <Base64Converter />
-        ) : tool.id === 'currency-converter' ? (
-          <CurrencyConverter tool={tool} />
-        ) : tool.id === 'currency-denomination' ? (
-          <CurrencyDenomination tool={tool} />
-        ) : tool.id === 'sip-calculator' ? (
-          <SIPCalculator tool={tool} />
-        ) : tool.id === 'advanced-loan-calculator' ? (
-          <AdvancedLoanCalculator tool={tool} />
-        ) : tool.id === 'percentage-calculator' ? (
-          <PercentageCalculator tool={tool} />
-        ) : tool.id === 'inflation-calculator' ? (
-          <InflationCalculator tool={tool} />
-        ) : tool.id === 'uuid-generator' ? (
-          <UUIDGenerator />
-        ) : tool.id === 'regex-tester' ? (
-          <RegexTester />
-        ) : tool.id === 'url-encoder-decoder' ? (
-          <URLEncoderDecoder />
-        ) : tool.id === 'csv-to-json' ? (
-          <CSVToJSONConverter />
-        ) : tool.id === 'json-to-csv' ? (
-          <JSONToCSVConverter />
-        ) : tool.id === 'html-minifier' ? (
-          <HTMLMinifier />
-        ) : tool.id === 'css-minifier' ? (
-          <CSSMinifier />
-        ) : tool.id === 'js-minifier' ? (
-          <JSMinifier />
-        ) : tool.id === 'color-converter' ? (
-          <ColorConverter />
-        ) : (
-          <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
-            <div className="grid grid-cols-1 lg:grid-cols-3">
-              
-              {/* Main Area */}
-              <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800">
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  className="hidden" 
-                  multiple 
-                  accept="image/*" 
-                  onChange={handleFileChange}
-                />
-                {files.length === 0 ? (
-                  <div 
-                    onDragOver={(e) => e.preventDefault()}
-                    onDrop={onDrop}
-                    onClick={() => fileInputRef.current?.click()}
-                    className="group flex h-96 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 transition-all hover:border-blue-400 hover:bg-blue-50/30 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:border-blue-500"
-                  >
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-lg transition-transform group-hover:scale-110 dark:bg-gray-800">
-                      <Upload className="h-10 w-10 text-blue-600" />
-                    </div>
-                    <h3 className="mt-6 text-xl font-bold text-gray-900 dark:text-white">Select images or drag & drop here</h3>
-                    <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Supports JPG, PNG, WebP, SVG</p>
-                  </div>
-                ) : (
-                  <div className="space-y-6">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">Selected Images ({files.length})</h3>
-                      <div className="flex gap-4">
-                        <button 
-                          onClick={() => fileInputRef.current?.click()}
-                          className="text-sm font-medium text-blue-600 hover:underline"
-                        >
-                          Add More
-                        </button>
-                        <button 
-                          onClick={() => { setFiles([]); setPreviews([]); setResults([]); }}
-                          className="text-sm font-medium text-red-600 hover:underline"
-                        >
-                          Clear All
-                        </button>
-                      </div>
-                    </div>
-                    
-                    {error && (
-                      <div className="rounded-lg bg-red-50 p-4 text-sm text-red-600 dark:bg-red-900/20 dark:text-red-400">
-                        {error}
-                      </div>
-                    )}
-
-                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 max-h-[500px] overflow-y-auto pr-2">
-                      {previews.map((url, i) => (
-                        <div key={i} className="group relative aspect-square overflow-hidden rounded-xl border border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800">
-                          <img src={url} alt="Preview" className="h-full w-full object-cover" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
-                            <span className="text-xs font-bold text-white uppercase mb-2">{formatBytes(files[i].size)}</span>
-                            <button 
-                              onClick={(e) => { e.stopPropagation(); removeFile(i); }}
-                              className="rounded-full bg-red-600 p-2 text-white hover:bg-red-700"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Sidebar Settings */}
-              <div className="bg-gray-50/50 p-8 dark:bg-gray-800/30">
-                <div className="flex items-center gap-2 mb-6">
-                  <Settings2 className="h-5 w-5 text-blue-600" />
-                  <h3 className="font-bold text-gray-900 dark:text-white">Settings</h3>
-                </div>
-
-                <div className="space-y-6">
-                  {tool.id === 'resize-image' && (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Width (px)</label>
-                        <input 
-                          type="number" 
-                          value={width} 
-                          onChange={(e) => setWidth(e.target.value ? Number(e.target.value) : '')}
-                          placeholder="Auto"
-                          className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Height (px)</label>
-                        <input 
-                          type="number" 
-                          value={height} 
-                          onChange={(e) => setHeight(e.target.value ? Number(e.target.value) : '')}
-                          placeholder="Auto"
-                          className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                        />
-                      </div>
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        <button onClick={() => { setWidth(1920); setHeight(1080); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">1080p (1920x1080)</button>
-                        <button onClick={() => { setWidth(1280); setHeight(720); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">720p (1280x720)</button>
-                        <button onClick={() => { setWidth(1080); setHeight(1080); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Post (1080x1080)</button>
-                        <button onClick={() => { setWidth(1080); setHeight(1350); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Portrait (1080x1350)</button>
-                        <button onClick={() => { setWidth(1080); setHeight(1920); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Instagram Story (1080x1920)</button>
-                        <button onClick={() => { setWidth(1200); setHeight(630); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Facebook Post (1200x630)</button>
-                        <button onClick={() => { setWidth(1200); setHeight(675); }} className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400">Twitter Post (1200x675)</button>
-                      </div>
-                    </div>
-                  )}
-
-                  {tool.id === 'image-watermark' && (
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Watermark Text</label>
-                      <input 
-                        type="text" 
-                        value={watermarkText} 
-                        onChange={(e) => setWatermarkText(e.target.value)}
-                        className="mt-1 block w-full rounded-lg border-gray-200 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                      />
-                    </div>
-                  )}
-
-                  {tool.id === 'image-rotate' && (
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Rotation Angle: {rotationAngle}°</label>
-                      <input 
-                        type="range" 
-                        min="0" 
-                        max="360" 
-                        step="90" 
-                        value={rotationAngle} 
-                        onChange={(e) => setRotationAngle(Number(e.target.value))}
-                        className="mt-2 w-full accent-blue-600"
-                      />
-                    </div>
-                  )}
-
-                  {tool.id === 'blur-image' && (
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Blur Amount: {blurAmount}px</label>
-                      <input 
-                        type="range" 
-                        min="1" 
-                        max="50" 
-                        step="1" 
-                        value={blurAmount} 
-                        onChange={(e) => setBlurAmount(Number(e.target.value))}
-                        className="mt-2 w-full accent-blue-600"
-                      />
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-2">
-                    <input 
-                      type="checkbox" 
-                      id="autoDownload" 
-                      checked={autoDownload} 
-                      onChange={(e) => setAutoDownload(e.target.checked)}
-                      className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
-                    />
-                    <label htmlFor="autoDownload" className="text-sm text-gray-700 dark:text-gray-300">
-                      Auto-download when done
-                    </label>
-                  </div>
-
-                  <button
-                    disabled={files.length === 0 || isProcessing}
-                    onClick={processImages}
-                    className={cn(
-                      "w-full rounded-xl py-4 font-bold text-white shadow-lg transition-all flex items-center justify-center gap-2",
-                      files.length === 0 || isProcessing 
-                        ? "bg-gray-300 cursor-not-allowed dark:bg-gray-700" 
-                        : "bg-blue-600 hover:bg-blue-700 shadow-blue-500/30"
-                    )}
-                  >
-                    {isProcessing ? (
-                      <>
-                        <RefreshCcw className="h-5 w-5 animate-spin" />
-                        Processing... {progress}%
-                      </>
-                    ) : (
-                      <>
-                        Process {files.length > 0 ? files.length : ''} Images
-                      </>
-                    )}
-                  </button>
-
-                  {results.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="space-y-3"
-                    >
-                      <button
-                        onClick={() => downloadAll()}
-                        className="w-full rounded-xl bg-green-600 py-4 font-bold text-white shadow-lg shadow-green-500/30 transition-all hover:bg-green-700 flex items-center justify-center gap-2"
-                      >
-                        <Download className="h-5 w-5" />
-                        Download All
-                      </button>
-                      <div className="rounded-lg bg-green-50 p-3 text-center text-sm text-green-700 dark:bg-green-900/20 dark:text-green-400">
-                        <p>Original: {formatBytes(results.reduce((acc, r) => acc + r.originalSize, 0))}</p>
-                        <p className="font-bold">New size: {formatBytes(results.reduce((acc, r) => acc + r.size, 0))}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              </div>
-            </div>
+        <React.Suspense fallback={
+          <div className="flex flex-col items-center justify-center p-20 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl">
+            <Loader2 className="h-12 w-12 text-blue-600 animate-spin mb-4" />
+            <p className="font-bold text-gray-500 animate-pulse">Loading {tool.name}...</p>
           </div>
-        )}
+        }>
+          {tool.id === 'compress-image' ? (
+            <CompressorTool tool={tool} />
+          ) : tool.id === 'resize-image' ? (
+            <ResizeImageTool tool={tool} />
+          ) : tool.id === 'crop-image' ? (
+            <CropperTool tool={tool} />
+          ) : tool.id === 'jpg-to-png' ? (
+            <JpgToPngConverter tool={tool} />
+          ) : tool.id === 'webp-converter' ? (
+            <WebPConverter tool={tool} />
+          ) : tool.id === 'qr-code-generator' ? (
+            <QRCodeGenerator tool={tool} />
+          ) : tool.id === 'favicon-generator' ? (
+            <FaviconGenerator tool={tool} />
+          ) : tool.id === 'age-calculator' ? (
+            <AgeCalculator tool={tool} />
+          ) : tool.id === 'image-to-pdf' ? (
+            <ImageToPDFTool tool={tool} />
+          ) : tool.id === 'merge-pdf' ? (
+            <MergePDFTool tool={tool} />
+          ) : tool.id === 'split-pdf' ? (
+            <SplitPDFTool tool={tool} />
+          ) : tool.id === 'pdf-to-png' ? (
+            <PDFToPNGTool tool={tool} />
+          ) : tool.id === 'pdf-to-jpg' ? (
+            <PDFToJPGTool tool={tool} />
+          ) : tool.id === 'pdf-reader' ? (
+            <PDFReaderTool tool={tool} />
+          ) : tool.id === 'pdf-page-counter' ? (
+            <PDFPageCounter tool={tool} />
+          ) : tool.id === 'pdf-page-rotator' ? (
+            <PDFPageRotator tool={tool} />
+          ) : tool.id === 'bmi-calculator' ? (
+            <BMICalculator tool={tool} />
+          ) : tool.id === 'calorie-calculator' ? (
+            <CalorieCalculator tool={tool} />
+          ) : tool.id === 'bmr-calculator' ? (
+            <BMRCalculator tool={tool} />
+          ) : tool.id === 'ideal-weight-calculator' ? (
+            <IdealWeightCalculator tool={tool} />
+          ) : tool.id === 'body-fat-calculator' ? (
+            <BodyFatCalculator tool={tool} />
+          ) : tool.id === 'pdf-to-text' ? (
+            <PDFToTextTool tool={tool} />
+          ) : tool.id === 'pdf-metadata-viewer' ? (
+            <PDFMetadataViewer tool={tool} />
+          ) : tool.id === 'image-to-text' ? (
+            <ImageToTextOCR tool={tool} />
+          ) : tool.id === 'image-to-word' ? (
+            <ImageToWordTool tool={tool} />
+          ) : tool.id === 'base64-to-image' ? (
+            <Base64ToImageTool tool={tool} />
+          ) : tool.id === 'pdf-to-word' ? (
+            <PDFToWordTool tool={tool} />
+          ) : tool.id === 'random-number-generator' ? (
+            <RandomNumberGenerator />
+          ) : tool.id === 'compress-pdf' ? (
+            <CompressPDFTool />
+          ) : tool.id === 'unlock-pdf' ? (
+            <UnlockPDFTool />
+          ) : tool.id === 'meta-tag-generator' ? (
+            <MetaTagGenerator />
+          ) : tool.id === 'robots-txt-generator' ? (
+            <RobotsTxtGenerator />
+          ) : tool.id === 'sitemap-generator' ? (
+            <SitemapGenerator />
+          ) : tool.id === 'slug-generator' ? (
+            <SlugGenerator />
+          ) : tool.id === 'serp-preview' ? (
+            <SerpPreview />
+          ) : tool.id === 'word-counter' ? (
+            <WordCounter />
+          ) : tool.id === 'case-converter' ? (
+            <CaseConverter />
+          ) : tool.id === 'line-sorter' ? (
+            <LineSorter />
+          ) : tool.id === 'whitespace-remover' ? (
+            <WhitespaceRemover />
+          ) : tool.id === 'lorem-ipsum-generator' ? (
+            <LoremIpsumGenerator />
+          ) : tool.id === 'text-to-hex' ? (
+            <TextToHex />
+          ) : tool.id === 'hex-to-text' ? (
+            <HexToText />
+          ) : tool.id === 'color-palette-generator' ? (
+            <ColorPaletteGenerator />
+          ) : tool.id === 'image-color-picker' ? (
+            <ImageColorPicker />
+          ) : tool.id === 'webp-to-jpg' ? (
+            <WebPToJPG />
+          ) : tool.id === 'timestamp-converter' ? (
+            <TimestampConverter />
+          ) : tool.id === 'json-formatter' ? (
+            <JSONFormatter />
+          ) : tool.id === 'base64-converter' ? (
+            <Base64Converter />
+          ) : tool.id === 'currency-converter' ? (
+            <CurrencyConverter />
+          ) : tool.id === 'currency-denomination' ? (
+            <CurrencyDenomination />
+          ) : tool.id === 'interest-calculator' ? (
+            <InterestCalculatorVariant />
+          ) : tool.id === 'sip-calculator' ? (
+            <SIPCalculator />
+          ) : tool.id === 'emi-calculator' ? (
+            <EMICalculatorVariant />
+          ) : tool.id === 'advanced-loan-calculator' ? (
+            <AdvancedLoanCalculator />
+          ) : tool.id === 'percentage-calculator' ? (
+            <PercentageCalculator />
+          ) : tool.id === 'inflation-calculator' ? (
+            <InflationCalculator />
+          ) : tool.id === 'uuid-generator' ? (
+            <UUIDGenerator />
+          ) : tool.id === 'regex-tester' ? (
+            <RegexTester />
+          ) : tool.id === 'url-encoder-decoder' ? (
+            <URLEncoderDecoder />
+          ) : tool.id === 'csv-to-json' ? (
+            <CSVToJSONConverter />
+          ) : tool.id === 'json-to-csv' ? (
+            <JSONToCSVConverter />
+          ) : tool.id === 'html-minifier' ? (
+            <HTMLMinifier />
+          ) : tool.id === 'css-minifier' ? (
+            <CSSMinifier />
+          ) : tool.id === 'js-minifier' ? (
+            <JSMinifier />
+          ) : tool.id === 'color-converter' ? (
+            <ColorConverter />
+          ) : null}
+        </React.Suspense>
+      </section>
 
         {/* SEO Content Sections */}
         <section className="mt-24">
@@ -877,7 +691,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
             <aside className="space-y-8">
               <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <Icons.Zap className="h-5 w-5 text-yellow-500" />
+                  <ZapIcon className="h-5 w-5 text-yellow-500" />
                   Popular Tools
                 </h3>
                 <div className="space-y-3">
@@ -888,7 +702,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                       className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
                     >
                       <div className="h-8 w-8 rounded bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                        {React.createElement((Icons as any)[t.icon] || Icons.FileImage, { className: "h-4 w-4" })}
+                        <DynamicIcon iconName={t.icon} className="h-4 w-4" />
                       </div>
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600">{t.name}</span>
                     </Link>
@@ -916,7 +730,6 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Related Tools</h2>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {relatedTools.map(rt => {
-                const IconComponent = (Icons as any)[rt.icon] || Icons.FileImage;
                 return (
                   <Link 
                     key={rt.id} 
@@ -924,7 +737,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                     className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
                   >
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
-                      <IconComponent className="h-5 w-5" />
+                      <DynamicIcon iconName={rt.icon} className="h-5 w-5" />
                     </div>
                     <h3 className="font-bold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">{rt.name}</h3>
                     <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{rt.description}</p>
@@ -953,7 +766,6 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
             </div>
           </div>
         )}
-      </section>
     </div>
   );
 };

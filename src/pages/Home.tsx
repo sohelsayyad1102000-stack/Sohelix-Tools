@@ -4,6 +4,7 @@ import { TOOLS } from '../constants/tools';
 import { BLOG_POSTS } from '../constants/blog';
 import { ToolCard } from '../components/ToolCard';
 import { SEO } from '../components/SEO';
+import { DynamicIcon } from '../components/DynamicIcon';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Shield, 
@@ -29,7 +30,6 @@ import {
   BookOpen,
   Calendar
 } from 'lucide-react';
-import * as Icons from 'lucide-react';
 import { cn } from '../lib/utils';
 
 import { useToolHistory } from '../hooks/useToolHistory';
@@ -164,7 +164,7 @@ export const Home: React.FC = () => {
                       <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-4 mb-2">Suggestions</p>
                       {searchSuggestions.length > 0 ? (
                         searchSuggestions.map((item: any) => {
-                          const IconComponent = item.type === 'category' ? item.icon : ((Icons as any)[item.icon] || Icons.FileImage);
+                          const IconComponent = item.type === 'category' ? item.icon : null;
                           return (
                             <button
                               key={item.id}
@@ -181,7 +181,7 @@ export const Home: React.FC = () => {
                               className="flex w-full items-center gap-4 px-4 py-3 text-left hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-2xl transition-colors group"
                             >
                               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-500 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <IconComponent className="h-5 w-5" />
+                                {item.type === 'category' ? <IconComponent className="h-5 w-5" /> : <DynamicIcon name={item.icon} className="h-5 w-5" />}
                               </div>
                               <div>
                                 <p className="font-bold text-gray-900 dark:text-white">
@@ -308,7 +308,6 @@ export const Home: React.FC = () => {
             {history.map((item) => {
               const tool = TOOLS.find(t => t.id === item.id);
               if (!tool) return null;
-              const IconComponent = (Icons as any)[tool.icon] || Icons.FileImage;
               return (
                 <Link 
                   key={item.id}
@@ -316,7 +315,7 @@ export const Home: React.FC = () => {
                   className="group flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all hover:border-blue-200 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900/50"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-gray-600 transition-colors group-hover:bg-blue-600 group-hover:text-white dark:bg-gray-800 dark:text-gray-400">
-                    <IconComponent className="h-6 w-6" />
+                    <DynamicIcon name={tool.icon} className="h-6 w-6" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="truncate font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">{tool.name}</h3>

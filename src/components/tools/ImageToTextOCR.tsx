@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Upload, ImageIcon, Download, Copy, Trash2, Loader2, Languages, Hash, CheckCircle2, Sparkles } from 'lucide-react';
 import { createWorker } from 'tesseract.js';
 import { cn } from '../../lib/utils';
@@ -36,10 +36,20 @@ export const ImageToTextOCR: React.FC<{ tool: any }> = ({ tool }) => {
   const [showOriginal, setShowOriginal] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const workerRef = useRef<any>(null);
+
+  // cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (workerRef.current) workerRef.current.terminate();
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile && selectedFile.type.startsWith('image/')) {
+      if (preview) URL.revokeObjectURL(preview);
       setFile(selectedFile);
       setPreview(URL.createObjectURL(selectedFile));
       setResult(null);
@@ -65,7 +75,10 @@ export const ImageToTextOCR: React.FC<{ tool: any }> = ({ tool }) => {
       let langToUse = language === 'auto' ? 'eng' : (language === 'mixed' ? 'eng+hin' : language);
       
       const performOCR = async (l: string) => {
-        const worker = await createWorker(l, 1, {
+        if (workerRef.current) {
+          await workerRef.current.terminate();
+        }
+        workerRef.current = await createWorker(l, 1, {
           logger: (m) => {
             if (m.status === 'recognizing text') {
               setProgress(Math.round(m.progress * 100));
@@ -75,8 +88,7 @@ export const ImageToTextOCR: React.FC<{ tool: any }> = ({ tool }) => {
             }
           },
         });
-        const { data } = await worker.recognize(file);
-        await worker.terminate();
+        const { data } = await workerRef.current.recognize(file);
         return data;
       };
 

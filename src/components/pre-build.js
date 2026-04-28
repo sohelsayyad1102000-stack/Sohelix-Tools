@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '../../');
 
 // This script extracts slugs from constants to generate a flat list of routes for SSG
 const toolsContent = fs.readFileSync(path.resolve(root, 'src/constants/tools.ts'), 'utf-8');

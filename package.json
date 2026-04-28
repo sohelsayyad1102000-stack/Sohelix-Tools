@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "node scripts/pre-build.js && vite build --outDir dist && vite build --ssr src/entry-server.tsx --outDir dist/server --emptyOutDir false && node scripts/prerender.js && node scripts/post-build.js",
+    "build": "node src/components/pre-build.js && vite build --outDir dist && vite build --ssr src/entry-server.tsx --outDir dist/server --emptyOutDir false && node scripts/prerender.js && node src/post-build.js",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"

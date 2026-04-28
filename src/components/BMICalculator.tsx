@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Scale, 
   Ruler, 
@@ -20,8 +21,8 @@ import {
   Zap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { cn } from '../../lib/utils';
-import { CalculatorInput } from '../CalculatorInput';
+import { cn } from '../lib/utils';
+import { CalculatorInput } from './CalculatorInput';
 
 interface BMICalculatorProps {
   tool: any;
@@ -396,9 +397,9 @@ Healthy Range: ${results.healthyRange.min} - ${results.healthyRange.max} kg`;
             { name: 'Ideal Weight', icon: 'Scale', color: 'bg-green-50 text-green-600', slug: 'ideal-weight-calculator' },
             { name: 'Body Fat %', icon: 'TrendingUp', color: 'bg-purple-50 text-purple-600', slug: 'body-fat-calculator' },
           ].map((item) => (
-            <a 
+            <Link 
               key={item.slug}
-              href={`/tools/${item.slug}`}
+              to={`/tools/${item.slug}`}
               className="group p-6 rounded-3xl bg-white border border-gray-100 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 dark:bg-gray-900 dark:border-gray-800"
             >
               <div className={cn("h-12 w-12 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110", item.color)}>
@@ -406,7 +407,7 @@ Healthy Range: ${results.healthyRange.min} - ${results.healthyRange.max} kg`;
               </div>
               <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">{item.name}</h4>
               <p className="text-xs text-gray-500 mt-1">Calculate your {item.name.toLowerCase()} instantly.</p>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

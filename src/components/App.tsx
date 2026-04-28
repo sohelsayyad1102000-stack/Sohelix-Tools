@@ -1,9 +1,9 @@
 import { useRoutes, useLocation } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
-import { routes } from './routes';
+import { Navbar } from './Navbar';
+import { Footer } from './Footer';
+import { routes } from '../routes';
 import { AnimatePresence, motion } from 'motion/react';
-import { ClientOnly } from './components/ClientOnly';
+import { ClientOnly } from './ClientOnly';
 
 export default function App() {
   const content = useRoutes(routes);

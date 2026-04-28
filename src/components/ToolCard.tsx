@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as Icons from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Tool } from '../types';
 import { motion } from 'motion/react';
+import { DynamicIcon } from './DynamicIcon';
 
 interface ToolCardProps {
   tool: Tool;
 }
 
 export const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
-  const IconComponent = (Icons as any)[tool.icon] || Icons.FileImage;
-
   return (
     <motion.div
       whileHover={{ y: -8, shadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
@@ -19,7 +18,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
       <Link to={`/tools/${tool.slug}`} className="absolute inset-0 z-10" />
       
       <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-all group-hover:bg-blue-600 group-hover:text-white dark:bg-blue-900/20 dark:text-blue-400">
-        <IconComponent className="h-7 w-7" />
+        <DynamicIcon name={tool.icon} className="h-7 w-7" />
       </div>
 
       <div className="flex items-center gap-2">
@@ -38,7 +37,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
       <div className="mt-6 flex items-center justify-between">
         <div className="flex items-center text-sm font-bold text-blue-600 dark:text-blue-400">
           Use Tool
-          <Icons.ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </div>
         <div className="h-1.5 w-1.5 rounded-full bg-gray-200 dark:bg-gray-700 group-hover:bg-blue-600 dark:group-hover:bg-blue-400 transition-colors" />
       </div>

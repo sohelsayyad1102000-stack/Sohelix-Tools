@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import App from './App';
+import App from './components/App';
 
 export function render(url: string) {
   const helmetContext: any = {};
