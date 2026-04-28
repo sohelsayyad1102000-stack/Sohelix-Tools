@@ -64,7 +64,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords.join(', ')} />}
       <link rel="canonical" href={canonical || url} />
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      {noindex && <meta name="robots" content="noindex, follow" />}
       {!noindex && <meta name="robots" content="index, follow" />}
 
       {/* Dynamic OG Image System */}

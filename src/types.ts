@@ -17,6 +17,7 @@ export interface Tool {
   useCases: string[];
   faqs: { question: string; answer: string }[];
   longContent: string;
+  relatedTools?: string[];
 }
 
 export interface ToolCategory {

@@ -46,65 +46,103 @@ export const TOOLS: Tool[] = [
       },
     ],
     longContent: `
-      <div class="space-y-8">
+      <div class="space-y-12 text-gray-700 dark:text-gray-300">
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Compress Image Online (Step-by-Step)</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Optimizing your images with Sohelix is fast and simple. Follow these easy steps to reduce your image file size in seconds:</p>
-          <ol class="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li><strong>Upload Your Images:</strong> Drag and drop your JPG, PNG, or WebP files into the upload box, or click "Select Image" to browse your device.</li>
-            <li><strong>Choose Compression Mode:</strong> Select "Quality" to set a specific quality percentage, or "Target Size" to aim for a specific file size (e.g., 50KB).</li>
-            <li><strong>Optional Resizing:</strong> If needed, enable the "Resize Image" option to change the dimensions of your photo.</li>
-            <li><strong>Click Compress:</strong> Hit the "Compress Images" button to start the process. All processing happens locally in your browser!</li>
-            <li><strong>Download Results:</strong> Once finished, download your optimized images individually or as a convenient ZIP file.</li>
-          </ol>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">The Ultimate Guide to Online Image Compression</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            In today's fast-paced digital world, website speed and performance are more critical than ever. Large, unoptimized images are the primary culprit behind slow-loading pages, leading to poor user experiences and lower search engine rankings. <strong>Sohelix Image Compressor</strong> is a professional-grade, browser-based utility designed to solve this problem by significantly reducing file sizes without sacrificing visual quality.
+          </p>
+          <p class="text-lg leading-relaxed">
+            Our tool utilizes advanced lossy and lossless compression algorithms to remove unnecessary data from your JPG, PNG, SVG, and WebP files. The best part? Everything happens directly in your browser using client-side technology, ensuring your sensitive data never leaves your device.
+          </p>
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Key Features of Sohelix Image Compressor</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Privacy-First Processing</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Your images never leave your device. We use client-side technology to process everything locally, ensuring 100% privacy.</p>
+        <section class="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">How to Compress Images Online (Step-by-Step)</h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Upload Your Media</h4>
+                <p>Drag and drop your images into the upload zone or click "Select Image" to choose files from your local storage. You can batch upload up to 50 images at once.</p>
+              </div>
             </div>
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Bulk Compression</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Save time by uploading and compressing dozens of images simultaneously. Download them all at once in a ZIP archive.</p>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Select Compression Mode</h4>
+                <p>Choose between <strong>Quality Mode</strong> (setting a percentage like 80%) or <strong>Target Size Mode</strong>. Target size is perfect if you need a file under a specific limit like 50KB or 100KB for government portals or email attachments.</p>
+              </div>
             </div>
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Target Size Mode</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Need a file under 20KB for a government form? Use our Target Size mode to specify exactly how small you want your file to be.</p>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Optional Resizing</h4>
+                <p>Sometimes compression isn't enough. You can also resize the dimensions of your image during the compression process to achieve even smaller file sizes.</p>
+              </div>
             </div>
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-              <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-2">Visual Comparison</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Use our built-in slider to compare the original and compressed versions side-by-side before downloading.</p>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">4</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Process and Download</h4>
+                <p>Click "Compress Images". Our tool will process all files using your computer's resources. Once finished, you can download them individually or as a single ZIP archive.</p>
+              </div>
             </div>
           </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Benefits of Image Optimization</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Why should you bother compressing your images? Here are the top reasons:</p>
-          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li><strong>Faster Page Loads:</strong> Smaller images mean your website loads faster, reducing bounce rates and keeping visitors engaged.</li>
-            <li><strong>Improved SEO:</strong> Google loves fast websites. Optimized images are a key factor in improving your search engine rankings.</li>
-            <li><strong>Save Bandwidth:</strong> Reduce data usage for both you and your visitors, which is especially important for mobile users on limited plans.</li>
-            <li><strong>Storage Efficiency:</strong> Free up space on your server, cloud storage, or local hard drive by reducing bloated image sizes.</li>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Why Use Sohelix Image Compressor?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+              <h4 class="text-xl font-bold text-blue-600">Privacy First</h4>
+              <p>Unlike other online tools that upload your photos to a remote server, Sohelix processes everything locally. This is ideal for medical records, legal documents, or private personal photos.</p>
+            </div>
+            <div class="space-y-4">
+              <h4 class="text-xl font-bold text-blue-600">No Quality Loss</h4>
+              <p>Our smart compression technology identifies the threshold where file size is minimized but human eyes cannot detect a difference in quality.</p>
+            </div>
+            <div class="space-y-4">
+              <h4 class="text-xl font-bold text-blue-600">Universal Format Support</h4>
+              <p>Compress bulk JPG, PNG, WebP, and SVG files. We even support modern formats like HEIC (from iPhones) and convert them to optimized JPGs.</p>
+            </div>
+            <div class="space-y-4">
+              <h4 class="text-xl font-bold text-blue-600">SEO Optimized</h4>
+              <p>Fast websites rank higher. By compressing your blog images, you reduce "Largest Contentful Paint" (LCP) times, one of Google's key Core Web Vitals.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/20">
+          <h2 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-6">Professional Use Cases</h2>
+          <ul class="space-y-4 list-disc list-inside">
+            <li><strong>E-commerce Owners:</strong> Speed up product galleries to increase conversion rates.</li>
+            <li><strong>Bloggers & Content Creators:</strong> Improve page experience scores and save on hosting bandwidth.</li>
+            <li><strong>Graphic Designers:</strong> Quickly send large design mockups via email or Slack by reducing their footprint.</li>
+            <li><strong>Gov & Job Applicants:</strong> Meet strict file size requirements (e.g., "Photo must be under 20KB") for online applications.</li>
           </ul>
         </section>
 
-        <section class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Professional Image Compression for Everyone</h3>
-          <p class="text-gray-600 dark:text-gray-400 mb-6">Whether you are a web developer optimizing assets for a new project, a blogger preparing photos for a post, or just someone trying to fit an attachment into an email, Sohelix provides the tools you need. Our <strong>online image compressor</strong> is designed to be powerful enough for pros yet simple enough for anyone to use.</p>
-          
-          <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <h4 class="font-bold text-gray-900 dark:text-white mb-4">Compress Image to Specific Sizes:</h4>
-            <div class="flex flex-wrap gap-4">
-              <a href="/tools/compress-image?target=10" class="text-blue-600 hover:underline font-medium">Compress Image to 10KB</a>
-              <a href="/tools/compress-image?target=20" class="text-blue-600 hover:underline font-medium">Compress Image to 20KB</a>
-              <a href="/tools/compress-image?target=50" class="text-blue-600 hover:underline font-medium">Compress Image to 50KB</a>
-              <a href="/tools/compress-image?target=100" class="text-blue-600 hover:underline font-medium">Compress Image to 100KB</a>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            <div class="border-b border-gray-200 dark:border-gray-800 pb-4">
+              <h4 class="font-bold mb-2">Is the Sohelix image compressor really free?</h4>
+              <p>Yes, it's 100% free for use. There are no hidden costs, no watermarks added to your images, and no registration required.</p>
+            </div>
+            <div class="border-b border-gray-200 dark:border-gray-800 pb-4">
+              <h4 class="font-bold mb-2">What is the difference between lossy and lossless compression?</h4>
+              <p>Lossy compression (like JPG) removes some data to get a much smaller file, while lossless compression (like PNG) shrinks the file without losing any pixel data. Sohelix supports both methods.</p>
+            </div>
+            <div class="border-b border-gray-200 dark:border-gray-800 pb-4">
+              <h4 class="font-bold mb-2">Can I compress images to exactly 50KB?</h4>
+              <p>Yes! Simply use our "Target Size" mode and enter "50". Our algorithm will adjust the quality until the file size is as close to 50KB as possible without exceeding it.</p>
             </div>
           </div>
+        </section>
+
+        <section class="text-sm text-gray-500 italic">
+          <p>Note: Sohelix is committed to digital safety. Since all processing is browser-based, we never have access to your original or compressed images. Your privacy is our priority.</p>
         </section>
       </div>
     `,
@@ -157,43 +195,64 @@ export const TOOLS: Tool[] = [
       },
     ],
     longContent: `
-      <div class="space-y-8">
+      <div class="space-y-12 text-gray-700 dark:text-gray-300">
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is Image Resizing?</h2>
-          <p class="text-gray-600 dark:text-gray-400">Image resizing is the process of changing the dimensions of a digital image. This can involve changing the <strong>pixel count</strong> for web use or adjusting the <strong>physical dimensions (CM/MM)</strong> for printing. Unlike simple scaling, professional resizing with Sohelix ensures that your image maintains its clarity and aspect ratio, preventing unwanted distortion.</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Mastering Image Resizing for Web and Print</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            Whether you are preparing a headshot for a professional profile, optimizing product photos for an online store, or simply trying to fit an image into a specific layout, <strong>Sohelix Image Resizer</strong> provides the precision and flexibility you need. Our tool goes beyond simple scaling, offering professional features like custom unit selection (Pixels, CM, MM, Inches) and aspect ratio locking.
+          </p>
+          <p class="text-lg leading-relaxed">
+            In the era of high-resolution displays and mobile-first browsing, serving the right sized image is paramount. Large images slow down your site, while small images look pixelated. With Sohelix, you can find the perfect balance instantly, all without leaving your browser.
+          </p>
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Resize Image Online</h2>
-          <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400">
-            <li><strong>Upload:</strong> Drag and drop your images or click "Select Images" to begin.</li>
-            <li><strong>Configure:</strong> Choose your preferred unit (Pixels, CM, MM, or Inch).</li>
-            <li><strong>Dimensions:</strong> Enter your desired width and height. Use the "Maintain Aspect Ratio" toggle to keep proportions.</li>
-            <li><strong>Optional Settings:</strong> Enable compression or change the output format (JPG, PNG, WebP).</li>
-            <li><strong>Process:</strong> Click "Resize Image" and download your optimized files instantly.</li>
-          </ol>
-        </section>
-
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-            <h3 class="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">Pixels vs. Physical Units</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">While web developers focus on pixels for screen resolution, physical units like CM and MM are crucial for documents and printing. Our tool handles the conversion automatically using standard DPI settings.</p>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-3xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+            <h3 class="text-xl font-bold text-blue-900 dark:text-blue-400 mb-4">Precision Pixels for Web</h3>
+            <p class="text-gray-600 dark:text-gray-400">Target specific resolutions for Instagram, Facebook, or your personal blog. Our resizer ensures crisp details even when downscaling large files.</p>
           </div>
-          <div class="p-6 rounded-2xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-            <h3 class="text-lg font-bold text-green-900 dark:text-green-400 mb-2">Lossless Resizing</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">We use high-quality resampling algorithms to ensure that downscaling your images doesn't result in a loss of sharpness, making your photos look professional at any size.</p>
+          <div class="p-8 rounded-3xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
+            <h3 class="text-xl font-bold text-green-900 dark:text-green-400 mb-4">Print Units (CM/MM)</h3>
+            <p class="text-gray-600 dark:text-gray-400">Need a 3.5cm x 4.5cm passport photo? Simply switch the unit to CM and enter your requirements. We handle the DPI conversions for you.</p>
           </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Sohelix Image Resizer?</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Our tool is designed to beat competitors by offering a cleaner, faster, and more versatile experience. Here is why thousands of users trust us:</p>
-          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li><strong>Batch Processing:</strong> Resize hundreds of images at once and download them as a ZIP.</li>
-            <li><strong>Integrated Compression:</strong> No need to use a separate tool; resize and compress in one go.</li>
-            <li><strong>Format Flexibility:</strong> Convert your JPG to PNG or WebP during the resizing process.</li>
-            <li><strong>Privacy Guaranteed:</strong> Your files never leave your device. 100% browser-based processing.</li>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">How to Resize Image Online Free</h2>
+          <div class="space-y-4">
+            <p>1. <strong>Upload:</strong> Click "Select Image" or drag files into the workspace. We support JPG, PNG, and WebP.</p>
+            <p>2. <strong>Unit Selection:</strong> Choose between Pixels (for digital), CM/MM (for printing), or Inches.</p>
+            <p>3. <strong>Define Dimensions:</strong> Enter your desired width or height. Keep "Maintain Aspect Ratio" checked to prevent stretching.</p>
+            <p>4. <strong>Download:</strong> Hit "Resize Image" and save your optimized file instantly.</p>
+          </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Why Choose Sohelix?</h2>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-4">
+              <CheckCircle2 class="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+              <span><strong>Bulk Processing:</strong> Resize dozens of images at once and download them in a single ZIP file.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <CheckCircle2 class="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+              <span><strong>No Quality Loss:</strong> We use high-end resampling algorithms to maintain visual sharpness.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <CheckCircle2 class="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+              <span><strong>100% Client-Side:</strong> Your images are processed in your browser, ensuring absolute privacy.</span>
+            </li>
           </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Image Resizing vs. Image Compression</h2>
+          <p class="mb-4">While they are related, they serve different purposes:</p>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Resizing:</strong> Changes the physical dimensions (width/height) of the image. Useful for fitting images into specific UI containers.</li>
+            <li><strong>Compression:</strong> Reduces the file size (KB/MB) by optimizing the data within the image. Useful for speeding up web pages.</li>
+          </ul>
+          <p class="mt-4"><strong>Sohelix allows you to do both simultaneously!</strong> You can set the dimensions and the quality level in one go.</p>
         </section>
       </div>
     `,
@@ -250,46 +309,88 @@ export const TOOLS: Tool[] = [
       },
     ],
     longContent: `
-      <div class="space-y-8">
+      <div class="space-y-12 text-gray-700 dark:text-gray-300">
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is Image Cropping?</h2>
-          <p class="text-gray-600 dark:text-gray-400">Image cropping is the process of removing unwanted outer areas from a photographic or illustrated image. The process usually consists of the removal of some of the peripheral areas of an image to remove extraneous junk from the picture, to improve its framing, to change the aspect ratio, or to accentuate or isolate the subject matter from its background.</p>
-          <p class="mt-4 text-gray-600 dark:text-gray-400">With our <strong>Free Online Image Cropper</strong>, you can perform these tasks with professional precision without needing to install complex software like Photoshop.</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">The Professional Way to Crop Images Online</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            Image cropping is more than just cutting out the edges of a photo; it is about storytelling, improving composition, and meeting specific technical requirements. Whether you are creating a circular profile picture, preparing a square post for Instagram, or framing a professional passport photo, <strong>Sohelix Image Cropper</strong> gives you the tools to do it with pixel-perfect accuracy.
+          </p>
+          <p class="text-lg leading-relaxed">
+            Our cropper works entirely in your browser, using advanced canvas rendering to ensure that your results are sharp and professional. No uploads are required, making it the most secure choice for cropping photos containing sensitive personal information.
+          </p>
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-            <h3 class="text-lg font-bold text-blue-900 dark:text-blue-400 mb-2">Improve Focus</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">By removing distracting elements from the edges of your photo, you can draw the viewer's eye directly to the subject, creating a much more impactful visual.</p>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-3xl bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20">
+            <h3 class="text-xl font-bold text-purple-900 dark:text-purple-400 mb-4">Circular Profile Crops</h3>
+            <p class="text-gray-600 dark:text-gray-400">Switch to Circle mode to create perfect avatars for social media or Slack. Preview the results instantly before downloading.</p>
           </div>
-          <div class="p-6 rounded-2xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-            <h3 class="text-lg font-bold text-green-900 dark:text-green-400 mb-2">Optimize for Social Media</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Different platforms require different shapes. Use our presets to quickly crop for Instagram (1:1), YouTube (16:9), or professional headshots.</p>
+          <div class="p-8 rounded-3xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+            <h3 class="text-xl font-bold text-blue-900 dark:text-blue-400 mb-4">Aspect Ratio Presets</h3>
+            <p class="text-gray-600 dark:text-gray-400">Forget manual calculations. Use our presets for 1:1, 4:3, 16:9, and official Passport dimensions to ensure your crop is exactly in proportion.</p>
+          </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">How to Crop Image Online Free (Step-by-Step)</h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Load Your Image</h4>
+                <p>Drag and drop your JPG, PNG, or WebP file into the editor. Our tool supports high-resolution files without crashing your browser.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Adjust the Crop Area</h4>
+                <p>Use the corners of the crop box to define the area you want to keep. You can also zoom in/out and rotate the image to get the perfect frame.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Choose Your Format</h4>
+                <p>Optionally change the output format to PNG (for transparency) or JPG (for smaller size). You can also adjust the final quality.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">4</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Download Result</h4>
+                <p>Click "Crop Image" and save your new file instantly. No watermarks, no registration, just high-quality results.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Crop Image Online Free</h2>
-          <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400">
-            <li><strong>Upload Image:</strong> Drag and drop your JPG, PNG, or WebP file into the upload box.</li>
-            <li><strong>Adjust Selection:</strong> Use the handles on the crop box to select the area you want to keep. You can also move the entire box.</li>
-            <li><strong>Choose Mode:</strong> Select between "Rectangle" or "Circle" crop depending on your needs.</li>
-            <li><strong>Fine-tune:</strong> Use the Zoom and Rotate sliders to perfectly align your subject within the frame.</li>
-            <li><strong>Crop & Download:</strong> Click the "Crop Image" button and save your perfectly framed photo instantly.</li>
-          </ol>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Why High-Quality Cropping Matters</h2>
+          <p class="mb-4">
+            Most basic image editors simply cut pixels, which can lead to blurring if not handled correctly. Sohelix uses <strong>high-quality canvas resampling</strong> that preserves the original detail of your image during the cropping process. This is especially important for:
+          </p>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Photography:</strong> Maintaining the emotional impact of a shot through better framing.</li>
+            <li><strong>Branding:</strong> Ensuring logos and icons remain sharp across different platforms.</li>
+            <li><strong>Official Documents:</strong> Meeting strict clarity requirements for ID and passport submissions.</li>
+          </ul>
         </section>
 
-        <section class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Professional Features, Zero Cost</h3>
-          <p class="text-gray-600 dark:text-gray-400 mb-6">Sohelix provides a high-performance <strong>image cropper</strong> that works entirely in your browser. This means your images are never uploaded to a server, providing 100% privacy and lightning-fast results. Whether you're preparing a passport photo or a social media post, our tool ensures precision and quality.</p>
-          
-          <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <h4 class="font-bold text-gray-900 dark:text-white mb-4">Popular Crop Variations:</h4>
-            <div class="flex flex-wrap gap-4">
-              <a href="/tools/crop-image-circle" class="text-blue-600 hover:underline font-medium">Circle Crop Online</a>
-              <a href="/tools/crop-image-square" class="text-blue-600 hover:underline font-medium">Square Crop (1:1)</a>
-              <a href="/tools/crop-image-16x9" class="text-blue-600 hover:underline font-medium">Widescreen Crop (16:9)</a>
-              <a href="/tools/crop-image-for-passport" class="text-blue-600 hover:underline font-medium">Passport Photo Cropper</a>
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-bold mb-2">Can I crop my image into a circle?</h4>
+              <p>Yes! Simply check the "Circle Crop" option in the settings sidebar. This is perfect for creating social media profile pictures.</p>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2">Is the cropper safe for private photos?</h4>
+              <p>Absolutely. Your photo never leaves your computer. We do not use servers to process your images, ensuring 100% privacy.</p>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2">What image formats are supported?</h4>
+              <p>We support JPG, JPEG, PNG, WebP, and even SVG or HEIC (converted to JPG/PNG on output).</p>
             </div>
           </div>
         </section>
@@ -657,38 +758,85 @@ export const TOOLS: Tool[] = [
     ],
     faqs: [
       {
-        question: 'Can I add my logo to the QR code?',
-        answer: 'Yes, you can upload any image to be placed in the center of your QR code.'
+        question: 'What types of data can I encode in a QR code?',
+        answer: 'Our generator supports URLs, plain text, email addresses (with subject and body), phone numbers, WiFi network credentials (SSID and password), SMS messages, WhatsApp direct links, and even geographic coordinates. This makes it suitable for everything from business marketing to personal connectivity.'
       },
       {
-        question: 'Do these QR codes expire?',
-        answer: 'No, the QR codes generated are static and will work as long as the underlying data (like a URL) is valid.'
+        question: 'Can I add my logo to the QR code?',
+        answer: 'Yes, you can upload any image to be placed in the center of your QR code. Our tool uses professional-grade error correction logic (Level H) to ensure that the QR code remains perfectly scannable even with your brand logo overlaying the center.'
+      },
+      {
+        question: 'Do these QR codes expire or have scan limits?',
+        answer: 'No. The QR codes generated by Sohelix are "static," meaning the data is encoded directly into the pattern. They will work indefinitely and have no scan limits. We do not use redirect links, so your QR code remains yours forever without any hidden fees.'
+      },
+      {
+        question: 'What is the best size for a printed QR code?',
+        answer: 'For small items like business cards, we recommend a minimum size of 2cm x 2cm (0.8" x 0.8"). For larger marketing materials like posters, a 5cm x 5cm (2" x 2") size ensures easy scannability from a distance. Always test your printed QR code with multiple devices before bulk printing.'
+      },
+      {
+        question: 'Does your tool track my scan data?',
+        answer: 'Absolutely not. Sohelix is a privacy-first platform. Our QR generation process happens 100% in your browser. We do not track who scans your codes or what data you encode. This is a major advantage over "dynamic" QR generators that store your data on their servers.'
       }
     ],
     longContent: `
-      <p>QR codes have become an essential tool for bridging the physical and digital worlds. Whether you're a business owner looking to share your website, a restaurant providing a digital menu, or an individual sharing your contact details, our <strong>Free Online QR Code Generator</strong> provides all the professional features you need to create high-quality, custom QR codes.</p>
-      
-      <h3>Versatile QR Code Types</h3>
-      <p>We support a wide range of data types to suit any need. You can <a href="/tools/qr-code-generator" class="underline hover:text-blue-600">generate QR codes online</a> for URLs, plain text, email addresses, phone numbers, WiFi networks, SMS messages, WhatsApp links, and even geographic locations. This versatility makes Sohelix the only QR tool you'll ever need.</p>
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Professional Free QR Code Generator</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            QR codes have evolved into the essential bridge between the physical and digital worlds. Whether you are a business owner sharing your website, a restaurant providing a digital menu, or a professional looking to distribute contact information, a high-quality QR code is non-negotiable. Our <strong>Professional QR Code Generator</strong> provides a robust, browser-based solution that combines high-end customization with absolute privacy.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400">
+            Unlike many "free" generators that sneakily use redirect links that expire or charge for "pro" features, Sohelix generates 100% static, permanent QR codes that will work as long as your destination URL exists.
+          </p>
+        </section>
 
-      <h3>Professional Customization Options</h3>
-      <p>Don't settle for boring black-and-white squares. Our generator allows you to fully customize the appearance of your QR codes to match your brand identity. You can change the color of the dots and background, choose from various dot styles (rounded, classy, etc.), and select unique corner square and dot shapes. This level of customization helps your QR codes stand out and increases scan rates.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Generate Your Custom QR Code</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Creating a branded QR code on Sohelix is designed to be intuitive. Follow these simple steps:</p>
+          <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400">
+            <li><strong>Select Content Type:</strong> Choose the type of data you want to encode—URL, Text, WiFi, Email, etc.</li>
+            <li><strong>Enter Your Data:</strong> Input the specific details (e.g., your website URL or your WiFi password).</li>
+            <li><strong>Customize Design:</strong> (Optional) Adjust colors and patterns to match your personal or brand style.</li>
+            <li><strong>Add Brand Logo:</strong> (Optional) Upload your logo to the center for a professional, branded look.</li>
+            <li><strong>Download & Test:</strong> Choose your preferred format (PNG, JPG, or SVG) and test it with your phone camera.</li>
+          </ol>
+        </section>
 
-      <h3>Add Your Own Logo</h3>
-      <p>To further enhance your brand recognition, you can upload your own logo to be placed in the center of the QR code. Our tool automatically adjusts the QR code's error correction level to ensure it remains scannable even with a logo overlay. This is a powerful feature for marketing materials and business cards.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Sohelix for QR Codes?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-sm">
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">100% Private & Local</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Your data never leaves your device. The encoding happens locally in your browser, ensuring that sensitive information like WiFi passwords or private contact details remains secure.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-sm">
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">No Expiration Dates</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Our QR codes are static. We do not use third-party redirects, so your codes will never "expire" or suddenly require a subscription to keep working.</p>
+            </div>
+          </div>
+        </section>
 
-      <h3>Privacy and Security</h3>
-      <p>Most online QR generators track your scans or store your data on their servers. Sohelix is different. Our tool works 100% client-side. The QR code is generated entirely in your browser, and your data is never sent to our servers. This ensures complete privacy for you and your users.</p>
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Common Use Cases</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>Business Cards:</strong> Link directly to your digital portfolio or LinkedIn profile.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>Restaurant Menus:</strong> Provide a touchless, digital menu experience for your customers.</span>
+            </li>
+          </ul>
+        </section>
 
-      <h3>Key Features:</h3>
-      <ul>
-        <li><strong>High-Resolution Downloads:</strong> Save your QR codes as PNG, JPG, or SVG for high-quality printing.</li>
-        <li><strong>Bulk Generation:</strong> Need dozens of QR codes? Use our bulk mode to generate them from a list of URLs.</li>
-        <li><strong>Live Preview:</strong> See your changes in real-time as you customize the design.</li>
-        <li><strong>No Expiry:</strong> Our QR codes are static and will work forever. No hidden subscriptions or "pro" versions required.</li>
-      </ul>
-
-      <p>Start creating your custom QR codes today with Sohelix. It's fast, free, and secure. Whether for personal use or professional marketing campaigns, our tool delivers the quality and privacy you deserve.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">A Commitment to Quality</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            At Sohelix, we are committed to providing professional utilities that respect your time and privacy. Our QR Code generator is part of a larger suite of tools designed to simplify your digital life.
+          </p>
+        </section>
+      </div>
     `,
   },
   {
@@ -1052,54 +1200,80 @@ export const TOOLS: Tool[] = [
       },
     ],
     longContent: `
-      <div class="space-y-8">
+      <div class="space-y-12 text-gray-700 dark:text-gray-300">
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">What is BMI (Body Mass Index)?</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Body Mass Index (BMI) is a value derived from the mass (weight) and height of a person. The BMI is defined as the body mass divided by the square of the body height, and is universally expressed in units of kg/m². It is a widely used diagnostic tool to identify weight-related health risks and categorize individuals into weight groups like underweight, normal, overweight, and obese.</p>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Complete Body Mass Index (BMI) Guide & Calculator</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            Understanding your weight in relation to your height is a fundamental step in monitoring your overall health. <strong>Body Mass Index (BMI)</strong> is a simple yet powerful screening tool used by healthcare professionals worldwide to categorize weight status and identify potential health risks. Sohelix provides a professional-grade <strong>Online BMI Calculator</strong> that offers instant results, visual gauges, and personalized insights based on World Health Organization (WHO) standards.
+          </p>
+          <p class="text-lg leading-relaxed">
+            Our tool is designed for adults of all genders and supports both <strong>Metric</strong> (kg/m) and <strong>Imperial</strong> (lbs/in) systems, ensuring accuracy regardless of your preferred unit of measurement.
+          </p>
+        </section>
+
+        <section class="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">How to Use the Sohelix BMI Calculator</h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">1</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Input Your Stats</h4>
+                <p>Enter your current weight and total height. Use the toggle to switch between CM/KG and Feet/Inches/Lbs.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">2</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Instant Gauge Feedback</h4>
+                <p>Watch the animated pointer move across the color-coded spectrum in real-time. This provides immediate visual context for your current weight category.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">3</div>
+              <div>
+                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Review Health Insights</h4>
+                <p>Beneath the gauge, you will find your precise BMI number, your category (e.g., "Healthy Weight"), and your <strong>Ideal Weight Range</strong> for your height.</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How to Use the BMI Calculator</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Our interactive BMI tool is designed for speed and accuracy. Simply follow these steps:</p>
-          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-            <li><strong>Select Units:</strong> Choose between Metric (kg/cm) or Imperial (lbs/ft/in).</li>
-            <li><strong>Enter Stats:</strong> Input your weight, height, age, and gender.</li>
-            <li><strong>Instant Results:</strong> Watch your BMI and health insights update in real-time as you type.</li>
-            <li><strong>Analyze Insights:</strong> Review your BMI category, ideal weight range, and BMI Prime metric.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">BMI Categories & Ranges</h2>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Detailed Weight Categories & Risks</h2>
           <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-800">
             <table class="w-full text-left text-sm">
               <thead class="bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                 <tr>
-                  <th class="px-6 py-4 font-bold">Category</th>
-                  <th class="px-6 py-4 font-bold">BMI Range (kg/m²)</th>
-                  <th class="px-6 py-4 font-bold">Health Risk</th>
+                  <th class="px-6 py-4 font-bold">BMI Range</th>
+                  <th class="px-6 py-4 font-bold">Classification</th>
+                  <th class="px-6 py-4 font-bold">Health Risk Level</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 dark:divide-gray-800 text-gray-600 dark:text-gray-400">
-                <tr>
-                  <td class="px-6 py-4 font-bold text-blue-600">Underweight</td>
-                  <td class="px-6 py-4">&lt; 18.5</td>
-                  <td class="px-6 py-4">Higher risk of nutritional deficiency</td>
+                <tr class="bg-blue-50/30">
+                  <td class="px-6 py-4">Below 18.5</td>
+                  <td class="px-6 py-4 font-bold">Underweight</td>
+                  <td class="px-6 py-4">Risk of nutrient deficiency and osteoporosis.</td>
                 </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold text-green-600">Normal Weight</td>
+                <tr class="bg-green-50/30">
                   <td class="px-6 py-4">18.5 – 24.9</td>
-                  <td class="px-6 py-4">Lowest risk of weight-related disease</td>
+                  <td class="px-6 py-4 font-bold">Healthy Weight</td>
+                  <td class="px-6 py-4">Low risk of weight-related health conditions.</td>
                 </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold text-yellow-600">Overweight</td>
+                <tr class="bg-yellow-50/30">
                   <td class="px-6 py-4">25.0 – 29.9</td>
-                  <td class="px-6 py-4">Increased risk of heart disease & diabetes</td>
+                  <td class="px-6 py-4 font-bold">Overweight</td>
+                  <td class="px-6 py-4">Increased risk of heart disease and high blood pressure.</td>
                 </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold text-red-600">Obese</td>
-                  <td class="px-6 py-4">&gt; 30.0</td>
-                  <td class="px-6 py-4">High risk of chronic health conditions</td>
+                <tr class="bg-orange-50/30">
+                  <td class="px-6 py-4">30.0 – 34.9</td>
+                  <td class="px-6 py-4 font-bold">Obese Class I</td>
+                  <td class="px-6 py-4">High risk of Type 2 diabetes and stroke.</td>
+                </tr>
+                <tr class="bg-red-50/30">
+                  <td class="px-6 py-4">35.0 and Above</td>
+                  <td class="px-6 py-4 font-bold">Obese Class II/III</td>
+                  <td class="px-6 py-4">Very high risk of chronic disease and mobility issues.</td>
                 </tr>
               </tbody>
             </table>
@@ -1107,40 +1281,33 @@ export const TOOLS: Tool[] = [
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Is BMI Accurate?</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">While BMI is a great starting point for health assessment, it is important to understand its limitations:</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
-              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Muscle vs. Fat</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">BMI does not distinguish between muscle mass and body fat. Athletes may have a "high" BMI but very low body fat.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
-              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Body Composition</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">It doesn't account for where fat is stored (e.g., visceral fat around organs), which is a key health indicator.</p>
-            </div>
-          </div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Limitations of BMI</h2>
+          <p class="mb-4">
+            While BMI is a useful general indicator, it does not measure body fat directly. It has several limitations that you should consider:
+          </p>
+          <ul class="list-disc list-inside space-y-3">
+            <li><strong>Muscle Mass:</strong> Athletes and muscular individuals may have a high BMI but low body fat.</li>
+            <li><strong>Age & Gender:</strong> Older adults tend to have more body fat than younger adults with the same BMI. Women typically have more body fat than men.</li>
+            <li><strong>Ethnicity:</strong> Some ethnic groups have different health risk thresholds at the same BMI level.</li>
+          </ul>
+          <p class="mt-4 italic text-sm text-gray-500">Always consult with a qualified medical professional for a comprehensive health assessment.</p>
         </section>
 
-        <section class="bg-blue-600 rounded-3xl p-8 text-white shadow-xl shadow-blue-500/20">
-          <h3 class="text-2xl font-bold mb-4">Take Control of Your Health</h3>
-          <p class="text-blue-100 mb-6 leading-relaxed">Our BMI calculator is just one tool in your health journey. For a more comprehensive analysis, consider using our other specialized health calculators.</p>
-          <div class="flex flex-wrap gap-4">
-            <a href="/tools/calorie-calculator" class="px-6 py-3 rounded-xl bg-white text-blue-600 font-bold hover:bg-blue-50 transition-colors">Calorie Calculator</a>
-            <a href="/tools/bmr-calculator" class="px-6 py-3 rounded-xl bg-blue-700 text-white font-bold hover:bg-blue-800 transition-colors border border-blue-500">BMR Calculator</a>
-          </div>
-        </section>
-
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Programmatic Health Tools</h2>
-          <div class="flex flex-wrap gap-4">
-            <a href="/bmi-calculator-for-men" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">BMI for Men</a>
-            <a href="/bmi-calculator-for-women" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">BMI for Women</a>
-            <a href="/bmi-calculator-india" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">BMI Calculator India</a>
-            <a href="/ideal-weight-calculator" class="px-4 py-2 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">Ideal Weight Calculator</a>
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Technical BMI Formula</h2>
+          <p class="mb-4">For those interested in the math, BMI is calculated using the following formulas:</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 font-mono text-center">
+              BMI = weight(kg) / [height(m)]²
+            </div>
+            <div class="p-4 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 font-mono text-center">
+              BMI = 703 × weight(lb) / [height(in)]²
+            </div>
           </div>
         </section>
       </div>
     `,
+    relatedTools: ['age-calculator', 'ideal-weight-calculator', 'body-fat-calculator'],
   },
   {
     id: 'calorie-calculator',
@@ -1440,11 +1607,57 @@ export const TOOLS: Tool[] = [
     ],
     faqs: [
       {
+        question: 'What is an EMI?',
+        answer: 'EMI stands for Equated Monthly Installment. It is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. EMIs are used to pay off both interest and principal each month so that over a specified number of years, the loan is paid off in full.'
+      },
+      {
         question: 'How is EMI calculated?',
-        answer: 'EMI is calculated using the principal amount, interest rate, and loan tenure. The formula is E = P × r × (1+r)^n / ((1+r)^n - 1).'
+        answer: 'The mathematical formula for calculating EMI is: EMI = [P x R x (1+R)^N]/[(1+R)^N-1], where P is the principal loan amount, R is the monthly interest rate, and N is the number of monthly installments.'
+      },
+      {
+        question: 'Can I calculate EMI for different types of loans?',
+        answer: 'Yes! Our EMI calculator is universal. You can use it for home loans, car loans, personal loans, or education loans. Simply adjust the interest rate and tenure to match your specific loan offer.'
+      },
+      {
+        question: 'Does the calculator show how much total interest I will pay?',
+        answer: 'Absolutely. Along with your monthly payment, the tool displays the total interest payable and the total amount (principal + interest) you will pay over the entire tenure of the loan.'
       }
     ],
-    longContent: 'Our <a href="/tools/emi-calculator" class="underline hover:text-blue-200">EMI calculator</a> is an essential tool for anyone planning to take a loan. Quickly see your monthly commitment and understand the total cost of borrowing.'
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Professional EMI Calculator for Smart Financial Planning</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            Taking a loan is a major financial commitment. Whether it is for your dream home, a new car, or personal needs, understanding your monthly outflow is crucial for maintaining a healthy budget. Our <strong>Professional EMI Calculator</strong> provides a clear, accurate, and instant breakdown of your loan repayments.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400">
+            By inputting your loan amount, interest rate, and tenure, you can visualize exactly how much you will be paying every month and how much total interest you will accrue over time.
+          </p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-sm">
+            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Total Interest Payable</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Understand the true cost of your loan. Our tool highlights the interest portion so you can compare different loan offers effectively.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-sm">
+            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Visual Breakdown</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Our interactive charts provide a clear view of the proportionality between your principal and interest payments.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Tips for Reducing Your Loan EMI</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">If the calculated EMI is higher than your budget, consider these strategies:</p>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+            <li><strong>Increase the Tenure:</strong> Stretching the loan over a longer period reduces individual EMIs, though it increases total interest paid.</li>
+            <li><strong>Higher Down Payment:</strong> Paying more upfront reduces the principal amount, which directly lowers the EMI.</li>
+            <li><strong>Negotiate Interest Rates:</strong> A small reduction in percentage can lead to significant savings over 10-20 years.</li>
+          </ul>
+        </section>
+      </div>
+    `,
+    relatedTools: ['interest-calculator', 'advanced-loan-calculator', 'sip-calculator'],
   },
   {
     id: 'meta-tag-generator',
@@ -1669,11 +1882,59 @@ export const TOOLS: Tool[] = [
     ],
     faqs: [
       {
-        question: 'Does this tool save my text?',
-        answer: 'No, all text processing is done locally in your browser. Your text is never sent to our servers.'
+        question: 'How many words am I allowed to count?',
+        answer: 'There is no hard limit on our Word Counter. However, since all calculations happen in your browser, very large documents (over 500,000 words) might slow down your device. For most essays, blog posts, and books, the tool is instant.'
+      },
+      {
+        question: 'Does this word counter support languages other than English?',
+        answer: 'Yes! Our tool uses standard space-and-line-break separation logic, making it compatible with most Western and Latin-based languages. It accurately counts characters and words for Spanish, French, German, and many others.'
+      },
+      {
+        question: 'Is my text safe? Do you store what I type?',
+        answer: 'Absolutely not. Sohelix is a privacy-first platform. Your text is never sent to our servers. All counting and analysis happen locally on your computer. You can even use the tool offline once it is loaded.'
+      },
+      {
+        question: 'What is "Keyword Density"?',
+        answer: 'Keyword density tells you how often a specific word appears as a percentage of the total word count. This is a vital metric for SEO (Search Engine Optimization) to ensure you aren\'t "keyword stuffing" or to verify you\'re hitting your target keywords enough.'
       }
     ],
-    longContent: 'Our <a href="/tools/word-counter" class="underline hover:text-blue-200">Advanced Word Counter</a> is more than just a simple counter. It provides deep insights into your text, including reading time, speaking time, and keyword density. Perfect for SEO optimization, essay writing, and content creation.'
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">The Professional Online Word Counter</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            Whether you are a student writing a 2,000-word essay, a blogger optimizing a post for SEO, or a novelist tracking daily progress, having an accurate and fast <strong>Online Word Counter</strong> is essential. Sohelix provides more than just a raw count; we provide a comprehensive text analysis suite that helps you refine your writing in real-time.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Advanced Text Metrics</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Our tool provides deep insights into your content, including:</p>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>Word & Character Count:</strong> Vital for meeting strict submission limits for assignments or social media.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>Reading & Speaking Time:</strong> Essential for speech preparation and ensuring your blog posts aren't too long for your audience.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>Keyword Density:</strong> A must-have for SEO professionals to ensure balanced keyword usage.</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-800">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Privacy is Our Priority</h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            Unlike many other text tools that send your paragraphs to their servers for processing (risking your intellectual property), Sohelix processes everything locally in your browser. Your draft, your secrets, and your data never leave your device.
+          </p>
+        </section>
+      </div>
+    `,
+    relatedTools: ['case-converter', 'whitespace-remover', 'lorem-ipsum-generator'],
   },
   {
     id: 'case-converter',
@@ -2087,11 +2348,52 @@ export const TOOLS: Tool[] = [
     ],
     faqs: [
       {
-        question: 'Can it fix broken JSON?',
-        answer: 'It will highlight syntax errors to help you fix them, but it won\'t automatically guess missing brackets or quotes.'
+        question: 'Is my JSON data secure?',
+        answer: 'Yes. Unlike many other online formatters, Sohelix processes your JSON entirely in your browser. Your data is never sent to our servers, keeping your API keys, user data, and sensitive configurations 100% private.'
+      },
+      {
+        question: 'Can I beautify minified JSON?',
+        answer: 'Absolutely. Our tool takes minified or "uglified" JSON and expands it into a human-readable format with proper indentation and line breaks.'
+      },
+      {
+        question: 'What happens if my JSON is invalid?',
+        answer: 'The tool will display a clear error message indicating where the syntax error is located, helping you debug your data quickly.'
       }
     ],
-    longContent: 'The <a href="/tools/json-formatter" class="underline hover:text-blue-200">JSON Formatter</a> is an essential tool for developers. It takes raw, unreadable JSON strings and formats them into a clean, indented structure. It also validates your data in real-time, helping you spot missing commas or incorrect quotes instantly.'
+    longContent: `
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">The Ultimate Private JSON Formatter</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            JSON (JavaScript Object Notation) is the language of the modern web, but raw data is often delivered in a single, unreadable line. Our <strong>Professional JSON Formatter</strong> is designed for developers who need to quickly beautify, validate, and debug JSON data without compromising security.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Security Matters for Developers</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Most developers frequently use online tools to format JSON logs or API responses. If these responses contain PII (Personally Identifiable Information) or secrets, sending them to a remote server for formatting is a major security risk. Sohelix eliminates this risk by performing all formatting <strong>locally in your browser</strong>.</p>
+        </section>
+
+        <section class="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-3xl border border-gray-100 dark:border-gray-800">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Key Features</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>Instant Beautification:</strong> Convert messy strings into clean, indented code.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>Syntax Validation:</strong> Detect missing commas, brackets, or quotes instantly.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span><strong>One-Click Copy:</strong> Quickly move your formatted data back to your IDE.</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    `,
+    relatedTools: ['csv-to-json', 'json-to-csv', 'base64-converter'],
   },
   {
     id: 'base64-converter',

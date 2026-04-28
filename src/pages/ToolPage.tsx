@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { TOOLS } from '../constants/tools';
 import { CATEGORY_INFO } from '../constants/categories';
 import { SEO } from '../components/SEO';
@@ -102,9 +102,14 @@ import { useToolHistory } from '../hooks/useToolHistory';
 
 export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
   const { slug: paramSlug } = useParams<{ slug: string }>();
+  const location = useLocation();
   const slug = propSlug || paramSlug;
   const tool = TOOLS.find(t => t.slug === slug);
   const { addToHistory } = useToolHistory();
+
+  // Determine if this is a canonical tool path or a variant path
+  const isCanonicalPath = location.pathname.startsWith('/tools/');
+  const isVariantPath = !isCanonicalPath && location.pathname !== '/';
 
   React.useEffect(() => {
     if (tool) {
@@ -142,6 +147,22 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
 
   const relatedTools = useMemo(() => {
     if (!tool) return [];
+    
+    // Explicitly defined related tools
+    if (tool.relatedTools && tool.relatedTools.length > 0) {
+      const explicitRelated = TOOLS.filter(t => tool.relatedTools?.includes(t.id));
+      if (explicitRelated.length > 0) {
+        // If we have explicit ones, we can still fill up to 4 with category matches
+        const others = TOOLS.filter(t => 
+          t.id !== tool.id && 
+          t.category === tool.category && 
+          !tool.relatedTools?.includes(t.id)
+        ).slice(0, 4 - explicitRelated.length);
+        return [...explicitRelated, ...others];
+      }
+    }
+
+    // Fallback to category matches
     return TOOLS.filter(t => t.id !== tool.id && t.category === tool.category).slice(0, 4);
   }, [tool]);
 
@@ -359,6 +380,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         keywords={tool.seo.keywords}
         slug={tool.slug}
         canonical={`https://sohelix.com/tools/${tool.slug}`}
+        noindex={isVariantPath}
         schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
 

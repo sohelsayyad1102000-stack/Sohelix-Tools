@@ -61,13 +61,15 @@ export const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Third-Party Services</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Third-Party Services & Advertising</h2>
               <p>
-                We partner with trusted service providers to enhance your experience:
+                We partner with trusted service providers to enhance your experience and support our mission to keep tools free:
               </p>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside space-y-2 mt-4">
                 <li><strong>Google Analytics:</strong> Helps us understand how users interact with our site so we can improve the tools.</li>
-                <li><strong>Advertising Partners:</strong> We may display ads to keep our tools free. These partners may use cookies to serve relevant advertisements based on your visits.</li>
+                <li><strong>Google AdSense:</strong> We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses cookies to serve ads on Sohelix.</li>
+                <li><strong>DART Cookies:</strong> Google's use of the DART cookie enables it to serve ads to our users based on their visit to Sohelix and other sites on the Internet.</li>
+                <li><strong>Opting Out:</strong> Users may opt out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy at <a href="https://policies.google.com/technologies/ads" class="text-blue-600 hover:underline" target="_blank">https://policies.google.com/technologies/ads</a>.</li>
                 <li><strong>No Selling:</strong> We never sell, trade, or rent your personal information or uploaded data to third parties.</li>
               </ul>
             </section>
