@@ -34,7 +34,7 @@ import { cn } from '../lib/utils';
 
 import { useToolHistory } from '../hooks/useToolHistory';
 
-export const Home: React.FC = () => {
+export const Home: React.FC = React.memo(() => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -107,7 +107,7 @@ export const Home: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gray-50 dark:bg-gray-900/50 px-4 py-24 sm:px-6 lg:px-8">
+      <section className="hero-section relative bg-gray-50 dark:bg-gray-900/50 px-4 py-24 sm:px-6 lg:px-8">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_45%_at_50%_50%,rgba(37,99,235,0.05)_0%,transparent_100%)]" />
         
         <div className="mx-auto max-w-4xl text-center">
@@ -121,7 +121,7 @@ export const Home: React.FC = () => {
               60+ Free Tools Available • No Signup Required • Fast & Secure
             </div>
             
-            <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl dark:text-white mb-6">
+            <h1 className="hero-title text-5xl font-black tracking-tight text-gray-900 sm:text-7xl dark:text-white mb-6">
               Free Online Tools <br />
               <span className="text-blue-600">for Everyone</span>
             </h1>
@@ -579,4 +579,4 @@ export const Home: React.FC = () => {
       </section>
     </div>
   );
-};
+});

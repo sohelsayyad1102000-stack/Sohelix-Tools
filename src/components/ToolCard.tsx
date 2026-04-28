@@ -9,7 +9,7 @@ interface ToolCardProps {
   tool: Tool;
 }
 
-export const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
+export const ToolCard = React.memo<ToolCardProps>(({ tool }) => {
   return (
     <motion.div
       whileHover={{ y: -8, shadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
@@ -43,4 +43,4 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
       </div>
     </motion.div>
   );
-};
+});

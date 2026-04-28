@@ -23,8 +23,8 @@ const getCategories = () => {
     .sort((a, b) => a.name.localeCompare(b.name));
 };
 
-export const Navbar: React.FC = () => {
-  const categories = getCategories();
+export const Navbar: React.FC = React.memo(() => {
+  const categories = React.useMemo(() => getCategories(), []);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
@@ -50,9 +50,12 @@ export const Navbar: React.FC = () => {
     }
   }, [isDarkMode]);
 
-  const filteredTools = TOOLS.filter(tool =>
-    tool.name.toLowerCase().includes(searchQuery.toLowerCase())
-  ).slice(0, 5);
+  const filteredTools = React.useMemo(() => {
+    if (!searchQuery) return [];
+    return TOOLS.filter(tool =>
+      tool.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ).slice(0, 5);
+  }, [searchQuery]);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-gray-200/50 bg-white/70 backdrop-blur-xl dark:border-gray-800/50 dark:bg-gray-950/70 transition-all duration-300">
@@ -209,4 +212,4 @@ export const Navbar: React.FC = () => {
       )}
     </nav>
   );
-};
+});

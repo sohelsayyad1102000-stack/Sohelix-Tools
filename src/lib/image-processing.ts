@@ -231,13 +231,26 @@ export const blurImage = async (file: File, blurAmount: number): Promise<Blob> =
   }
 };
 
-export const watermarkImage = async (file: File, text: string): Promise<Blob> => {
+export const processImageWithAll = async (
+  file: File, 
+  options: { 
+    w?: number, 
+    h?: number, 
+    angle?: number, 
+    blur?: number, 
+    watermark?: string, 
+    crop?: { x: number, y: number, w: number, h: number },
+    format?: string,
+    quality?: number
+  }
+): Promise<Blob> => {
   try {
     const imageBitmap = await createImageBitmap(file);
-    const result = await runInWorker('PROCESS_IMAGE', { imageBitmap, watermark: text });
+    const result = await runInWorker('PROCESS_IMAGE', { imageBitmap, ...options });
     imageBitmap.close();
     return result;
   } catch (e) {
+    console.warn('Worker failed, falling back to main thread', e);
     return new Promise((resolve, reject) => {
       const img = new Image();
       const url = URL.createObjectURL(file);
@@ -247,18 +260,48 @@ export const watermarkImage = async (file: File, text: string): Promise<Blob> =>
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         if (!ctx) return reject('Canvas context not found');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-        ctx.font = `bold ${Math.floor(canvas.width * 0.05)}px Arial`;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+        
+        let finalW = options.w || img.width;
+        let finalH = options.h || img.height;
+
+        if (options.angle === 90 || options.angle === 270) {
+          canvas.width = finalH;
+          canvas.height = finalW;
+        } else if (options.crop) {
+          canvas.width = options.crop.w;
+          canvas.height = options.crop.h;
+        } else {
+          canvas.width = finalW;
+          canvas.height = finalH;
+        }
+
+        if (options.angle) {
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+          ctx.rotate((options.angle * Math.PI) / 180);
+          ctx.drawImage(img, -finalW / 2, -finalH / 2, finalW, finalH);
+        } else if (options.crop) {
+          ctx.drawImage(img, options.crop.x, options.crop.y, options.crop.w, options.crop.h, 0, 0, options.crop.w, options.crop.h);
+        } else {
+          ctx.drawImage(img, 0, 0, finalW, finalH);
+        }
+
+        if (options.blur) {
+          ctx.filter = `blur(${options.blur}px)`;
+          ctx.drawImage(canvas, 0, 0);
+        }
+
+        if (options.watermark) {
+          ctx.font = `bold ${Math.floor(canvas.width * 0.05)}px Arial`;
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(options.watermark, canvas.width / 2, canvas.height / 2);
+        }
+
         canvas.toBlob((blob) => {
           if (blob) resolve(blob);
           else reject('Blob creation failed');
-        }, file.type);
+        }, options.format || file.type, options.quality || 0.9);
       };
       img.onerror = () => {
         URL.revokeObjectURL(url);
@@ -266,4 +309,8 @@ export const watermarkImage = async (file: File, text: string): Promise<Blob> =>
       };
     });
   }
+};
+
+export const watermarkImage = async (file: File, text: string): Promise<Blob> => {
+  return processImageWithAll(file, { watermark: text });
 };

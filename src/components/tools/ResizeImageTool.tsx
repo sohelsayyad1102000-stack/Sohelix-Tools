@@ -7,6 +7,7 @@ import imageCompression from 'browser-image-compression';
 import JSZip from 'jszip';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Link } from 'react-router-dom';
+import { processImageWithAll as processWithWorker } from '../../lib/image-processing';
 
 interface ResizeImageToolProps {
   tool: any;
@@ -161,51 +162,15 @@ export const ResizeImageTool: React.FC<ResizeImageToolProps> = ({ tool }) => {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         
-        // 1. Resize & Format Conversion using Canvas
-        const resizedBlob = await new Promise<Blob>((resolve, reject) => {
-          const img = new Image();
-          img.src = URL.createObjectURL(file);
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            if (!ctx) return reject('Canvas context not found');
-
-            let finalW = targetWidthPx || img.width;
-            let finalH = targetHeightPx || img.height;
-
-            if (maintainRatio && targetWidthPx && !targetHeightPx) {
-              finalH = (targetWidthPx / img.width) * img.height;
-            } else if (maintainRatio && !targetWidthPx && targetHeightPx) {
-              finalW = (targetHeightPx / img.height) * img.width;
-            }
-
-            // Handle rotation swapping dimensions
-            if (rotation % 180 !== 0) {
-              canvas.width = finalH;
-              canvas.height = finalW;
-            } else {
-              canvas.width = finalW;
-              canvas.height = finalH;
-            }
-
-            // Fill background for transparency to JPG
-            const outFormat = format === 'original' ? file.type : `image/${format === 'jpg' ? 'jpeg' : format}`;
-            if (outFormat === 'image/jpeg') {
-              ctx.fillStyle = '#FFFFFF';
-              ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
-
-            ctx.translate(canvas.width / 2, canvas.height / 2);
-            ctx.rotate((rotation * Math.PI) / 180);
-            ctx.drawImage(img, -finalW / 2, -finalH / 2, finalW, finalH);
-            
-            canvas.toBlob((blob) => {
-              if (blob) resolve(blob);
-              else reject('Blob creation failed');
-            }, outFormat, 0.95);
-          };
-          img.onerror = reject;
-        });
+        // Use Web Worker for processing
+        const outFormat = format === 'original' ? file.type : `image/${format === 'jpg' ? 'jpeg' : format}`;
+        const resizedBlob = await processWithWorker(file, {
+          w: targetWidthPx,
+          h: targetHeightPx,
+          angle: rotation,
+          format: outFormat,
+          quality: 0.95
+        } as any);
 
         // 2. Optional Compression
         let finalBlob = resizedBlob;

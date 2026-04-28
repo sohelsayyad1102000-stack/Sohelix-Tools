@@ -5,7 +5,7 @@ import { TOOLS } from '../constants/tools';
 import { CATEGORY_INFO } from '../constants/categories';
 import { Logo } from './Logo';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = React.memo(() => {
   // Helper to get dynamic categories
   const getCategories = () => {
     const categoriesSet = new Set(TOOLS.map(tool => tool.category));
@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
       .sort((a, b) => a.name.localeCompare(b.name));
   };
 
-  const categories = getCategories();
+  const categories = React.useMemo(() => getCategories(), []);
 
   return (
     <footer className="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
@@ -93,4 +93,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
