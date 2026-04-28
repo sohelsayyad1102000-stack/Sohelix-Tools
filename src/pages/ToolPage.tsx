@@ -108,6 +108,28 @@ import FileSaver from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useToolHistory } from '../hooks/useToolHistory';
 
+const ToolSkeleton = () => (
+  <div className="w-full animate-pulse space-y-8">
+    <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900 min-h-[500px]">
+      <div className="grid grid-cols-1 lg:grid-cols-3">
+        <div className="col-span-2 p-8 border-r border-gray-100 dark:border-gray-800 space-y-6">
+          <div className="h-8 w-48 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+          <div className="h-64 bg-gray-100 dark:bg-gray-800/50 rounded-2xl" />
+          <div className="h-32 bg-gray-100 dark:bg-gray-800/50 rounded-2xl" />
+        </div>
+        <div className="p-8 bg-gray-50/50 dark:bg-gray-800/30 space-y-6">
+          <div className="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+          <div className="space-y-4">
+            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded-xl" />
+            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded-xl" />
+            <div className="h-12 bg-blue-200/50 dark:bg-blue-900/20 rounded-xl" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
   const { slug: paramSlug } = useParams<{ slug: string }>();
   const location = useLocation();
@@ -461,12 +483,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
 
       {/* Tool Interface */}
       <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
-        <React.Suspense fallback={
-          <div className="flex flex-col items-center justify-center p-20 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl">
-            <Loader2 className="h-12 w-12 text-blue-600 animate-spin mb-4" />
-            <p className="font-bold text-gray-500 animate-pulse">Loading {tool.name}...</p>
-          </div>
-        }>
+        <React.Suspense fallback={<ToolSkeleton />}>
           {tool.id === 'compress-image' ? (
             <CompressorTool tool={tool} />
           ) : tool.id === 'resize-image' ? (
@@ -702,7 +719,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                       className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
                     >
                       <div className="h-8 w-8 rounded bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                        <DynamicIcon iconName={t.icon} className="h-4 w-4" />
+                        <DynamicIcon name={t.icon} className="h-4 w-4" />
                       </div>
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600">{t.name}</span>
                     </Link>
@@ -737,7 +754,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                     className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
                   >
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
-                      <DynamicIcon iconName={rt.icon} className="h-5 w-5" />
+                      <DynamicIcon name={rt.icon} className="h-5 w-5" />
                     </div>
                     <h3 className="font-bold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">{rt.name}</h3>
                     <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{rt.description}</p>
