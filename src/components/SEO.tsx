@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { normalizeFullUrl } from '../lib/utils';
 
 interface SEOProps {
   title: string;
@@ -32,13 +33,11 @@ export const SEO: React.FC<SEOProps> = ({
   const [url, setUrl] = React.useState('https://sohelix.com/');
 
   React.useEffect(() => {
-    let currentUrl = window.location.origin + window.location.pathname;
-    if (!currentUrl.endsWith('/') && !currentUrl.split('/').pop()?.includes('.')) {
-      currentUrl += '/';
-    }
-    setUrl(currentUrl + window.location.search);
+    setUrl(normalizeFullUrl(window.location.pathname + window.location.search));
   }, []);
   
+  const canonicalUrl = canonical ? normalizeFullUrl(canonical) : url;
+
   // Use static PNG OG images for maximum compatibility
   const ogImageSlug = slug || 'default';
   const ogImageUrl = `https://sohelix.com/og/${ogImageSlug}.png`;
@@ -70,7 +69,7 @@ export const SEO: React.FC<SEOProps> = ({
       <title>{fullTitle}</title>
       <meta name="description" content={displayDescription} />
       {keywords && <meta name="keywords" content={keywords.join(', ')} />}
-      <link rel="canonical" href={canonical || url} />
+      <link rel="canonical" href={canonicalUrl} />
       {noindex && <meta name="robots" content="noindex, follow" />}
       {!noindex && <meta name="robots" content="index, follow" />}
 
@@ -79,7 +78,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={displayDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={canonical || url} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />

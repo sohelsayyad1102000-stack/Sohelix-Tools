@@ -5,9 +5,45 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function normalizeFullUrl(path: string) {
+  if (!path) return 'https://sohelix.com/';
+  
+  // Already a full canonical URL
+  if (path.startsWith('https://sohelix.com')) {
+    let url = path;
+    const [base, query] = url.split('?');
+    const [pathPart, hash] = base.split('#');
+    
+    let normalized = pathPart;
+    if (!normalized.endsWith('/') && !normalized.split('/').pop()?.includes('.')) {
+      normalized += '/';
+    }
+    
+    return normalized + (query ? `?${query}` : '') + (hash ? `#${hash}` : '');
+  }
+
+  // Handle relative or absolute paths
+  const base = 'https://sohelix.com';
+  const url = new URL(path.startsWith('http') ? path : `${base}${path.startsWith('/') ? '' : '/'}${path}`);
+  
+  // Force HTTPS if it's our domain
+  if (url.hostname === 'sohelix.com' || url.hostname === 'localhost') {
+    url.protocol = 'https:';
+    url.hostname = 'sohelix.com';
+  }
+
+  let pathname = url.pathname;
+  if (!pathname.endsWith('/') && !pathname.split('/').pop()?.includes('.')) {
+    pathname += '/';
+  }
+  
+  pathname = pathname.replace(/\/+/g, '/');
+  return base + pathname + url.search + url.hash;
+}
+
 export function normalizeInternalLink(path: string) {
   if (!path) return '/';
-  if (path.startsWith('http')) return path;
+  if (path.startsWith('http') && !path.includes('sohelix.com')) return path;
   
   const url = new URL(path, 'https://sohelix.com');
   let pathname = url.pathname;

@@ -106,12 +106,16 @@ try {
     // 1. Generate Sitemap
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapRoutes.map(route => `  <url>
-    <loc>${BASE_URL}${route === '' ? '/' : route}</loc>
+${sitemapRoutes.map(route => {
+  const normalizedPath = route.endsWith('/') ? route : `${route}/`;
+  const loc = `${BASE_URL}${normalizedPath.startsWith('//') ? normalizedPath.slice(1) : normalizedPath}`;
+  return `  <url>
+    <loc>${loc}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${route === '' ? '1.0' : (route.startsWith('/tools') ? '0.8' : '0.5')}</priority>
-  </url>`).join('\n')}
+  </url>`;
+}).join('\n')}
 </urlset>`;
 
     fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemap);
