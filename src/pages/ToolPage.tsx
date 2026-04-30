@@ -418,9 +418,9 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <SEO
-        title={tool.seo.title}
-        description={tool.seo.description}
-        keywords={tool.seo.keywords}
+        title={tool.seo?.title}
+        description={tool.seo?.description}
+        keywords={tool.seo?.keywords}
         slug={tool.slug}
         canonical={`https://sohelix.com/tools/${tool.slug}`}
         noindex={isVariantPath}
@@ -433,7 +433,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <ChevronRight className="h-4 w-4" />
           <Link to={`/categories/${tool.category}`} className="hover:text-blue-600">
-            {CATEGORY_INFO[tool.category]?.title.replace('Free ', '').replace(' Online', '') || tool.category.replace('-', ' ')}
+            {CATEGORY_INFO[tool.category]?.title?.replace('Free ', '').replace(' Online', '') || tool.category.replace('-', ' ')}
           </Link>
           <ChevronRight className="h-4 w-4" />
           <span className="font-medium text-gray-900 dark:text-white">{tool.name}</span>
@@ -581,21 +581,21 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
           ) : tool.id === 'base64-converter' ? (
             <Base64Converter />
           ) : tool.id === 'currency-converter' ? (
-            <CurrencyConverter />
+            <CurrencyConverter tool={tool} />
           ) : tool.id === 'currency-denomination' ? (
-            <CurrencyDenomination />
+            <CurrencyDenomination tool={tool} />
           ) : tool.id === 'interest-calculator' ? (
-            <InterestCalculatorVariant />
+            <InterestCalculatorVariant tool={tool} />
           ) : tool.id === 'sip-calculator' ? (
-            <SIPCalculator />
+            <SIPCalculator tool={tool} />
           ) : tool.id === 'emi-calculator' ? (
-            <EMICalculatorVariant />
+            <EMICalculatorVariant tool={tool} />
           ) : tool.id === 'advanced-loan-calculator' ? (
-            <AdvancedLoanCalculator />
+            <AdvancedLoanCalculator tool={tool} />
           ) : tool.id === 'percentage-calculator' ? (
-            <PercentageCalculator />
+            <PercentageCalculator tool={tool} />
           ) : tool.id === 'inflation-calculator' ? (
-            <InflationCalculator />
+            <InflationCalculator tool={tool} />
           ) : tool.id === 'uuid-generator' ? (
             <UUIDGenerator />
           ) : tool.id === 'regex-tester' ? (

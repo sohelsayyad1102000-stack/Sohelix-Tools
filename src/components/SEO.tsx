@@ -21,7 +21,8 @@ export const SEO: React.FC<SEOProps> = ({
   noindex = false,
 }) => {
   const siteName = 'Sohelix';
-  let fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  const displayTitle = title || 'Free Online Tools';
+  let fullTitle = displayTitle.includes(siteName) ? displayTitle : `${displayTitle} | ${siteName}`;
   
   // SEO optimization: Keep title under 60 chars
   if (fullTitle.length > 60) {
@@ -58,10 +59,12 @@ export const SEO: React.FC<SEOProps> = ({
       ? [...defaultSchemas, schema] 
       : defaultSchemas;
 
+  const displayDescription = description || 'Access 100+ free online tools including calculators, PDF tools, SEO tools, and more.';
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={displayDescription} />
       {keywords && <meta name="keywords" content={keywords.join(', ')} />}
       <link rel="canonical" href={canonical || url} />
       {noindex && <meta name="robots" content="noindex, follow" />}
@@ -70,7 +73,7 @@ export const SEO: React.FC<SEOProps> = ({
       {/* Dynamic OG Image System */}
       <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={displayDescription} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonical || url} />
       <meta property="og:image" content={ogImageUrl} />
@@ -79,7 +82,7 @@ export const SEO: React.FC<SEOProps> = ({
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={displayDescription} />
       <meta name="twitter:image" content={ogImageUrl} />
       <meta name="twitter:image:width" content="1200" />
       <meta name="twitter:image:height" content="630" />

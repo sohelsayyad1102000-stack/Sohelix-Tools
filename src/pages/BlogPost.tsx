@@ -83,9 +83,9 @@ export const BlogPost: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 py-12">
       <SEO 
-        title={post.seo.title}
-        description={post.seo.description}
-        keywords={post.seo.keywords}
+        title={post.seo?.title}
+        description={post.seo?.description}
+        keywords={post.seo?.keywords}
         slug={post.slug}
         schema={schemas}
       />

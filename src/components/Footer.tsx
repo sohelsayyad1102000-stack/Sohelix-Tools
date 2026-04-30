@@ -12,7 +12,7 @@ export const Footer: React.FC = React.memo(() => {
     return Array.from(categoriesSet)
       .map(slug => ({
         slug,
-        name: CATEGORY_INFO[slug]?.title.replace('Free ', '').replace(' Online', '') || slug.replace('-', ' '),
+        name: CATEGORY_INFO[slug]?.title?.replace('Free ', '').replace(' Online', '') || slug.replace('-', ' '),
         path: `/categories/${slug}`
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
