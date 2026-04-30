@@ -4,8 +4,10 @@ import { Footer } from './Footer';
 import { routes } from '../routes';
 import { AnimatePresence, motion } from 'motion/react';
 import { ClientOnly } from './ClientOnly';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 export default function App() {
+  useAnalytics();
   const content = useRoutes(routes);
   const location = useLocation();
 

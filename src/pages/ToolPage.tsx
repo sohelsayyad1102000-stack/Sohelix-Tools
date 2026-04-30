@@ -108,6 +108,7 @@ import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useToolHistory } from '../hooks/useToolHistory';
+import { AnalyticsTracker } from '../components/AnalyticsTracker';
 
 const ToolSkeleton = () => (
   <div className="w-full animate-pulse space-y-8">
@@ -427,6 +428,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         noindex={isVariantPath}
         schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
+      <AnalyticsTracker toolName={tool.id} />
 
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">

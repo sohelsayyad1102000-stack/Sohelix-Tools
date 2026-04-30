@@ -22,6 +22,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn, formatBytes } from '../../lib/utils';
 import JSZip from 'jszip';
 import FileSaver from 'file-saver';
+import { trackEvent } from '../../lib/analytics';
 
 interface GenericImageToolProps {
   tool: any;
@@ -85,6 +86,12 @@ export const GenericImageTool: React.FC<GenericImageToolProps> = ({ tool }) => {
 
     setFiles(prev => [...prev, ...fileItems].slice(0, 20));
     setError(null);
+    
+    trackEvent('file_uploaded', {
+      tool_name: tool.id,
+      file_count: validFiles.length,
+      file_types: validFiles.map(f => f.type).join(',')
+    });
   };
 
   const removeFile = (id: string) => {
@@ -118,6 +125,11 @@ export const GenericImageTool: React.FC<GenericImageToolProps> = ({ tool }) => {
     if (files.length === 0) return;
     setIsProcessing(true);
     setProgress(0);
+
+    trackEvent('tool_used', {
+      tool_name: tool.id,
+      batch_size: files.length
+    });
 
     const updatedFiles = [...files];
     
@@ -235,6 +247,10 @@ export const GenericImageTool: React.FC<GenericImageToolProps> = ({ tool }) => {
 
   const downloadSingle = (item: FileItem) => {
     if (item.result) {
+      trackEvent('file_downloaded', {
+        tool_name: tool.id,
+        file_name: item.result.name
+      });
       if (item.result.blob) {
         FileSaver.saveAs(item.result.blob, item.result.name);
       } else if (item.result.base64) {
@@ -270,6 +286,11 @@ export const GenericImageTool: React.FC<GenericImageToolProps> = ({ tool }) => {
     });
 
     const content = await zip.generateAsync({ type: 'blob' });
+    trackEvent('file_downloaded', {
+      tool_name: tool.id,
+      batch_download: true,
+      file_count: completedFiles.length
+    });
     FileSaver.saveAs(content, `${tool.id}_results.zip`);
   };
 
@@ -562,7 +583,13 @@ export const GenericImageTool: React.FC<GenericImageToolProps> = ({ tool }) => {
           <div className="mt-12 space-y-4">
             <button
               disabled={files.length === 0 || isProcessing}
-              onClick={processAll}
+              onClick={() => {
+                trackEvent('button_click', {
+                  button_name: 'process_images',
+                  tool_name: tool.id
+                });
+                processAll();
+              }}
               className={cn(
                 "w-full rounded-2xl py-5 font-black text-lg text-white shadow-xl transition-all flex items-center justify-center gap-3",
                 files.length === 0 || isProcessing 
@@ -589,7 +616,13 @@ export const GenericImageTool: React.FC<GenericImageToolProps> = ({ tool }) => {
 
             {files.some(f => f.status === 'completed') && (
               <button
-                onClick={downloadAll}
+                onClick={() => {
+                  trackEvent('button_click', {
+                    button_name: 'download_all',
+                    tool_name: tool.id
+                  });
+                  downloadAll();
+                }}
                 className="w-full rounded-2xl bg-green-600 py-5 font-black text-lg text-white shadow-xl shadow-green-500/30 transition-all hover:bg-green-700 hover:-translate-y-1 flex items-center justify-center gap-3"
               >
                 <DownloadCloud className="h-6 w-6" />
