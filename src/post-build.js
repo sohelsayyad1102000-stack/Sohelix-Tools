@@ -37,13 +37,60 @@ console.log('Generating SEO files...');
 try {
   const routes = getRoutes(DIST_DIR);
   
-  if (routes.length === 0) {
-    console.warn('⚠️ No routes found in dist directory. Skipping sitemap generation.');
+  // Filter out programmatic SEO variants and low-value pages from sitemap
+  // Keeping: homepage, core tools (/tools/*), categories, blog, and standard static pages
+  const sitemapRoutes = routes.filter(route => {
+    // Priority 1: Keep home, about, contact, faq, privacy, terms, blog root
+    const coreStatic = ['', '/about', '/contact', '/faq', '/privacy-policy', '/terms', '/disclaimer', '/blog'];
+    if (coreStatic.includes(route)) return true;
+    
+    // Priority 2: Keep main tools, categories, and specific blog posts
+    if (route.startsWith('/tools/')) return true;
+    if (route.startsWith('/categories/')) return true;
+    if (route.startsWith('/blog/')) return true;
+    
+    // Priority 3: Remove variants based on specific patterns requested by user
+    // Patterns: "-to-", "-for-", "-in-", "-size", "-kb"
+    const hasVariantPattern = 
+      route.includes('-to-') || 
+      route.includes('-for-') || 
+      route.includes('-in-') || 
+      route.includes('-kb') || 
+      route.includes('-size');
+
+    // Explicit list of variants that don't follow generic patterns but should be removed from sitemap
+    const explicitExcludes = [
+      '/crop-image-circle',
+      '/crop-image-square',
+      '/crop-image-16x9',
+      '/crop-image-circle-online',
+      '/crop-image-for-youtube-thumbnail',
+      '/bmi-calculator-india',
+      '/ideal-weight-calculator',
+      '/body-fat-percentage-calculator',
+      '/optimize-images-for-web',
+      '/convert-to-webp-lossless',
+      '/ocr-pdf-to-word-online',
+      '/pdf-to-word-without-software',
+      '/convert-pdf-to-docx-free'
+    ];
+
+    // If it's a root-level variant (not starting with /tools/ but matches variants or explicit list), exclude it
+    if ((hasVariantPattern || explicitExcludes.includes(route)) && !route.startsWith('/tools/') && !route.startsWith('/blog/')) {
+      return false;
+    }
+
+    // Default to including root level pages if they didn't match variants
+    return true;
+  });
+  
+  if (sitemapRoutes.length === 0) {
+    console.warn('⚠️ No sitemap routes found. Skipping sitemap generation.');
   } else {
     // 1. Generate Sitemap
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(route => `  <url>
+${sitemapRoutes.map(route => `  <url>
     <loc>${BASE_URL}${route === '' ? '/' : route}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>weekly</changefreq>
@@ -52,7 +99,7 @@ ${routes.map(route => `  <url>
 </urlset>`;
 
     fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemap);
-    console.log('✅ sitemap.xml generated with', routes.length, 'routes');
+    console.log('✅ sitemap.xml generated with', sitemapRoutes.length, 'high-value routes (filtered from', routes.length, 'total)');
   }
 
   // 2. Generate robots.txt
