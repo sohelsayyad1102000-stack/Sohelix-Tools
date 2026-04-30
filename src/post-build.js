@@ -40,25 +40,37 @@ try {
   // Filter out programmatic SEO variants and low-value pages from sitemap
   // Keeping: homepage, core tools (/tools/*), categories, blog, and standard static pages
   const sitemapRoutes = routes.filter(route => {
-    // Priority 1: Keep home, about, contact, faq, privacy, terms, blog root
-    const coreStatic = ['', '/about', '/contact', '/faq', '/privacy-policy', '/terms', '/disclaimer', '/blog'];
-    if (coreStatic.includes(route)) return true;
+    // Priority 1: Keep home and main branch roots
+    const coreRoots = ['', '/blog'];
+    if (coreRoots.includes(route)) return true;
     
-    // Priority 2: Keep main tools, categories, and specific blog posts
+    // Priority 2: Keep main tools and categories
     if (route.startsWith('/tools/')) return true;
     if (route.startsWith('/categories/')) return true;
-    if (route.startsWith('/blog/')) return true;
     
-    // Priority 3: Remove variants based on specific patterns requested by user
-    // Patterns: "-to-", "-for-", "-in-", "-size", "-kb"
+    // Priority 3: Keep primary blog posts but keep it limited if needed
+    // For now include them, but we will exclude variants and static pages below
+    if (route.startsWith('/blog/')) return true;
+
+    // Priority 4: Standard static pages - only keep the most important ones
+    const highValueStatic = ['/about', '/contact', '/faq'];
+    if (highValueStatic.includes(route)) return true;
+    
+    // EXCLUSIONS:
+    // 1. Programmatic variants based on patterns
     const hasVariantPattern = 
       route.includes('-to-') || 
       route.includes('-for-') || 
       route.includes('-in-') || 
       route.includes('-kb') || 
-      route.includes('-size');
+      route.includes('-size') ||
+      route.includes('-cm') ||
+      route.includes('-mm') ||
+      route.includes('-inch') ||
+      route.includes('-transparent') ||
+      route.includes('-high-quality');
 
-    // Explicit list of variants that don't follow generic patterns but should be removed from sitemap
+    // 2. Explicit list of low-value programmatic routes or variants
     const explicitExcludes = [
       '/crop-image-circle',
       '/crop-image-square',
@@ -72,16 +84,20 @@ try {
       '/convert-to-webp-lossless',
       '/ocr-pdf-to-word-online',
       '/pdf-to-word-without-software',
-      '/convert-pdf-to-docx-free'
+      '/convert-pdf-to-docx-free',
+      '/privacy-policy',
+      '/terms',
+      '/disclaimer'
     ];
 
-    // If it's a root-level variant (not starting with /tools/ but matches variants or explicit list), exclude it
-    if ((hasVariantPattern || explicitExcludes.includes(route)) && !route.startsWith('/tools/') && !route.startsWith('/blog/')) {
-      return false;
+    if (hasVariantPattern || explicitExcludes.includes(route)) {
+        // If it's not starting with /tools/ but matches variants, or is in the exclude list, it's out.
+        // Also if it's at the root but is a variant (like /resize-image-to-100x100)
+        return false;
     }
 
-    // Default to including root level pages if they didn't match variants
-    return true;
+    // Default: exclude everything else (like admin, random index files)
+    return false;
   });
   
   if (sitemapRoutes.length === 0) {
@@ -106,14 +122,11 @@ ${sitemapRoutes.map(route => `  <url>
   const robots = `User-agent: *
 Allow: /
 
-# Block programmatic / low-value variant URLs (FIXED)
+# Block programmatic / low-value variant URLs
 Disallow: /*-to-*
 Disallow: /*-for-*
 Disallow: /*-in-*
 Disallow: /*-kb*
-Disallow: /*-cm*
-Disallow: /*-mm*
-Disallow: /*-inch*
 Disallow: /*-transparent*
 Disallow: /*-high-quality*
 
@@ -121,9 +134,8 @@ Disallow: /*-high-quality*
 Disallow: /api/
 Disallow: /admin/
 Disallow: /login/
-Disallow: /_next/
 
-# Allow essential static assets
+# Allow framework assets
 Allow: /_next/static/
 
 # Sitemap

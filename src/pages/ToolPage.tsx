@@ -88,6 +88,7 @@ const JSMinifier = React.lazy(() => import('../components/tools/JSMinifier').the
 const ColorConverter = React.lazy(() => import('../components/tools/ColorConverter').then(m => ({ default: m.ColorConverter })));
 const JpgToPngConverter = React.lazy(() => import('../components/tools/JpgToPngConverter').then(m => ({ default: m.JpgToPngConverter })));
 const WebPConverter = React.lazy(() => import('../components/tools/WebPConverter').then(m => ({ default: m.WebPConverter })));
+const GenericImageTool = React.lazy(() => import('../components/tools/GenericImageTool').then(m => ({ default: m.GenericImageTool })));
 const CalorieCalculator = React.lazy(() => import('../components/tools/CalorieCalculator').then(m => ({ default: m.CalorieCalculator })));
 const BMRCalculator = React.lazy(() => import('../components/tools/BMRCalculator').then(m => ({ default: m.BMRCalculator })));
 const IdealWeightCalculator = React.lazy(() => import('../components/tools/IdealWeightCalculator').then(m => ({ default: m.IdealWeightCalculator })));
@@ -614,6 +615,8 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
             <JSMinifier />
           ) : tool.id === 'color-converter' ? (
             <ColorConverter />
+          ) : ['png-to-jpg', 'image-to-base64', 'image-watermark', 'image-rotate', 'blur-image'].includes(tool.id) ? (
+            <GenericImageTool tool={tool} />
           ) : null}
         </React.Suspense>
       </section>

@@ -1,14 +1,11 @@
 User-agent: *
 Allow: /
 
-# Block programmatic / low-value variant URLs (FIXED)
+# Block programmatic / low-value variant URLs
 Disallow: /*-to-*
 Disallow: /*-for-*
 Disallow: /*-in-*
 Disallow: /*-kb*
-Disallow: /*-cm*
-Disallow: /*-mm*
-Disallow: /*-inch*
 Disallow: /*-transparent*
 Disallow: /*-high-quality*
 
@@ -16,9 +13,8 @@ Disallow: /*-high-quality*
 Disallow: /api/
 Disallow: /admin/
 Disallow: /login/
-Disallow: /_next/
 
-# Allow essential static assets
+# Allow framework assets
 Allow: /_next/static/
 
 # Sitemap
