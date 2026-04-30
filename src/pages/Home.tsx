@@ -175,7 +175,7 @@ export const Home: React.FC = React.memo(() => {
                                   const el = document.getElementById('tools');
                                   el?.scrollIntoView({ behavior: 'smooth' });
                                 } else {
-                                  navigate(`/tools/${item.slug}`);
+                                  navigate(`/tools/${item.slug}/`);
                                 }
                               }}
                               className="flex w-full items-center gap-4 px-4 py-3 text-left hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-2xl transition-colors group"
@@ -311,7 +311,7 @@ export const Home: React.FC = React.memo(() => {
               return (
                 <Link 
                   key={item.id}
-                  to={`/tools/${item.slug}`}
+                  to={`/tools/${item.slug}/`}
                   className="group flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all hover:border-blue-200 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900/50"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-gray-600 transition-colors group-hover:bg-blue-600 group-hover:text-white dark:bg-gray-800 dark:text-gray-400">
@@ -415,7 +415,7 @@ export const Home: React.FC = React.memo(() => {
                         <p className="text-sm text-gray-500 dark:text-gray-400">Professional utilities for your daily workflow</p>
                       </div>
                     </div>
-                    <Link to={`/categories/${cat.id}`} className="hidden sm:flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400">
+                    <Link to={`/categories/${cat.id}/`} className="hidden sm:flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400">
                       View All <ChevronRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -427,7 +427,7 @@ export const Home: React.FC = React.memo(() => {
                   {activeCategory === 'All' && categoryTools.length > 8 && (
                     <div className="mt-12 text-center">
                       <Link 
-                        to={`/categories/${cat.id}`}
+                        to={`/categories/${cat.id}/`}
                         className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                       >
                         View All {cat.name} <ArrowRight className="h-4 w-4" />
@@ -467,7 +467,7 @@ export const Home: React.FC = React.memo(() => {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Latest from Blog</h2>
           </div>
           <Link 
-            to="/blog"
+            to="/blog/"
             className="text-sm font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center gap-1"
           >
             View All Posts <ArrowRight className="h-4 w-4" />
@@ -477,7 +477,7 @@ export const Home: React.FC = React.memo(() => {
           {BLOG_POSTS.slice(0, 3).map(post => (
             <Link 
               key={post.id}
-              to={`/blog/${post.slug}`}
+              to={`/blog/${post.slug}/`}
               className="group flex flex-col bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-xl transition-all hover:-translate-y-1"
             >
               <div className="p-8">

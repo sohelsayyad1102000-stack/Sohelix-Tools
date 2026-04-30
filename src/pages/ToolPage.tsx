@@ -388,7 +388,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": tool.name,
-    "url": `https://sohelix.com/tools/${tool.slug}`,
+    "url": `https://sohelix.com/tools/${tool.slug}/`,
     "description": tool.description
   };
 
@@ -400,7 +400,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://sohelix.com"
+        "item": "https://sohelix.com/"
       },
       {
         "@type": "ListItem",
@@ -412,7 +412,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         "@type": "ListItem",
         "position": 3,
         "name": tool.name,
-        "item": `https://sohelix.com/tools/${tool.slug}`
+        "item": `https://sohelix.com/tools/${tool.slug}/`
       }
     ]
   };
@@ -435,7 +435,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <ChevronRight className="h-4 w-4" />
-          <Link to={`/categories/${tool.category}`} className="hover:text-blue-600">
+          <Link to={`/categories/${tool.category}/`} className="hover:text-blue-600">
             {CATEGORY_INFO[tool.category]?.title?.replace('Free ', '').replace(' Online', '') || tool.category.replace('-', ' ')}
           </Link>
           <ChevronRight className="h-4 w-4" />
@@ -720,7 +720,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                   {TOOLS.filter(t => t.id !== tool.id).slice(0, 6).map(t => (
                     <Link 
                       key={t.id} 
-                      to={`/tools/${t.slug}`}
+                      to={`/tools/${t.slug}/`}
                       className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
                     >
                       <div className="h-8 w-8 rounded bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
@@ -736,7 +736,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                 <h3 className="text-lg font-bold mb-2">Need Help?</h3>
                 <p className="text-sm text-blue-100 mb-4">Our tools are free and secure. If you have any questions, feel free to contact us.</p>
                 <Link 
-                  to="/contact" 
+                  to="/contact/" 
                   className="block w-full py-2 text-center bg-white text-blue-600 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors"
                 >
                   Contact Support
@@ -755,7 +755,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
                 return (
                   <Link 
                     key={rt.id} 
-                    to={`/tools/${rt.slug}`}
+                    to={`/tools/${rt.slug}/`}
                     className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
                   >
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
@@ -778,7 +778,7 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
               {[10, 20, 50, 100].map(size => (
                 <Link
                   key={size}
-                  to={`/tools/compress-image?target=${size}`}
+                  to={`/tools/compress-image/?target=${size}`}
                   className="flex flex-col items-center justify-center p-4 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-all group dark:border-gray-800 dark:bg-gray-800/50 dark:hover:bg-blue-900/20"
                 >
                   <span className="text-lg font-black text-gray-900 dark:text-white group-hover:text-blue-600">To {size}KB</span>

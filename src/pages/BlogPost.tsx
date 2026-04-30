@@ -10,7 +10,7 @@ export const BlogPost: React.FC = () => {
   const post = BLOG_POSTS.find(p => p.slug === slug);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/blog/" replace />;
   }
 
   const articleSchema = {
@@ -97,7 +97,7 @@ export const BlogPost: React.FC = () => {
           className="mb-8"
         >
           <Link 
-            to="/blog" 
+            to="/blog/" 
             className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -171,7 +171,7 @@ export const BlogPost: React.FC = () => {
                   Browse All Tools
                 </Link>
                 <Link 
-                  to="/blog" 
+                  to="/blog/" 
                   className="px-8 py-3 rounded-2xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
                 >
                   More Articles

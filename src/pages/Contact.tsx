@@ -14,7 +14,7 @@ export const Contact = () => {
     if (params.get('success') === 'true') {
       setSubmitted(true);
       // Clean up the URL
-      navigate('/contact', { replace: true });
+      navigate('/contact/', { replace: true });
     }
   }, [location, navigate]);
 
@@ -96,7 +96,7 @@ export const Contact = () => {
                   <input type="hidden" name="_subject" value="New Contact Form Submission" />
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_template" value="table" />
-                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/contact?success=true` : ''} />
+                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/contact/?success=true` : ''} />
                   <input type="hidden" name="_honey" className="hidden" />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

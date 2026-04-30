@@ -5,6 +5,23 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function normalizeInternalLink(path: string) {
+  if (!path) return '/';
+  if (path.startsWith('http')) return path;
+  
+  const url = new URL(path, 'https://sohelix.com');
+  let pathname = url.pathname;
+  
+  // Add trailing slash if missing and not a file
+  if (!pathname.endsWith('/') && !pathname.split('/').pop()?.includes('.')) {
+    pathname += '/';
+  }
+  
+  pathname = pathname.replace(/\/+/g, '/');
+  
+  return pathname + url.search + url.hash;
+}
+
 export function formatBytes(bytes: number, decimals = 2) {
   if (bytes === 0) return '0 Bytes';
   const k = 1024;

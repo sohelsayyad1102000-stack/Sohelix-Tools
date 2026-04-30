@@ -8,7 +8,7 @@ import { Logo } from './Logo';
 
 const NAV_LINKS = [
   { name: 'Home', path: '/' },
-  { name: 'Blog', path: '/blog' },
+  { name: 'Blog', path: '/blog/' },
 ];
 
 // Helper to get dynamic categories
@@ -18,7 +18,7 @@ const getCategories = () => {
     .map(slug => ({
       slug,
       name: CATEGORY_INFO[slug]?.title?.replace('Free ', '').replace(' Online', '') || slug.replace('-', ' '),
-      path: `/categories/${slug}`
+      path: `/categories/${slug}/`
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 };
@@ -94,7 +94,7 @@ export const Navbar: React.FC = React.memo(() => {
             </div>
           </div>
           <Link 
-            to="/blog" 
+            to="/blog/" 
             className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all active:scale-95"
           >
             Blog
@@ -122,7 +122,7 @@ export const Navbar: React.FC = React.memo(() => {
                   filteredTools.map(tool => (
                     <button
                       key={tool.id}
-                      onClick={() => navigate(`/tools/${tool.slug}`)}
+                      onClick={() => navigate(`/tools/${tool.slug}/`)}
                       className="flex w-full items-center gap-3 px-4 py-3 text-left rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
                     >
                       <span className="text-sm font-bold text-gray-900 dark:text-white">{tool.name}</span>
@@ -175,7 +175,7 @@ export const Navbar: React.FC = React.memo(() => {
               Home
             </Link>
             <Link
-              to="/blog"
+              to="/blog/"
               className="block rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -200,7 +200,7 @@ export const Navbar: React.FC = React.memo(() => {
             {TOOLS.slice(0, 4).map(tool => (
               <Link
                 key={tool.id}
-                to={`/tools/${tool.slug}`}
+                to={`/tools/${tool.slug}/`}
                 className="block rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
                 onClick={() => setIsMenuOpen(false)}
               >

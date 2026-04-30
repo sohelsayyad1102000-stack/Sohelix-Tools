@@ -29,10 +29,14 @@ export const SEO: React.FC<SEOProps> = ({
     fullTitle = fullTitle.substring(0, 57) + '...';
   }
 
-  const [url, setUrl] = React.useState('https://sohelix.com');
+  const [url, setUrl] = React.useState('https://sohelix.com/');
 
   React.useEffect(() => {
-    setUrl(window.location.href);
+    let currentUrl = window.location.origin + window.location.pathname;
+    if (!currentUrl.endsWith('/') && !currentUrl.split('/').pop()?.includes('.')) {
+      currentUrl += '/';
+    }
+    setUrl(currentUrl + window.location.search);
   }, []);
   
   // Use static PNG OG images for maximum compatibility
@@ -44,7 +48,7 @@ export const SEO: React.FC<SEOProps> = ({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Sohelix",
-      "url": "https://sohelix.com",
+      "url": "https://sohelix.com/",
       "logo": "https://sohelix.com/logo.png",
       "sameAs": [
         "https://twitter.com/sohelix",

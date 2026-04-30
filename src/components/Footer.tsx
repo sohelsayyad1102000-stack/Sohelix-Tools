@@ -13,7 +13,7 @@ export const Footer: React.FC = React.memo(() => {
       .map(slug => ({
         slug,
         name: CATEGORY_INFO[slug]?.title?.replace('Free ', '').replace(' Online', '') || slug.replace('-', ' '),
-        path: `/categories/${slug}`
+        path: `/categories/${slug}/`
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
   };
@@ -43,10 +43,10 @@ export const Footer: React.FC = React.memo(() => {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Quick Links</h3>
             <ul className="mt-4 space-y-2">
               <li><Link to="/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Home</Link></li>
-              <li><Link to="/blog" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Blog</Link></li>
-              <li><Link to="/about" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">About</Link></li>
-              <li><Link to="/contact" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Contact</Link></li>
-              <li><Link to="/faq" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">FAQ</Link></li>
+              <li><Link to="/blog/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Blog</Link></li>
+              <li><Link to="/about/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">About</Link></li>
+              <li><Link to="/contact/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Contact</Link></li>
+              <li><Link to="/faq/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">FAQ</Link></li>
             </ul>
           </div>
 
@@ -68,7 +68,7 @@ export const Footer: React.FC = React.memo(() => {
             <ul className="mt-4 space-y-2">
               {TOOLS.slice(0, 4).map(tool => (
                 <li key={tool.id}>
-                  <Link to={`/tools/${tool.slug}`} className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">
+                  <Link to={`/tools/${tool.slug}/`} className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">
                     {tool.name}
                   </Link>
                 </li>
@@ -79,9 +79,9 @@ export const Footer: React.FC = React.memo(() => {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">Legal</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link to="/privacy-policy" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Terms of Service</Link></li>
-              <li><Link to="/disclaimer" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Disclaimer</Link></li>
+              <li><Link to="/privacy-policy/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Privacy Policy</Link></li>
+              <li><Link to="/terms/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Terms of Service</Link></li>
+              <li><Link to="/disclaimer/" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400">Disclaimer</Link></li>
             </ul>
           </div>
         </div>

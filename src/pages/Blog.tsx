@@ -45,7 +45,7 @@ export const Blog: React.FC = () => {
                 </div>
                 
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 transition-colors">
-                  <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                  <Link to={`/blog/${post.slug}/`}>{post.title}</Link>
                 </h2>
                 
                 <p className="text-gray-600 dark:text-gray-400 mb-8 line-clamp-3">
@@ -60,7 +60,7 @@ export const Blog: React.FC = () => {
                     </div>
                   </div>
                   <Link 
-                    to={`/blog/${post.slug}`}
+                    to={`/blog/${post.slug}/`}
                     className="flex items-center gap-1 text-sm font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400"
                   >
                     Read More <ChevronRight className="h-4 w-4" />
