@@ -106,11 +106,28 @@ ${sitemapRoutes.map(route => `  <url>
   const robots = `User-agent: *
 Allow: /
 
-Sitemap: ${BASE_URL}/sitemap.xml
+# Block programmatic / low-value variant URLs (FIXED)
+Disallow: /*-to-*
+Disallow: /*-for-*
+Disallow: /*-in-*
+Disallow: /*-kb*
+Disallow: /*-cm*
+Disallow: /*-mm*
+Disallow: /*-inch*
+Disallow: /*-transparent*
+Disallow: /*-high-quality*
 
-Disallow:
-/admin/
-/login/`;
+# Block internal/system paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /_next/
+
+# Allow essential static assets
+Allow: /_next/static/
+
+# Sitemap
+Sitemap: ${BASE_URL}/sitemap.xml`;
 
   if (!fs.existsSync(DIST_DIR)) {
     console.log('🏗️ Creating dist directory as it does not exist...');
