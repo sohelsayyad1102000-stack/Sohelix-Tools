@@ -2,16 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants/blog';
 import { SEO } from '../components/SEO';
+import { generateMeta } from '../lib/seo';
 import { Calendar, User, ChevronRight, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export const Blog: React.FC = () => {
+  const { title, metaDescription } = generateMeta({
+    type: 'page',
+    name: 'Blog'
+  });
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-12">
       <SEO 
-        title="Blog - Sohelix Free Online Tools"
-        description="Read our latest guides, tips, and articles about using online tools for productivity, health, and more."
+        title={title}
+        description={metaDescription}
         keywords={['sohelix blog', 'online tools guide', 'productivity tips', 'health tools guide']}
+        canonical="/blog/"
       />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants/blog';
 import { SEO } from '../components/SEO';
+import { generateMeta } from '../lib/seo';
 import { Calendar, User, ArrowLeft, Share2, Clock } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -12,6 +13,12 @@ export const BlogPost: React.FC = () => {
   if (!post) {
     return <Navigate to="/blog/" replace />;
   }
+
+  const { title: seoTitle, metaDescription } = generateMeta({
+    type: 'blog',
+    name: post.title,
+    description: post.description
+  });
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -35,7 +42,7 @@ export const BlogPost: React.FC = () => {
     "dateModified": "2026-04-16T09:00:00+00:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://sohelix.com/blog/${post.slug}`
+      "@id": `https://sohelix.com/blog/${post.slug}/`
     }
   };
 
@@ -47,19 +54,19 @@ export const BlogPost: React.FC = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://sohelix.com"
+        "item": "https://sohelix.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://sohelix.com/blog"
+        "item": "https://sohelix.com/blog/"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://sohelix.com/blog/${post.slug}`
+        "item": `https://sohelix.com/blog/${post.slug}/`
       }
     ]
   };
@@ -83,10 +90,11 @@ export const BlogPost: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 py-12">
       <SEO 
-        title={post.seo?.title}
-        description={post.seo?.description}
+        title={post.seo?.title || seoTitle}
+        description={post.seo?.description || metaDescription}
         keywords={post.seo?.keywords}
         slug={post.slug}
+        canonical={`/blog/${post.slug}/`}
         schema={schemas}
       />
 

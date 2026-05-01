@@ -3,6 +3,8 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 import { TOOLS } from '../constants/tools';
 import { CATEGORY_INFO } from '../constants/categories';
 import { SEO } from '../components/SEO';
+import { RelatedTools } from '../components/RelatedTools';
+import { generateMeta } from '../lib/seo';
 import { cn, formatBytes } from '../lib/utils';
 import { 
   Upload, 
@@ -417,14 +419,20 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
     ]
   };
 
+  const { title: seoTitle, metaDescription } = generateMeta({ 
+    type: 'tool', 
+    name: tool.name, 
+    description: tool.description 
+  });
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <SEO
-        title={tool.seo?.title}
-        description={tool.seo?.description}
+        title={tool.seo?.title || seoTitle}
+        description={tool.seo?.description || metaDescription}
         keywords={tool.seo?.keywords}
         slug={tool.slug}
-        canonical={`https://sohelix.com/tools/${tool.slug}`}
+        canonical={`/tools/${tool.slug}`}
         noindex={isVariantPath}
         schema={[faqSchema, webAppSchema, webPageSchema, breadcrumbSchema]}
       />
@@ -747,28 +755,11 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         </section>
 
         {/* Related Tools Section */}
-        {relatedTools.length > 0 && (
-          <div className="mt-24 border-t border-gray-200 pt-16 dark:border-gray-800">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Related Tools</h2>
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {relatedTools.map(rt => {
-                return (
-                  <Link 
-                    key={rt.id} 
-                    to={`/tools/${rt.slug}/`}
-                    className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-blue-200 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
-                  >
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
-                      <DynamicIcon name={rt.icon} className="h-5 w-5" />
-                    </div>
-                    <h3 className="font-bold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">{rt.name}</h3>
-                    <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{rt.description}</p>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        )}
+        <RelatedTools 
+          currentToolId={tool.id} 
+          category={tool.category} 
+          categoryName={CATEGORY_INFO[tool.category]?.title?.replace('Free ', '').replace(' Online', '') || tool.category}
+        />
 
         {/* Internal Linking Section for Compress Image */}
         {tool.id === 'compress-image' && (

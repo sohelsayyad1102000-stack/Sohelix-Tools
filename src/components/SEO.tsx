@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { normalizeFullUrl } from '../lib/utils';
+import { normalizeCanonicalUrl } from '../lib/seo';
 
 interface SEOProps {
   title: string;
@@ -22,25 +22,16 @@ export const SEO: React.FC<SEOProps> = ({
   noindex = false,
 }) => {
   const siteName = 'Sohelix';
-  const displayTitle = title || 'Free Online Tools';
-  let fullTitle = displayTitle.includes(siteName) ? displayTitle : `${displayTitle} | ${siteName}`;
   
-  // SEO optimization: Keep title under 60 chars
-  if (fullTitle.length > 60) {
-    fullTitle = fullTitle.substring(0, 57) + '...';
-  }
-
-  const [url, setUrl] = React.useState('https://sohelix.com/');
-
-  React.useEffect(() => {
-    setUrl(normalizeFullUrl(window.location.pathname + window.location.search));
-  }, []);
-  
-  const canonicalUrl = canonical ? normalizeFullUrl(canonical) : url;
+  // Use canonical if provided, otherwise normalize the current URL
+  const canonicalUrl = normalizeCanonicalUrl(canonical || (typeof window !== 'undefined' ? window.location.pathname + window.location.search : ''));
 
   // Use static PNG OG images for maximum compatibility
   const ogImageSlug = slug || 'default';
   const ogImageUrl = `https://sohelix.com/og/${ogImageSlug}.png`;
+  
+  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  const displayDescription = description || 'Access 100+ free online tools for your daily workflow. Fast, secure, and easy to use on Sohelix.';
 
   const defaultSchemas = [
     {
@@ -61,8 +52,6 @@ export const SEO: React.FC<SEOProps> = ({
     : schema 
       ? [...defaultSchemas, schema] 
       : defaultSchemas;
-
-  const displayDescription = description || 'Access 100+ free online tools including calculators, PDF tools, SEO tools, and more.';
 
   return (
     <Helmet>

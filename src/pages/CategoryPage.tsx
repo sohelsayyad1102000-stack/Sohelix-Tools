@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
+import { generateMeta } from '../lib/seo';
 import { TOOLS } from '../constants/tools';
 import { CATEGORY_INFO } from '../constants/categories';
 import { ToolCard } from '../components/ToolCard';
@@ -24,14 +25,21 @@ export const CategoryPage: React.FC = () => {
     );
   }
 
+  const { title, metaDescription } = generateMeta({
+    type: 'category',
+    name: categoryInfo.title.replace('Free ', '').replace(' Online', ''),
+    description: categoryInfo.description
+  });
+
   const Icon = categoryInfo.icon;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <SEO
-        title={categoryInfo.title}
-        description={categoryInfo.description}
+        title={title}
+        description={metaDescription}
         slug={slug}
+        canonical={`/categories/${slug}/`}
       />
 
       <div className="container mx-auto px-4 max-w-7xl py-8">
