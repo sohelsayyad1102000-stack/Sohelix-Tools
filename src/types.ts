@@ -16,6 +16,7 @@ export interface Tool {
   benefits: string[];
   useCases: string[];
   faqs: { question: string; answer: string }[];
+  steps?: { title: string; description: string }[];
   longContent: string;
   relatedTools?: string[];
 }

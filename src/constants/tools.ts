@@ -16,133 +16,105 @@ export const TOOLS: Tool[] = [
       keywords: ['image compressor', 'reduce image size', 'compress jpg', 'compress png', 'online image optimizer'],
     },
     features: [
-      'Fast client-side processing',
-      'No file upload (privacy first)',
-      'Adjustable quality levels',
-      'Supports JPG, PNG, WebP',
+      'Industrial-grade client-side compression',
+      'Absolute privacy (No file uploads required)',
+      'Adjustable quality and target size modes',
+      'Batch processing (Up to 50 images at once)',
+      'Universal support: JPG, PNG, WebP, SVG, and HEIC',
+      'Built-in image resizing and metadata removal',
     ],
     benefits: [
-      'Improve website loading speed',
-      'Save storage space',
-      'Better SEO rankings',
+      'Boost website performance and Core Web Vitals (LCP)',
+      'Drastically reduce storage costs and bandwidth usage',
+      'Maintain professional visual quality with tiny file sizes',
+      'Comply with strict image size limits for government portals',
+      'Improve SEO rankings with faster loading pages',
     ],
     useCases: [
-      'Web developers optimizing assets',
-      'Bloggers uploading images to CMS',
-      'Social media managers',
+      'Web developers optimizing production assets',
+      'Bloggers uploading high-res images to CMS',
+      'E-commerce owners speeding up product galleries',
+      'Gov & Job applicants meeting size requirements',
+      'Digital marketers optimizing social media posts',
     ],
     faqs: [
       {
-        question: 'Is this image compressor free?',
-        answer: 'Yes, Sohelix Image Compressor is 100% free to use with no hidden costs or limits.',
+        question: 'Is this online image compressor free?',
+        answer: 'Yes, the Sohelix Image Compressor is 100% free with no hidden costs, limits, or watermarks.',
       },
       {
-        question: 'Does it affect image quality?',
-        answer: 'Our tool uses advanced algorithms to reduce file size while maintaining the best possible visual quality.',
+        question: 'Are my images safe and private?',
+        answer: 'Absolutely. All processing happens locally in your browser. Your images are never uploaded to any server, ensuring total privacy for sensitive documents.',
       },
       {
-        question: 'Are my images safe?',
-        answer: 'Absolutely. All processing happens in your browser. Your images are never uploaded to our servers.',
+        question: 'Does compression reduce image quality?',
+        answer: 'Our tool use advanced algorithms to find the optimal balance between file size and visual sharpness. Most users cannot detect any quality loss at 80% quality.',
       },
+      {
+        question: 'Can I compress images to exactly 50KB or 100KB?',
+        answer: 'Yes! Use the "Target Size" mode and enter your desired size in KB. The algorithm will automatically adjust quality to meet your requirement.',
+      },
+      {
+        question: 'Which image formats are supported?',
+        answer: 'We support JPG, JPEG, PNG, WebP, SVG, and even iPhone HEIC files (which are converted to optimized JPG/PNG).',
+      },
+    ],
+    steps: [
+      {
+        title: 'Upload Your Media',
+        description: 'Drag and drop your images into the secure upload zone or click "Select Image" to browse your local storage. You can batch upload up to 50 images simultaneously.'
+      },
+      {
+        title: 'Choose Compression Mode',
+        description: 'Select "Quality Mode" to define a percentage (e.g., 80%) or "Target Size Mode" to shrink files under a specific limit like 20KB, 50KB, or 100KB.'
+      },
+      {
+        title: 'Configure Optional Settings',
+        description: 'Need to change dimensions? Enable "Resize Image" to adjust width/height. You can also change the output format (JPG, PNG, WebP) during compression.'
+      },
+      {
+        title: 'Download Optimized Results',
+        description: 'Click "Compress Images". Once finished, download your optimized files individually or as a single neatly organized ZIP archive.'
+      }
     ],
     longContent: `
       <div class="space-y-12 text-gray-700 dark:text-gray-300">
         <section>
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">The Ultimate Guide to Online Image Compression</h2>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">The Professional Standard for Online Image Compression</h2>
           <p class="text-lg leading-relaxed mb-6">
-            In today's fast-paced digital world, website speed and performance are more critical than ever. Large, unoptimized images are the primary culprit behind slow-loading pages, leading to poor user experiences and lower search engine rankings. <strong>Sohelix Image Compressor</strong> is a professional-grade, browser-based utility designed to solve this problem by significantly reducing file sizes without sacrificing visual quality.
+            In today's fast-paced digital ecosystem, website performance is not just a luxury—it's a critical ranking factor. Large, unoptimized images are the primary culprit behind slow-loading pages, leading to higher bounce rates and poor Core Web Vitals. <strong>Sohelix Image Compressor</strong> is an industrial-grade, privacy-first utility designed to significantly reduce file sizes without sacrificing visual integrity.
           </p>
           <p class="text-lg leading-relaxed">
-            Our tool utilizes advanced lossy and lossless compression algorithms to remove unnecessary data from your JPG, PNG, SVG, and WebP files. The best part? Everything happens directly in your browser using client-side technology, ensuring your sensitive data never leaves your device.
+            Our tool utilizes advanced lossy and lossless compression algorithms to eliminate redundant data from your JPG, PNG, and WebP files. By keeping all processing local to your browser, we ensure that your private data never leaves your device, providing a level of security that server-side compressors simply cannot match.
           </p>
-        </section>
-
-        <section class="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">How to Compress Images Online (Step-by-Step)</h2>
-          <div class="space-y-6">
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Upload Your Media</h4>
-                <p>Drag and drop your images into the upload zone or click "Select Image" to choose files from your local storage. You can batch upload up to 50 images at once.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Select Compression Mode</h4>
-                <p>Choose between <strong>Quality Mode</strong> (setting a percentage like 80%) or <strong>Target Size Mode</strong>. Target size is perfect if you need a file under a specific limit like 50KB or 100KB for government portals or email attachments.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</div>
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Optional Resizing</h4>
-                <p>Sometimes compression isn't enough. You can also resize the dimensions of your image during the compression process to achieve even smaller file sizes.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">4</div>
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Process and Download</h4>
-                <p>Click "Compress Images". Our tool will process all files using your computer's resources. Once finished, you can download them individually or as a single ZIP archive.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Why Use Sohelix Image Compressor?</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="space-y-4">
-              <h4 class="text-xl font-bold text-blue-600">Privacy First</h4>
-              <p>Unlike other online tools that upload your photos to a remote server, Sohelix processes everything locally. This is ideal for medical records, legal documents, or private personal photos.</p>
-            </div>
-            <div class="space-y-4">
-              <h4 class="text-xl font-bold text-blue-600">No Quality Loss</h4>
-              <p>Our smart compression technology identifies the threshold where file size is minimized but human eyes cannot detect a difference in quality.</p>
-            </div>
-            <div class="space-y-4">
-              <h4 class="text-xl font-bold text-blue-600">Universal Format Support</h4>
-              <p>Compress bulk JPG, PNG, WebP, and SVG files. We even support modern formats like HEIC (from iPhones) and convert them to optimized JPGs.</p>
-            </div>
-            <div class="space-y-4">
-              <h4 class="text-xl font-bold text-blue-600">SEO Optimized</h4>
-              <p>Fast websites rank higher. By compressing your blog images, you reduce "Largest Contentful Paint" (LCP) times, one of Google's key Core Web Vitals.</p>
-            </div>
-          </div>
         </section>
 
         <section class="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/20">
-          <h2 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-6">Professional Use Cases</h2>
-          <ul class="space-y-4 list-disc list-inside">
-            <li><strong>E-commerce Owners:</strong> Speed up product galleries to increase conversion rates.</li>
-            <li><strong>Bloggers & Content Creators:</strong> Improve page experience scores and save on hosting bandwidth.</li>
-            <li><strong>Graphic Designers:</strong> Quickly send large design mockups via email or Slack by reducing their footprint.</li>
-            <li><strong>Gov & Job Applicants:</strong> Meet strict file size requirements (e.g., "Photo must be under 20KB") for online applications.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h2>
-          <div class="space-y-6">
-            <div class="border-b border-gray-200 dark:border-gray-800 pb-4">
-              <h4 class="font-bold mb-2">Is the Sohelix image compressor really free?</h4>
-              <p>Yes, it's 100% free for use. There are no hidden costs, no watermarks added to your images, and no registration required.</p>
+          <h2 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-6 font-display">Why Privacy-First Compression Matters</h2>
+          <p class="mb-6 leading-relaxed">
+            Mainstream "free" online compressors often upload your images to their cloud servers, where they may be stored or analyzed. For professionals handling medical records, legal documents, or proprietary designs, this is a major security risk. Sohelix uses <strong>WebAssembly and Client-Side JS</strong> to compress images entirely on your CPU. No upload. No leak. 100% Secure.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-2 w-2 rounded-full bg-blue-600"></div>
+              <p class="text-sm">Encryption-grade privacy for sensitive documents</p>
             </div>
-            <div class="border-b border-gray-200 dark:border-gray-800 pb-4">
-              <h4 class="font-bold mb-2">What is the difference between lossy and lossless compression?</h4>
-              <p>Lossy compression (like JPG) removes some data to get a much smaller file, while lossless compression (like PNG) shrinks the file without losing any pixel data. Sohelix supports both methods.</p>
-            </div>
-            <div class="border-b border-gray-200 dark:border-gray-800 pb-4">
-              <h4 class="font-bold mb-2">Can I compress images to exactly 50KB?</h4>
-              <p>Yes! Simply use our "Target Size" mode and enter "50". Our algorithm will adjust the quality until the file size is as close to 50KB as possible without exceeding it.</p>
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-2 w-2 rounded-full bg-blue-600"></div>
+              <p class="text-sm">Zero lag from uploading large multi-megabyte files</p>
             </div>
           </div>
         </section>
 
-        <section class="text-sm text-gray-500 italic">
-          <p>Note: Sohelix is committed to digital safety. Since all processing is browser-based, we never have access to your original or compressed images. Your privacy is our priority.</p>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Optimizing for Core Web Vitals & SEO</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            Google's ranking algorithm heavily weighs <strong>Largest Contentful Paint (LCP)</strong>. Since images are often the largest elements on a page, compressing them is the fastest way to improve your SEO performance. By reducing a 2MB hero image to 150KB using Sohelix, you can cut page load time by seconds, directly impacting your conversion rates and search visibility.
+          </p>
+        </section>
+
+        <section class="text-sm text-gray-500 italic pt-8 border-t border-gray-100 dark:border-gray-800">
+          <p>Note: Sohelix is committed to digital safety and environmental sustainability by reducing the carbon footprint of data transfer. All image processing is browser-based, ensuring your privacy is our top priority.</p>
         </section>
       </div>
     `,

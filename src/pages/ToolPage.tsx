@@ -452,48 +452,55 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
       </div>
 
       {/* Hero Section */}
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
+      <section className="px-4 py-16 sm:px-6 lg:px-8 border-b border-gray-100 dark:border-gray-900 bg-white dark:bg-gray-950">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
-            {tool.title}
-          </h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-            {tool.description}
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {tool.isNew && (
+              <span className="mb-4 inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                <ZapIcon className="h-3 w-3" /> New Tool
+              </span>
+            )}
+            <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl dark:text-white leading-[1.1] mb-6">
+              {tool.title}
+            </h1>
+            <p className="mx-auto max-w-2xl text-xl text-gray-500 dark:text-gray-400 leading-relaxed">
+              {tool.description}
+            </p>
+          </motion.div>
           
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            {['Free', 'Secure', 'No Upload', 'Fast'].map(badge => (
-              <span key={badge} className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-900/20 dark:text-green-400">
-                <CheckCircle2 className="h-3.5 w-3.5" />
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {['Privacy-First', '100% Secure', 'No Upload', 'Instant'].map(badge => (
+              <span key={badge} className="inline-flex items-center gap-1.5 rounded-xl bg-gray-50 px-4 py-2 text-xs font-black uppercase tracking-widest text-gray-600 border border-gray-100 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-800 transition-all hover:border-blue-200 hover:text-blue-600">
+                <CheckCircle2 className="h-3.5 w-3.5 text-green-500" />
                 {badge}
               </span>
             ))}
           </div>
 
-          {/* Trust Badges Section */}
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 border-t border-gray-100 pt-8 dark:border-gray-800">
-            <div className="flex flex-col items-center gap-2">
-              <Shield className="h-6 w-6 text-green-500" />
-              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">100% Private</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <Zap className="h-6 w-6 text-yellow-500" />
-              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Instant Results</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <Lock className="h-6 w-6 text-blue-500" />
-              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">No Server Upload</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <MousePointer2 className="h-6 w-6 text-purple-500" />
-              <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">No Signup Required</span>
+          <div className="mt-12 flex justify-center">
+            <div className="flex items-center gap-6 overflow-x-auto pb-4 no-scrollbar">
+              <div className="flex items-center gap-2 shrink-0">
+                <Shield className="h-5 w-5 text-green-500" />
+                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">AES-256 Browser Security</span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <Zap className="h-5 w-5 text-yellow-500" />
+                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">WASM Speed</span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <Lock className="h-5 w-5 text-blue-500" />
+                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">End-to-End Local</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Tool Interface */}
-      <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
+      <section className="relative z-10 -mt-12 mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
         <React.Suspense fallback={<ToolSkeleton />}>
           {tool.id === 'compress-image' ? (
             <CompressorTool tool={tool} />
@@ -631,90 +638,134 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
         </React.Suspense>
       </section>
 
-        {/* SEO Content Sections */}
-        <section className="mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-            <div className="lg:col-span-3 space-y-16">
-              {/* What is */}
-              <div className="prose prose-blue dark:prose-invert max-w-none">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What is {tool.name}?</h2>
-                <div 
-                  className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400"
-                  dangerouslySetInnerHTML={{ __html: tool.longContent }}
-                />
-              </div>
-
-              {/* How to Use */}
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How to Use {tool.name}</h2>
-                <ol className="mt-6 space-y-4 text-gray-600 dark:text-gray-400">
-                  <li className="flex gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">1</span>
-                    <span>Select the files you want to process from your device or drag and drop them into the tool area.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">2</span>
-                    <span>Adjust the settings to your preference.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">3</span>
-                    <span>Click the "Process" or "Calculate" button to start the client-side processing.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600 dark:bg-blue-900/30">4</span>
-                    <span>Once finished, view your results or click the "Download" button to save your files.</span>
-                  </li>
-                </ol>
-              </div>
-
-              <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-                {/* Features */}
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Features</h2>
-                  <ul className="mt-6 space-y-4">
-                    {tool.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                        <CheckCircle2 className="h-5 w-5 text-green-500" />
-                        {feature}
+        {/* Optimized Content Section */}
+        <section className="mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
+            <div className="lg:col-span-3 space-y-24">
+              
+              {/* Professional Overview / Benefits */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div className="prose prose-blue dark:prose-invert max-w-none">
+                  <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight mb-6">Key Benefits</h2>
+                  <ul className="space-y-4 list-none p-0">
+                    {tool.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-3 text-lg text-gray-600 dark:text-gray-400 m-0">
+                        <div className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-blue-600" />
+                        {benefit}
                       </li>
                     ))}
                   </ul>
                 </div>
+                <div className="rounded-3xl bg-blue-600 p-8 text-white shadow-2xl shadow-blue-500/20">
+                  <h3 className="text-xl font-bold mb-4">Privacy Assurance</h3>
+                  <p className="text-blue-100 leading-relaxed italic border-l-4 border-blue-400 pl-4">
+                    "Sohelix is committed to digital safety. Since all processing is browser-based, we never have access to your data. Your privacy is our priority."
+                  </p>
+                  <div className="mt-6 flex items-center gap-3">
+                    <Shield className="h-6 w-6 text-blue-200" />
+                    <span className="text-xs font-black uppercase tracking-widest text-blue-200">128-bit Local Processing</span>
+                  </div>
+                </div>
+              </div>
 
-                {/* Benefits */}
+              {/* Step-by-Step Guide */}
+              <div>
+                <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight mb-10">Step-by-Step Guide</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {(tool.steps || [
+                    { title: 'Select Files', description: 'Upload the images or documents you want to process from your device.' },
+                    { title: 'Configure Settings', description: 'Adjust the quality, dimensions, or parameters to your specific needs.' },
+                    { title: 'Local Processing', description: 'Click the action button to process everything instantly in your browser.' },
+                    { title: 'Instant Download', description: 'Save your optimized files individually or as a single ZIP archive.' }
+                  ]).map((step, i) => (
+                    <div key={i} className="group relative rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all hover:border-blue-200 hover:shadow-xl dark:border-gray-800 dark:bg-gray-950">
+                      <span className="absolute -top-4 -left-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-xl font-black text-white shadow-lg transition-transform group-hover:scale-110">
+                        {i + 1}
+                      </span>
+                      <h4 className="mb-3 text-xl font-black text-gray-900 dark:text-white">{step.title}</h4>
+                      <p className="text-gray-500 dark:text-gray-400 leading-relaxed">{step.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Deep Dive Content (Long Content) */}
+              {tool.longContent && (
+                <div className="prose prose-blue dark:prose-invert max-w-none pt-12 border-t border-gray-100 dark:border-gray-900">
+                  <div dangerouslySetInnerHTML={{ __html: tool.longContent }} />
+                </div>
+              )}
+
+              {/* Technical Features & Use Cases */}
+              <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Benefits & Use Cases</h2>
-                  <ul className="mt-6 space-y-4">
-                    {tool.benefits.map((benefit, i) => (
-                      <li key={`benefit-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                        <CheckCircle2 className="h-5 w-5 text-blue-500" />
-                        {benefit}
-                      </li>
+                  <h2 className="text-2xl font-black text-gray-900 dark:text-white tracking-tight mb-8">Professional Features</h2>
+                  <div className="grid grid-cols-1 gap-4">
+                    {tool.features.map((feature, i) => (
+                      <div key={i} className="flex items-center gap-4 rounded-2xl bg-gray-50 px-6 py-4 dark:bg-gray-900/50 border border-gray-100 dark:border-gray-800 transition-colors hover:border-blue-100">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                          <CheckCircle2 className="h-4 w-4" />
+                        </div>
+                        <span className="text-sm font-bold text-gray-700 dark:text-gray-300">{feature}</span>
+                      </div>
                     ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-black text-gray-900 dark:text-white tracking-tight mb-8">Professional Use Cases</h2>
+                  <div className="grid grid-cols-1 gap-4">
                     {tool.useCases.map((useCase, i) => (
-                      <li key={`usecase-${i}`} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                        <CheckCircle2 className="h-5 w-5 text-blue-500" />
-                        {useCase}
-                      </li>
+                      <div key={i} className="flex items-center gap-4 rounded-2xl bg-white px-6 py-4 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 transition-colors hover:border-green-100">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">
+                          <MousePointer2 className="h-4 w-4" />
+                        </div>
+                        <span className="text-sm font-bold text-gray-700 dark:text-gray-300">{useCase}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
 
               {/* FAQ Section */}
               {tool.faqs.length > 0 && (
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
-                  <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="pt-24">
+                  <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight text-center mb-16">Frequently Asked Questions</h2>
+                  <div className="mx-auto max-w-4xl space-y-4">
                     {tool.faqs.map((faq, i) => (
-                      <div key={i} className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
-                        <h3 className="font-bold text-gray-900 dark:text-white">{faq.question}</h3>
-                        <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">{faq.answer}</p>
-                      </div>
+                      <details key={i} className="group rounded-3xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 [&_summary::-webkit-details-marker]:hidden">
+                        <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900 dark:text-white">
+                          <h3 className="text-lg font-bold">{faq.question}</h3>
+                          <div className="h-5 w-5 shrink-0 rounded-full bg-gray-100 p-1 text-gray-500 transition-all group-open:rotate-180 dark:bg-gray-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        </summary>
+                        <p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 pt-4 dark:border-gray-800">
+                          {faq.answer}
+                        </p>
+                      </details>
                     ))}
                   </div>
                 </div>
               )}
+              
+              {/* Final CTA */}
+              <div className="rounded-[3rem] bg-gradient-to-br from-blue-600 to-blue-800 p-12 text-center text-white shadow-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 -mr-12 -mt-12 bg-white/10 h-64 w-64 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-700"></div>
+                <h2 className="relative z-10 text-4xl font-black mb-6">Ready to Optimize Your Images?</h2>
+                <p className="relative z-10 text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                  Experience fast, secure, and professional image compression that happens entirely in your browser. No registration required.
+                </p>
+                <button 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="relative z-10 inline-flex items-center gap-2 rounded-2xl bg-white px-10 py-5 text-lg font-black text-blue-600 shadow-xl transition-all hover:scale-105 active:scale-95"
+                >
+                  Start Compressing Now
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </div>
             </div>
 
             {/* Sidebar */}
