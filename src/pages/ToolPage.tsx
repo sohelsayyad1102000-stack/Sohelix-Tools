@@ -754,15 +754,15 @@ export const ToolPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
               {/* Final CTA */}
               <div className="rounded-[3rem] bg-gradient-to-br from-blue-600 to-blue-800 p-12 text-center text-white shadow-2xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 -mr-12 -mt-12 bg-white/10 h-64 w-64 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-700"></div>
-                <h2 className="relative z-10 text-4xl font-black mb-6">Ready to Optimize Your Images?</h2>
+                <h2 className="relative z-10 text-4xl font-black mb-6">Ready to Optimize Your Assets?</h2>
                 <p className="relative z-10 text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-                  Experience fast, secure, and professional image compression that happens entirely in your browser. No registration required.
+                  Experience fast, secure, and professional browser-based processing. 100% private, no registration required.
                 </p>
                 <button 
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="relative z-10 inline-flex items-center gap-2 rounded-2xl bg-white px-10 py-5 text-lg font-black text-blue-600 shadow-xl transition-all hover:scale-105 active:scale-95"
                 >
-                  Start Compressing Now
+                  {tool.id === 'resize-image' ? 'Start Resizing Now' : 'Start Processing Now'}
                   <ChevronRight className="h-6 w-6" />
                 </button>
               </div>

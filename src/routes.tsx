@@ -30,14 +30,14 @@ export const routes: RouteObject[] = [
   { path: '/categories/:slug/', element: <SuspenseWrapper><CategoryPage /></SuspenseWrapper> },
   { path: '/tools/:slug/', element: <SuspenseWrapper><ToolPage /></SuspenseWrapper> },
   
-  // Programmatic SEO Routes for Resize Image
-  { path: '/resize-image-to-100x100/', element: <SuspenseWrapper><ToolPage slug="resize-image" /></SuspenseWrapper> },
-  { path: '/resize-image-to-600x600/', element: <SuspenseWrapper><ToolPage slug="resize-image" /></SuspenseWrapper> },
-  { path: '/resize-image-for-instagram/', element: <SuspenseWrapper><ToolPage slug="resize-image" /></SuspenseWrapper> },
-  { path: '/resize-image-for-passport/', element: <SuspenseWrapper><ToolPage slug="resize-image" /></SuspenseWrapper> },
-  { path: '/resize-image-in-cm/', element: <SuspenseWrapper><ToolPage slug="resize-image" /></SuspenseWrapper> },
-  { path: '/resize-image-in-mm/', element: <SuspenseWrapper><ToolPage slug="resize-image" /></SuspenseWrapper> },
-  { path: '/resize-image-in-inch/', element: <SuspenseWrapper><ToolPage slug="resize-image" /></SuspenseWrapper> },
+  // SEO Redirects for Resize Image (Consolidating Programmatic exposure)
+  { path: '/resize-image-to-100x100/', element: <Navigate to="/tools/resize-image?w=100&h=100" replace /> },
+  { path: '/resize-image-to-600x600/', element: <Navigate to="/tools/resize-image?w=600&h=600" replace /> },
+  { path: '/resize-image-for-instagram/', element: <Navigate to="/tools/resize-image?w=1080&h=1080" replace /> },
+  { path: '/resize-image-for-passport/', element: <Navigate to="/tools/resize-image?w=3.5&h=4.5&u=cm" replace /> },
+  { path: '/resize-image-in-cm/', element: <Navigate to="/tools/resize-image?u=cm" replace /> },
+  { path: '/resize-image-in-mm/', element: <Navigate to="/tools/resize-image?u=mm" replace /> },
+  { path: '/resize-image-in-inch/', element: <Navigate to="/tools/resize-image?u=inch" replace /> },
 
   // Programmatic SEO Routes for Crop Image
   { path: '/crop-image-circle/', element: <SuspenseWrapper><ToolPage slug="crop-image" /></SuspenseWrapper> },

@@ -58,15 +58,6 @@ export const ResizeImageTool: React.FC<ResizeImageToolProps> = ({ tool }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const path = window.location.pathname;
-    if (path.includes('100x100')) { setWidth(100); setHeight(100); setUnit('px'); }
-    else if (path.includes('600x600')) { setWidth(600); setHeight(600); setUnit('px'); }
-    else if (path.includes('instagram')) { setWidth(1080); setHeight(1080); setUnit('px'); }
-    else if (path.includes('passport')) { setWidth(3.5); setHeight(4.5); setUnit('cm'); }
-    else if (path.includes('in-cm')) { setUnit('cm'); }
-    else if (path.includes('in-mm')) { setUnit('mm'); }
-    else if (path.includes('in-inch')) { setUnit('inch'); }
-
     const params = new URLSearchParams(window.location.search);
     const w = params.get('w');
     const h = params.get('h');
@@ -556,53 +547,82 @@ export const ResizeImageTool: React.FC<ResizeImageToolProps> = ({ tool }) => {
         </div>
       </div>
 
-      {/* Internal Linking Section (SEO Engine) */}
-      <div className="space-y-12">
+      {/* Quick Presets Section */}
+      <div className="space-y-8">
         <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Resize by Popular Sizes</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <h2 className="text-2xl font-black text-gray-900 dark:text-white tracking-tight">Quick Size Presets</h2>
+            <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest">
+              <CheckCircle2 className="h-4 w-4 text-green-500" />
+              Dynamic Auto-Fill
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { label: '100x100', path: '/resize-image-to-100x100' },
-              { label: '600x600', path: '/resize-image-to-600x600' },
-              { label: 'Instagram', path: '/resize-image-for-instagram' },
-              { label: 'Passport Size', path: '/resize-image-for-passport' },
-              { label: '2x2 Inch', w: 2, h: 2, u: 'inch' },
-              { label: '4x6 Inch', w: 4, h: 6, u: 'inch' },
-              { label: 'YouTube', w: 1280, h: 720 },
-              { label: 'Facebook', w: 1200, h: 630 },
-              { label: 'Twitter', w: 1200, h: 675 },
-              { label: 'A4 Size', w: 21, h: 29.7, u: 'cm' },
+              { label: 'Instagram Square', w: 1080, h: 1080, desc: '1080 x 1080 PX' },
+              { label: 'Passport Size', w: 3.5, h: 4.5, u: 'cm', desc: '3.5 x 4.5 CM' },
+              { label: 'YouTube Thumbnail', w: 1280, h: 720, desc: '1280 x 720 PX' },
+              { label: 'Standard 100x100', w: 100, h: 100, desc: '100 x 100 PX' },
+              { label: 'A4 Document size', w: 21, h: 29.7, u: 'cm', desc: '21 x 29.7 CM' },
+              { label: 'US Letter size', w: 8.5, h: 11, u: 'inch', desc: '8.5 x 11 INCH' },
             ].map((item, i) => (
               <Link
                 key={i}
-                to={item.path || `/tools/resize-image?w=${item.w}&h=${item.h}${item.u ? `&u=${item.u}` : ''}`}
-                className="flex flex-col items-center justify-center p-4 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-all group dark:border-gray-800 dark:bg-gray-800/50 dark:hover:bg-blue-900/20"
+                to={`/tools/resize-image?w=${item.w}&h=${item.h}${item.u ? `&u=${item.u}` : ''}`}
+                className="group flex items-center justify-between p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-blue-400 hover:shadow-xl transition-all dark:border-gray-800 dark:bg-gray-800/50 dark:hover:bg-gray-900"
               >
-                <span className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600">{item.label}</span>
-                <span className="text-[10px] text-gray-500 dark:text-gray-400 mt-1">Quick Resize</span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-black text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">{item.label}</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-1">{item.desc}</span>
+                </div>
+                <div className="h-8 w-8 rounded-full bg-white flex items-center justify-center border border-gray-100 group-hover:border-blue-100 group-hover:bg-blue-50 transition-all dark:bg-gray-800 dark:border-gray-700">
+                  <Maximize2 className="h-4 w-4 text-gray-400 group-hover:text-blue-600" />
+                </div>
               </Link>
             ))}
           </div>
         </div>
 
-        <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Resize by Specific Units</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { label: 'Resize in CM', path: '/resize-image-in-cm' },
-              { label: 'Resize in MM', path: '/resize-image-in-mm' },
-              { label: 'Resize in Inch', path: '/resize-image-in-inch' },
-              { label: 'Resize in Pixels', u: 'px' },
-            ].map((item, i) => (
-              <Link
-                key={i}
-                to={item.path || `/tools/resize-image?u=${item.u}`}
-                className="flex flex-col items-center justify-center p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 transition-all group dark:border-gray-800 dark:bg-gray-800/50 dark:hover:bg-blue-900/20"
-              >
-                <span className="text-lg font-black text-gray-900 dark:text-white group-hover:text-blue-600">{item.label}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">Professional Units</span>
-              </Link>
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Unit Conversion</h3>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: 'Resize in CM', u: 'cm' },
+                { label: 'Resize in MM', u: 'mm' },
+                { label: 'Resize in Inch', u: 'inch' },
+                { label: 'Resize in Pixels', u: 'px' },
+              ].map((item, i) => (
+                <Link
+                  key={i}
+                  to={`/tools/resize-image?u=${item.u}`}
+                  className="px-4 py-2 rounded-xl border border-gray-100 bg-gray-50 text-xs font-black uppercase tracking-widest text-gray-600 hover:border-blue-400 hover:text-blue-600 hover:bg-white transition-all dark:border-gray-800 dark:bg-gray-800/50 dark:text-gray-400"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          
+          <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Related Tools</h3>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: 'Compress Image', path: '/tools/compress-image' },
+                { label: 'Crop Image', path: '/tools/crop-image' },
+                { label: 'JPG to PNG', path: '/tools/jpg-to-png' },
+                { label: 'WebP Converter', path: '/tools/webp-converter' },
+              ].map((item, i) => (
+                <Link
+                  key={i}
+                  to={item.path}
+                  className="px-4 py-2 rounded-xl border border-gray-100 bg-gray-50 text-xs font-black uppercase tracking-widest text-gray-600 hover:border-blue-400 hover:text-blue-600 hover:bg-white transition-all dark:border-gray-800 dark:bg-gray-800/50 dark:text-gray-400"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -133,98 +133,114 @@ export const TOOLS: Tool[] = [
       keywords: ['image resizer', 'resize image online', 'resize image in cm', 'resize image in mm', 'resize image to 100x100', 'passport size photo resizer'],
     },
     features: [
+      'Industrial-grade client-side resizing',
+      'Absolute privacy (No file uploads required)',
       'Resize in Pixels, CM, MM, or Inches',
-      'Maintain Aspect Ratio Toggle',
-      'Built-in Image Compression',
-      'Multi-format Output (JPG, PNG, WebP)',
-      'Bulk Processing Support',
-      '100% Client-side Privacy',
+      'Built-in compression and format conversion',
+      'Batch processing (Up to 50 images at once)',
+      'DPI-aware printing calculations',
     ],
     benefits: [
-      'Professional precision for printing',
-      'Optimized for social media & web',
-      'No registration or login required',
-      'Fast, secure, and free forever',
+      'Professional precision for web and print assets',
+      'Total data security with browser-based processing',
+      'Optimize social media and passport-size photos',
+      'Save significant storage space and bandwidth',
+      'Fast and free without any registration',
     ],
     useCases: [
-      'Creating passport size photos (CM/MM)',
-      'Optimizing web assets for SEO',
-      'Fitting images into specific UI layouts',
-      'Preparing photos for physical printing',
+      'Passport and ID photos (3.5x4.5cm, 2x2 inch)',
+      'Instagram, YouTube, and Social Media presets',
+      'Web developer optimizing layout assets',
+      'Preparing high-res photos for physical printing',
+      'E-commerce product gallery standardization',
     ],
     faqs: [
       {
         question: 'How do I resize an image to 100x100 pixels?',
-        answer: 'Upload your image, set the unit to "PX", enter 100 in both width and height fields, and click Resize.',
+        answer: 'Upload your image, set the unit to "PX", enter 100 in both width and height fields, and click Resize. You can also use our quick presets for standard sizes.',
       },
       {
-        question: 'Can I resize an image in CM or MM?',
-        answer: 'Yes! Sohelix supports professional units like CM and MM, perfect for passport photos or print documents.',
+        question: 'Can I resize an image in CM or MM for printing?',
+        answer: 'Yes! Sohelix supports professional units like CM and MM. This is perfect for passport photos or print documents that require exact physical dimensions.',
       },
       {
-        question: 'Is my data safe?',
-        answer: 'Absolutely. All processing happens locally in your browser. Your images are never uploaded to our servers.',
+        question: 'Are my images safe and private?',
+        answer: 'Absolutely. We use client-side technology, meaning all processing happens directly in your browser. Your images are never uploaded to any server.',
       },
+      {
+        question: 'What is the difference between Resizing and Compressing?',
+        answer: 'Resizing changes the physical dimensions (width/height), while compression reduces the file size (KB) by optimizing data. Sohelix allows you to do both simultaneously.',
+      },
+      {
+        question: 'Does resizing affect image quality?',
+        answer: 'We use high-quality resampling algorithms to ensure your images stay sharp when downscaling. For upscaling, we maintain the best possible integrity.',
+      },
+    ],
+    steps: [
+      {
+        title: 'Load Your Media',
+        description: 'Drag and drop your images into the secure editor or click "Select Image". We support JPG, PNG, and WebP formats.'
+      },
+      {
+        title: 'Define Dimensions',
+        description: 'Select your preferred unit (PX, CM, MM, or Inch) and enter the width/height. Use "Maintain Aspect Ratio" to prevent stretching.'
+      },
+      {
+        title: 'Configure Output',
+        description: 'Choose your desired format and optional compression level to reduce file size further while resizing.'
+      },
+      {
+        title: 'Instant Download',
+        description: 'Click "Resize Image" and save your optimized files individually or as a single neatly organized ZIP archive.'
+      }
     ],
     longContent: `
       <div class="space-y-12 text-gray-700 dark:text-gray-300">
         <section>
-          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Mastering Image Resizing for Web and Print</h2>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Professional Online Image Resizing</h2>
           <p class="text-lg leading-relaxed mb-6">
-            Whether you are preparing a headshot for a professional profile, optimizing product photos for an online store, or simply trying to fit an image into a specific layout, <strong>Sohelix Image Resizer</strong> provides the precision and flexibility you need. Our tool goes beyond simple scaling, offering professional features like custom unit selection (Pixels, CM, MM, Inches) and aspect ratio locking.
+            Preparation of graphics for web or print requires precision. Whether you are generating a <strong>Passport size photo</strong>, optimizing <strong>Instagram posts</strong>, or preparing high-res assets for a professional website, <strong>Sohelix Image Resizer</strong> offers industrial-grade accuracy with absolute privacy.
           </p>
           <p class="text-lg leading-relaxed">
-            In the era of high-resolution displays and mobile-first browsing, serving the right sized image is paramount. Large images slow down your site, while small images look pixelated. With Sohelix, you can find the perfect balance instantly, all without leaving your browser.
+            Unlike traditional editors, our tool performs all calculations and processing locally in your browser. This ensures that your private photos and sensitive documents never reach a remote server, making it the preferred choice for security-conscious professionals.
           </p>
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="p-8 rounded-3xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-            <h3 class="text-xl font-bold text-blue-900 dark:text-blue-400 mb-4">Precision Pixels for Web</h3>
-            <p class="text-gray-600 dark:text-gray-400">Target specific resolutions for Instagram, Facebook, or your personal blog. Our resizer ensures crisp details even when downscaling large files.</p>
+        <section class="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/20">
+          <h2 class="text-2xl font-bold text-blue-900 dark:text-blue-400 mb-6 underline decoration-blue-200 decoration-4">Resize vs. Compress: Which one do you need?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Image Resizing</h4>
+              <p class="text-sm">Changes the physical dimensions (e.g., 1920x1080 to 800x600). Essential for meeting layout requirements and aspect ratio standards.</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2">Image Compression</h4>
+              <p class="text-sm">Reduces the file size (e.g., 5MB to 200KB) by optimizing pixel data. Critical for website speed and storage optimization.</p>
+            </div>
           </div>
-          <div class="p-8 rounded-3xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-            <h3 class="text-xl font-bold text-green-900 dark:text-green-400 mb-4">Print Units (CM/MM)</h3>
-            <p class="text-gray-600 dark:text-gray-400">Need a 3.5cm x 4.5cm passport photo? Simply switch the unit to CM and enter your requirements. We handle the DPI conversions for you.</p>
-          </div>
+          <p class="mt-6 text-sm font-bold text-blue-800 dark:text-blue-300">With Sohelix, you can perform both operations in a single click for the ultimate workflow efficiency.</p>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">How to Resize Image Online Free</h2>
-          <div class="space-y-4">
-            <p>1. <strong>Upload:</strong> Click "Select Image" or drag files into the workspace. We support JPG, PNG, and WebP.</p>
-            <p>2. <strong>Unit Selection:</strong> Choose between Pixels (for digital), CM/MM (for printing), or Inches.</p>
-            <p>3. <strong>Define Dimensions:</strong> Enter your desired width or height. Keep "Maintain Aspect Ratio" checked to prevent stretching.</p>
-            <p>4. <strong>Download:</strong> Hit "Resize Image" and save your optimized file instantly.</p>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Precision and Flexibility</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50">
+              <h5 class="font-bold mb-2">Digital Units</h5>
+              <p class="text-xs">Resize in Pixels (PX) for web banners, social media thumbnails, and UI design.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50">
+              <h5 class="font-bold mb-2">Print Units</h5>
+              <p class="text-xs">Precision resizing in CM, MM, or Inches for physical printing and official documents.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50">
+              <h5 class="font-bold mb-2">Aspect Control</h5>
+              <p class="text-xs">Lock aspect ratio to maintain the perfect frame, or unlock it for custom stretching.</p>
+            </div>
           </div>
         </section>
 
-        <section class="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Why Choose Sohelix?</h2>
-          <ul class="space-y-4">
-            <li class="flex items-start gap-4">
-              <CheckCircle2 class="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-              <span><strong>Bulk Processing:</strong> Resize dozens of images at once and download them in a single ZIP file.</span>
-            </li>
-            <li class="flex items-start gap-4">
-              <CheckCircle2 class="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-              <span><strong>No Quality Loss:</strong> We use high-end resampling algorithms to maintain visual sharpness.</span>
-            </li>
-            <li class="flex items-start gap-4">
-              <CheckCircle2 class="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-              <span><strong>100% Client-Side:</strong> Your images are processed in your browser, ensuring absolute privacy.</span>
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Image Resizing vs. Image Compression</h2>
-          <p class="mb-4">While they are related, they serve different purposes:</p>
-          <ul class="list-disc list-inside space-y-2">
-            <li><strong>Resizing:</strong> Changes the physical dimensions (width/height) of the image. Useful for fitting images into specific UI containers.</li>
-            <li><strong>Compression:</strong> Reduces the file size (KB/MB) by optimizing the data within the image. Useful for speeding up web pages.</li>
-          </ul>
-          <p class="mt-4"><strong>Sohelix allows you to do both simultaneously!</strong> You can set the dimensions and the quality level in one go.</p>
+        <section class="text-sm text-gray-500 italic pt-8 border-t border-gray-100 dark:border-gray-800">
+          <p>Privacy Guarantee: All image processing happens locally on your hardware. We do not store, track, or upload your images. 100% Client-Side security.</p>
         </section>
       </div>
     `,
