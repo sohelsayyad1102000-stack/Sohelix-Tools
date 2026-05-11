@@ -8,7 +8,6 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recha
 interface Denomination {
   value: number;
   notes: number;
-  loose: number;
 }
 
 interface CurrencyDenominationProps {
@@ -40,7 +39,7 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
 
   useEffect(() => {
     const preset = CURRENCY_PRESETS[currency] || CURRENCY_PRESETS['INR'];
-    setDenominations(preset.map(v => ({ value: v, notes: 0, loose: 0 })));
+    setDenominations(preset.map(v => ({ value: v, notes: 0 })));
   }, [currency]);
 
   const updateNotes = (index: number, count: number) => {
@@ -49,45 +48,38 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
     setDenominations(newDenoms);
   };
 
-  const updateLoose = (index: number, count: number) => {
-    const newDenoms = [...denominations];
-    newDenoms[index].loose = Math.max(0, count);
-    setDenominations(newDenoms);
-  };
-
   const totals = useMemo(() => {
     return denominations.reduce((acc, d) => {
-      const subtotal = (d.notes + d.loose) * d.value;
+      const subtotal = d.notes * d.value;
       const isNote = d.value >= 10;
       
       return {
         amount: acc.amount + subtotal,
-        notesCount: acc.notesCount + (isNote ? (d.notes + d.loose) : 0),
-        coinsCount: acc.coinsCount + (!isNote ? (d.notes + d.loose) : 0)
+        notesCount: acc.notesCount + (isNote ? d.notes : 0),
+        coinsCount: acc.coinsCount + (!isNote ? d.notes : 0)
       };
     }, { amount: 0, notesCount: 0, coinsCount: 0 });
   }, [denominations]);
 
   const chartData = useMemo(() => {
     return denominations
-      .filter(d => (d.notes + d.loose) > 0)
+      .filter(d => d.notes > 0)
       .map(d => ({
         name: `${getCurrencySymbol(currency)}${d.value}`,
-        value: (d.notes + d.loose) * d.value
+        value: d.notes * d.value
       }));
   }, [denominations, currency]);
 
   const COLORS = ['#2563eb', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#1d4ed8', '#1e40af', '#1e3a8a'];
 
   const downloadCSV = () => {
-    const headers = ['Denomination', 'Notes', 'Loose', `Amount (${currency})`].join(',');
+    const headers = ['Denomination', 'Notes', `Amount (${currency})`].join(',');
     const rows = denominations
-      .filter(d => (d.notes + d.loose) > 0)
+      .filter(d => d.notes > 0)
       .map(d => [
         d.value,
         d.notes,
-        d.loose,
-        (d.notes + d.loose) * d.value
+        d.notes * d.value
       ].join(','));
     
     const csvContent = [
@@ -110,17 +102,14 @@ export const CurrencyDenomination: React.FC<CurrencyDenominationProps> = ({ tool
   };
 
   const reset = () => {
-    setDenominations(denominations.map(d => ({ ...d, notes: 0, loose: 0 })));
+    setDenominations(denominations.map(d => ({ ...d, notes: 0 })));
   };
 
   const copyBreakdown = () => {
     const breakdown = denominations
-      .filter(d => (d.notes + d.loose) > 0)
+      .filter(d => d.notes > 0)
       .map(d => {
-        const countText = d.notes > 0 && d.loose > 0 
-          ? `(${d.notes} notes + ${d.loose} loose)` 
-          : `${d.notes + d.loose}`;
-        return `${d.value} x ${countText} = ${formatIndianCurrency((d.notes + d.loose) * d.value, currency)}`;
+        return `${d.value} x ${d.notes} = ${formatIndianCurrency(d.notes * d.value, currency)}`;
       })
       .join('\n');
     
@@ -185,7 +174,7 @@ ${breakdown}`;
                 key={d.value} 
                 className={cn(
                   "p-5 rounded-2xl border transition-all duration-300",
-                  (d.notes + d.loose) > 0 
+                  d.notes > 0 
                     ? "bg-blue-50/50 border-blue-200 dark:bg-blue-900/10 dark:border-blue-800" 
                     : "bg-white border-gray-100 dark:bg-gray-900 dark:border-gray-800"
                 )}
@@ -197,47 +186,34 @@ ${breakdown}`;
                   <div className="text-right">
                     <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Amount</p>
                     <p className="font-mono font-bold text-blue-600 dark:text-blue-400">
-                      {formatIndianCurrency((d.notes + d.loose) * d.value, currency)}
+                      {formatIndianCurrency(d.notes * d.value, currency)}
                     </p>
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Notes</label>
-                    <div className="flex items-center gap-1">
-                      <button 
-                        onClick={() => updateNotes(i, d.notes - 1)}
-                        className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-blue-600"
-                      >
-                        <Minus className="h-3 w-3" />
-                      </button>
-                      <input
-                        type="number"
-                        inputMode="numeric"
-                        value={d.notes || ''}
-                        onChange={(e) => updateNotes(i, parseInt(e.target.value) || 0)}
-                        placeholder="0"
-                        className="w-full rounded-xl border-gray-200 bg-gray-50 dark:bg-gray-800/50 px-2 py-2 text-center font-bold focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:text-white transition-all"
-                      />
-                      <button 
-                        onClick={() => updateNotes(i, d.notes + 1)}
-                        className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-blue-600"
-                      >
-                        <Plus className="h-3 w-3" />
-                      </button>
-                    </div>
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Loose</label>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Notes</label>
+                  <div className="flex items-center gap-1">
+                    <button 
+                      onClick={() => updateNotes(i, d.notes - 1)}
+                      className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-blue-600"
+                    >
+                      <Minus className="h-3 w-3" />
+                    </button>
                     <input
                       type="number"
                       inputMode="numeric"
-                      value={d.loose || ''}
-                      onChange={(e) => updateLoose(i, parseInt(e.target.value) || 0)}
+                      value={d.notes || ''}
+                      onChange={(e) => updateNotes(i, parseInt(e.target.value) || 0)}
                       placeholder="0"
                       className="w-full rounded-xl border-gray-200 bg-gray-50 dark:bg-gray-800/50 px-2 py-2 text-center font-bold focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:text-white transition-all"
                     />
+                    <button 
+                      onClick={() => updateNotes(i, d.notes + 1)}
+                      className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-blue-600"
+                    >
+                      <Plus className="h-3 w-3" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -252,7 +228,6 @@ ${breakdown}`;
                   <tr className="border-b border-gray-100 dark:border-gray-700">
                     <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500">Denomination</th>
                     <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500 text-center">Notes Count</th>
-                    <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500 text-center">Loose / Coins</th>
                     <th className="px-8 py-5 text-xs font-black uppercase tracking-wider text-gray-500 text-right">Subtotal</th>
                   </tr>
                 </thead>
@@ -260,7 +235,7 @@ ${breakdown}`;
                   {denominations.map((d, i) => (
                     <tr key={d.value} className={cn(
                       "group transition-all duration-200",
-                      (d.notes + d.loose) > 0 ? "bg-blue-50/20 dark:bg-blue-900/10" : "hover:bg-gray-50 dark:hover:bg-gray-800/20"
+                      d.notes > 0 ? "bg-blue-50/20 dark:bg-blue-900/10" : "hover:bg-gray-50 dark:hover:bg-gray-800/20"
                     )}>
                       <td className="px-8 py-6">
                         <div className="flex items-center gap-3 text-gray-900 dark:text-white font-black text-lg">
@@ -293,24 +268,12 @@ ${breakdown}`;
                         </div>
                         <div className="hidden print:block text-center font-bold text-lg">{d.notes}</div>
                       </td>
-                      <td className="px-8 py-6">
-                        <div className="flex items-center justify-center gap-3 print:hidden">
-                          <input
-                            type="number"
-                            value={d.loose || ''}
-                            onChange={(e) => updateLoose(i, parseInt(e.target.value) || 0)}
-                            placeholder="0"
-                            className="w-24 rounded-xl border-gray-200 bg-gray-50 px-4 py-2.5 text-center font-bold text-lg focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800/50 dark:text-white transition-all shadow-inner"
-                          />
-                        </div>
-                        <div className="hidden print:block text-center font-bold text-lg">{d.loose}</div>
-                      </td>
                       <td className="px-8 py-6 text-right">
                         <span className={cn(
                           "font-mono font-black text-xl transition-colors",
-                          (d.notes + d.loose) > 0 ? "text-blue-600 dark:text-blue-400" : "text-gray-900 dark:text-white"
+                          d.notes > 0 ? "text-blue-600 dark:text-blue-400" : "text-gray-900 dark:text-white"
                         )}>
-                          {formatIndianCurrency((d.notes + d.loose) * d.value, currency)}
+                          {formatIndianCurrency(d.notes * d.value, currency)}
                         </span>
                       </td>
                     </tr>
@@ -411,7 +374,7 @@ ${breakdown}`;
                 <span className="font-bold">Pro Tip</span>
               </div>
               <p className="text-sm text-amber-600 dark:text-amber-500 leading-relaxed">
-                "Notes" are for full packets/counts, while "Loose" is for individual bills or coins. Both are added together.
+                Enter the count for each note or coin to calculate the total amount instantly.
               </p>
             </section>
           </div>
@@ -421,7 +384,7 @@ ${breakdown}`;
       {/* SEO Content */}
       <section className="prose prose-blue dark:prose-invert max-w-none print:hidden">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">How to Use the Cash Counting Calculator</h2>
-        <p>This tool is designed for retail owners, bankers, and anyone who needs to count large amounts of cash quickly and accurately. Simply enter the number of <strong>Notes</strong> and <strong>Loose</strong> pieces for each denomination.</p>
+        <p>This tool is designed for retail owners, bankers, and anyone who needs to count large amounts of cash quickly and accurately. Simply enter the number of pieces for each denomination.</p>
         <ul className="list-disc leading-relaxed">
           <li><strong>Real-time calculation:</strong> As you type, the total amount and count update instantly.</li>
           <li><strong>Denomination Specific totals:</strong> See the subtotal for each currency bill.</li>
