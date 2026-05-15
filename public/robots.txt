@@ -1,21 +1,11 @@
 User-agent: *
 Allow: /
 
-# Block programmatic / low-value variant URLs
-Disallow: /*-to-*
-Disallow: /*-for-*
-Disallow: /*-in-*
-Disallow: /*-kb*
-Disallow: /*-transparent*
-Disallow: /*-high-quality*
-
-# Block internal/system paths
 Disallow: /api/
 Disallow: /admin/
 Disallow: /login/
+Disallow: /_next/
 
-# Allow framework assets
 Allow: /_next/static/
 
-# Sitemap
 Sitemap: https://sohelix.com/sitemap.xml
